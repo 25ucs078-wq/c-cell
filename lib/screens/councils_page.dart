@@ -11,9 +11,14 @@ class CouncilsPage extends StatelessWidget {
       'icon': Icons.account_balance,
       'subtitle': 'Campus leadership and policy',
       'items': [
-        {'name': 'Ravi Kapoor', 'role': 'President', 'image': 'assets/images/logo.jpeg'},
-        {'name': 'Neha Singh', 'role': 'Vice President', 'image': 'assets/images/logo.jpeg'},
-        {'name': 'Aditya Mehra', 'role': 'Secretary', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Hemendra Yadav', 'role': 'President', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Priyanshu Kumar', 'role': 'Vice President', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Adarsh Mishra', 'role': 'Finance Convenor', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Shashwat Anand', 'role': 'Senate Convenor', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Rishi Raj', 'role': 'COSHA Head', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Dr. Nabyendu Das', 'role': 'Dean of Student Affairs', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Dr. Akash Gupta', 'role': 'Faculty Mentor', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Samar Singh', 'role': 'Assistant Registrar-Student Affairs', 'image': 'assets/images/logo.jpeg'},
       ],
     },
     {
