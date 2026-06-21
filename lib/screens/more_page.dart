@@ -9,7 +9,7 @@ class MorePage extends StatelessWidget {
     {
       "name": "Krishna Khairnar",
       "image": "assets/images/Krishna.jpeg",
-       "role": "COORDINATOR",
+      "role": "COORDINATOR",
     },
     {
       "name": "Harshita Jain",
@@ -27,40 +27,45 @@ class MorePage extends StatelessWidget {
     {
       "name": "Nishra Kothari",
       "image": "assets/images/Nishra.jpeg",
-       "role": "ASSOCIATE COORDINATOR",
+      "role": "ASSOCIATE COORDINATOR",
     },
     {
       "name": "Shashwat Kanoongo",
       "image": "assets/images/Shashwat.jpeg",
-       "role": "ASSOCIATE COORDINATOR",
+      "role": "ASSOCIATE COORDINATOR",
     },
     {
       "name": "Yug Nahar",
       "image": "assets/images/Yug.jpeg",
-       "role": "ASSOCIATE COORDINATOR",
+      "role": "ASSOCIATE COORDINATOR",
     },
     {
       "name": "Krishangee Tayal",
       "image": "assets/images/Krishangee.jpeg",
-       "role": "ASSOCIATE COORDINATOR",
+      "role": "ASSOCIATE COORDINATOR",
     },
     {
       "name": "Parth Arora",
       "image": "assets/images/Parth.jpeg",
-       "role": "ASSOCIATE COORDINATOR",
+      "role": "ASSOCIATE COORDINATOR",
     },
     {
       "name": "Plaksha Gulati",
       "image": "assets/images/Plaksha.jpeg",
-       "role": "ASSOCIATE COORDINATOR",
+      "role": "ASSOCIATE COORDINATOR",
     },
   ];
 
   static const List<Map<String, String>> developers = [
     {
+      "name": "Harsh Kumar",
+      "image": "assets/images/harsh.jpeg",
+      "role": "DEVELOPER",
+    },
+    {
       "name": "Kunal Agarwal",
       "image": "assets/images/Kunal.jpeg",
-       "role": "DEVELOPER",
+      "role": "DEVELOPER",
     },
   ];
 
