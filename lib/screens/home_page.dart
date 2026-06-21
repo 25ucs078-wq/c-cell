@@ -123,7 +123,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(width: 12),
               Text(
                 "C-CELL",
-                style: GoogleFonts.bebasNeue(
+                style: GoogleFonts.playfairDisplay(
                   color: Colors.redAccent,
                   fontSize: 28,
                   letterSpacing: 2,
@@ -296,7 +296,7 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 20),
             Text(
               "C-CELL",
-              style: GoogleFonts.bebasNeue(
+              style: GoogleFonts.playfairDisplay(
                 color: Colors.redAccent,
                 fontSize: 46,
                 letterSpacing: 3,
@@ -320,7 +320,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Text(
                     "WELCOME BACK",
-                    style: GoogleFonts.bebasNeue(
+                    style: GoogleFonts.playfairDisplay(
                       color: Colors.redAccent,
                       fontSize: 18,
                       letterSpacing: 2,
@@ -329,7 +329,7 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 5),
                   Text(
                     "KUNAL AGARWAL",
-                    style: GoogleFonts.bebasNeue(
+                    style: GoogleFonts.playfairDisplay(
                       color: Colors.white,
                       fontSize: 32,
                       letterSpacing: 1.5,
@@ -779,7 +779,7 @@ class _HomePageState extends State<HomePage> {
                           const SizedBox(height: 40),
                           Text(
                             "THE C-CELL APP",
-                            style: GoogleFonts.bebasNeue(
+                            style: GoogleFonts.playfairDisplay(
                               color: Colors.white,
                               fontSize: titleFontSize,
                               letterSpacing: 3,
@@ -863,7 +863,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Text(
                             "EVENTS FOR FRESHERS",
-                            style: GoogleFonts.bebasNeue(
+                            style: GoogleFonts.playfairDisplay(
                               color: Colors.white,
                               fontSize: sectionTitleFontSize,
                               letterSpacing: 2,
@@ -897,7 +897,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Text(
                             "STUDENT GYMKHANA",
-                            style: GoogleFonts.bebasNeue(
+                            style: GoogleFonts.playfairDisplay(
                               color: Colors.white,
                               fontSize: sectionTitleFontSize,
                               letterSpacing: 2,
@@ -964,7 +964,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Text(
                             "TRENDING ON CAMPUS",
-                            style: GoogleFonts.bebasNeue(
+                            style: GoogleFonts.playfairDisplay(
                               color: Colors.white,
                               fontSize: sectionTitleFontSize,
                               letterSpacing: 2,
@@ -1015,7 +1015,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Text(
                             "CLUBS & SOCIETIES",
-                            style: GoogleFonts.bebasNeue(
+                            style: GoogleFonts.playfairDisplay(
                               color: Colors.white,
                               fontSize: sectionTitleFontSize,
                               letterSpacing: 2,
@@ -1066,7 +1066,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Text(
                             "QUICK ACCESS",
-                            style: GoogleFonts.bebasNeue(
+                            style: GoogleFonts.playfairDisplay(
                               color: Colors.white,
                               fontSize: sectionTitleFontSize,
                               letterSpacing: 2,
@@ -1125,7 +1125,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Text(
                             "CONTINUE YOUR JOURNEY",
-                            style: GoogleFonts.bebasNeue(
+                            style: GoogleFonts.playfairDisplay(
                               color: Colors.white,
                               fontSize: sectionTitleFontSize,
                               letterSpacing: 2,
@@ -1173,7 +1173,7 @@ class _HomePageState extends State<HomePage> {
                                     children: [
                                       Text(
                                         "ABOUT US",
-                                        style: GoogleFonts.bebasNeue(
+                                        style: GoogleFonts.playfairDisplay(
                                           color: Colors.white,
                                           fontSize: 40,
                                           letterSpacing: 2,
@@ -1368,9 +1368,9 @@ class _HomePageState extends State<HomePage> {
             ),
             child: Align(
               alignment: Alignment.bottomLeft,
-              child: Text(
+                child: Text(
                 title,
-                style: GoogleFonts.bebasNeue(
+                style: GoogleFonts.playfairDisplay(
                   color: Colors.white,
                   fontSize: hoveredCard == index ? 31 : 28,
                   letterSpacing: 1.5,

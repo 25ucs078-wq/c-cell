@@ -43,7 +43,7 @@ class OfficeBearersPage extends StatelessWidget {
         centerTitle: true,
         title: Text(
           "OFFICE BEARERS",
-          style: GoogleFonts.bebasNeue(
+          style: GoogleFonts.playfairDisplay(
             color: Colors.redAccent,
             fontSize: 38,
             letterSpacing: 4,
@@ -111,7 +111,7 @@ class OfficeBearersPage extends StatelessWidget {
                 children: [
                   Text(
                     "MEET THE TEAM BEHIND THE STUDENT GYMKHANA",
-                    style: GoogleFonts.bebasNeue(
+                    style: GoogleFonts.playfairDisplay(
                       color: Colors.white,
                       fontSize: 36,
                       letterSpacing: 2,
@@ -305,7 +305,7 @@ class OfficeBearersPage extends StatelessWidget {
               child: Center(
                 child: Text(
                   "VIEW PROFILE",
-                  style: GoogleFonts.bebasNeue(
+                  style: GoogleFonts.playfairDisplay(
                     color: Colors.white,
                     fontSize: 22,
                     letterSpacing: 2,

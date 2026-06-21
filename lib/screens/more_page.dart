@@ -79,13 +79,13 @@ class MorePage extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         title: Text(
-    "C-CELL",
-    style: GoogleFonts.bebasNeue(
-      color: Colors.redAccent,
-      fontSize: 38,
-      letterSpacing: 4,
-  ),
-),
+        "C-CELL",
+        style: GoogleFonts.playfairDisplay(
+          color: Colors.redAccent,
+          fontSize: 38,
+          letterSpacing: 4,
+      ),
+    ),
       ),
 
       body: SingleChildScrollView(
@@ -162,7 +162,7 @@ class MorePage extends StatelessWidget {
 
              Text(
               "THE LNM INSTITUTE OF\nINFORMATION TECHNOLOGY",
-              style: GoogleFonts.bebasNeue(
+              style: GoogleFonts.playfairDisplay(
                 color: Colors.white,
                 fontSize: 42,
                 letterSpacing: 2,
@@ -386,9 +386,9 @@ class MorePage extends StatelessWidget {
             ),
 
             child: Center(
-              child: Text(
+                child: Text(
                 "VIEW PROFILE",
-                style: GoogleFonts.bebasNeue(
+                style: GoogleFonts.playfairDisplay(
                   color: Colors.white,
                   fontSize: 22,
                   letterSpacing: 2,

@@ -33,7 +33,7 @@ class StudentFestsPage extends StatelessWidget {
         centerTitle: true,
         title: Text(
           "STUDENT FESTS",
-          style: GoogleFonts.bebasNeue(
+          style: GoogleFonts.playfairDisplay(
             color: Colors.redAccent,
             fontSize: 38,
             letterSpacing: 4,
@@ -48,7 +48,7 @@ class StudentFestsPage extends StatelessWidget {
             children: [
               Text(
                 "DISCOVER OUR MAJOR FESTS",
-                style: GoogleFonts.bebasNeue(
+                style: GoogleFonts.playfairDisplay(
                   color: Colors.white,
                   fontSize: 34,
                   letterSpacing: 2,
@@ -218,8 +218,8 @@ class StudentFestsPage extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  "VIEW PROFILE",
-                  style: GoogleFonts.bebasNeue(
+                  "VIEW DETAILS",
+                  style: GoogleFonts.playfairDisplay(
                     color: Colors.white,
                     fontSize: 22,
                     letterSpacing: 2,

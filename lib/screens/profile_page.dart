@@ -75,11 +75,11 @@ class ProfilePage extends StatelessWidget {
                   Text(
                     name,
 
-                    style: GoogleFonts.bebasNeue(
-                      color: Colors.white,
-                      fontSize: 52,
-                      letterSpacing: 2,
-                    ),
+                      style: GoogleFonts.playfairDisplay(
+                        color: Colors.white,
+                        fontSize: 52,
+                        letterSpacing: 2,
+                      ),
                   ),
 
                   const SizedBox(height: 10),
@@ -118,7 +118,7 @@ class ProfilePage extends StatelessWidget {
                           Text(
                             "❝",
 
-                            style: GoogleFonts.bebasNeue(
+                            style: GoogleFonts.playfairDisplay(
                               color: Colors.redAccent,
                               fontSize: 50,
                             ),
@@ -139,7 +139,7 @@ class ProfilePage extends StatelessWidget {
                           Text(
                             "ABOUT",
 
-                            style: GoogleFonts.bebasNeue(
+                            style: GoogleFonts.playfairDisplay(
                               color: Colors.redAccent,
                               fontSize: 28,
                               letterSpacing: 2,
@@ -196,9 +196,9 @@ class ProfilePage extends StatelessWidget {
                           color: Colors.white,
                         ),
 
-                        label: Text(
+                          label: Text(
                           "CALL",
-                          style: GoogleFonts.bebasNeue(
+                          style: GoogleFonts.playfairDisplay(
                             color: Colors.white,
                             fontSize: 24,
                             letterSpacing: 2,
@@ -239,7 +239,7 @@ class ProfilePage extends StatelessWidget {
 
                         label: Text(
                           "MAIL",
-                          style: GoogleFonts.bebasNeue(
+                          style: GoogleFonts.playfairDisplay(
                             color: Colors.white,
                             fontSize: 24,
                             letterSpacing: 2,
