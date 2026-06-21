@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'profile_page.dart';
+import 'vivacity_page.dart';
+import 'plinth_page.dart';
+import 'desportivos_page.dart';
 
 class StudentFestsPage extends StatelessWidget {
   const StudentFestsPage({super.key});
@@ -216,16 +219,42 @@ class StudentFestsPage extends StatelessWidget {
                   bottomRight: Radius.circular(20),
                 ),
               ),
-              child: Center(
-                child: Text(
-                  "VIEW DETAILS",
-                  style: GoogleFonts.playfairDisplay(
-                    color: Colors.white,
-                    fontSize: 22,
-                    letterSpacing: 2,
+              child: GestureDetector(
+                  onTap: () {
+                    if (name == 'Vivacity') {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const VivacityPage(),
+                        ),
+                      );
+                    } else if (name == 'Plinth') {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PlinthPage(),
+                        ),
+                      );
+                    } else if (name == 'Desportivos') {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const DesportivosPage(),
+                        ),
+                      );
+                    }
+                  },
+                  child: Center(
+                    child: Text(
+                      "VIEW DETAILS",
+                      style: GoogleFonts.playfairDisplay(
+                        color: Colors.white,
+                        fontSize: 22,
+                        letterSpacing: 2,
+                      ),
+                    ),
                   ),
                 ),
-              ),
             ),
           ],
         ),
