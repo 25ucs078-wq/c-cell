@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'more_page.dart';
 import 'office_bearers_page.dart';
+import 'student_fests_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
