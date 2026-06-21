@@ -56,7 +56,21 @@ final GlobalKey aboutKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
-        return Scaffold(
+    final size = MediaQuery.of(context).size;
+    final screenWidth = size.width;
+    final screenHeight = size.height;
+    final isSmallScreen = screenWidth < 800;
+    final heroHeight = (screenHeight * (isSmallScreen ? 0.55 : 0.60)).clamp(420.0, 650.0);
+    final sectionSpacing = isSmallScreen ? 40.0 : 60.0;
+    final titleFontSize = isSmallScreen ? 48.0 : 82.0;
+    final sectionTitleFontSize = isSmallScreen ? 28.0 : 34.0;
+    final bodyFontSize = isSmallScreen ? 15.0 : 18.0;
+    final buttonSpacing = isSmallScreen ? 12.0 : 15.0;
+    final heroTopPadding = isSmallScreen ? 140.0 : 180.0;
+    final listCardHeight = isSmallScreen ? 180.0 : 220.0;
+    final aboutCardHeight = isSmallScreen ? 160.0 : 180.0;
+
+    return Scaffold(
 
    drawer: Drawer(
   backgroundColor: const Color(0xFF050816),
@@ -710,7 +724,7 @@ curve: Curves.easeInOut,
 
             SizedBox(
               width: double.infinity,
-              height: 600,
+              height: heroHeight,
 
               child: Image.asset(
                 "assets/images/hero_new.jpeg",
@@ -722,7 +736,7 @@ curve: Curves.easeInOut,
 
             Container(
               width: double.infinity,
-              height: 600,
+              height: heroHeight,
 
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -743,17 +757,17 @@ curve: Curves.easeInOut,
             ),
 
             Padding(
-              padding: const EdgeInsets.only(
+              padding: EdgeInsets.only(
                 left: 25,
                 right: 25,
-                top: 180,
+                top: heroTopPadding,
               ),
 
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
 
                 children: [
-                  const SizedBox(height: 100),
+                  SizedBox(height: isSmallScreen ? 70 : 100),
                   Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 14,
@@ -783,7 +797,7 @@ curve: Curves.easeInOut,
 
                     style: GoogleFonts.bebasNeue(
                       color: Colors.white,
-                      fontSize: 82,
+                      fontSize: titleFontSize,
                       letterSpacing: 3,
                       height: 1,
                     ),
@@ -796,78 +810,70 @@ curve: Curves.easeInOut,
 
                     style: GoogleFonts.poppins(
                       color: Colors.white70,
-                      fontSize: 18,
+                      fontSize: bodyFontSize,
                       height: 1.5,
                     ),
                   ),
 
-                  const SizedBox(height: 35),
+                  SizedBox(height: isSmallScreen ? 28 : 35),
 
-                  Row(
+                  Wrap(
+                    spacing: buttonSpacing,
+                    runSpacing: buttonSpacing,
                     children: [
-
-                      Builder(
-  builder: (context) {
-    return ElevatedButton.icon(
-
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-
-        padding: const EdgeInsets.symmetric(
-          horizontal: 25,
-          vertical: 18,
-        ),
-      ),
-
-      onPressed: () {
-        Scaffold.of(context).openDrawer();
-      },
-
-      icon: const Icon(Icons.grid_view_rounded),
-
-      label: Text(
-        "Explore",
-        style: GoogleFonts.poppins(
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
-  },
-),
-
-                      const SizedBox(width: 15),
-
-                      ElevatedButton.icon(
-
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                          Colors.white.withValues(alpha: 0.15),
-
-                          foregroundColor: Colors.white,
-
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 18,
-                          ),
+                      SizedBox(
+                        width: isSmallScreen ? double.infinity : null,
+                        child: Builder(
+                          builder: (context) {
+                            return ElevatedButton.icon(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                foregroundColor: Colors.black,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 25,
+                                  vertical: 18,
+                                ),
+                              ),
+                              onPressed: () {
+                                Scaffold.of(context).openDrawer();
+                              },
+                              icon: const Icon(Icons.grid_view_rounded),
+                              label: Text(
+                                "Explore",
+                                style: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            );
+                          },
                         ),
-
-                        onPressed: () {},
-
-                        icon: const Icon(Icons.info_outline),
-
-                        label: Text(
-                          "More Info",
-
-                          style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.bold,
+                      ),
+                      SizedBox(
+                        width: isSmallScreen ? double.infinity : null,
+                        child: ElevatedButton.icon(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                Colors.white.withValues(alpha: 0.15),
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 18,
+                            ),
+                          ),
+                          onPressed: () {},
+                          icon: const Icon(Icons.info_outline),
+                          label: Text(
+                            "More Info",
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
                     ],
                   ),
 
-                  const SizedBox(height: 100),
+                  SizedBox(height: isSmallScreen ? 80 : 100),
 
   Container(
   key: eventsKey,
@@ -877,7 +883,7 @@ curve: Curves.easeInOut,
   "EVENTS FOR FRESHERS",
   style: GoogleFonts.bebasNeue(
     color: Colors.white,
-    fontSize: 34,
+    fontSize: sectionTitleFontSize,
     letterSpacing: 2,
   ),
 ),
@@ -885,7 +891,7 @@ curve: Curves.easeInOut,
 const SizedBox(height: 20),
 
 SizedBox(
-  height: 220,
+  height: listCardHeight,
 
   child: ListView(
     scrollDirection: Axis.horizontal,
@@ -984,7 +990,7 @@ buildPosterCard(
     ],
   ),
 ),
-    const SizedBox(height: 60),
+    SizedBox(height: sectionSpacing),
 
   Container(
   key: gymkhanaKey,
@@ -994,7 +1000,7 @@ buildPosterCard(
   "STUDENT GYMKHANA",
   style: GoogleFonts.bebasNeue(
     color: Colors.white,
-    fontSize: 34,
+    fontSize: sectionTitleFontSize,
     letterSpacing: 2,
   ),
 ),
@@ -1002,7 +1008,7 @@ buildPosterCard(
 const SizedBox(height: 20),
 
 SizedBox(
-  height: 220,
+  height: listCardHeight,
   child: ListView(
     scrollDirection: Axis.horizontal,
 
@@ -1056,7 +1062,7 @@ SizedBox(
   ),
 ),
 
-const SizedBox(height: 60),
+SizedBox(height: sectionSpacing),
 
 Container(
   key: trendingKey,
@@ -1066,7 +1072,7 @@ Text(
   "TRENDING ON CAMPUS",
   style: GoogleFonts.bebasNeue(
     color: Colors.white,
-    fontSize: 34,
+    fontSize: sectionTitleFontSize,
     letterSpacing: 2,
   ),
 ),
@@ -1074,7 +1080,7 @@ Text(
 const SizedBox(height: 20),
 
 SizedBox(
-  height: 220,
+  height: listCardHeight,
   child: ListView(
     scrollDirection: Axis.horizontal,
 
@@ -1114,7 +1120,7 @@ SizedBox(
   ),
 ),
 
-const SizedBox(height: 60),
+SizedBox(height: sectionSpacing),
 
 Container(
   key: clubsKey,
@@ -1124,7 +1130,7 @@ Text(
   "CLUBS & SOCIETIES",
   style: GoogleFonts.bebasNeue(
     color: Colors.white,
-    fontSize: 34,
+    fontSize: sectionTitleFontSize,
     letterSpacing: 2,
   ),
 ),
@@ -1132,7 +1138,7 @@ Text(
 const SizedBox(height: 20),
 
 SizedBox(
-  height: 220,
+  height: listCardHeight,
   child: ListView(
     scrollDirection: Axis.horizontal,
 
@@ -1170,7 +1176,7 @@ SizedBox(
   ),
 ),
 
-const SizedBox(height: 60),
+SizedBox(height: sectionSpacing),
 
 Container(
   key: quickKey,
@@ -1180,7 +1186,7 @@ Text(
   "QUICK ACCESS",
   style: GoogleFonts.bebasNeue(
     color: Colors.white,
-    fontSize: 34,
+    fontSize: sectionTitleFontSize,
     letterSpacing: 2,
   ),
 ),
@@ -1188,7 +1194,7 @@ Text(
 const SizedBox(height: 20),
 
 SizedBox(
-  height: 220,
+  height: listCardHeight,
   child: ListView(
     scrollDirection: Axis.horizontal,
 
@@ -1244,7 +1250,7 @@ Text(
   "CONTINUE YOUR JOURNEY",
   style: GoogleFonts.bebasNeue(
     color: Colors.white,
-    fontSize: 34,
+    fontSize: sectionTitleFontSize,
     letterSpacing: 2,
   ),
 ),
@@ -1262,7 +1268,7 @@ GestureDetector(
   },
 
   child: Container(
-    height: 180,
+    height: aboutCardHeight,
     width: double.infinity,
 
     decoration: BoxDecoration(
@@ -1323,10 +1329,10 @@ GestureDetector(
   ),
 ),
 
-const SizedBox(height: 60),  
+SizedBox(height: sectionSpacing),
   
 
-const SizedBox(height: 50),
+SizedBox(height: isSmallScreen ? 40 : 50),
 
 
                 ],
