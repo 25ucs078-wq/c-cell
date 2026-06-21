@@ -1328,7 +1328,6 @@ const SizedBox(height: 50),
       ),
     );
   }
-  
  Widget buildEventCard(
   int index,
   Color color,
@@ -1339,108 +1338,72 @@ const SizedBox(height: 50),
   return GestureDetector(
     onTap: onTap,
     child: MouseRegion(
-
-    onEnter: (_) {
-      setState(() {
-        hoveredCard = index;
-      });
-    },
-
-    onExit: (_) {
-      setState(() {
-        hoveredCard = -1;
-      });
-    },
-
-    child: AnimatedContainer(
-
-      duration: const Duration(
-        milliseconds: 250,
-      ),
-
-      width: hoveredCard == index
-          ? 185
-          : 170,
-
-      margin: EdgeInsets.only(
-        right: 15,
-        top: hoveredCard == index
-            ? 0
-            : 10,
-
-        bottom: hoveredCard == index
-            ? 10
-            : 0,
-      ),
-
-      decoration: BoxDecoration(
-
-        gradient: LinearGradient(
-          colors: [
-            color.withValues(alpha: 0.9),
-            color.withValues(alpha: 0.5),
-          ],
+      onEnter: (_) {
+        setState(() {
+          hoveredCard = index;
+        });
+      },
+      onExit: (_) {
+        setState(() {
+          hoveredCard = -1;
+        });
+      },
+      child: AnimatedContainer(
+        duration: const Duration(
+          milliseconds: 250,
         ),
-
-        borderRadius: BorderRadius.circular(
-          20,
+        width: hoveredCard == index ? 185 : 170,
+        margin: EdgeInsets.only(
+          right: 15,
+          top: hoveredCard == index ? 0 : 10,
+          bottom: hoveredCard == index ? 10 : 0,
         ),
-
-        boxShadow: hoveredCard == index
-            ? [
-                BoxShadow(
-                  color: color.withValues(
-                    alpha: 0.45,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              color.withValues(alpha: 0.9),
+              color.withValues(alpha: 0.5),
+            ],
+          ),
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: hoveredCard == index
+              ? [
+                  BoxShadow(
+                    color: color.withValues(
+                      alpha: 0.45,
+                    ),
+                    blurRadius: 20,
+                    spreadRadius: 2,
                   ),
-                  blurRadius: 20,
-                  spreadRadius: 2,
-                ),
-              ]
-            : [],
-      ),
-
-      child: Padding(
-        padding: const EdgeInsets.all(
-          20,
+                ]
+              : [],
         ),
-
-        child: Column(
-
-          crossAxisAlignment:
-              CrossAxisAlignment.start,
-
-          children: [
-
-            Icon(
-              icon,
-              color: Colors.white,
-              size: hoveredCard == index
-                  ? 50
-                  : 45,
-            ),
-
-            const Spacer(),
-
-            Text(
-              title,
-
-              style:
-                  GoogleFonts.poppins(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Icon(
+                icon,
                 color: Colors.white,
-                fontSize: hoveredCard ==
-                        index
-                    ? 22
-                    : 20,
-                fontWeight:
-                    FontWeight.bold,
+                size: hoveredCard == index ? 50 : 45,
               ),
-            ),
-          ],
+              const Spacer(),
+              Text(
+                title,
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                  fontSize: hoveredCard == index ? 22 : 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     ),
   );
-} 
+}
 
 Widget buildPosterCard(
   int index,
