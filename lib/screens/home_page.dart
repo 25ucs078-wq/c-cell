@@ -1332,9 +1332,9 @@ const SizedBox(height: 50),
   int index,
   Color color,
   IconData icon,
-  String title,
-  {VoidCallback? onTap},
-) {
+  String title, {
+  VoidCallback? onTap,
+}) {
   return GestureDetector(
     onTap: onTap,
     child: MouseRegion(
