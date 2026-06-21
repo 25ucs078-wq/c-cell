@@ -1034,6 +1034,14 @@ SizedBox(
         Colors.teal,
         Icons.celebration,
         "Student Fests",
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const StudentFestsPage(),
+            ),
+          );
+        },
       ),
 
       buildEventCard(
