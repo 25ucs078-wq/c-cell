@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'more_page.dart';
+import 'office_bearers_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -1011,6 +1012,14 @@ SizedBox(
         Colors.redAccent,
         Icons.account_balance,
         "Office Bearers",
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const OfficeBearersPage(),
+            ),
+          );
+        },
       ),
 
       buildEventCard(
@@ -1325,8 +1334,11 @@ const SizedBox(height: 50),
   Color color,
   IconData icon,
   String title,
+  {VoidCallback? onTap},
 ) {
-  return MouseRegion(
+  return GestureDetector(
+    onTap: onTap,
+    child: MouseRegion(
 
     onEnter: (_) {
       setState(() {
