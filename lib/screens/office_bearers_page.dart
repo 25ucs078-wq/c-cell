@@ -9,12 +9,12 @@ class OfficeBearersPage extends StatelessWidget {
     {
       "name": "Hemendra Yadav",
       "image": "assets/images/logo.jpeg",
-      "role": "PRESIDENT",
+      "role": "President",
     },
     {
       "name": "Priyanshu Kumar",
       "image": "assets/images/logo.jpeg",
-      "role": "VICE PRESIDENT",
+      "role": "Vice President",
     },
     {
       "name": "Adarsh Mishra",
@@ -263,14 +263,30 @@ class OfficeBearersPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                 horizontal: 10,
               ),
-              child: Text(
-                name,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.poppins(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    name,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    role,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      color: Colors.redAccent,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 1.2,
+                    ),
+                  ),
+                ],
               ),
             ),
             const Spacer(),
