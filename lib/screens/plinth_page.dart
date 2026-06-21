@@ -5,12 +5,6 @@ import 'profile_page.dart';
 class PlinthPage extends StatelessWidget {
   const PlinthPage({super.key});
 
-  static const List<Map<String, String>> items = [
-    {"name": "Hackathons", "image": "assets/images/logo.jpeg", "role": "Competitive"},
-    {"name": "Project Expo", "image": "assets/images/logo.jpeg", "role": "Showcase"},
-    {"name": "Tech Talks", "image": "assets/images/logo.jpeg", "role": "Talks"},
-  ];
-
   static const List<String> galleryImages = [
     "assets/images/poster.jpeg",
     "assets/images/hero_new.jpeg",
@@ -18,8 +12,8 @@ class PlinthPage extends StatelessWidget {
   ];
 
   static const List<Map<String, String>> festHeads = [
-    {"name": "Akshansh Singh", "role": "Fest Head"},
-    {"name": "Jayant Singhal", "role": "Fest Head"},
+    {"name": "Akshansh Singh", "image": "assets/images/logo.jpeg", "role": "Fest Head"},
+    {"name": "Jayant Singhal", "image": "assets/images/logo.jpeg", "role": "Fest Head"},
   ];
 
   @override
@@ -49,16 +43,16 @@ class PlinthPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("EXPLORE PLINTH",
+                  Text("FEST HEADS",
                       style: GoogleFonts.playfairDisplay(color: Colors.white, fontSize: 32, letterSpacing: 2)),
                   const SizedBox(height: 20),
                   SizedBox(
                     height: 320,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: items.length,
+                      itemCount: festHeads.length,
                       itemBuilder: (context, index) {
-                        final p = items[index];
+                        final p = festHeads[index];
                         return _buildCard(context, p['name']!, p['image']!, p['role']!);
                       },
                     ),
@@ -84,28 +78,6 @@ class PlinthPage extends StatelessWidget {
                       },
                     ),
                   ),
-                  const SizedBox(height: 28),
-                  Text(
-                    "FEST HEADS",
-                    style: GoogleFonts.playfairDisplay(
-                      color: Colors.white,
-                      fontSize: 24,
-                      letterSpacing: 2,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    children: festHeads
-                        .map(
-                          (head) => Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 12),
-                              child: _buildHeadBox(head['name']!, head['role']!),
-                            ),
-                          ),
-                        )
-                        .toList(),
-                  ),
                   const SizedBox(height: 30),
                 ],
               ),
@@ -128,38 +100,7 @@ class PlinthPage extends StatelessWidget {
     );
   }
 
-  Widget _buildHeadBox(String name, String role) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: const Color(0xFF1A1A1A),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white12),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            name,
-            style: GoogleFonts.playfairDisplay(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            role,
-            style: GoogleFonts.poppins(
-              color: Colors.redAccent,
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+
 
   Widget _buildCard(BuildContext context, String name, String image, String role) {
     return GestureDetector(

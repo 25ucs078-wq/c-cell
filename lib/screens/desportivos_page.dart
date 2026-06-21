@@ -5,12 +5,6 @@ import 'profile_page.dart';
 class DesportivosPage extends StatelessWidget {
   const DesportivosPage({super.key});
 
-  static const List<Map<String, String>> items = [
-    {"name": "Inter-College Matches", "image": "assets/images/logo.jpeg", "role": "Sports"},
-    {"name": "Athletics", "image": "assets/images/logo.jpeg", "role": "Track & Field"},
-    {"name": "Tournaments", "image": "assets/images/logo.jpeg", "role": "Competitive"},
-  ];
-
   static const List<String> galleryImages = [
     "assets/images/hero_new.jpeg",
     "assets/images/poster.jpeg",
@@ -18,8 +12,8 @@ class DesportivosPage extends StatelessWidget {
   ];
 
   static const List<Map<String, String>> festHeads = [
-    {"name": "Abhas Chaudhary", "role": "Fest Head"},
-    {"name": "Arnav Rinawa", "role": "Fest Head"},
+    {"name": "Abhas Chaudhary", "image": "assets/images/logo.jpeg", "role": "Fest Head"},
+    {"name": "Arnav Rinawa", "image": "assets/images/logo.jpeg", "role": "Fest Head"},
   ];
 
   @override
@@ -49,15 +43,15 @@ class DesportivosPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("DESPORTIVOS HIGHLIGHTS", style: GoogleFonts.playfairDisplay(color: Colors.white, fontSize: 32, letterSpacing: 2)),
+                  Text("FEST HEADS", style: GoogleFonts.playfairDisplay(color: Colors.white, fontSize: 32, letterSpacing: 2)),
                   const SizedBox(height: 20),
                   SizedBox(
                     height: 320,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: items.length,
+                      itemCount: festHeads.length,
                       itemBuilder: (context, index) {
-                        final p = items[index];
+                        final p = festHeads[index];
                         return _buildCard(context, p['name']!, p['image']!, p['role']!);
                       },
                     ),
@@ -83,28 +77,6 @@ class DesportivosPage extends StatelessWidget {
                       },
                     ),
                   ),
-                  const SizedBox(height: 28),
-                  Text(
-                    "FEST HEADS",
-                    style: GoogleFonts.playfairDisplay(
-                      color: Colors.white,
-                      fontSize: 24,
-                      letterSpacing: 2,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    children: festHeads
-                        .map(
-                          (head) => Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 12),
-                              child: _buildHeadBox(head['name']!, head['role']!),
-                            ),
-                          ),
-                        )
-                        .toList(),
-                  ),
                   const SizedBox(height: 30),
                 ],
               ),
@@ -127,38 +99,7 @@ class DesportivosPage extends StatelessWidget {
     );
   }
 
-  Widget _buildHeadBox(String name, String role) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: const Color(0xFF1A1A1A),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white12),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            name,
-            style: GoogleFonts.playfairDisplay(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            role,
-            style: GoogleFonts.poppins(
-              color: Colors.redAccent,
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+
 
   Widget _buildCard(BuildContext context, String name, String image, String role) {
     return GestureDetector(
