@@ -26,8 +26,10 @@ class CouncilsPage extends StatelessWidget {
       'icon': Icons.palette,
       'subtitle': 'Arts, music, and performance',
       'items': [
-        {'name': 'Priya Sharma', 'role': 'Cultural Head', 'image': 'assets/images/logo.jpeg'},
-        {'name': 'Arjun Patel', 'role': 'Event Lead', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Kanishq Singhal', 'role': 'General Secretary', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Ishita Khandelwal', 'role': 'Associate Secretary', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Tanmay Jain', 'role': 'Finance Convenor', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Dr. Joyeeta Singha', 'role': 'Faculty Mentor', 'image': 'assets/images/logo.jpeg'},
       ],
     },
     {
@@ -35,8 +37,10 @@ class CouncilsPage extends StatelessWidget {
       'icon': Icons.science,
       'subtitle': 'Innovation and technical events',
       'items': [
-        {'name': 'Sania Gupta', 'role': 'Tech Lead', 'image': 'assets/images/logo.jpeg'},
-        {'name': 'Karan Jain', 'role': 'Workshop Head', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Tushar Agrawal', 'role': 'General Secretary', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Anmol Adwani', 'role': 'Associate Secretary', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Devashish Tripathi', 'role': 'Finance Convenor', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Dr. Ashish Kumar Dwivedi', 'role': 'Faculty Mentor', 'image': 'assets/images/logo.jpeg'},
       ],
     },
     {
@@ -44,8 +48,9 @@ class CouncilsPage extends StatelessWidget {
       'icon': Icons.sports_soccer,
       'subtitle': 'Competitions and athletics',
       'items': [
-        {'name': 'Vikram Singh', 'role': 'Sports Head', 'image': 'assets/images/logo.jpeg'},
-        {'name': 'Meera Nair', 'role': 'Tournament Lead', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Arihant Bhura', 'role': 'General Secretary', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Priyal Maheshwari', 'role': 'Associate Secretary', 'image': 'assets/images/logo.jpeg'},
+        {'name': 'Raghav Khandelwal', 'role': 'Finance Convenor', 'image': 'assets/images/logo.jpeg'},
       ],
     },
   ];
