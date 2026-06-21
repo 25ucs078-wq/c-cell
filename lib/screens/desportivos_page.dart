@@ -77,7 +77,7 @@ class DesportivosPage extends StatelessWidget {
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       itemCount: galleryImages.length,
-                      separatorBuilder: (_, __) => const SizedBox(width: 14),
+                      separatorBuilder: (_, _) => const SizedBox(width: 14),
                       itemBuilder: (context, index) {
                         return _buildGalleryImage(galleryImages[index]);
                       },
