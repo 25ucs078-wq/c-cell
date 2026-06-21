@@ -7,29 +7,29 @@ class OfficeBearersPage extends StatelessWidget {
 
   static const List<Map<String, String>> officeBearers = [
     {
-      "name": "Aarav Sharma",
+      "name": "Hemendra Yadav",
       "image": "assets/images/logo.jpeg",
       "role": "PRESIDENT",
     },
     {
-      "name": "Ayesha Sinha",
+      "name": "Priyanshu Kumar",
       "image": "assets/images/logo.jpeg",
       "role": "VICE PRESIDENT",
     },
     {
-      "name": "Karan Mehta",
+      "name": "Adarsh Mishra",
       "image": "assets/images/logo.jpeg",
-      "role": "GENERAL SECRETARY",
+      "role": "Finance Convenor",
     },
     {
-      "name": "Meera Patel",
+      "name": "Shashwat Anand",
       "image": "assets/images/logo.jpeg",
-      "role": "FINANCE SECRETARY",
+      "role": "Senate Convenor",
     },
     {
-      "name": "Tanvi Kapoor",
+      "name": "Rishi Raj",
       "image": "assets/images/logo.jpeg",
-      "role": "CULTURAL SECRETARY",
+      "role": "COSHA Head",
     },
   ];
 
