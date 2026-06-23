@@ -5,6 +5,7 @@ import 'more_page.dart';
 import 'office_bearers_page.dart';
 import 'student_fests_page.dart';
 import 'councils_page.dart';
+import 'cultural/cultural_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -1042,6 +1043,14 @@ class _HomePageState extends State<HomePage> {
                                 "Cultural",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const CulturalPage(),
+                                    ),
+                                  );
+                                },
                               ),
                               buildEventCard(
                                 301,
