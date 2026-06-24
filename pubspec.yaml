@@ -1,0 +1,64 @@
+name: c_cell_app
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.3.0
+  url_launcher: ^6.2.5
+  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/images/cultural/aaveg/
+    - assets/images/cultural/capriccio/
+    - assets/images/cultural/eminence/
+    - assets/images/cultural/fundoo/
+    - assets/images/cultural/imagination/
+    - assets/images/cultural/insignia/
+    - assets/images/cultural/lc/
+    - assets/images/cultural/mediacell/
+    - assets/images/cultural/rendition/
+    - assets/images/cultural/sankalp/
+    - assets/images/cultural/vignette/
+    - assets/images/sports/badminton/
+    - assets/images/sports/basketball/
+    - assets/images/sports/chess/
+    - assets/images/sports/cricket/
+    - assets/images/sports/football/
+    - assets/images/sports/kabaddi/
+    - assets/images/sports/lawn_tennis/
+    - assets/images/sports/squash/
+    - assets/images/sports/table_tennis/
+    - assets/images/sports/volleyball/
+    - assets/images/tech/astronomy/
+    - assets/images/tech/cipherclub/
+    - assets/images/tech/cybros/
+    - assets/images/tech/debsoc/
+    - assets/images/tech/ecell/
+    - assets/images/tech/phoenix/
+    - assets/images/tech/quizzinga/
+    - assets/images/tech/finlogue/
+    - assets/images/despo/
+    - assets/images/plinth/
+    - assets/images/viva/
+    - assets/images/ted/
+    - assets/images/esummit/
+
+   
