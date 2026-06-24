@@ -8,62 +8,67 @@ class CulturalPage extends StatelessWidget {
   static final List<Map<String, dynamic>> culturalClubs = [
     {
       'name': 'Aaveg',
-      'icon': Icons.music_video,
+      'icon': 'assets/assets/images/cultural/aaveg/aaveg_logo.png',
       'subtitle': 'Movement, rhythm and stagecraft',
-      'image': 'assets/images/dalgona.jpeg',
+      'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png',
     },
     {
       'name': 'Capriccio',
-      'icon': Icons.music_note,
+      'icon': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg',
       'subtitle': 'Songs, instruments and performances',
-      'image': 'assets/images/astro_lens.jpeg',
+      'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg',
     },
     {
       'name': 'Eminence',
-      'icon': Icons.theater_comedy,
+      'icon': 'assets/assets/images/cultural/eminence/eminence_logo.jpg',
       'subtitle': 'Plays, skits and storytelling',
-      'image': 'assets/images/duologue.jpeg',
+      'image': 'assets/assets/images/cultural/eminence/eminence_logo.jpg',
     },
     {
       'name': 'Finlogue',
-      'icon': Icons.camera_alt,
+      'icon': 'assets/assets/images/cultural/fundoo/fundoo_logo.jpg',
       'subtitle': 'Frames, light and campus life',
-      'image': 'assets/images/photowalk.jpeg',
+      'image': 'assets/assets/images/cultural/fundoo/fundoo_logo.jpg',
     },
     {
       'name': 'Imagination',
-      'icon': Icons.camera_alt,
+      'icon': 'assets/assets/images/cultural/imagination/imagi_logo.jpg',
       'subtitle': 'Frames, light and campus life',
-      'image': 'assets/images/photowalk.jpeg',
+      'image': 'assets/assets/images/cultural/imagination/imagination_logo.jpeg',
     },
     {
       'name': 'Insignia',
-      'icon': Icons.camera_alt,
+      'icon': 'assets/assets/images/cultural/insignia/insignia_logo.jpg',
       'subtitle': 'Frames, light and campus life',
-      'image': 'assets/images/photowalk.jpeg',
-    },{
+      'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg',
+    },
+    {
       'name': 'Literary Committee',
-      'icon': Icons.camera_alt,
+      'icon': 'assets/assets/images/cultural/lc/lc_logo.jpg',
       'subtitle': 'Frames, light and campus life',
-      'image': 'assets/images/photowalk.jpeg',
-    },{
+      'image': 'assets/assets/images/cultural/lc/lc_logo.jpg',
+    },
+    {
       'name': 'Media Cell',
-      'icon': Icons.camera_alt,
+      'icon': 'assets/assets/images/cultural/mediacell/media_logo.jpg',
       'subtitle': 'Frames, light and campus life',
-      'image': 'assets/images/photowalk.jpeg',
-    },{
+      'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg',
+    },
+    {
       'name': 'Rendition',
-      'icon': Icons.camera_alt,
+      'icon': 'assets/assets/images/cultural/rendition/rendition_logo.png',
       'subtitle': 'Frames, light and campus life',
-      'image': 'assets/images/photowalk.jpeg',
-    },{
+      'image': 'assets/assets/images/cultural/rendition/rendition_logo.png',
+    },
+    {
       'name': 'Sankalp',
-      'icon': Icons.camera_alt,
+      'icon': 'assets/assets/images/cultural/sankalp/sankalp_logo.jpg',
       'subtitle': 'Frames, light and campus life',
       'image': 'assets/assets/images/cultural/sankalp/sankalp_logo.jpg',
-    },{
+    },
+    {
       'name': 'Vignette',
-      'icon': Icons.camera_alt,
+      'icon': 'assets/assets/images/cultural/vignette/logo_unit.png',
       'subtitle': 'Frames, light and campus life',
       'image': 'assets/assets/images/cultural/vignette/logo_unit.png',
     },
