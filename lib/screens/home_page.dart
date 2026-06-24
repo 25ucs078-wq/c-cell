@@ -7,6 +7,7 @@ import 'student_fests_page.dart';
 import 'councils_page.dart';
 import 'cultural/cultural_page.dart';
 import 'science_tech/science_tech_page.dart';
+import 'sports/sports_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -1076,6 +1077,14 @@ class _HomePageState extends State<HomePage> {
                                 "Sports",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const SportsPage(),
+                                    ),
+                                  );
+                                },
                               ),
                               buildEventCard(
                                 303,

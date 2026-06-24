@@ -45,6 +45,16 @@ flutter:
     - assets/assets/images/tech/ecell/
     - assets/assets/images/tech/phoenix/
     - assets/assets/images/tech/quizzinga/
+    - assets/assets/images/sports/badminton/
+    - assets/assets/images/sports/basketball/
+    - assets/assets/images/sports/chess/
+    - assets/assets/images/sports/cricket/
+    - assets/assets/images/sports/football/
+    - assets/assets/images/sports/kabaddi/
+    - assets/assets/images/sports/lawn_tennis/
+    - assets/assets/images/sports/squash/
+    - assets/assets/images/sports/table_tennis/
+    - assets/assets/images/sports/volleyball/
 
 
    
