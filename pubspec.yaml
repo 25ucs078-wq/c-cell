@@ -37,6 +37,14 @@ flutter:
     - assets/assets/images/cultural/rendition/
     - assets/assets/images/cultural/sankalp/
     - assets/assets/images/cultural/vignette/
+    - assets/assets/images/
+    - assets/assets/images/tech/astronomy/
+    - assets/assets/images/tech/cipherclub/
+    - assets/assets/images/tech/cybros/
+    - assets/assets/images/tech/debsoc/
+    - assets/assets/images/tech/ecell/
+    - assets/assets/images/tech/phoenix/
+    - assets/assets/images/tech/quizzinga/
 
 
    
