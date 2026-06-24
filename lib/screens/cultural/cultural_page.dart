@@ -7,28 +7,65 @@ class CulturalPage extends StatelessWidget {
 
   static final List<Map<String, dynamic>> culturalClubs = [
     {
-      'name': 'Dance Club',
+      'name': 'Aaveg',
       'icon': Icons.music_video,
       'subtitle': 'Movement, rhythm and stagecraft',
       'image': 'assets/images/dalgona.jpeg',
     },
     {
-      'name': 'Music Club',
+      'name': 'Capriccio',
       'icon': Icons.music_note,
       'subtitle': 'Songs, instruments and performances',
       'image': 'assets/images/astro_lens.jpeg',
     },
     {
-      'name': 'Drama Club',
+      'name': 'Eminence',
       'icon': Icons.theater_comedy,
       'subtitle': 'Plays, skits and storytelling',
       'image': 'assets/images/duologue.jpeg',
     },
     {
-      'name': 'Photography Club',
+      'name': 'Finlogue',
       'icon': Icons.camera_alt,
       'subtitle': 'Frames, light and campus life',
       'image': 'assets/images/photowalk.jpeg',
+    },
+    {
+      'name': 'Imagination',
+      'icon': Icons.camera_alt,
+      'subtitle': 'Frames, light and campus life',
+      'image': 'assets/images/photowalk.jpeg',
+    },
+    {
+      'name': 'Insignia',
+      'icon': Icons.camera_alt,
+      'subtitle': 'Frames, light and campus life',
+      'image': 'assets/images/photowalk.jpeg',
+    },{
+      'name': 'Literary Committee',
+      'icon': Icons.camera_alt,
+      'subtitle': 'Frames, light and campus life',
+      'image': 'assets/images/photowalk.jpeg',
+    },{
+      'name': 'Media Cell',
+      'icon': Icons.camera_alt,
+      'subtitle': 'Frames, light and campus life',
+      'image': 'assets/images/photowalk.jpeg',
+    },{
+      'name': 'Rendition',
+      'icon': Icons.camera_alt,
+      'subtitle': 'Frames, light and campus life',
+      'image': 'assets/images/photowalk.jpeg',
+    },{
+      'name': 'Sankalp',
+      'icon': Icons.camera_alt,
+      'subtitle': 'Frames, light and campus life',
+      'image': 'assets/assets/images/cultural/sankalp/sankalp_logo.jpg',
+    },{
+      'name': 'Vignette',
+      'icon': Icons.camera_alt,
+      'subtitle': 'Frames, light and campus life',
+      'image': 'assets/assets/images/cultural/vignette/logo_unit.png',
     },
   ];
 
