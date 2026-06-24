@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfilePage extends StatelessWidget {
-    final String name;
-    final String image;
-    final String role;
+  final String name;
+  final String image;
+  final String role;
 
   const ProfilePage({
     super.key,
@@ -17,232 +17,211 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF050816),
-
-      body: Stack(
-        children: [
-
-          SizedBox(
-            width: double.infinity,
-            height: double.infinity,
-
-            child: Hero(
-            tag: name,
-
-            child: Image.asset(
-              image,
-              fit: BoxFit.cover,
-            ),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF050816),
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: Text(
+          "PROFILE",
+          style: GoogleFonts.playfairDisplay(
+            color: Colors.redAccent,
+            fontSize: 24,
+            letterSpacing: 2,
           ),
-          ),
-
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-
-                colors: [
-                  Colors.black.withValues(alpha: 0.3),
-                  Colors.black.withValues(alpha: 0.8),
-                  Colors.black,
-                ],
+        ),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 20),
+              Center(
+                child: Container(
+                  width: 200,
+                  height: 200,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.redAccent, width: 3.5),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.redAccent.withValues(alpha: 0.3),
+                        blurRadius: 20,
+                        spreadRadius: 4,
+                      ),
+                    ],
+                  ),
+                  child: Hero(
+                    tag: name,
+                    child: ClipOval(
+                      child: Image.asset(
+                        image,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            color: Colors.grey[800],
+                            child: const Icon(
+                              Icons.person,
+                              color: Colors.white54,
+                              size: 80,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ),
-
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(25),
-
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-
-                children: [
-
-                  IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-
-                    icon: const Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
-                    ),
+              const SizedBox(height: 24),
+              Text(
+                name,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.playfairDisplay(
+                  color: Colors.white,
+                  fontSize: 36,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.5,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                role.toUpperCase(),
+                textAlign: TextAlign.center,
+                style: GoogleFonts.poppins(
+                  color: Colors.redAccent,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 2,
+                ),
+              ),
+              const SizedBox(height: 32),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF1A1A1A),
+                  borderRadius: BorderRadius.circular(24),
+                  border: Border.all(
+                    color: Colors.white.withValues(alpha: 0.08),
                   ),
-
-                  const Spacer(),
-
-                  Text(
-                    name,
-
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "❝",
                       style: GoogleFonts.playfairDisplay(
+                        color: Colors.redAccent,
+                        fontSize: 60,
+                        height: 0.8,
+                      ),
+                    ),
+                    Text(
+                      "Making chaos look\nsurprisingly manageable.",
+                      style: GoogleFonts.poppins(
                         color: Colors.white,
-                        fontSize: 52,
-                        letterSpacing: 2,
-                      ),
-                  ),
-
-                  const SizedBox(height: 10),
-
-                  Text(
-                    role,
-
-                    style: GoogleFonts.poppins(
-                      color: Colors.redAccent,
-                      fontSize: 20,
-                    ),
-                  ),
-
-                   const SizedBox(height: 30),
-
-                    Container(
-                      width: double.infinity,
-
-                      padding: const EdgeInsets.all(20),
-
-                      decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.06),
-
-                        borderRadius: BorderRadius.circular(20),
-
-                        border: Border.all(
-                          color: Colors.redAccent.withValues(alpha: 0.3),
-                        ),
-                      ),
-
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-
-                        children: [
-
-                          Text(
-                            "❝",
-
-                            style: GoogleFonts.playfairDisplay(
-                              color: Colors.redAccent,
-                              fontSize: 50,
-                            ),
-                          ),
-
-                          Text(
-                            "Making chaos look\nsurprisingly manageable.",
-
-                            style: GoogleFonts.poppins(
-                              color: Colors.white,
-                              fontSize: 18,
-                              height: 1.5,
-                            ),
-                          ),
-
-                          const SizedBox(height: 20),
-
-                          Text(
-                            "ABOUT",
-
-                            style: GoogleFonts.playfairDisplay(
-                              color: Colors.redAccent,
-                              fontSize: 28,
-                              letterSpacing: 2,
-                            ),
-                          ),
-
-                          const SizedBox(height: 10),
-
-                          Text(
-                            "Helping freshers settle into campus life and ensuring that nobody feels alone during their journey at LNMIIT.",
-
-                            style: GoogleFonts.poppins(
-                              color: Colors.white70,
-                              fontSize: 16,
-                              height: 1.7,
-                            ),
-                          ),
-                        ],
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        height: 1.5,
                       ),
                     ),
-
-                    const SizedBox(height: 30),
-
-                                  Row(
+                    const SizedBox(height: 24),
+                    Text(
+                      "ABOUT",
+                      style: GoogleFonts.playfairDisplay(
+                        color: Colors.redAccent,
+                        fontSize: 24,
+                        letterSpacing: 1.5,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      "Helping freshers settle into campus life and ensuring that nobody feels alone during their journey at LNMIIT.",
+                      style: GoogleFonts.poppins(
+                        color: Colors.white70,
+                        fontSize: 16,
+                        height: 1.7,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 32),
+              Row(
                 children: [
-
                   Expanded(
                     child: Container(
                       height: 55,
-
                       decoration: BoxDecoration(
                         color: const Color(0xFFB20710),
-
-                        borderRadius: BorderRadius.circular(15),
-
+                        borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.redAccent.withValues(alpha: 0.3),
                             blurRadius: 15,
+                            offset: const Offset(0, 4),
                           ),
                         ],
                       ),
-
                       child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.transparent,
                           shadowColor: Colors.transparent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
                         ),
-
                         onPressed: () {},
-
                         icon: const Icon(
                           Icons.phone,
                           color: Colors.white,
                         ),
-
-                          label: Text(
+                        label: Text(
                           "CALL",
                           style: GoogleFonts.playfairDisplay(
                             color: Colors.white,
-                            fontSize: 24,
-                            letterSpacing: 2,
+                            fontSize: 20,
+                            letterSpacing: 1.5,
                           ),
                         ),
                       ),
                     ),
                   ),
-
-                  const SizedBox(width: 20),
-
+                  const SizedBox(width: 16),
                   Expanded(
                     child: Container(
                       height: 55,
-
                       decoration: BoxDecoration(
                         color: Colors.white.withValues(alpha: 0.08),
-
-                        borderRadius: BorderRadius.circular(15),
-
+                        borderRadius: BorderRadius.circular(16),
                         border: Border.all(
                           color: Colors.white24,
                         ),
                       ),
-
                       child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.transparent,
                           shadowColor: Colors.transparent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
                         ),
-
                         onPressed: () {},
-
                         icon: const Icon(
                           Icons.email,
                           color: Colors.white,
                         ),
-
                         label: Text(
                           "MAIL",
                           style: GoogleFonts.playfairDisplay(
                             color: Colors.white,
-                            fontSize: 24,
-                            letterSpacing: 2,
+                            fontSize: 20,
+                            letterSpacing: 1.5,
                           ),
                         ),
                       ),
@@ -250,13 +229,10 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ],
               ),
-
-                  const SizedBox(height: 40),
-                ],
-              ),
-            ),
+              const SizedBox(height: 20),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

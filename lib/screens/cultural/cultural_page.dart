@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'cultural_club_detail_page.dart';
 
 class CulturalPage extends StatelessWidget {
   const CulturalPage({super.key});
@@ -556,20 +555,19 @@ class CulturalPage extends StatelessWidget {
   Widget _buildClubCard(BuildContext context, Map<String, dynamic> club) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (context) => CulturalClubDetailPage(
-              clubName: club['name'] as String,
-              clubImage: club['image'] as String,
-              coordinators: List<Map<String, String>>.from(
-                (club['coordinators'] as List).map(
-                  (item) => Map<String, String>.from(item as Map),
-                ),
+          '/cultural_detail',
+          arguments: {
+            'clubName': club['name'] as String,
+            'clubImage': club['image'] as String,
+            'coordinators': List<Map<String, String>>.from(
+              (club['coordinators'] as List).map(
+                (item) => Map<String, String>.from(item as Map),
               ),
-              galleryImages: List<String>.from(club['gallery'] as List),
             ),
-          ),
+            'galleryImages': List<String>.from(club['gallery'] as List),
+          },
         );
       },
       child: Container(
@@ -661,20 +659,19 @@ class CulturalPage extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushNamed(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => CulturalClubDetailPage(
-                              clubName: club['name'] as String,
-                              clubImage: club['image'] as String,
-                              coordinators: List<Map<String, String>>.from(
-                                (club['coordinators'] as List).map(
-                                  (item) => Map<String, String>.from(item as Map),
-                                ),
+                          '/cultural_detail',
+                          arguments: {
+                            'clubName': club['name'] as String,
+                            'clubImage': club['image'] as String,
+                            'coordinators': List<Map<String, String>>.from(
+                              (club['coordinators'] as List).map(
+                                (item) => Map<String, String>.from(item as Map),
                               ),
-                              galleryImages: List<String>.from(club['gallery'] as List),
                             ),
-                          ),
+                            'galleryImages': List<String>.from(club['gallery'] as List),
+                          },
                         );
                       },
                       child: Text(

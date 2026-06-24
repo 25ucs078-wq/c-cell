@@ -1,13 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'more_page.dart';
-import 'office_bearers_page.dart';
-import 'student_fests_page.dart';
-import 'councils_page.dart';
-import 'cultural/cultural_page.dart';
-import 'science_tech/science_tech_page.dart';
-import 'sports/sports_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -155,12 +148,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const MorePage(),
-                      ),
-                    );
+                    Navigator.pushNamed(context, '/more');
                   },
                   child: Text(
                     "Meet the Team",
@@ -843,12 +831,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const MorePage(),
-                                      ),
-                                    );
+                                    Navigator.pushNamed(context, '/more');
                                   },
                                   icon: const Icon(Icons.info_outline),
                                   label: Text(
@@ -920,12 +903,7 @@ class _HomePageState extends State<HomePage> {
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const OfficeBearersPage(),
-                                    ),
-                                  );
+                                  Navigator.pushNamed(context, '/office_bearers');
                                 },
                               ),
                               buildEventCard(
@@ -936,12 +914,7 @@ class _HomePageState extends State<HomePage> {
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const CouncilsPage(),
-                                    ),
-                                  );
+                                  Navigator.pushNamed(context, '/councils');
                                 },
                               ),
                               buildEventCard(
@@ -952,12 +925,7 @@ class _HomePageState extends State<HomePage> {
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const StudentFestsPage(),
-                                    ),
-                                  );
+                                  Navigator.pushNamed(context, '/student_fests');
                                 },
                               ),
                               buildEventCard(
@@ -1046,12 +1014,7 @@ class _HomePageState extends State<HomePage> {
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const CulturalPage(),
-                                    ),
-                                  );
+                                  Navigator.pushNamed(context, '/cultural');
                                 },
                               ),
                               buildEventCard(
@@ -1062,12 +1025,7 @@ class _HomePageState extends State<HomePage> {
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const ScienceTechPage(),
-                                    ),
-                                  );
+                                  Navigator.pushNamed(context, '/science_tech');
                                 },
                               ),
                               buildEventCard(
@@ -1078,12 +1036,7 @@ class _HomePageState extends State<HomePage> {
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const SportsPage(),
-                                    ),
-                                  );
+                                  Navigator.pushNamed(context, '/sports');
                                 },
                               ),
                               buildEventCard(
@@ -1170,12 +1123,7 @@ class _HomePageState extends State<HomePage> {
                           const SizedBox(height: 20),
                           GestureDetector(
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const MorePage(),
-                                ),
-                              );
+                              Navigator.pushNamed(context, '/more');
                             },
                             child: Container(
                               height: aboutCardHeight,

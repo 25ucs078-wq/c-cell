@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../profile_page.dart';
 
 class CulturalClubDetailPage extends StatelessWidget {
   final String clubName;
@@ -149,23 +148,10 @@ class CulturalClubDetailPage extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          PageRouteBuilder(
-            transitionDuration: const Duration(milliseconds: 700),
-            pageBuilder: (context, animation, secondaryAnimation) {
-              return ProfilePage(name: name, image: image, role: role);
-            },
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              final fadeAnimation = Tween(begin: 0.0, end: 1.0).animate(animation);
-              final slideAnimation = Tween(begin: const Offset(0, 0.15), end: Offset.zero)
-                  .animate(CurvedAnimation(parent: animation, curve: Curves.easeOutCubic));
-              return FadeTransition(
-                opacity: fadeAnimation,
-                child: SlideTransition(position: slideAnimation, child: child),
-              );
-            },
-          ),
+          '/profile',
+          arguments: {'name': name, 'image': image, 'role': role},
         );
       },
       child: Container(

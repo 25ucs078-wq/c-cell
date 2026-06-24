@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'science_tech_club_detail_page.dart';
 
 class ScienceTechPage extends StatelessWidget {
   const ScienceTechPage({super.key});
@@ -433,20 +432,19 @@ class ScienceTechPage extends StatelessWidget {
   Widget _buildClubCard(BuildContext context, Map<String, dynamic> club) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (context) => ScienceTechClubDetailPage(
-              clubName: club['name'] as String,
-              clubImage: club['image'] as String,
-              coordinators: List<Map<String, String>>.from(
-                (club['coordinators'] as List).map(
-                  (item) => Map<String, String>.from(item as Map),
-                ),
+          '/science_tech_detail',
+          arguments: {
+            'clubName': club['name'] as String,
+            'clubImage': club['image'] as String,
+            'coordinators': List<Map<String, String>>.from(
+              (club['coordinators'] as List).map(
+                (item) => Map<String, String>.from(item as Map),
               ),
-              galleryImages: List<String>.from(club['gallery'] as List),
             ),
-          ),
+            'galleryImages': List<String>.from(club['gallery'] as List),
+          },
         );
       },
       child: Container(
@@ -538,20 +536,19 @@ class ScienceTechPage extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushNamed(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => ScienceTechClubDetailPage(
-                              clubName: club['name'] as String,
-                              clubImage: club['image'] as String,
-                              coordinators: List<Map<String, String>>.from(
-                                (club['coordinators'] as List).map(
-                                  (item) => Map<String, String>.from(item as Map),
-                                ),
+                          '/science_tech_detail',
+                          arguments: {
+                            'clubName': club['name'] as String,
+                            'clubImage': club['image'] as String,
+                            'coordinators': List<Map<String, String>>.from(
+                              (club['coordinators'] as List).map(
+                                (item) => Map<String, String>.from(item as Map),
                               ),
-                              galleryImages: List<String>.from(club['gallery'] as List),
                             ),
-                          ),
+                            'galleryImages': List<String>.from(club['gallery'] as List),
+                          },
                         );
                       },
                       child: Text(

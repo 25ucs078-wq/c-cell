@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'profile_page.dart';
 
 class CouncilDetailPage extends StatelessWidget {
   final String councilName;
@@ -60,17 +59,34 @@ class CouncilDetailPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 30),
-                  SizedBox(
-                    height: 320,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: items.length,
-                      itemBuilder: (context, index) {
-                        final item = items[index];
-                        return _buildItemCard(context, item['name']!, item['role']!, item['image']!);
-                      },
-                    ),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      double parentWidth = constraints.maxWidth;
+                      int crossAxisCount = 1;
+                      if (parentWidth >= 1100) {
+                        crossAxisCount = 4;
+                      } else if (parentWidth >= 600) {
+                        crossAxisCount = 2;
+                      } else {
+                        crossAxisCount = 1;
+                      }
+
+                      // Calculate item width dynamically
+                      double cardWidth = (parentWidth - (crossAxisCount - 1) * 20) / crossAxisCount;
+
+                      return Wrap(
+                        spacing: 20,
+                        runSpacing: 20,
+                        children: items.map((item) {
+                          return SizedBox(
+                            width: cardWidth,
+                            child: _buildItemCard(context, item['name']!, item['role']!, item['image']!),
+                          );
+                        }).toList(),
+                      );
+                    },
                   ),
+                  const SizedBox(height: 30),
                 ],
               ),
             ),
@@ -83,93 +99,124 @@ class CouncilDetailPage extends StatelessWidget {
   Widget _buildItemCard(BuildContext context, String name, String role, String image) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          PageRouteBuilder(
-            transitionDuration: const Duration(milliseconds: 700),
-            pageBuilder: (context, animation, secondaryAnimation) {
-              return ProfilePage(name: name, image: image, role: role);
-            },
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              final fadeAnimation = Tween(begin: 0.0, end: 1.0).animate(animation);
-              final slideAnimation = Tween(begin: const Offset(0, 0.15), end: Offset.zero)
-                  .animate(CurvedAnimation(parent: animation, curve: Curves.easeOutCubic));
-              return FadeTransition(
-                opacity: fadeAnimation,
-                child: SlideTransition(position: slideAnimation, child: child),
-              );
-            },
-          ),
+          '/profile',
+          arguments: {'name': name, 'image': image, 'role': role},
         );
       },
       child: Container(
-        width: 210,
-        margin: const EdgeInsets.only(right: 18),
         decoration: BoxDecoration(
           color: const Color(0xFF1A1A1A),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(color: Colors.white12),
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                image,
-                width: 140,
-                height: 140,
-                fit: BoxFit.cover,
+            AspectRatio(
+              aspectRatio: 1.0,
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Color(0xFF262626),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                ),
+                child: Center(
+                  child: Container(
+                    width: 140,
+                    height: 140,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.redAccent, width: 2.5),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.redAccent.withValues(alpha: 0.3),
+                          blurRadius: 12,
+                          spreadRadius: 2,
+                        ),
+                      ],
+                    ),
+                    child: Hero(
+                      tag: name,
+                      child: ClipOval(
+                        child: Image.asset(
+                          image,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              color: Colors.grey[800],
+                              child: const Icon(
+                                Icons.person,
+                                color: Colors.white54,
+                                size: 50,
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
-            const SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.all(20),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     name,
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.playfairDisplay(
                       color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 10),
                   Text(
                     role,
-                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.poppins(
                       color: Colors.redAccent,
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                ],
-              ),
-            ),
-            const Spacer(),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              decoration: const BoxDecoration(
-                color: Color(0xFFB20710),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
-              ),
-              child: Center(
-                child: Text(
-                  "VIEW DETAILS",
-                  style: GoogleFonts.playfairDisplay(
-                    color: Colors.white,
-                    fontSize: 22,
-                    letterSpacing: 2,
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(
+                          context,
+                          '/profile',
+                          arguments: {'name': name, 'image': image, 'role': role},
+                        );
+                      },
+                      child: Text(
+                        'VIEW PROFILE',
+                        style: GoogleFonts.playfairDisplay(
+                          fontSize: 16,
+                          letterSpacing: 1.5,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
           ],

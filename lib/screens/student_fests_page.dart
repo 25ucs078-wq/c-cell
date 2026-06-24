@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'profile_page.dart';
-import 'vivacity_page.dart';
-import 'plinth_page.dart';
-import 'desportivos_page.dart';
 
 class StudentFestsPage extends StatelessWidget {
   const StudentFestsPage({super.key});
@@ -67,7 +63,38 @@ class StudentFestsPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 30),
-              buildFestCards(context),
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  double parentWidth = constraints.maxWidth;
+                  int crossAxisCount = 1;
+                  if (parentWidth >= 1100) {
+                    crossAxisCount = 3;
+                  } else if (parentWidth >= 600) {
+                    crossAxisCount = 2;
+                  } else {
+                    crossAxisCount = 1;
+                  }
+
+                  // Calculate item width dynamically
+                  double cardWidth = (parentWidth - (crossAxisCount - 1) * 20) / crossAxisCount;
+
+                  return Wrap(
+                    spacing: 20,
+                    runSpacing: 20,
+                    children: fests.map((fest) {
+                      return SizedBox(
+                        width: cardWidth,
+                        child: buildFestCard(
+                          context,
+                          fest['name']!,
+                          fest['logo']!,
+                          fest['role']!,
+                        ),
+                      );
+                    }).toList(),
+                  );
+                },
+              ),
             ],
           ),
         ),
@@ -75,23 +102,14 @@ class StudentFestsPage extends StatelessWidget {
     );
   }
 
-  Widget buildFestCards(BuildContext context) {
-    return SizedBox(
-      height: 320,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: fests.length,
-        itemBuilder: (context, index) {
-          final fest = fests[index];
-          return buildFestCard(
-            context,
-            fest['name']!,
-            fest['logo']!,
-            fest['role']!,
-          );
-        },
-      ),
-    );
+  void _navigateToFest(BuildContext context, String name) {
+    if (name == 'Vivacity') {
+      Navigator.pushNamed(context, '/vivacity');
+    } else if (name == 'Plinth') {
+      Navigator.pushNamed(context, '/plinth');
+    } else if (name == 'Desportivos') {
+      Navigator.pushNamed(context, '/desportivos');
+    }
   }
 
   Widget buildFestCard(
@@ -101,160 +119,111 @@ class StudentFestsPage extends StatelessWidget {
     String role,
   ) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          PageRouteBuilder(
-            transitionDuration: const Duration(milliseconds: 700),
-            pageBuilder: (
-              context,
-              animation,
-              secondaryAnimation,
-            ) {
-              return ProfilePage(
-                name: name,
-                image: image,
-                role: role,
-              );
-            },
-            transitionsBuilder: (
-              context,
-              animation,
-              secondaryAnimation,
-              child,
-            ) {
-              final fadeAnimation = Tween(
-                begin: 0.0,
-                end: 1.0,
-              ).animate(animation);
-              final slideAnimation = Tween(
-                begin: const Offset(0, 0.15),
-                end: Offset.zero,
-              ).animate(
-                CurvedAnimation(
-                  parent: animation,
-                  curve: Curves.easeOutCubic,
-                ),
-              );
-              return FadeTransition(
-                opacity: fadeAnimation,
-                child: SlideTransition(
-                  position: slideAnimation,
-                  child: child,
-                ),
-              );
-            },
-          ),
-        );
-      },
+      onTap: () => _navigateToFest(context, name),
       child: Container(
-        width: 210,
-        margin: const EdgeInsets.only(right: 18),
         decoration: BoxDecoration(
           color: const Color(0xFF1A1A1A),
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            color: Colors.white.withValues(alpha: 0.15),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.5),
-              blurRadius: 15,
-              offset: const Offset(0, 8),
-            ),
-          ],
+          border: Border.all(color: Colors.white12),
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
-            Hero(
-              tag: name,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: Image.asset(
-                  image,
-                  width: 140,
-                  height: 140,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    name,
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
+            AspectRatio(
+              aspectRatio: 1.0,
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Color(0xFF262626),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    role,
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
-                      color: Colors.redAccent,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: 1.2,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const Spacer(),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              decoration: const BoxDecoration(
-                color: Color(0xFFB20710),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
                 ),
-              ),
-              child: GestureDetector(
-                  onTap: () {
-                    if (name == 'Vivacity') {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const VivacityPage(),
+                child: Center(
+                  child: Container(
+                    width: 140,
+                    height: 140,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.redAccent, width: 2.5),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.redAccent.withValues(alpha: 0.3),
+                          blurRadius: 12,
+                          spreadRadius: 2,
                         ),
-                      );
-                    } else if (name == 'Plinth') {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const PlinthPage(),
-                        ),
-                      );
-                    } else if (name == 'Desportivos') {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const DesportivosPage(),
-                        ),
-                      );
-                    }
-                  },
-                  child: Center(
-                    child: Text(
-                      "VIEW DETAILS",
-                      style: GoogleFonts.playfairDisplay(
-                        color: Colors.white,
-                        fontSize: 22,
-                        letterSpacing: 2,
+                      ],
+                    ),
+                    child: ClipOval(
+                      child: Image.asset(
+                        image,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            color: Colors.grey[800],
+                            child: const Icon(
+                              Icons.festival,
+                              color: Colors.white54,
+                              size: 50,
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ),
                 ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.playfairDisplay(
+                      color: Colors.white,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    role,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.poppins(
+                      color: Colors.redAccent,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                      onPressed: () => _navigateToFest(context, name),
+                      child: Text(
+                        'VIEW DETAILS',
+                        style: GoogleFonts.playfairDisplay(
+                          fontSize: 16,
+                          letterSpacing: 1.5,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

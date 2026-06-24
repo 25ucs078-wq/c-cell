@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'council_detail_page.dart';
 
 class CouncilsPage extends StatelessWidget {
   const CouncilsPage({super.key});
@@ -124,18 +123,17 @@ class CouncilsPage extends StatelessWidget {
   Widget _buildCouncilCard(BuildContext context, Map<String, dynamic> council) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (context) => CouncilDetailPage(
-              councilName: council['title'] as String,
-              items: List<Map<String, String>>.from(
-                (council['items'] as List).map(
-                  (item) => Map<String, String>.from(item as Map),
-                ),
+          '/council_detail',
+          arguments: {
+            'councilName': council['title'] as String,
+            'items': List<Map<String, String>>.from(
+              (council['items'] as List).map(
+                (item) => Map<String, String>.from(item as Map),
               ),
             ),
-          ),
+          },
         );
       },
       child: Container(
@@ -219,18 +217,17 @@ class CouncilsPage extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushNamed(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => CouncilDetailPage(
-                              councilName: council['title'] as String,
-                              items: List<Map<String, String>>.from(
-                                (council['items'] as List).map(
-                                  (item) => Map<String, String>.from(item as Map),
-                                ),
+                          '/council_detail',
+                          arguments: {
+                            'councilName': council['title'] as String,
+                            'items': List<Map<String, String>>.from(
+                              (council['items'] as List).map(
+                                (item) => Map<String, String>.from(item as Map),
                               ),
                             ),
-                          ),
+                          },
                         );
                       },
                       child: Text(
