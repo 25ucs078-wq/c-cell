@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../profile_page.dart';
 
 class CulturalClubDetailPage extends StatelessWidget {
@@ -13,11 +14,15 @@ class CulturalClubDetailPage extends StatelessWidget {
       'name': 'Ananya Sharma',
       'role': 'Club Coordinator',
       'image': 'assets/images/logo.jpeg',
+      'phone': '',
+      'email': '',
     },
     {
       'name': 'Rohan Mehta',
       'role': 'Co-Coordinator',
       'image': 'assets/images/logo.jpeg',
+      'phone': '',
+      'email': '',
     },
   ];
 
@@ -81,6 +86,8 @@ class CulturalClubDetailPage extends StatelessWidget {
                       person['name']!,
                       person['role']!,
                       person['image']!,
+                      person['phone'] ?? '',
+                      person['email'] ?? '',
                     );
                   },
                 ),
@@ -114,7 +121,7 @@ class CulturalClubDetailPage extends StatelessWidget {
     );
   }
 
-  Widget _buildCoordinatorCard(BuildContext context, String name, String role, String image) {
+  Widget _buildCoordinatorCard(BuildContext context, String name, String role, String image, String phone, String email) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -188,6 +195,32 @@ class CulturalClubDetailPage extends StatelessWidget {
               ),
             ),
             const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                IconButton(
+                  icon: Icon(
+                    Icons.phone,
+                    color: phone.isNotEmpty ? Colors.white : Colors.white38,
+                  ),
+                  tooltip: 'Call',
+                  onPressed: phone.isNotEmpty
+                      ? () => _launchPhone(context, phone)
+                      : null,
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.email,
+                    color: email.isNotEmpty ? Colors.white : Colors.white38,
+                  ),
+                  tooltip: 'Email',
+                  onPressed: email.isNotEmpty
+                      ? () => _launchEmail(context, email)
+                      : null,
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
             Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 12),
@@ -213,6 +246,31 @@ class CulturalClubDetailPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _launchUrl(BuildContext context, Uri uri) async {
+    try {
+      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+        throw 'Could not launch $uri';
+      }
+    } catch (_) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Unable to open contact'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
+  }
+
+  Future<void> _launchPhone(BuildContext context, String phone) async {
+    final uri = Uri(scheme: 'tel', path: phone);
+    await _launchUrl(context, uri);
+  }
+
+  Future<void> _launchEmail(BuildContext context, String email) async {
+    final uri = Uri(scheme: 'mailto', path: email);
+    await _launchUrl(context, uri);
   }
 
   Widget _buildGalleryImage(String image) {
