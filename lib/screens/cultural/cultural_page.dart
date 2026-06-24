@@ -5,72 +5,177 @@ import 'cultural_club_detail_page.dart';
 class CulturalPage extends StatelessWidget {
   const CulturalPage({super.key});
 
+  static List<Map<String, String>> _getCoordinators(String clubName) {
+    if (clubName == 'Aaveg') {
+      return [
+        {
+          'name': 'Aditya Agarwal',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
+          'phone': '+919999999999',
+          'email': '24ucs220@lnmiit.ac.in',
+        },
+        {
+          'name': 'Shourya Kavadia',
+          'role': 'Co-Coordinator',
+          'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
+          'phone': '+918888888888',
+          'email': '24ucc064@lnmiit.ac.in',
+        },
+        {
+          'name': 'Tanuj Tulsyan',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
+          'phone': '+917777777777',
+          'email': '24ucc169@lnmiit.ac.in',
+        },
+        {
+          'name': 'Yash Gupta',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
+          'phone': '+916666666666',
+          'email': '24ucc099@lnmiit.ac.in',
+        },
+      ];
+    }
+
+    // Default fallback list for other clubs until you fill them in
+    return [
+      {
+        'name': '$clubName Coordinator 1',
+        'role': 'Club Coordinator',
+        'image': 'assets/images/logo.jpeg',
+        'phone': '+919876543210',
+        'email': '${clubName.toLowerCase().replaceAll(' ', '')}_coord1@lnmiit.ac.in',
+      },
+      {
+        'name': '$clubName Coordinator 2',
+        'role': 'Co-Coordinator',
+        'image': 'assets/images/logo.jpeg',
+        'phone': '+918765432109',
+        'email': '${clubName.toLowerCase().replaceAll(' ', '')}_coord2@lnmiit.ac.in',
+      },
+      {
+        'name': '$clubName Coordinator 3',
+        'role': 'Co-Coordinator',
+        'image': 'assets/images/logo.jpeg',
+        'phone': '+917654321098',
+        'email': '${clubName.toLowerCase().replaceAll(' ', '')}_coord3@lnmiit.ac.in',
+      },
+      {
+        'name': '$clubName Coordinator 4',
+        'role': 'Sub-Coordinator',
+        'image': 'assets/images/logo.jpeg',
+        'phone': '+916543210987',
+        'email': '${clubName.toLowerCase().replaceAll(' ', '')}_coord4@lnmiit.ac.in',
+      },
+    ];
+  }
+
+  static List<String> _getGallery(String clubName) {
+    if (clubName == 'Aaveg') {
+      return [
+        'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Example path
+        'assets/images/hero_new.jpeg',
+        'assets/images/team_poster.jpeg',
+      ];
+    }
+
+    return [
+      'assets/images/hero_new.jpeg',
+      'assets/images/team_poster.jpeg',
+      'assets/images/photowalk.jpeg',
+    ];
+  }
+
   static final List<Map<String, dynamic>> culturalClubs = [
     {
       'name': 'Aaveg',
       'icon': 'assets/assets/images/cultural/aaveg/aaveg_logo.png',
       'subtitle': 'The Nukkad Mandali of LNMIIT',
       'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png',
+      'coordinators': _getCoordinators('Aaveg'),
+      'gallery': _getGallery('Aaveg'),
     },
     {
       'name': 'Capriccio',
       'icon': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg',
       'subtitle': 'The Music Club of LNMIIT',
       'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg',
+      'coordinators': _getCoordinators('Capriccio'),
+      'gallery': _getGallery('Capriccio'),
     },
     {
       'name': 'Eminence',
       'icon': 'assets/assets/images/cultural/eminence/eminence_logo.jpg',
       'subtitle': 'The Fashion Club of LNMIIT',
       'image': 'assets/assets/images/cultural/eminence/eminence_logo.jpg',
+      'coordinators': _getCoordinators('Eminence'),
+      'gallery': _getGallery('Eminence'),
     },
     {
       'name': 'Finlogue',
       'icon': 'assets/assets/images/cultural/fundoo/fundoo_logo.jpg',
       'subtitle': 'Fintech club of LNMIIT',
       'image': 'assets/assets/images/cultural/fundoo/fundoo_logo.jpg',
+      'coordinators': _getCoordinators('Finlogue'),
+      'gallery': _getGallery('Finlogue'),
     },
     {
       'name': 'Imagination',
       'icon': 'assets/assets/images/cultural/imagination/imagi_logo.jpg',
       'subtitle': 'Creative photography and cinematography Club',
       'image': 'assets/assets/images/cultural/imagination/imagination_logo.jpeg',
+      'coordinators': _getCoordinators('Imagination'),
+      'gallery': _getGallery('Imagination'),
     },
     {
       'name': 'Insignia',
       'icon': 'assets/assets/images/cultural/insignia/insignia_logo.jpg',
       'subtitle': 'The Dance Club of LNMIIT',
       'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg',
+      'coordinators': _getCoordinators('Insignia'),
+      'gallery': _getGallery('Insignia'),
     },
     {
       'name': 'Literary Committee',
       'icon': 'assets/assets/images/cultural/lc/lc_logo.jpg',
       'subtitle': 'Abode of writers of LNMIIT',
       'image': 'assets/assets/images/cultural/lc/lc_logo.jpg',
+      'coordinators': _getCoordinators('Literary Committee'),
+      'gallery': _getGallery('Literary Committee'),
     },
     {
       'name': 'Media Cell',
       'icon': 'assets/assets/images/cultural/mediacell/media_logo.jpg',
       'subtitle': 'Anchors whose voice fills auditoriums',
       'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg',
+      'coordinators': _getCoordinators('Media Cell'),
+      'gallery': _getGallery('Media Cell'),
     },
     {
       'name': 'Rendition',
       'icon': 'assets/assets/images/cultural/rendition/rendition_logo.png',
       'subtitle': 'The Theatre Society of LNMIIT',
       'image': 'assets/assets/images/cultural/rendition/rendition_logo.png',
+      'coordinators': _getCoordinators('Rendition'),
+      'gallery': _getGallery('Rendition'),
     },
     {
       'name': 'Sankalp',
       'icon': 'assets/assets/images/cultural/sankalp/sankalp_logo.jpg',
       'subtitle': 'Social WelfareClub of LNMIIT',
       'image': 'assets/assets/images/cultural/sankalp/sankalp_logo.jpg',
+      'coordinators': _getCoordinators('Sankalp'),
+      'gallery': _getGallery('Sankalp'),
     },
     {
       'name': 'Vignette',
       'icon': 'assets/assets/images/cultural/vignette/logo_unit.png',
       'subtitle': 'Art & Design club of LNMIIT',
       'image': 'assets/assets/images/cultural/vignette/logo_unit.png',
+      'coordinators': _getCoordinators('Vignette'),
+      'gallery': _getGallery('Vignette'),
     },
   ];
 
@@ -149,6 +254,12 @@ class CulturalPage extends StatelessWidget {
             builder: (context) => CulturalClubDetailPage(
               clubName: club['name'] as String,
               clubImage: club['image'] as String,
+              coordinators: List<Map<String, String>>.from(
+                (club['coordinators'] as List).map(
+                  (item) => Map<String, String>.from(item as Map),
+                ),
+              ),
+              galleryImages: List<String>.from(club['gallery'] as List),
             ),
           ),
         );
@@ -248,6 +359,12 @@ class CulturalPage extends StatelessWidget {
                             builder: (context) => CulturalClubDetailPage(
                               clubName: club['name'] as String,
                               clubImage: club['image'] as String,
+                              coordinators: List<Map<String, String>>.from(
+                                (club['coordinators'] as List).map(
+                                  (item) => Map<String, String>.from(item as Map),
+                                ),
+                              ),
+                              galleryImages: List<String>.from(club['gallery'] as List),
                             ),
                           ),
                         );
