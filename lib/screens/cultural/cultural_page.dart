@@ -149,6 +149,204 @@ class CulturalPage extends StatelessWidget {
         },
       ];
     }
+
+    if(clubName == 'Insignia')
+    {
+      return [
+        {
+          'name': 'Ananya Surana',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+919999999999',
+          'email': '24dcs014@lnmiit.ac.in',
+        },
+        {
+          'name': 'Kavin Goyal',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+918888888888',
+          'email': '24ucs273@lnmiit.ac.in',
+        },
+        {
+          'name': 'Shivansh Singh',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+917777777777',
+          'email': '24uec214@lnmiit.ac.in',
+        },
+      ];
+    }
+
+    if(clubName == 'Literary Committee')
+    {
+      return [
+        {
+          'name': 'Armaan Jain',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+919999999999',
+          'email': '24dcs014@lnmiit.ac.in',
+        },
+        {
+          'name': 'Mriganka Kothari',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+918888888888',
+          'email': '24ucs273@lnmiit.ac.in',
+        },
+        {
+          'name': 'Parth Chaturvedi',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+917777777777',
+          'email': '24uec214@lnmiit.ac.in',
+        },
+        {
+          'name': 'Poorvi Jagga',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+919999999999',
+          'email': '24dcs014@lnmiit.ac.in',
+        },
+      ];
+    }
+
+    if(clubName == 'Media Cell')
+    {
+      return [
+        {
+          'name': 'Pranav Vashisth',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+919999999999',
+          'email': '24dcs014@lnmiit.ac.in',
+        },
+        {
+          'name': 'Praneel Dev',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+918888888888',
+          'email': '24ucs273@lnmiit.ac.in',
+        },
+        {
+          'name': 'Samar Goyal',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+917777777777',
+          'email': '24uec214@lnmiit.ac.in',
+        },
+        {
+          'name': 'Vedha Sinkar',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+917777777777',
+          'email': '24uec214@lnmiit.ac.in',
+        },
+      ];
+    }
+    
+    if(clubName == 'Rendition')
+    {
+      return [
+        {
+          'name': 'Madhav Agrawal',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+919999999999',
+          'email': '24dcs014@lnmiit.ac.in',
+        },
+        {
+          'name': 'Nikhila S Hari',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+918888888888',
+          'email': '24ucs273@lnmiit.ac.in',
+        },
+        {
+          'name': 'Shah Manav Tarakkumar',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+917777777777',
+          'email': '24uec214@lnmiit.ac.in',
+        },
+      ];
+    }
+    
+    if(clubName == 'Sankalp')
+    {
+      return [
+        {
+          'name': 'Amisha Paliwal',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+919999999999',
+          'email': '24dcs014@lnmiit.ac.in',
+        },
+        {
+          'name': 'Arnav Dubey',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+918888888888',
+          'email': '24ucs273@lnmiit.ac.in',
+        },
+        {
+          'name': 'Gaurav Kalal',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+917777777777',
+          'email': '24uec214@lnmiit.ac.in',
+        },
+        {
+          'name': 'Lakshya Chandak',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+917777777777',
+          'email': '24uec214@lnmiit.ac.in',
+        },
+        {
+          'name': 'Raghav Agarwal',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+917777777777',
+          'email': '24uec214@lnmiit.ac.in',
+        },
+      ];
+    }
+    
+    if(clubName == 'Vignette')
+    {
+      return [
+        {
+          'name': 'Akshat Mishra',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+919999999999',
+          'email': '24dcs014@lnmiit.ac.in',
+        },
+        {
+          'name': 'Divyansh Patil',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+918888888888',
+          'email': '24ucs273@lnmiit.ac.in',
+        },
+        {
+          'name': 'Hiya Gera',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+917777777777',
+          'email': '24uec214@lnmiit.ac.in',
+        },
+        {
+          'name': 'Jahanvi Garg',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+917777777777',
+          'email': '24uec214@lnmiit.ac.in',
+        },
+      ];
+    }
+    
     // Default fallback list for other clubs until you fill them in
     return [
       {
