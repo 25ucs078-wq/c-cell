@@ -318,28 +318,28 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Akshat Mishra',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/vignette/logo_unit.png', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/vignette/akshat.jpeg', // Replace with their actual photo path
           'phone': '+919999999999',
           'email': '24dcs014@lnmiit.ac.in',
         },
         {
           'name': 'Divyansh Patil',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/vignette/logo_unit.png', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/vignette/divyansh.jpeg', // Replace with their actual photo path
           'phone': '+918888888888',
           'email': '24ucs273@lnmiit.ac.in',
         },
         {
           'name': 'Hiya Gera',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/vignette/logo_unit.png', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/vignette/hiya.jpeg', // Replace with their actual photo path
           'phone': '+917777777777',
           'email': '24uec214@lnmiit.ac.in',
         },
         {
           'name': 'Jahanvi Garg',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/vignette/logo_unit.png', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/vignette/jahanvi.jpeg', // Replace with their actual photo path
           'phone': '+917777777777',
           'email': '24uec214@lnmiit.ac.in',
         },
