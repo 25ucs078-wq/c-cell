@@ -6,6 +6,7 @@ import 'office_bearers_page.dart';
 import 'student_fests_page.dart';
 import 'councils_page.dart';
 import 'cultural/cultural_page.dart';
+import 'science_tech/science_tech_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -1056,9 +1057,17 @@ class _HomePageState extends State<HomePage> {
                                 301,
                                 Colors.green,
                                 Icons.science,
-                                "Technical",
+                                "Science & Tech",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const ScienceTechPage(),
+                                    ),
+                                  );
+                                },
                               ),
                               buildEventCard(
                                 302,
