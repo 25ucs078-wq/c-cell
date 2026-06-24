@@ -122,28 +122,28 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Aditya Prakash',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/imagination/imagination_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/imagination/imagi_logo.jpg', // Replace with their actual photo path
           'phone': '+919639837550',
           'email': '24uec087@lnmiit.ac.in',
         },
         {
           'name': 'Avirat Kaushik',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/imagination/imagination_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/imagination/imagi_logo.jpg', // Replace with their actual photo path
           'phone': '+919311148142',
           'email': '24ucs235@lnmiit.ac.in',
         },
         {
           'name': 'Ayush Agarwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/imagination/imagination_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/imagination/imagi_logo.jpg', // Replace with their actual photo path
           'phone': '+917355568914',
           'email': '24ucc171@lnmiit.ac.in',
         },
         {
           'name': 'Siddhesh Chintamani',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/imagination/imagination_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/imagination/imagi_logo.jpg', // Replace with their actual photo path
           'phone': '+918485829571',
           'email': '24uec119@lnmiit.ac.in',
         },
@@ -156,21 +156,21 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Ananya Surana',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg', // Replace with their actual photo path
           'phone': '+919999999999',
           'email': '24dcs014@lnmiit.ac.in',
         },
         {
           'name': 'Kavin Goyal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg', // Replace with their actual photo path
           'phone': '+918888888888',
           'email': '24ucs273@lnmiit.ac.in',
         },
         {
           'name': 'Shivansh Singh',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg', // Replace with their actual photo path
           'phone': '+917777777777',
           'email': '24uec214@lnmiit.ac.in',
         },
@@ -183,28 +183,28 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Armaan Jain',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/lc/lc_logo.jpg', // Replace with their actual photo path
           'phone': '+919999999999',
           'email': '24dcs014@lnmiit.ac.in',
         },
         {
           'name': 'Mriganka Kothari',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/lc/lc_logo.jpg', // Replace with their actual photo path
           'phone': '+918888888888',
           'email': '24ucs273@lnmiit.ac.in',
         },
         {
           'name': 'Parth Chaturvedi',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/lc/lc_logo.jpg', // Replace with their actual photo path
           'phone': '+917777777777',
           'email': '24uec214@lnmiit.ac.in',
         },
         {
           'name': 'Poorvi Jagga',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/lc/lc_logo.jpg', // Replace with their actual photo path
           'phone': '+919999999999',
           'email': '24dcs014@lnmiit.ac.in',
         },
@@ -217,28 +217,28 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Pranav Vashisth',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg', // Replace with their actual photo path
           'phone': '+919999999999',
           'email': '24dcs014@lnmiit.ac.in',
         },
         {
           'name': 'Praneel Dev',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg', // Replace with their actual photo path
           'phone': '+918888888888',
           'email': '24ucs273@lnmiit.ac.in',
         },
         {
           'name': 'Samar Goyal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg', // Replace with their actual photo path
           'phone': '+917777777777',
           'email': '24uec214@lnmiit.ac.in',
         },
         {
           'name': 'Vedha Sinkar',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg', // Replace with their actual photo path
           'phone': '+917777777777',
           'email': '24uec214@lnmiit.ac.in',
         },
@@ -251,21 +251,21 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Madhav Agrawal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/rendition/rendition_logo.png', // Replace with their actual photo path
           'phone': '+919999999999',
           'email': '24dcs014@lnmiit.ac.in',
         },
         {
           'name': 'Nikhila S Hari',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/rendition/rendition_logo.png', // Replace with their actual photo path
           'phone': '+918888888888',
           'email': '24ucs273@lnmiit.ac.in',
         },
         {
           'name': 'Shah Manav Tarakkumar',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/rendition/rendition_logo.png', // Replace with their actual photo path
           'phone': '+917777777777',
           'email': '24uec214@lnmiit.ac.in',
         },
@@ -278,35 +278,35 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Amisha Paliwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/sankalp/sankalp_logo.jpg', // Replace with their actual photo path
           'phone': '+919999999999',
           'email': '24dcs014@lnmiit.ac.in',
         },
         {
           'name': 'Arnav Dubey',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/sankalp/sankalp_logo.jpg', // Replace with their actual photo path
           'phone': '+918888888888',
           'email': '24ucs273@lnmiit.ac.in',
         },
         {
           'name': 'Gaurav Kalal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/sankalp/sankalp_logo.jpg', // Replace with their actual photo path
           'phone': '+917777777777',
           'email': '24uec214@lnmiit.ac.in',
         },
         {
           'name': 'Lakshya Chandak',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/sankalp/sankalp_logo.jpg', // Replace with their actual photo path
           'phone': '+917777777777',
           'email': '24uec214@lnmiit.ac.in',
         },
         {
           'name': 'Raghav Agarwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/sankalp/sankalp_logo.jpg', // Replace with their actual photo path
           'phone': '+917777777777',
           'email': '24uec214@lnmiit.ac.in',
         },
@@ -319,28 +319,28 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Akshat Mishra',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/vignette/logo_unit.png', // Replace with their actual photo path
           'phone': '+919999999999',
           'email': '24dcs014@lnmiit.ac.in',
         },
         {
           'name': 'Divyansh Patil',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/vignette/logo_unit.png', // Replace with their actual photo path
           'phone': '+918888888888',
           'email': '24ucs273@lnmiit.ac.in',
         },
         {
           'name': 'Hiya Gera',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/vignette/logo_unit.png', // Replace with their actual photo path
           'phone': '+917777777777',
           'email': '24uec214@lnmiit.ac.in',
         },
         {
           'name': 'Jahanvi Garg',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/vignette/logo_unit.png', // Replace with their actual photo path
           'phone': '+917777777777',
           'email': '24uec214@lnmiit.ac.in',
         },
