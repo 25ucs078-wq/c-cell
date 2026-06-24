@@ -26,5 +26,17 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/assets/images/cultural/aaveg/
+    - assets/assets/images/cultural/capriccio/
+    - assets/assets/images/cultural/eminence/
+    - assets/assets/images/cultural/fundoo/
+    - assets/assets/images/cultural/imagination/
+    - assets/assets/images/cultural/insignia/
+    - assets/assets/images/cultural/lc/
+    - assets/assets/images/cultural/mediacell/
+    - assets/assets/images/cultural/rendition/
+    - assets/assets/images/cultural/sankalp/
+    - assets/assets/images/cultural/vignette/
+
 
    

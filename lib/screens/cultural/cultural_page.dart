@@ -106,12 +106,32 @@ class CulturalPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Wrap(
-                spacing: 20,
-                runSpacing: 20,
-                children: culturalClubs.map((club) {
-                  return _buildClubCard(context, club);
-                }).toList(),
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  double parentWidth = constraints.maxWidth;
+                  int crossAxisCount = 1;
+                  if (parentWidth >= 1100) {
+                    crossAxisCount = 4;
+                  } else if (parentWidth >= 600) {
+                    crossAxisCount = 2;
+                  } else {
+                    crossAxisCount = 1;
+                  }
+
+                  // Calculate item width dynamically
+                  double cardWidth = (parentWidth - (crossAxisCount - 1) * 20) / crossAxisCount;
+
+                  return Wrap(
+                    spacing: 20,
+                    runSpacing: 20,
+                    children: culturalClubs.map((club) {
+                      return SizedBox(
+                        width: cardWidth,
+                        child: _buildClubCard(context, club),
+                      );
+                    }).toList(),
+                  );
+                },
               ),
             ],
           ),
@@ -121,106 +141,133 @@ class CulturalPage extends StatelessWidget {
   }
 
   Widget _buildClubCard(BuildContext context, Map<String, dynamic> club) {
-    return SizedBox(
-      width: 320,
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => CulturalClubDetailPage(
-                clubName: club['name'] as String,
-                clubImage: club['image'] as String,
-              ),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CulturalClubDetailPage(
+              clubName: club['name'] as String,
+              clubImage: club['image'] as String,
             ),
-          );
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            color: const Color(0xFF1A1A1A),
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.white12),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Colors.redAccent,
-                  borderRadius: const BorderRadius.only(
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: const Color(0xFF1A1A1A),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: Colors.white12),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AspectRatio(
+              aspectRatio: 1.0,
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Color(0xFF262626),
+                  borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20),
                   ),
                 ),
-                child: Icon(
-                  club['icon'] as IconData,
-                  color: Colors.white,
-                  size: 42,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      club['name'] as String,
-                      style: GoogleFonts.playfairDisplay(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      club['subtitle'] as String,
-                      style: GoogleFonts.poppins(
-                        color: Colors.white70,
-                        fontSize: 14,
-                        height: 1.5,
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          foregroundColor: Colors.black,
-                          padding: const EdgeInsets.symmetric(vertical: 14),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
-                          ),
+                child: Center(
+                  child: Container(
+                    width: 140,
+                    height: 140,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.redAccent, width: 2.5),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.redAccent.withValues(alpha: 0.3),
+                          blurRadius: 12,
+                          spreadRadius: 2,
                         ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CulturalClubDetailPage(
-                                clubName: club['name'] as String,
-                                clubImage: club['image'] as String,
-                              ),
+                      ],
+                    ),
+                    child: ClipOval(
+                      child: Image.asset(
+                        club['icon'] as String,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            color: Colors.grey[800],
+                            child: const Icon(
+                              Icons.image_not_supported,
+                              color: Colors.white54,
+                              size: 40,
                             ),
                           );
                         },
-                        child: Text(
-                          'VIEW CLUB',
-                          style: GoogleFonts.playfairDisplay(
-                            fontSize: 16,
-                            letterSpacing: 1.5,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    club['name'] as String,
+                    style: GoogleFonts.playfairDisplay(
+                      color: Colors.white,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    club['subtitle'] as String,
+                    style: GoogleFonts.poppins(
+                      color: Colors.white70,
+                      fontSize: 14,
+                      height: 1.5,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CulturalClubDetailPage(
+                              clubName: club['name'] as String,
+                              clubImage: club['image'] as String,
+                            ),
                           ),
+                        );
+                      },
+                      child: Text(
+                        'VIEW CLUB',
+                        style: GoogleFonts.playfairDisplay(
+                          fontSize: 16,
+                          letterSpacing: 1.5,
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
+
