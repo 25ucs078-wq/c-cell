@@ -59,40 +59,57 @@ class CulturalClubDetailPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: coordinators.isNotEmpty
-                            ? _buildCoordinatorCard(context, coordinators[0])
-                            : const SizedBox.shrink(),
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  final double totalWidth = constraints.maxWidth;
+                  final double cardWidth = (totalWidth - 16) / 2;
+                  
+                  List<Widget> rows = [];
+                  int i = 0;
+                  
+                  // Build rows of 2 coordinators
+                  while (i + 1 < coordinators.length) {
+                    rows.add(
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: cardWidth,
+                            child: _buildCoordinatorCard(context, coordinators[i]),
+                          ),
+                          const SizedBox(width: 16),
+                          SizedBox(
+                            width: cardWidth,
+                            child: _buildCoordinatorCard(context, coordinators[i + 1]),
+                          ),
+                        ],
                       ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        child: coordinators.length > 1
-                            ? _buildCoordinatorCard(context, coordinators[1])
-                            : const SizedBox.shrink(),
+                    );
+                    i += 2;
+                  }
+                  
+                  // If there is an odd one left (e.g. 1st, 3rd, or 5th coordinator), center-align it in the next row
+                  if (i < coordinators.length) {
+                    rows.add(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: cardWidth,
+                            child: _buildCoordinatorCard(context, coordinators[i]),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: coordinators.length > 2
-                            ? _buildCoordinatorCard(context, coordinators[2])
-                            : const SizedBox.shrink(),
-                      ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        child: coordinators.length > 3
-                            ? _buildCoordinatorCard(context, coordinators[3])
-                            : const SizedBox.shrink(),
-                      ),
-                    ],
-                  ),
-                ],
+                    );
+                  }
+                  
+                  if (rows.isEmpty) {
+                    return const SizedBox.shrink();
+                  }
+                  
+                  return Column(
+                    children: rows.expand((widget) => [widget, const SizedBox(height: 16)]).toList()..removeLast(),
+                  );
+                },
               ),
               const SizedBox(height: 30),
               Text(
