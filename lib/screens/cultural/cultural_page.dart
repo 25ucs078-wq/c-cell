@@ -17,7 +17,7 @@ class CulturalPage extends StatelessWidget {
         },
         {
           'name': 'Shourya Kavadia',
-          'role': 'Co-Coordinator',
+          'role': 'Coordinator',
           'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
           'phone': '+918888888888',
           'email': '24ucc064@lnmiit.ac.in',
@@ -39,6 +39,116 @@ class CulturalPage extends StatelessWidget {
       ];
     }
 
+    if (clubName == 'Capriccio') {
+      return [
+        {
+          'name': 'Ashmit Dudani',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+919999999999',
+          'email': '24dcs014@lnmiit.ac.in',
+        },
+        {
+          'name': 'Nandini Sharma',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+918888888888',
+          'email': '24ucs273@lnmiit.ac.in',
+        },
+        {
+          'name': 'Nilesh Agarwal',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+917777777777',
+          'email': '24uec214@lnmiit.ac.in',
+        },
+        {
+          'name': 'Parth Arora',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'phone': '+916666666666',
+          'email': '24imai005@lnmiit.ac.in',
+        },
+      ];
+    }
+    
+    if (clubName == 'Eminence') {
+      return [
+        {
+          'name': 'Avesh Khan',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/eminence/eminence_logo.jpg', // Replace with their actual photo path
+          'phone': '+919999999999',
+          'email': '24ucs127@lnmiit.ac.in',
+        },
+        {
+          'name': 'Kushagra',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/eminence/eminence_logo.jpg', // Replace with their actual photo path
+          'phone': '+918888888888',
+          'email': '24ucc087@lnmiit.ac.in',
+        },
+      ];
+    }
+
+    if (clubName == 'Finlogue') {
+      return [
+        {
+          'name': 'Aditya Tiwari',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
+          'phone': '+919999999999',
+          'email': '24ucs220@lnmiit.ac.in',
+        },
+        {
+          'name': 'Akshat Thadhani',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
+          'phone': '+918888888888',
+          'email': '24ucc064@lnmiit.ac.in',
+        },
+        {
+          'name': 'Aryan Mittal',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
+          'phone': '+917777777777',
+          'email': '24ucc169@lnmiit.ac.in',
+        },
+      ];
+    }
+
+    if (clubName == 'Imagination') {
+      return [
+        {
+          'name': 'Aditya Prakash',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/imagination/imagination_logo.jpg', // Replace with their actual photo path
+          'phone': '+919639837550',
+          'email': '24uec087@lnmiit.ac.in',
+        },
+        {
+          'name': 'Avirat Kaushik',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/imagination/imagination_logo.jpg', // Replace with their actual photo path
+          'phone': '+919311148142',
+          'email': '24ucs235@lnmiit.ac.in',
+        },
+        {
+          'name': 'Ayush Agarwal',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/imagination/imagination_logo.jpg', // Replace with their actual photo path
+          'phone': '+917355568914',
+          'email': '24ucc171@lnmiit.ac.in',
+        },
+        {
+          'name': 'Siddhesh Chintamani',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/imagination/imagination_logo.jpg', // Replace with their actual photo path
+          'phone': '+918485829571',
+          'email': '24uec119@lnmiit.ac.in',
+        },
+      ];
+    }
     // Default fallback list for other clubs until you fill them in
     return [
       {
