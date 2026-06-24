@@ -56,7 +56,7 @@ class SportsPage extends StatelessWidget {
           'email': '24uec242@lnmiit.ac.in',
         },
         {
-          'name': 'Vedansh Vashisth'
+          'name': 'Vedansh Vashisth',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/basketball/basketball_logo.png',
           'phone': '+918888888888',
