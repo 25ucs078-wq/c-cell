@@ -87,12 +87,32 @@ class CouncilsPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Wrap(
-                spacing: 20,
-                runSpacing: 20,
-                children: councils.map((council) {
-                  return _buildCouncilCard(context, council);
-                }).toList(),
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  double parentWidth = constraints.maxWidth;
+                  int crossAxisCount = 1;
+                  if (parentWidth >= 1100) {
+                    crossAxisCount = 4;
+                  } else if (parentWidth >= 600) {
+                    crossAxisCount = 2;
+                  } else {
+                    crossAxisCount = 1;
+                  }
+
+                  // Calculate item width dynamically
+                  double cardWidth = (parentWidth - (crossAxisCount - 1) * 20) / crossAxisCount;
+
+                  return Wrap(
+                    spacing: 20,
+                    runSpacing: 20,
+                    children: councils.map((council) {
+                      return SizedBox(
+                        width: cardWidth,
+                        child: _buildCouncilCard(context, council),
+                      );
+                    }).toList(),
+                  );
+                },
               ),
             ],
           ),
@@ -102,8 +122,22 @@ class CouncilsPage extends StatelessWidget {
   }
 
   Widget _buildCouncilCard(BuildContext context, Map<String, dynamic> council) {
-    return SizedBox(
-      width: 320,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CouncilDetailPage(
+              councilName: council['title'] as String,
+              items: List<Map<String, String>>.from(
+                (council['items'] as List).map(
+                  (item) => Map<String, String>.from(item as Map),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
       child: Container(
         decoration: BoxDecoration(
           color: const Color(0xFF1A1A1A),
@@ -113,20 +147,41 @@ class CouncilsPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.redAccent,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
+            AspectRatio(
+              aspectRatio: 1.0,
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Color(0xFF262626),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
                 ),
-              ),
-              child: Icon(
-                council['icon'] as IconData,
-                color: Colors.white,
-                size: 42,
+                child: Center(
+                  child: Container(
+                    width: 140,
+                    height: 140,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: const Color(0xFF1A1A1A),
+                      border: Border.all(color: Colors.redAccent, width: 2.5),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.redAccent.withValues(alpha: 0.3),
+                          blurRadius: 12,
+                          spreadRadius: 2,
+                        ),
+                      ],
+                    ),
+                    child: Center(
+                      child: Icon(
+                        council['icon'] as IconData,
+                        color: Colors.white,
+                        size: 56,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
             Padding(
@@ -169,7 +224,11 @@ class CouncilsPage extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) => CouncilDetailPage(
                               councilName: council['title'] as String,
-                              items: List<Map<String, String>>.from(council['items'] as List<dynamic>),
+                              items: List<Map<String, String>>.from(
+                                (council['items'] as List).map(
+                                  (item) => Map<String, String>.from(item as Map),
+                                ),
+                              ),
                             ),
                           ),
                         );
