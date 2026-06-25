@@ -34,133 +34,145 @@ class OfficeBearersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isMobile = screenWidth < 600;
+
     return Scaffold(
       backgroundColor: const Color(0xFF050816),
       appBar: AppBar(
         backgroundColor: const Color(0xFF050816),
         elevation: 0,
         centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pop(context),
+        ),
         title: Text(
           "OFFICE BEARERS",
           style: GoogleFonts.playfairDisplay(
             color: Colors.redAccent,
-            fontSize: 38,
-            letterSpacing: 4,
+            fontSize: isMobile ? 22 : 38,
+            letterSpacing: isMobile ? 2 : 4,
           ),
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: double.infinity,
-              height: 260,
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Image.asset(
-                    "assets/images/team_poster.jpeg",
-                    fit: BoxFit.cover,
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 1000),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  height: isMobile ? 180 : 260,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.asset(
+                        "assets/images/team_poster.jpeg",
+                        fit: BoxFit.cover,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.black.withValues(alpha: 0.15),
+                              Colors.black.withValues(alpha: 0.35),
+                              const Color(0xFF050816),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  Container(
+                ),
+                Transform.translate(
+                  offset: Offset(isMobile ? 16 : 25, isMobile ? -45 : -70),
+                  child: Container(
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Colors.black.withValues(alpha: 0.15),
-                          Colors.black.withValues(alpha: 0.35),
-                          const Color(0xFF050816),
-                        ],
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Colors.redAccent,
+                        width: isMobile ? 3 : 5,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.redAccent.withValues(alpha: 0.5),
+                          blurRadius: isMobile ? 15 : 25,
+                        ),
+                      ],
+                    ),
+                    child: CircleAvatar(
+                      radius: isMobile ? 40 : 60,
+                      backgroundImage: const AssetImage(
+                        "assets/images/logo.jpeg",
                       ),
                     ),
                   ),
-                ],
-              ),
-            ),
-            Transform.translate(
-              offset: const Offset(25, -70),
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.redAccent,
-                    width: 5,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.redAccent.withValues(alpha: 0.5),
-                      blurRadius: 25,
-                    ),
-                  ],
                 ),
-                child: const CircleAvatar(
-                  radius: 60,
-                  backgroundImage: AssetImage(
-                    "assets/images/logo.jpeg",
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "MEET THE TEAM BEHIND THE STUDENT GYMKHANA",
-                    style: GoogleFonts.playfairDisplay(
-                      color: Colors.white,
-                      fontSize: 36,
-                      letterSpacing: 2,
-                      height: 1.1,
-                    ),
-                  ),
-                  const SizedBox(height: 25),
-                  Text(
-                    "These student leaders shape campus life and keep the community moving.",
-                    style: GoogleFonts.poppins(
-                      color: Colors.white70,
-                      fontSize: 18,
-                      height: 1.7,
-                    ),
-                  ),
-                  const SizedBox(height: 40),
-                  buildSectionTitle("OFFICE BEARERS"),
-                  const SizedBox(height: 20),
-                  LayoutBuilder(
-                    builder: (context, constraints) {
-                      double parentWidth = constraints.maxWidth;
-                      int crossAxisCount = 1;
-                      if (parentWidth >= 1100) {
-                        crossAxisCount = 4;
-                      } else if (parentWidth >= 600) {
-                        crossAxisCount = 2;
-                      } else {
-                        crossAxisCount = 1;
-                      }
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: isMobile ? 16 : 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "MEET THE TEAM BEHIND THE STUDENT GYMKHANA",
+                        style: GoogleFonts.playfairDisplay(
+                          color: Colors.white,
+                          fontSize: isMobile ? 24 : 36,
+                          letterSpacing: 2,
+                          height: 1.1,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        "These student leaders shape campus life and keep the community moving.",
+                        style: GoogleFonts.poppins(
+                          color: Colors.white70,
+                          fontSize: isMobile ? 14 : 18,
+                          height: 1.7,
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      buildSectionTitle("OFFICE BEARERS"),
+                      const SizedBox(height: 20),
+                      LayoutBuilder(
+                        builder: (context, constraints) {
+                          double parentWidth = constraints.maxWidth;
+                          int crossAxisCount = 1;
+                          if (parentWidth >= 1100) {
+                            crossAxisCount = 4;
+                          } else if (parentWidth >= 600) {
+                            crossAxisCount = 2;
+                          } else {
+                            crossAxisCount = 1;
+                          }
 
-                      // Calculate item width dynamically
-                      double cardWidth = (parentWidth - (crossAxisCount - 1) * 20) / crossAxisCount;
+                          // Calculate item width dynamically
+                          double cardWidth = (parentWidth - (crossAxisCount - 1) * 20) / crossAxisCount;
 
-                      return Wrap(
-                        spacing: 20,
-                        runSpacing: 20,
-                        children: officeBearers.map((bearer) {
-                          return SizedBox(
-                            width: cardWidth,
-                            child: buildPersonCard(context, bearer),
+                          return Wrap(
+                            spacing: 20,
+                            runSpacing: 20,
+                            children: officeBearers.map((bearer) {
+                              return SizedBox(
+                                width: cardWidth,
+                                child: buildPersonCard(context, bearer),
+                              );
+                            }).toList(),
                           );
-                        }).toList(),
-                      );
-                    },
+                        },
+                      ),
+                      const SizedBox(height: 40),
+                    ],
                   ),
-                  const SizedBox(height: 50),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -181,9 +193,96 @@ class OfficeBearersPage extends StatelessWidget {
   }
 
   Widget buildPersonCard(BuildContext context, Map<String, String> bearer) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isMobile = screenWidth < 600;
+
     final String name = bearer['name']!;
     final String image = bearer['image']!;
     final String role = bearer['role']!;
+
+    if (isMobile) {
+      return GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(
+            context,
+            '/profile',
+            arguments: {'name': name, 'image': image, 'role': role},
+          );
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: const Color(0xFF1A1A1A),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: Colors.white12),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Row(
+              children: [
+                Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.redAccent, width: 2),
+                  ),
+                  child: Hero(
+                    tag: name,
+                    child: ClipOval(
+                      child: Image.asset(
+                        image,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            color: Colors.grey[800],
+                            child: const Icon(
+                              Icons.person,
+                              color: Colors.white54,
+                              size: 24,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        name,
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        role,
+                        style: GoogleFonts.poppins(
+                          color: Colors.redAccent,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 8),
+                const Icon(
+                  Icons.chevron_right,
+                  color: Colors.white54,
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
 
     return GestureDetector(
       onTap: () {

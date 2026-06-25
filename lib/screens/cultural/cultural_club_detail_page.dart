@@ -18,121 +18,111 @@ class CulturalClubDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isMobile = screenWidth < 600;
+
     return Scaffold(
       backgroundColor: const Color(0xFF050816),
       appBar: AppBar(
         backgroundColor: const Color(0xFF050816),
         elevation: 0,
         centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pop(context),
+        ),
         title: Text(
           clubName.toUpperCase(),
           style: GoogleFonts.playfairDisplay(
             color: Colors.redAccent,
-            fontSize: 38,
-            letterSpacing: 4,
+            fontSize: isMobile ? 22 : 38,
+            letterSpacing: isMobile ? 2 : 4,
           ),
         ),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.asset(
-                  clubImage,
-                  width: double.infinity,
-                  height: 240,
-                  fit: BoxFit.cover,
-                ),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 1000),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: isMobile ? 16 : 20,
+                vertical: isMobile ? 16 : 24,
               ),
-              const SizedBox(height: 24),
-              Text(
-                'COORDINATORS',
-                style: GoogleFonts.playfairDisplay(
-                  color: Colors.white,
-                  fontSize: 32,
-                  letterSpacing: 2,
-                ),
-              ),
-              const SizedBox(height: 20),
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  final double totalWidth = constraints.maxWidth;
-                  final double cardWidth = (totalWidth - 16) / 2;
-                  
-                  List<Widget> rows = [];
-                  int i = 0;
-                  
-                  // Build rows of 2 coordinators
-                  while (i + 1 < coordinators.length) {
-                    rows.add(
-                      Row(
-                        children: [
-                          SizedBox(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image.asset(
+                      clubImage,
+                      width: double.infinity,
+                      height: isMobile ? 180 : 240,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  SizedBox(height: isMobile ? 20 : 24),
+                  Text(
+                    'COORDINATORS',
+                    style: GoogleFonts.playfairDisplay(
+                      color: Colors.white,
+                      fontSize: isMobile ? 24 : 32,
+                      letterSpacing: 2,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      double parentWidth = constraints.maxWidth;
+                      int crossAxisCount = 1;
+                      if (parentWidth >= 900) {
+                        crossAxisCount = 4;
+                      } else if (parentWidth >= 600) {
+                        crossAxisCount = 2;
+                      } else {
+                        crossAxisCount = 1;
+                      }
+
+                      // Calculate item width dynamically
+                      double cardWidth = (parentWidth - (crossAxisCount - 1) * 16) / crossAxisCount;
+
+                      return Wrap(
+                        spacing: 16,
+                        runSpacing: 16,
+                        children: coordinators.map((person) {
+                          return SizedBox(
                             width: cardWidth,
-                            child: _buildCoordinatorCard(context, coordinators[i]),
-                          ),
-                          const SizedBox(width: 16),
-                          SizedBox(
-                            width: cardWidth,
-                            child: _buildCoordinatorCard(context, coordinators[i + 1]),
-                          ),
-                        ],
-                      ),
-                    );
-                    i += 2;
-                  }
-                  
-                  // If there is an odd one left (e.g. 1st, 3rd, or 5th coordinator), center-align it in the next row
-                  if (i < coordinators.length) {
-                    rows.add(
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            width: cardWidth,
-                            child: _buildCoordinatorCard(context, coordinators[i]),
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-                  
-                  if (rows.isEmpty) {
-                    return const SizedBox.shrink();
-                  }
-                  
-                  return Column(
-                    children: rows.expand((widget) => [widget, const SizedBox(height: 16)]).toList()..removeLast(),
-                  );
-                },
+                            child: _buildCoordinatorCard(context, person),
+                          );
+                        }).toList(),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 30),
+                  Text(
+                    'PHOTO GALLERY',
+                    style: GoogleFonts.playfairDisplay(
+                      color: Colors.white,
+                      fontSize: isMobile ? 20 : 24,
+                      letterSpacing: 2,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    height: 140,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: galleryImages.length,
+                      separatorBuilder: (_, _) => const SizedBox(width: 14),
+                      itemBuilder: (context, index) {
+                        return _buildGalleryImage(galleryImages[index]);
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                ],
               ),
-              const SizedBox(height: 30),
-              Text(
-                'PHOTO GALLERY',
-                style: GoogleFonts.playfairDisplay(
-                  color: Colors.white,
-                  fontSize: 24,
-                  letterSpacing: 2,
-                ),
-              ),
-              const SizedBox(height: 16),
-              SizedBox(
-                height: 140,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: galleryImages.length,
-                  separatorBuilder: (_, _) => const SizedBox(width: 14),
-                  itemBuilder: (context, index) {
-                    return _buildGalleryImage(galleryImages[index]);
-                  },
-                ),
-              ),
-              const SizedBox(height: 30),
-            ],
+            ),
           ),
         ),
       ),
@@ -140,11 +130,115 @@ class CulturalClubDetailPage extends StatelessWidget {
   }
 
   Widget _buildCoordinatorCard(BuildContext context, Map<String, String> person) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isMobile = screenWidth < 600;
+
     final String name = person['name'] ?? 'TBD';
     final String role = person['role'] ?? 'Coordinator';
     final String image = person['image'] ?? 'assets/images/logo.jpeg';
     final String phone = person['phone'] ?? '';
     final String email = person['email'] ?? '';
+
+    if (isMobile) {
+      // Sleek horizontal coordinator card for mobile screen
+      return GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(
+            context,
+            '/profile',
+            arguments: {'name': name, 'image': image, 'role': role},
+          );
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: const Color(0xFF1A1A1A),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: Colors.white12),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Row(
+              children: [
+                Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.redAccent, width: 2),
+                  ),
+                  child: Hero(
+                    tag: name,
+                    child: ClipOval(
+                      child: Image.asset(
+                        image,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            color: Colors.grey[800],
+                            child: const Icon(
+                              Icons.person,
+                              color: Colors.white54,
+                              size: 24,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        name,
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        role,
+                        style: GoogleFonts.poppins(
+                          color: Colors.redAccent,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _buildContactButton(
+                      context: context,
+                      icon: Icons.phone,
+                      isEnabled: phone.isNotEmpty,
+                      tooltip: 'Call',
+                      onTap: () => _launchPhone(context, phone),
+                    ),
+                    const SizedBox(width: 4),
+                    _buildContactButton(
+                      context: context,
+                      icon: Icons.email,
+                      isEnabled: email.isNotEmpty,
+                      tooltip: 'Email',
+                      onTap: () => _launchEmail(context, email),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
 
     return GestureDetector(
       onTap: () {

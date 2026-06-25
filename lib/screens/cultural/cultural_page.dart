@@ -488,64 +488,79 @@ class CulturalPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isMobile = screenWidth < 600;
+
     return Scaffold(
       backgroundColor: const Color(0xFF050816),
       appBar: AppBar(
         backgroundColor: const Color(0xFF050816),
         elevation: 0,
         centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pop(context),
+        ),
         title: Text(
           'CULTURAL CLUBS',
           style: GoogleFonts.playfairDisplay(
             color: Colors.redAccent,
-            fontSize: 38,
-            letterSpacing: 4,
+            fontSize: isMobile ? 22 : 38,
+            letterSpacing: isMobile ? 2 : 4,
           ),
         ),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'EXPLORE CULTURAL CLUBS',
-                style: GoogleFonts.playfairDisplay(
-                  color: Colors.white,
-                  fontSize: 32,
-                  letterSpacing: 2,
-                ),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 1000),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: isMobile ? 16 : 20,
+                vertical: isMobile ? 16 : 24,
               ),
-              const SizedBox(height: 20),
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  double parentWidth = constraints.maxWidth;
-                  int crossAxisCount = 1;
-                  if (parentWidth >= 1100) {
-                    crossAxisCount = 4;
-                  } else if (parentWidth >= 600) {
-                    crossAxisCount = 2;
-                  } else {
-                    crossAxisCount = 1;
-                  }
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'EXPLORE CULTURAL CLUBS',
+                    style: GoogleFonts.playfairDisplay(
+                      color: Colors.white,
+                      fontSize: isMobile ? 24 : 32,
+                      letterSpacing: isMobile ? 1 : 2,
+                    ),
+                  ),
+                  SizedBox(height: isMobile ? 16 : 20),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      double parentWidth = constraints.maxWidth;
+                      int crossAxisCount = 1;
+                      if (parentWidth >= 1100) {
+                        crossAxisCount = 4;
+                      } else if (parentWidth >= 600) {
+                        crossAxisCount = 2;
+                      } else {
+                        crossAxisCount = 1;
+                      }
 
-                  // Calculate item width dynamically
-                  double cardWidth = (parentWidth - (crossAxisCount - 1) * 20) / crossAxisCount;
+                      // Calculate item width dynamically
+                      double cardWidth = (parentWidth - (crossAxisCount - 1) * 20) / crossAxisCount;
 
-                  return Wrap(
-                    spacing: 20,
-                    runSpacing: 20,
-                    children: culturalClubs.map((club) {
-                      return SizedBox(
-                        width: cardWidth,
-                        child: _buildClubCard(context, club),
+                      return Wrap(
+                        spacing: 20,
+                        runSpacing: 20,
+                        children: culturalClubs.map((club) {
+                          return SizedBox(
+                            width: cardWidth,
+                            child: _buildClubCard(context, club),
+                          );
+                        }).toList(),
                       );
-                    }).toList(),
-                  );
-                },
+                    },
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
@@ -553,23 +568,122 @@ class CulturalPage extends StatelessWidget {
   }
 
   Widget _buildClubCard(BuildContext context, Map<String, dynamic> club) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          '/cultural_detail',
-          arguments: {
-            'clubName': club['name'] as String,
-            'clubImage': club['image'] as String,
-            'coordinators': List<Map<String, String>>.from(
-              (club['coordinators'] as List).map(
-                (item) => Map<String, String>.from(item as Map),
-              ),
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isMobile = screenWidth < 600;
+
+    final String clubName = club['name'] as String;
+    final String clubImage = club['image'] as String;
+    final String clubIcon = club['icon'] as String;
+    final String clubSubtitle = club['subtitle'] as String;
+    final List<Map<String, String>> coordinators = List<Map<String, String>>.from(
+      (club['coordinators'] as List).map(
+        (item) => Map<String, String>.from(item as Map),
+      ),
+    );
+    final List<String> galleryImages = List<String>.from(club['gallery'] as List);
+
+    void onCardTap() {
+      Navigator.pushNamed(
+        context,
+        '/cultural_detail',
+        arguments: {
+          'clubName': clubName,
+          'clubImage': clubImage,
+          'coordinators': coordinators,
+          'galleryImages': galleryImages,
+        },
+      );
+    }
+
+    if (isMobile) {
+      // Sleek horizontal list card for mobile app
+      return GestureDetector(
+        onTap: onCardTap,
+        child: Container(
+          decoration: BoxDecoration(
+            color: const Color(0xFF1A1A1A),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: Colors.white12),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Row(
+              children: [
+                Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.redAccent, width: 2),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.redAccent.withValues(alpha: 0.2),
+                        blurRadius: 8,
+                        spreadRadius: 1,
+                      ),
+                    ],
+                  ),
+                  child: ClipOval(
+                    child: Image.asset(
+                      clubIcon,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          color: Colors.grey[800],
+                          child: const Icon(
+                            Icons.image_not_supported,
+                            color: Colors.white54,
+                            size: 24,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        clubName,
+                        style: GoogleFonts.playfairDisplay(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        clubSubtitle,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.poppins(
+                          color: Colors.white70,
+                          fontSize: 12,
+                          height: 1.4,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 8),
+                const Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.redAccent,
+                  size: 16,
+                ),
+              ],
             ),
-            'galleryImages': List<String>.from(club['gallery'] as List),
-          },
-        );
-      },
+          ),
+        ),
+      );
+    }
+
+    // Original vertical layout for desktop/web
+    return GestureDetector(
+      onTap: onCardTap,
       child: Container(
         decoration: BoxDecoration(
           color: const Color(0xFF1A1A1A),
@@ -606,7 +720,7 @@ class CulturalPage extends StatelessWidget {
                     ),
                     child: ClipOval(
                       child: Image.asset(
-                        club['icon'] as String,
+                        clubIcon,
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           return Container(
@@ -630,7 +744,7 @@ class CulturalPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    club['name'] as String,
+                    clubName,
                     style: GoogleFonts.playfairDisplay(
                       color: Colors.white,
                       fontSize: 22,
@@ -639,7 +753,7 @@ class CulturalPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    club['subtitle'] as String,
+                    clubSubtitle,
                     style: GoogleFonts.poppins(
                       color: Colors.white70,
                       fontSize: 14,
@@ -658,22 +772,7 @@ class CulturalPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16),
                         ),
                       ),
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          '/cultural_detail',
-                          arguments: {
-                            'clubName': club['name'] as String,
-                            'clubImage': club['image'] as String,
-                            'coordinators': List<Map<String, String>>.from(
-                              (club['coordinators'] as List).map(
-                                (item) => Map<String, String>.from(item as Map),
-                              ),
-                            ),
-                            'galleryImages': List<String>.from(club['gallery'] as List),
-                          },
-                        );
-                      },
+                      onPressed: onCardTap,
                       child: Text(
                         'VIEW CLUB',
                         style: GoogleFonts.playfairDisplay(

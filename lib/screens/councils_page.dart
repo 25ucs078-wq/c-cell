@@ -56,6 +56,9 @@ class CouncilsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isMobile = screenWidth < 600;
+
     return Scaffold(
       backgroundColor: const Color(0xFF050816),
       appBar: AppBar(
@@ -66,14 +69,17 @@ class CouncilsPage extends StatelessWidget {
           'COUNCILS',
           style: GoogleFonts.playfairDisplay(
             color: Colors.redAccent,
-            fontSize: 38,
-            letterSpacing: 4,
+            fontSize: isMobile ? 22 : 38,
+            letterSpacing: isMobile ? 2 : 4,
           ),
         ),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+          padding: EdgeInsets.symmetric(
+            horizontal: isMobile ? 16 : 20,
+            vertical: isMobile ? 16 : 24,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -81,11 +87,11 @@ class CouncilsPage extends StatelessWidget {
                 'CHOOSE A COUNCIL',
                 style: GoogleFonts.playfairDisplay(
                   color: Colors.white,
-                  fontSize: 32,
-                  letterSpacing: 2,
+                  fontSize: isMobile ? 24 : 32,
+                  letterSpacing: isMobile ? 1 : 2,
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: isMobile ? 16 : 20),
               LayoutBuilder(
                 builder: (context, constraints) {
                   double parentWidth = constraints.maxWidth;
@@ -121,21 +127,110 @@ class CouncilsPage extends StatelessWidget {
   }
 
   Widget _buildCouncilCard(BuildContext context, Map<String, dynamic> council) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          '/council_detail',
-          arguments: {
-            'councilName': council['title'] as String,
-            'items': List<Map<String, String>>.from(
-              (council['items'] as List).map(
-                (item) => Map<String, String>.from(item as Map),
-              ),
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isMobile = screenWidth < 600;
+
+    final String title = council['title'] as String;
+    final String subtitle = council['subtitle'] as String;
+    final IconData icon = council['icon'] as IconData;
+    final List<Map<String, String>> items = List<Map<String, String>>.from(
+      (council['items'] as List).map(
+        (item) => Map<String, String>.from(item as Map),
+      ),
+    );
+
+    void onCardTap() {
+      Navigator.pushNamed(
+        context,
+        '/council_detail',
+        arguments: {
+          'councilName': title,
+          'items': items,
+        },
+      );
+    }
+
+    if (isMobile) {
+      // Sleek horizontal list card for mobile app
+      return GestureDetector(
+        onTap: onCardTap,
+        child: Container(
+          decoration: BoxDecoration(
+            color: const Color(0xFF1A1A1A),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: Colors.white12),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Row(
+              children: [
+                Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: const Color(0xFF1A1A1A),
+                    border: Border.all(color: Colors.redAccent, width: 2),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.redAccent.withValues(alpha: 0.2),
+                        blurRadius: 8,
+                        spreadRadius: 1,
+                      ),
+                    ],
+                  ),
+                  child: Center(
+                    child: Icon(
+                      icon,
+                      color: Colors.white,
+                      size: 28,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        title,
+                        style: GoogleFonts.playfairDisplay(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        subtitle,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.poppins(
+                          color: Colors.white70,
+                          fontSize: 12,
+                          height: 1.4,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 8),
+                const Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.redAccent,
+                  size: 16,
+                ),
+              ],
             ),
-          },
-        );
-      },
+          ),
+        ),
+      );
+    }
+
+    // Original vertical layout for desktop/web
+    return GestureDetector(
+      onTap: onCardTap,
       child: Container(
         decoration: BoxDecoration(
           color: const Color(0xFF1A1A1A),
@@ -173,7 +268,7 @@ class CouncilsPage extends StatelessWidget {
                     ),
                     child: Center(
                       child: Icon(
-                        council['icon'] as IconData,
+                        icon,
                         color: Colors.white,
                         size: 56,
                       ),
@@ -188,7 +283,7 @@ class CouncilsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    council['title'] as String,
+                    title,
                     style: GoogleFonts.playfairDisplay(
                       color: Colors.white,
                       fontSize: 22,
@@ -197,7 +292,7 @@ class CouncilsPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    council['subtitle'] as String,
+                    subtitle,
                     style: GoogleFonts.poppins(
                       color: Colors.white70,
                       fontSize: 14,
@@ -216,20 +311,7 @@ class CouncilsPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16),
                         ),
                       ),
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          '/council_detail',
-                          arguments: {
-                            'councilName': council['title'] as String,
-                            'items': List<Map<String, String>>.from(
-                              (council['items'] as List).map(
-                                (item) => Map<String, String>.from(item as Map),
-                              ),
-                            ),
-                          },
-                        );
-                      },
+                      onPressed: onCardTap,
                       child: Text(
                         'VIEW DETAILS',
                         style: GoogleFonts.playfairDisplay(
