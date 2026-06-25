@@ -95,23 +95,23 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Aditya Tiwari',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/finlogue/aditya.jpeg',
           'phone': '+919999999999',
-          'email': '24ucs220@lnmiit.ac.in',
+          'email': '24ucs155@lnmiit.ac.in',
         },
         {
           'name': 'Akshat Thadhani',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/finlogue/akshat.jpeg',
           'phone': '+918888888888',
-          'email': '24ucc064@lnmiit.ac.in',
+          'email': '24ucc116@lnmiit.ac.in',
         },
         {
           'name': 'Aryan Mittal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/finlogue/aryan.jpeg',
           'phone': '+917777777777',
-          'email': '24ucc169@lnmiit.ac.in',
+          'email': '24ucs152@lnmiit.ac.in',
         },
       ];
     }
@@ -277,35 +277,35 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Amisha Paliwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/sankalp/sankalp_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/sankalp/amisha.jpeg',
           'phone': '+919999999999',
           'email': '24dcs014@lnmiit.ac.in',
         },
         {
           'name': 'Arnav Dubey',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/sankalp/sankalp_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/sankalp/arnav.jpeg',
           'phone': '+918888888888',
           'email': '24ucs273@lnmiit.ac.in',
         },
         {
           'name': 'Gaurav Kalal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/sankalp/sankalp_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/sankalp/gaurav.jpeg',
           'phone': '+917777777777',
           'email': '24uec214@lnmiit.ac.in',
         },
         {
           'name': 'Lakshya Chandak',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/sankalp/sankalp_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/sankalp/lakshya.jpeg', 
           'phone': '+917777777777',
           'email': '24uec214@lnmiit.ac.in',
         },
         {
           'name': 'Raghav Agarwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/sankalp/sankalp_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/sankalp/raghav.jpeg',
           'phone': '+917777777777',
           'email': '24uec214@lnmiit.ac.in',
         },
@@ -388,6 +388,16 @@ class CulturalPage extends StatelessWidget {
       ];
     }
 
+    if (clubName == 'Finlogue') {
+      return [
+        'assets/assets/images/cultural/finlogue/fundoo1.jpg',
+        'assets/assets/images/cultural/finlogue/fundoo3.jpg',
+        'assets/assets/images/cultural/finlogue/fundoo4.jpg',
+        'assets/assets/images/cultural/finlogue/fundoo6.jpg',
+        'assets/assets/images/cultural/finlogue/fundoo7.jpg',
+      ];
+    }
+
     return [
       'assets/images/hero_new.jpeg',
       'assets/images/team_poster.jpeg',
@@ -422,9 +432,9 @@ class CulturalPage extends StatelessWidget {
     },
     {
       'name': 'Finlogue',
-      'icon': 'assets/assets/images/cultural/fundoo/fundoo_logo.jpg',
+      'icon': 'assets/assets/images/cultural/finlogue/finlogue_logo.jpeg',
       'subtitle': 'Fintech club of LNMIIT',
-      'image': 'assets/assets/images/cultural/fundoo/fundoo_logo.jpg',
+      'image': 'assets/assets/images/cultural/finlogue/finlogue_logo.jpeg',
       'coordinators': _getCoordinators('Finlogue'),
       'gallery': _getGallery('Finlogue'),
     },
