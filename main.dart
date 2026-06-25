@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'supabase_config.dart';
-import 'pages/admission_landing_page.dart';
+import 'pages/temp_id_entry_page.dart';
 import 'login_page.dart';
 
 Future<void> main() async {
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorSchemeSeed: Colors.blue,
       ),
       routes: {
-        '/': (_) => const AdmissionLandingPage(),
+        '/': (_) => const TempIdEntryPage(),
         '/login': (_) => const LoginPage(),
       },
     );
