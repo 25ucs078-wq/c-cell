@@ -38,6 +38,9 @@ flutter:
     - assets/assets/images/cultural/sankalp/
     - assets/assets/images/cultural/vignette/
     - assets/assets/images/
+    - assets/assets/images/viva/
+    - assets/assets/images/plinth/
+    - assets/assets/images/despo/
     - assets/assets/images/tech/astronomy/
     - assets/assets/images/tech/cipherclub/
     - assets/assets/images/tech/cybros/

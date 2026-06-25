@@ -7,7 +7,7 @@ class CouncilsPage extends StatelessWidget {
   static const List<Map<String, dynamic>> councils = [
     {
       'title': 'Presidential Council',
-      'icon': 'assets/assets/images/gymkhana_logo.jpg',
+      'icon': 'assets/assets/images/gymkhana.jpg',
       'subtitle': 'Campus leadership and policy',
       'items': [
         {'name': 'Hemendra Yadav', 'role': 'President', 'image': 'assets/images/logo.jpeg'},
@@ -132,7 +132,7 @@ class CouncilsPage extends StatelessWidget {
 
     final String title = council['title'] as String;
     final String subtitle = council['subtitle'] as String;
-    final IconData icon = council['icon'] as IconData;
+    final String icon = council['icon'] as String;
     final List<Map<String, String>> items = List<Map<String, String>>.from(
       (council['items'] as List).map(
         (item) => Map<String, String>.from(item as Map),
@@ -179,11 +179,19 @@ class CouncilsPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: Center(
-                    child: Icon(
+                  child: ClipOval(
+                    child: Image.asset(
                       icon,
-                      color: Colors.white,
-                      size: 28,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return const Center(
+                          child: Icon(
+                            Icons.group,
+                            color: Colors.white,
+                            size: 28,
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),
@@ -266,11 +274,19 @@ class CouncilsPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: Center(
-                      child: Icon(
+                    child: ClipOval(
+                      child: Image.asset(
                         icon,
-                        color: Colors.white,
-                        size: 56,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return const Center(
+                            child: Icon(
+                              Icons.group,
+                              color: Colors.white,
+                              size: 56,
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ),
