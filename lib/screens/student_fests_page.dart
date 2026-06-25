@@ -7,17 +7,17 @@ class StudentFestsPage extends StatelessWidget {
   static const List<Map<String, String>> fests = [
     {
       "name": "Vivacity",
-      "logo": "assets/images/logo.jpeg",
+      "logo": "assets/assets/images/viva/viva_logo.png",
       "role": "CULTURAL FEST",
     },
     {
       "name": "Plinth",
-      "logo": "assets/images/logo.jpeg",
+      "logo": "assets/assets/images/plinth/plinth_logo.jpg",
       "role": "TECH FEST",
     },
     {
       "name": "Desportivos",
-      "logo": "assets/images/logo.jpeg",
+      "logo": "assets/assets/images/despo/despo_logo.jpeg",
       "role": "SPORTS FEST",
     },
   ];

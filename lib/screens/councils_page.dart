@@ -7,7 +7,7 @@ class CouncilsPage extends StatelessWidget {
   static const List<Map<String, dynamic>> councils = [
     {
       'title': 'Presidential Council',
-      'icon': Icons.account_balance,
+      'icon': 'assets/assets/images/gymkhana_logo.jpg',
       'subtitle': 'Campus leadership and policy',
       'items': [
         {'name': 'Hemendra Yadav', 'role': 'President', 'image': 'assets/images/logo.jpeg'},
@@ -22,7 +22,7 @@ class CouncilsPage extends StatelessWidget {
     },
     {
       'title': 'Cultural Council',
-      'icon': Icons.palette,
+      'icon': 'assets/assets/images/cult_logo.jpeg',
       'subtitle': 'Arts, music, and performance',
       'items': [
         {'name': 'Kanishq Singhal', 'role': 'General Secretary', 'image': 'assets/images/logo.jpeg'},
@@ -33,7 +33,7 @@ class CouncilsPage extends StatelessWidget {
     },
     {
       'title': 'Science & Technology Council',
-      'icon': Icons.science,
+      'icon': 'assets/assets/images/tech_logo.jpg',
       'subtitle': 'Innovation and technical events',
       'items': [
         {'name': 'Tushar Agrawal', 'role': 'General Secretary', 'image': 'assets/images/logo.jpeg'},
@@ -44,7 +44,7 @@ class CouncilsPage extends StatelessWidget {
     },
     {
       'title': 'Sports Council',
-      'icon': Icons.sports_soccer,
+      'icon': 'assets/assets/images/sports_logo.jpg',
       'subtitle': 'Competitions and athletics',
       'items': [
         {'name': 'Arihant Bhura', 'role': 'General Secretary', 'image': 'assets/images/logo.jpeg'},
