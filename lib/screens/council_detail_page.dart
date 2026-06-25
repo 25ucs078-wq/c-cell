@@ -99,6 +99,76 @@ class CouncilDetailPage extends StatelessWidget {
                           );
                         },
                       ),
+                      if (councilName.toLowerCase() == 'cultural council') ...[
+                        const SizedBox(height: 30),
+                        Center(
+                          child: Wrap(
+                            spacing: 20,
+                            runSpacing: 16,
+                            alignment: WrapAlignment.center,
+                            children: [
+                              _buildActionButton(
+                                context: context,
+                                text: 'Clubs',
+                                icon: Icons.palette_outlined,
+                                route: '/cultural',
+                              ),
+                              _buildActionButton(
+                                context: context,
+                                text: 'Fest',
+                                icon: Icons.festival_outlined,
+                                route: '/vivacity',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ] else if (councilName.toLowerCase() == 'science & technology council') ...[
+                        const SizedBox(height: 30),
+                        Center(
+                          child: Wrap(
+                            spacing: 20,
+                            runSpacing: 16,
+                            alignment: WrapAlignment.center,
+                            children: [
+                              _buildActionButton(
+                                context: context,
+                                text: 'Clubs',
+                                icon: Icons.computer_outlined,
+                                route: '/science_tech',
+                              ),
+                              _buildActionButton(
+                                context: context,
+                                text: 'Fest',
+                                icon: Icons.festival_outlined,
+                                route: '/plinth',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ] else if (councilName.toLowerCase() == 'sports council') ...[
+                        const SizedBox(height: 30),
+                        Center(
+                          child: Wrap(
+                            spacing: 20,
+                            runSpacing: 16,
+                            alignment: WrapAlignment.center,
+                            children: [
+                              _buildActionButton(
+                                context: context,
+                                text: 'Clubs',
+                                icon: Icons.sports_basketball_outlined,
+                                route: '/sports',
+                              ),
+                              _buildActionButton(
+                                context: context,
+                                text: 'Fest',
+                                icon: Icons.festival_outlined,
+                                route: '/desportivos',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                       const SizedBox(height: 30),
                     ],
                   ),
@@ -250,6 +320,70 @@ class CouncilDetailPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildActionButton({
+    required BuildContext context,
+    required String text,
+    required IconData icon,
+    required String route,
+  }) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isMobile = screenWidth < 600;
+
+    return SizedBox(
+      width: isMobile ? 140 : 180,
+      height: isMobile ? 48 : 56,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.white,
+          shadowColor: Colors.transparent,
+          padding: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+            side: const BorderSide(color: Colors.redAccent, width: 1.5),
+          ),
+        ).copyWith(
+          elevation: WidgetStateProperty.all(0),
+        ),
+        onPressed: () {
+          Navigator.pushNamed(context, route);
+        },
+        child: Ink(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.redAccent.withValues(alpha: 0.1),
+                Colors.redAccent.withValues(alpha: 0.25),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Container(
+            alignment: Alignment.center,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(icon, color: Colors.white, size: isMobile ? 18 : 22),
+                const SizedBox(width: 8),
+                Text(
+                  text,
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontSize: isMobile ? 14 : 16,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 1.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
