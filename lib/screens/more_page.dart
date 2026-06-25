@@ -351,52 +351,30 @@ class MorePage extends StatelessWidget {
           border: Border.all(color: Colors.white12),
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             AspectRatio(
               aspectRatio: 1.0,
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: Color(0xFF262626),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
+              child: Hero(
+                tag: name,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(19),
+                    topRight: Radius.circular(19),
                   ),
-                ),
-                child: Center(
-                  child: Container(
-                    width: 140,
-                    height: 140,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.redAccent, width: 2.5),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.redAccent.withValues(alpha: 0.3),
-                          blurRadius: 12,
-                          spreadRadius: 2,
+                  child: Image.asset(
+                    image,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        color: Colors.grey[800],
+                        child: const Icon(
+                          Icons.person,
+                          color: Colors.white54,
+                          size: 50,
                         ),
-                      ],
-                    ),
-                    child: Hero(
-                      tag: name,
-                      child: ClipOval(
-                        child: Image.asset(
-                          image,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) {
-                            return Container(
-                              color: Colors.grey[800],
-                              child: const Icon(
-                                Icons.person,
-                                color: Colors.white54,
-                                size: 50,
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
+                      );
+                    },
                   ),
                 ),
               ),
