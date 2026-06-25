@@ -260,8 +260,8 @@ class CouncilsPage extends StatelessWidget {
                 ),
                 child: Center(
                   child: Container(
-                    width: 140,
-                    height: 140,
+                    width: 180,
+                    height: 180,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: const Color(0xFF1A1A1A),
@@ -283,7 +283,7 @@ class CouncilsPage extends StatelessWidget {
                             child: Icon(
                               Icons.group,
                               color: Colors.white,
-                              size: 56,
+                              size: 70,
                             ),
                           );
                         },

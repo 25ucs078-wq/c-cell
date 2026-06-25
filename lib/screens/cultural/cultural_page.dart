@@ -715,8 +715,8 @@ class CulturalPage extends StatelessWidget {
                 ),
                 child: Center(
                   child: Container(
-                    width: 140,
-                    height: 140,
+                    width: 180,
+                    height: 180,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(color: Colors.redAccent, width: 2.5),
@@ -738,7 +738,7 @@ class CulturalPage extends StatelessWidget {
                             child: const Icon(
                               Icons.image_not_supported,
                               color: Colors.white54,
-                              size: 40,
+                              size: 60,
                             ),
                           );
                         },

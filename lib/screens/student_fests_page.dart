@@ -242,8 +242,8 @@ class StudentFestsPage extends StatelessWidget {
                 ),
                 child: Center(
                   child: Container(
-                    width: 140,
-                    height: 140,
+                    width: 180,
+                    height: 180,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(color: Colors.redAccent, width: 2.5),
@@ -265,7 +265,7 @@ class StudentFestsPage extends StatelessWidget {
                             child: const Icon(
                               Icons.festival,
                               color: Colors.white54,
-                              size: 50,
+                              size: 70,
                             ),
                           );
                         },
