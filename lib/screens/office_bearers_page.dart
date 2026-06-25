@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class OfficeBearersPage extends StatelessWidget {
   const OfficeBearersPage({super.key});
@@ -9,11 +10,15 @@ class OfficeBearersPage extends StatelessWidget {
       "name": "Hemendra Yadav",
       "image": "assets/images/logo.jpeg",
       "role": "President",
+      "phone": "+919999999999",
+      "email": "president.sg@lnmiit.ac.in",
     },
     {
       "name": "Priyanshu Kumar",
       "image": "assets/images/logo.jpeg",
       "role": "Vice President",
+      "phone": "+918888888888",
+      "email": "vp.sg@lnmiit.ac.in",
     },
   ];
 
@@ -184,6 +189,8 @@ class OfficeBearersPage extends StatelessWidget {
     final String name = bearer['name']!;
     final String image = bearer['image']!;
     final String role = bearer['role']!;
+    final String phone = bearer['phone'] ?? '';
+    final String email = bearer['email'] ?? '';
 
     if (isMobile) {
       return Container(
@@ -248,6 +255,27 @@ class OfficeBearersPage extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(width: 8),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _buildContactButton(
+                    context: context,
+                    icon: Icons.phone,
+                    isEnabled: phone.isNotEmpty,
+                    tooltip: 'Call',
+                    onTap: () => _launchPhone(context, phone),
+                  ),
+                  const SizedBox(width: 4),
+                  _buildContactButton(
+                    context: context,
+                    icon: Icons.email,
+                    isEnabled: email.isNotEmpty,
+                    tooltip: 'Email',
+                    onTap: () => _launchEmail(context, email),
+                  ),
+                ],
               ),
             ],
           ),
@@ -316,11 +344,92 @@ class OfficeBearersPage extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
+                const SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    _buildContactButton(
+                      context: context,
+                      icon: Icons.phone,
+                      isEnabled: phone.isNotEmpty,
+                      tooltip: 'Call',
+                      onTap: () => _launchPhone(context, phone),
+                    ),
+                    const SizedBox(width: 8),
+                    _buildContactButton(
+                      context: context,
+                      icon: Icons.email,
+                      isEnabled: email.isNotEmpty,
+                      tooltip: 'Email',
+                      onTap: () => _launchEmail(context, email),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
         ],
       ),
     );
+  }
+
+  Widget _buildContactButton({
+    required BuildContext context,
+    required IconData icon,
+    required bool isEnabled,
+    required String tooltip,
+    required VoidCallback onTap,
+  }) {
+    return Tooltip(
+      message: tooltip,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(20),
+          onTap: isEnabled ? onTap : null,
+          child: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: isEnabled 
+                  ? Colors.redAccent.withValues(alpha: 0.1) 
+                  : Colors.white10,
+            ),
+            child: Icon(
+              icon,
+              size: 20,
+              color: isEnabled ? Colors.redAccent : Colors.white30,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _launchUrl(BuildContext context, Uri uri) async {
+    try {
+      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+        throw 'Could not launch $uri';
+      }
+    } catch (_) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Unable to open contact'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _launchPhone(BuildContext context, String phone) async {
+    final uri = Uri(scheme: 'tel', path: phone);
+    await _launchUrl(context, uri);
+  }
+
+  Future<void> _launchEmail(BuildContext context, String email) async {
+    final uri = Uri(scheme: 'mailto', path: email);
+    await _launchUrl(context, uri);
   }
 }

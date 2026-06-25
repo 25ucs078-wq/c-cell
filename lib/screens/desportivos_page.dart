@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DesportivosPage extends StatelessWidget {
   const DesportivosPage({super.key});
@@ -11,8 +12,8 @@ class DesportivosPage extends StatelessWidget {
   ];
 
   static const List<Map<String, String>> festHeads = [
-    {"name": "Abhas Chaudhary", "image": "assets/images/logo.jpeg", "role": "Fest Head"},
-    {"name": "Arnav Rinawa", "image": "assets/images/logo.jpeg", "role": "Fest Head"},
+    {"name": "Abhas Chaudhary", "image": "assets/images/logo.jpeg", "role": "Fest Head", "phone": "+919999999999", "email": "abhas@lnmiit.ac.in"},
+    {"name": "Arnav Rinawa", "image": "assets/images/logo.jpeg", "role": "Fest Head", "phone": "+918888888888", "email": "arnav@lnmiit.ac.in"},
   ];
 
   @override
@@ -92,7 +93,14 @@ class DesportivosPage extends StatelessWidget {
                             children: festHeads.map((p) {
                               return SizedBox(
                                 width: cardWidth,
-                                child: _buildCard(context, p['name']!, p['image']!, p['role']!),
+                                child: _buildCard(
+                                  context,
+                                  p['name']!,
+                                  p['image']!,
+                                  p['role']!,
+                                  p['phone'] ?? '',
+                                  p['email'] ?? '',
+                                ),
                               );
                             }).toList(),
                           );
@@ -143,7 +151,7 @@ class DesportivosPage extends StatelessWidget {
     );
   }
 
-  Widget _buildCard(BuildContext context, String name, String image, String role) {
+  Widget _buildCard(BuildContext context, String name, String image, String role, String phone, String email) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final bool isMobile = screenWidth < 600;
 
@@ -210,6 +218,27 @@ class DesportivosPage extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(width: 8),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _buildContactButton(
+                    context: context,
+                    icon: Icons.phone,
+                    isEnabled: phone.isNotEmpty,
+                    tooltip: 'Call',
+                    onTap: () => _launchPhone(context, phone),
+                  ),
+                  const SizedBox(width: 4),
+                  _buildContactButton(
+                    context: context,
+                    icon: Icons.email,
+                    isEnabled: email.isNotEmpty,
+                    tooltip: 'Email',
+                    onTap: () => _launchEmail(context, email),
+                  ),
+                ],
               ),
             ],
           ),
@@ -278,11 +307,92 @@ class DesportivosPage extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
+                const SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    _buildContactButton(
+                      context: context,
+                      icon: Icons.phone,
+                      isEnabled: phone.isNotEmpty,
+                      tooltip: 'Call',
+                      onTap: () => _launchPhone(context, phone),
+                    ),
+                    const SizedBox(width: 8),
+                    _buildContactButton(
+                      context: context,
+                      icon: Icons.email,
+                      isEnabled: email.isNotEmpty,
+                      tooltip: 'Email',
+                      onTap: () => _launchEmail(context, email),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
         ],
       ),
     );
+  }
+
+  Widget _buildContactButton({
+    required BuildContext context,
+    required IconData icon,
+    required bool isEnabled,
+    required String tooltip,
+    required VoidCallback onTap,
+  }) {
+    return Tooltip(
+      message: tooltip,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(20),
+          onTap: isEnabled ? onTap : null,
+          child: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: isEnabled 
+                  ? Colors.redAccent.withValues(alpha: 0.1) 
+                  : Colors.white10,
+            ),
+            child: Icon(
+              icon,
+              size: 20,
+              color: isEnabled ? Colors.redAccent : Colors.white30,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _launchUrl(BuildContext context, Uri uri) async {
+    try {
+      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+        throw 'Could not launch $uri';
+      }
+    } catch (_) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Unable to open contact'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _launchPhone(BuildContext context, String phone) async {
+    final uri = Uri(scheme: 'tel', path: phone);
+    await _launchUrl(context, uri);
+  }
+
+  Future<void> _launchEmail(BuildContext context, String email) async {
+    final uri = Uri(scheme: 'mailto', path: email);
+    await _launchUrl(context, uri);
   }
 }

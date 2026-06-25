@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MorePage extends StatelessWidget {
   const MorePage({super.key});
@@ -9,16 +10,22 @@ class MorePage extends StatelessWidget {
       "name": "Krishna Khairnar",
       "image": "assets/images/Krishna.jpeg",
       "role": "COORDINATOR",
+      "phone": "+919999999999",
+      "email": "krishna@lnmiit.ac.in",
     },
     {
       "name": "Harshita Jain",
       "image": "assets/images/Harshita.jpeg",
       "role": "COORDINATOR",
+      "phone": "+918888888888",
+      "email": "harshita@lnmiit.ac.in",
     },
     {
       "name": "Rahul Sanjay Mukhi",
       "image": "assets/images/Rahul.jpeg",
       "role": "COORDINATOR",
+      "phone": "+917777777777",
+      "email": "rahul@lnmiit.ac.in",
     },
   ];
 
@@ -27,31 +34,43 @@ class MorePage extends StatelessWidget {
       "name": "Nishra Kothari",
       "image": "assets/images/Nishra.jpeg",
       "role": "ASSOCIATE COORDINATOR",
+      "phone": "+916666666666",
+      "email": "nishra@lnmiit.ac.in",
     },
     {
       "name": "Shashwat Kanoongo",
       "image": "assets/images/Shashwat.jpeg",
       "role": "ASSOCIATE COORDINATOR",
+      "phone": "+915555555555",
+      "email": "shashwat@lnmiit.ac.in",
     },
     {
       "name": "Yug Nahar",
       "image": "assets/images/Yug.jpeg",
       "role": "ASSOCIATE COORDINATOR",
+      "phone": "+914444444444",
+      "email": "yug@lnmiit.ac.in",
     },
     {
       "name": "Krishangee Tayal",
       "image": "assets/images/Krishangee.jpeg",
       "role": "ASSOCIATE COORDINATOR",
+      "phone": "+913333333333",
+      "email": "krishangee@lnmiit.ac.in",
     },
     {
       "name": "Parth Arora",
       "image": "assets/images/Parth.jpeg",
       "role": "ASSOCIATE COORDINATOR",
+      "phone": "+912222222222",
+      "email": "parth@lnmiit.ac.in",
     },
     {
       "name": "Plaksha Gulati",
       "image": "assets/images/Plaksha.jpeg",
       "role": "ASSOCIATE COORDINATOR",
+      "phone": "+911111111111",
+      "email": "plaksha@lnmiit.ac.in",
     },
   ];
 
@@ -60,11 +79,15 @@ class MorePage extends StatelessWidget {
       "name": "Harsh Kumar",
       "image": "assets/images/harsh.jpeg",
       "role": "DEVELOPER",
+      "phone": "+919999999999",
+      "email": "harsh@lnmiit.ac.in",
     },
     {
       "name": "Kunal Agarwal",
       "image": "assets/images/Kunal.jpeg",
       "role": "DEVELOPER",
+      "phone": "+918888888888",
+      "email": "kunal@lnmiit.ac.in",
     },
   ];
 
@@ -243,6 +266,8 @@ class MorePage extends StatelessWidget {
     final String name = person['name']!;
     final String image = person['image']!;
     final String role = person['role']!;
+    final String phone = person['phone'] ?? '';
+    final String email = person['email'] ?? '';
 
     if (isMobile) {
       return GestureDetector(
@@ -322,6 +347,27 @@ class MorePage extends StatelessWidget {
                       ),
                     ],
                   ),
+                ),
+                const SizedBox(width: 8),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _buildContactButton(
+                      context: context,
+                      icon: Icons.phone,
+                      isEnabled: phone.isNotEmpty,
+                      tooltip: 'Call',
+                      onTap: () => _launchPhone(context, phone),
+                    ),
+                    const SizedBox(width: 4),
+                    _buildContactButton(
+                      context: context,
+                      icon: Icons.email,
+                      isEnabled: email.isNotEmpty,
+                      tooltip: 'Email',
+                      onTap: () => _launchEmail(context, email),
+                    ),
+                  ],
                 ),
                 const SizedBox(width: 8),
                 const Icon(
@@ -405,6 +451,27 @@ class MorePage extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
+                  const SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      _buildContactButton(
+                        context: context,
+                        icon: Icons.phone,
+                        isEnabled: phone.isNotEmpty,
+                        tooltip: 'Call',
+                        onTap: () => _launchPhone(context, phone),
+                      ),
+                      const SizedBox(width: 8),
+                      _buildContactButton(
+                        context: context,
+                        icon: Icons.email,
+                        isEnabled: email.isNotEmpty,
+                        tooltip: 'Email',
+                        onTap: () => _launchEmail(context, email),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 20),
                   SizedBox(
                     width: double.infinity,
@@ -440,5 +507,65 @@ class MorePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildContactButton({
+    required BuildContext context,
+    required IconData icon,
+    required bool isEnabled,
+    required String tooltip,
+    required VoidCallback onTap,
+  }) {
+    return Tooltip(
+      message: tooltip,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(20),
+          onTap: isEnabled ? onTap : null,
+          child: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: isEnabled 
+                  ? Colors.redAccent.withValues(alpha: 0.1) 
+                  : Colors.white10,
+            ),
+            child: Icon(
+              icon,
+              size: 20,
+              color: isEnabled ? Colors.redAccent : Colors.white30,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _launchUrl(BuildContext context, Uri uri) async {
+    try {
+      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+        throw 'Could not launch $uri';
+      }
+    } catch (_) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Unable to open contact'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _launchPhone(BuildContext context, String phone) async {
+    final uri = Uri(scheme: 'tel', path: phone);
+    await _launchUrl(context, uri);
+  }
+
+  Future<void> _launchEmail(BuildContext context, String email) async {
+    final uri = Uri(scheme: 'mailto', path: email);
+    await _launchUrl(context, uri);
   }
 }
