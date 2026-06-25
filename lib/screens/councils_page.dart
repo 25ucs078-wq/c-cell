@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../widgets/glass_card.dart';
 
 class CouncilsPage extends StatelessWidget {
   const CouncilsPage({super.key});
@@ -154,83 +155,77 @@ class CouncilsPage extends StatelessWidget {
       // Sleek horizontal list card for mobile app
       return GestureDetector(
         onTap: onCardTap,
-        child: Container(
-          decoration: BoxDecoration(
-            color: const Color(0xFF1A1A1A),
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.white12),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: Row(
-              children: [
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: const Color(0xFF1A1A1A),
-                    border: Border.all(color: Colors.redAccent, width: 2),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.redAccent.withValues(alpha: 0.2),
-                        blurRadius: 8,
-                        spreadRadius: 1,
-                      ),
-                    ],
-                  ),
-                  child: ClipOval(
-                    child: Image.asset(
-                      icon,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return const Center(
-                          child: Icon(
-                            Icons.group,
-                            color: Colors.white,
-                            size: 28,
-                          ),
-                        );
-                      },
+        child: GlassCard(
+          borderRadius: BorderRadius.circular(16),
+          padding: const EdgeInsets.all(12),
+          child: Row(
+            children: [
+              Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: const Color(0xFF1A1A1A),
+                  border: Border.all(color: Colors.redAccent, width: 2),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.redAccent.withValues(alpha: 0.2),
+                      blurRadius: 8,
+                      spreadRadius: 1,
                     ),
-                  ),
+                  ],
                 ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        title,
-                        style: GoogleFonts.playfairDisplay(
+                child: ClipOval(
+                  child: Image.asset(
+                    icon,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Center(
+                        child: Icon(
+                          Icons.group,
                           color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          size: 28,
                         ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        subtitle,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.poppins(
-                          color: Colors.white70,
-                          fontSize: 12,
-                          height: 1.4,
-                        ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
                 ),
-                const SizedBox(width: 8),
-                const Icon(
-                  Icons.arrow_forward_ios,
-                  color: Colors.redAccent,
-                  size: 16,
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      title,
+                      style: GoogleFonts.playfairDisplay(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      subtitle,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.poppins(
+                        color: Colors.white70,
+                        fontSize: 12,
+                        height: 1.4,
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(width: 8),
+              const Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.redAccent,
+                size: 16,
+              ),
+            ],
           ),
         ),
       );
@@ -239,12 +234,8 @@ class CouncilsPage extends StatelessWidget {
     // Original vertical layout for desktop/web
     return GestureDetector(
       onTap: onCardTap,
-      child: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFF1A1A1A),
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: Colors.white12),
-        ),
+      child: GlassCard(
+        borderRadius: BorderRadius.circular(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -252,7 +243,7 @@ class CouncilsPage extends StatelessWidget {
               aspectRatio: 1.0,
               child: Container(
                 decoration: const BoxDecoration(
-                  color: Color(0xFF262626),
+                  color: Colors.white10,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20),

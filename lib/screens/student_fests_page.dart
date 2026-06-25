@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../widgets/glass_card.dart';
 
 class StudentFestsPage extends StatelessWidget {
   const StudentFestsPage({super.key});
@@ -139,81 +140,75 @@ class StudentFestsPage extends StatelessWidget {
     if (isMobile) {
       return GestureDetector(
         onTap: () => _navigateToFest(context, name),
-        child: Container(
-          decoration: BoxDecoration(
-            color: const Color(0xFF1A1A1A),
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.white12),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: Row(
-              children: [
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.redAccent, width: 2),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.redAccent.withValues(alpha: 0.2),
-                        blurRadius: 8,
-                        spreadRadius: 1,
-                      ),
-                    ],
-                  ),
-                  child: ClipOval(
-                    child: Image.asset(
-                      image,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Container(
-                          color: Colors.grey[800],
-                          child: const Icon(
-                            Icons.festival,
-                            color: Colors.white54,
-                            size: 24,
-                          ),
-                        );
-                      },
+        child: GlassCard(
+          borderRadius: BorderRadius.circular(16),
+          padding: const EdgeInsets.all(12),
+          child: Row(
+            children: [
+              Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.redAccent, width: 2),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.redAccent.withValues(alpha: 0.2),
+                      blurRadius: 8,
+                      spreadRadius: 1,
                     ),
+                  ],
+                ),
+                child: ClipOval(
+                  child: Image.asset(
+                    image,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        color: Colors.grey[800],
+                        child: const Icon(
+                          Icons.festival,
+                          color: Colors.white54,
+                          size: 24,
+                        ),
+                      );
+                    },
                   ),
                 ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        name,
-                        style: GoogleFonts.playfairDisplay(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      name,
+                      style: GoogleFonts.playfairDisplay(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        role,
-                        style: GoogleFonts.poppins(
-                          color: Colors.redAccent,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                        ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      role,
+                      style: GoogleFonts.poppins(
+                        color: Colors.redAccent,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 8),
-                const Icon(
-                  Icons.arrow_forward_ios,
-                  color: Colors.redAccent,
-                  size: 16,
-                ),
-              ],
-            ),
+              ),
+              const SizedBox(width: 8),
+              const Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.redAccent,
+                size: 16,
+              ),
+            ],
           ),
         ),
       );
@@ -221,12 +216,8 @@ class StudentFestsPage extends StatelessWidget {
 
     return GestureDetector(
       onTap: () => _navigateToFest(context, name),
-      child: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFF1A1A1A),
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: Colors.white12),
-        ),
+      child: GlassCard(
+        borderRadius: BorderRadius.circular(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -234,7 +225,7 @@ class StudentFestsPage extends StatelessWidget {
               aspectRatio: 1.0,
               child: Container(
                 decoration: const BoxDecoration(
-                  color: Color(0xFF262626),
+                  color: Colors.white10,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20),

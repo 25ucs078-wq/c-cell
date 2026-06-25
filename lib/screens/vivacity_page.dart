@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../widgets/glass_card.dart';
 
 class VivacityPage extends StatelessWidget {
   const VivacityPage({super.key});
@@ -156,102 +157,92 @@ class VivacityPage extends StatelessWidget {
     final bool isMobile = screenWidth < 600;
 
     if (isMobile) {
-      return Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFF1A1A1A),
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: Colors.white12),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: Row(
-            children: [
-              Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.redAccent, width: 2),
-                ),
-                child: Hero(
-                  tag: name,
-                  child: ClipOval(
-                    child: Image.asset(
-                      image,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Container(
-                          color: Colors.grey[800],
-                          child: const Icon(
-                            Icons.person,
-                            color: Colors.white54,
-                            size: 24,
-                          ),
-                        );
-                      },
-                    ),
+      return GlassCard(
+        borderRadius: BorderRadius.circular(16),
+        padding: const EdgeInsets.all(12),
+        child: Row(
+          children: [
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.redAccent, width: 2),
+              ),
+              child: Hero(
+                tag: name,
+                child: ClipOval(
+                  child: Image.asset(
+                    image,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        color: Colors.grey[800],
+                        child: const Icon(
+                          Icons.person,
+                          color: Colors.white54,
+                          size: 24,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      name,
-                      style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      role,
-                      style: GoogleFonts.poppins(
-                        color: Colors.redAccent,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 8),
-              Row(
+            ),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  _buildContactButton(
-                    context: context,
-                    icon: Icons.phone,
-                    isEnabled: phone.isNotEmpty,
-                    tooltip: 'Call',
-                    onTap: () => _launchPhone(context, phone),
+                  Text(
+                    name,
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                  const SizedBox(width: 4),
-                  _buildContactButton(
-                    context: context,
-                    icon: Icons.email,
-                    isEnabled: email.isNotEmpty,
-                    tooltip: 'Email',
-                    onTap: () => _launchEmail(context, email),
+                  const SizedBox(height: 2),
+                  Text(
+                    role,
+                    style: GoogleFonts.poppins(
+                      color: Colors.redAccent,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+            const SizedBox(width: 8),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _buildContactButton(
+                  context: context,
+                  icon: Icons.phone,
+                  isEnabled: phone.isNotEmpty,
+                  tooltip: 'Call',
+                  onTap: () => _launchPhone(context, phone),
+                ),
+                const SizedBox(width: 4),
+                _buildContactButton(
+                  context: context,
+                  icon: Icons.email,
+                  isEnabled: email.isNotEmpty,
+                  tooltip: 'Email',
+                  onTap: () => _launchEmail(context, email),
+                ),
+              ],
+            ),
+          ],
         ),
       );
     }
 
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color(0xFF1A1A1A),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white12),
-      ),
+    return GlassCard(
+      borderRadius: BorderRadius.circular(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
