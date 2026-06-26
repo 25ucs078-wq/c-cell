@@ -12,28 +12,28 @@ class CulturalPage extends StatelessWidget {
           'name': 'Aditya Agarwal',
           'role': 'Coordinator',
           'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
-          'phone': '+919999999999',
+          'phone': '+919999999999', // number not updated
           'email': '24ucs220@lnmiit.ac.in',
         },
         {
           'name': 'Shourya Kavadia',
           'role': 'Coordinator',
           'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
-          'phone': '+918888888888',
+          'phone': '+918888888888', // number not updated
           'email': '24ucc064@lnmiit.ac.in',
         },
         {
           'name': 'Tanuj Tulsyan',
           'role': 'Coordinator',
           'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
-          'phone': '+917777777777',
+          'phone': '+917777777777', // number not updated
           'email': '24ucc169@lnmiit.ac.in',
         },
         {
           'name': 'Yash Gupta',
           'role': 'Coordinator',
           'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
-          'phone': '+916666666666',
+          'phone': '+916666666666', // number not updated
           'email': '24ucc099@lnmiit.ac.in',
         },
       ];
@@ -78,14 +78,14 @@ class CulturalPage extends StatelessWidget {
           'name': 'Avesh Khan',
           'role': 'Coordinator',
           'image': 'assets/assets/images/cultural/eminence/eminence_logo.jpg', // Replace with their actual photo path
-          'phone': '+919999999999',
+          'phone': '+919999999999', // number not updated
           'email': '24ucs127@lnmiit.ac.in',
         },
         {
           'name': 'Kushagra',
           'role': 'Coordinator',
           'image': 'assets/assets/images/cultural/eminence/eminence_logo.jpg', // Replace with their actual photo path
-          'phone': '+919265774219',
+          'phone': '+919265774219', // recheck once
           'email': '24ucs087@lnmiit.ac.in',
         },
       ];
@@ -156,22 +156,22 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Ananya Surana',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg',
-          'phone': '+919999999999',
+          'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg', // not updated
+          'phone': '+919999999999', // not updated
           'email': '24ucc090@lnmiit.ac.in',
         },
         {
           'name': 'Kavin Goyal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg',
-          'phone': '+918888888888',
+          'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg', // not updated
+          'phone': '+918888888888', // not updated
           'email': '24dcs010@lnmiit.ac.in',
         },
         {
           'name': 'Shivansh Singh',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg',
-          'phone': '+917777777777',
+          'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg', // not updated
+          'phone': '+917777777777', // not updated
           'email': '24dec049@lnmiit.ac.in',
         },
       ];
@@ -183,7 +183,7 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Armaan Jain',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/lc/lc_logo.jpg',
+          'image': 'assets/assets/images/cultural/lc/armaan.png',
           'phone': '+919509915121',
           'email': '24ucc192@lnmiit.ac.in',
         },
@@ -197,7 +197,7 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Parth Chaturvedi',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/lc/lc_logo.jpg',
+          'image': 'assets/assets/images/cultural/lc/parth.jpeg',
           'phone': '+918949699205',
           'email': '24ucc160@lnmiit.ac.in',
         },
@@ -236,7 +236,7 @@ class CulturalPage extends StatelessWidget {
           'email': '24ucs008@lnmiit.ac.in',
         },
         {
-          'name': 'Vedha Meghashyam Sinkar',
+          'name': 'Vedha Sinkar',
           'role': 'Coordinator',
           'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg', // Replace with their actual photo path
           'phone': '+919588483298',
@@ -700,6 +700,8 @@ class CulturalPage extends StatelessWidget {
       ),
     );
     final List<String> galleryImages = List<String>.from(club['gallery'] as List);
+    final String clubInstagram = club['instagram'] as String? ?? 'https://instagram.com/${clubName.toLowerCase().replaceAll(' ', '').replaceAll('-', '')}_lnmiit';
+    final String clubEmail = club['email'] as String? ?? '${clubName.toLowerCase().replaceAll(' ', '').replaceAll('-', '')}@lnmiit.ac.in';
 
     void onCardTap() {
       Navigator.pushNamed(
@@ -711,6 +713,8 @@ class CulturalPage extends StatelessWidget {
           'coordinators': coordinators,
           'galleryImages': galleryImages,
           'description': clubDescription,
+          'instagram': clubInstagram,
+          'email': clubEmail,
         },
       );
     }

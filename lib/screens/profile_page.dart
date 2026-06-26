@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfilePage extends StatelessWidget {
   final String name;
   final String image;
   final String role;
+  final String phone;
+  final String email;
+  final String instagram;
+  final String linkedin;
 
   const ProfilePage({
     super.key,
     required this.name,
     required this.image,
     required this.role,
+    this.phone = '',
+    this.email = '',
+    this.instagram = '',
+    this.linkedin = '',
   });
 
   @override
@@ -185,7 +194,7 @@ class ProfilePage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(16),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: phone.isNotEmpty ? () => _launchPhone(context, phone) : null,
                             icon: const Icon(
                               Icons.phone,
                               color: Colors.white,
@@ -220,7 +229,7 @@ class ProfilePage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(16),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: email.isNotEmpty ? () => _launchEmail(context, email) : null,
                             icon: const Icon(
                               Icons.email,
                               color: Colors.white,
@@ -238,6 +247,31 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ],
                   ),
+                  if (instagram.isNotEmpty || linkedin.isNotEmpty) ...[
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        if (instagram.isNotEmpty)
+                          _buildSocialButton(
+                            context: context,
+                            icon: Icons.camera_alt,
+                            label: "Instagram",
+                            color: const Color(0xFFE1306C),
+                            onTap: () => _launchWebUrl(context, instagram),
+                          ),
+                        if (instagram.isNotEmpty && linkedin.isNotEmpty)
+                          const SizedBox(width: 16),
+                        if (linkedin.isNotEmpty)
+                          _buildSocialButton(
+                            context: context,
+                            icon: Icons.link,
+                            label: "LinkedIn",
+                            color: const Color(0xFF0077B5),
+                            onTap: () => _launchWebUrl(context, linkedin),
+                          ),
+                      ],
+                    ),
+                  ],
                   const SizedBox(height: 20),
                 ],
               ),
@@ -246,5 +280,85 @@ class ProfilePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildSocialButton({
+    required BuildContext context,
+    required IconData icon,
+    required String label,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isMobile = screenWidth < 600;
+
+    return Expanded(
+      child: Container(
+        height: 55,
+        decoration: BoxDecoration(
+          color: color.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: color.withValues(alpha: 0.3),
+            width: 1,
+          ),
+        ),
+        child: ElevatedButton.icon(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+          ),
+          onPressed: onTap,
+          icon: Icon(
+            icon,
+            color: color,
+            size: 20,
+          ),
+          label: Text(
+            label.toUpperCase(),
+            style: GoogleFonts.playfairDisplay(
+              color: Colors.white,
+              fontSize: isMobile ? 14 : 16,
+              letterSpacing: 1.2,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _launchUrl(BuildContext context, Uri uri) async {
+    try {
+      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+        throw 'Could not launch $uri';
+      }
+    } catch (_) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Unable to open link'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _launchPhone(BuildContext context, String phone) async {
+    final uri = Uri(scheme: 'tel', path: phone);
+    await _launchUrl(context, uri);
+  }
+
+  Future<void> _launchEmail(BuildContext context, String email) async {
+    final uri = Uri(scheme: 'mailto', path: email);
+    await _launchUrl(context, uri);
+  }
+
+  Future<void> _launchWebUrl(BuildContext context, String urlString) async {
+    final uri = Uri.parse(urlString);
+    await _launchUrl(context, uri);
   }
 }

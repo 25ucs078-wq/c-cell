@@ -8,14 +8,15 @@ class PlinthPage extends StatelessWidget {
   const PlinthPage({super.key});
 
   static const List<String> galleryImages = [
+    // same as desportivos gallery not updated
     "assets/images/poster.jpeg",
     "assets/images/hero_new.jpeg",
     "assets/images/team_poster.jpeg",
   ];
 
   static const List<Map<String, String>> festHeads = [
-    {"name": "Akshansh Singh", "image": "assets/images/logo.jpeg", "role": "Fest Head", "phone": "+919999999999", "email": "akshansh@lnmiit.ac.in"},
-    {"name": "Jayant Singhal", "image": "assets/images/logo.jpeg", "role": "Fest Head", "phone": "+918888888888", "email": "jayant@lnmiit.ac.in"},
+    {"name": "Akshansh Singh", "image": "assets/images/logo.jpeg", "role": "Fest Head", "phone": "+919999999999", "email": "plinth@lnmiit.ac.in"}, // image, phone number not added
+    {"name": "Jayant Singhal", "image": "assets/images/logo.jpeg", "role": "Fest Head", "phone": "+918888888888", "email": "plinth@lnmiit.ac.in"}, // image, phone number not added
   ];
 
   @override
@@ -128,6 +129,34 @@ class PlinthPage extends StatelessWidget {
                             return _buildGalleryImage(context, galleryImages, index);
                           },
                         ),
+                      ),
+                      const SizedBox(height: 24),
+                      Row(
+                        children: [
+                          _buildFestSocialButton(
+                            context: context,
+                            icon: Icons.camera_alt,
+                            label: "Instagram",
+                            color: const Color(0xFFE1306C),
+                            url: "https://www.instagram.com/plinth.lnmiit/",
+                          ),
+                          const SizedBox(width: 12),
+                          _buildFestSocialButton(
+                            context: context,
+                            icon: Icons.play_circle_filled,
+                            label: "YouTube",
+                            color: const Color(0xFFFF0000),
+                            url: "https://www.youtube.com/@plinthlnmiit",
+                          ),
+                          const SizedBox(width: 12),
+                          _buildFestSocialButton(
+                            context: context,
+                            icon: Icons.language,
+                            label: "Website",
+                            color: Colors.blueAccent,
+                            url: "https://plinth.lnmiit.ac.in/",
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 30),
                     ],
@@ -405,5 +434,71 @@ class PlinthPage extends StatelessWidget {
   Future<void> _launchEmail(BuildContext context, String email) async {
     final uri = Uri(scheme: 'mailto', path: email);
     await _launchUrl(context, uri);
+  }
+
+  Widget _buildFestSocialButton({
+    required BuildContext context,
+    required IconData icon,
+    required String label,
+    required Color color,
+    required String url,
+  }) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isMobile = screenWidth < 600;
+
+    return Expanded(
+      child: Container(
+        height: 50,
+        decoration: BoxDecoration(
+          color: color.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: color.withValues(alpha: 0.3),
+            width: 1,
+          ),
+        ),
+        child: ElevatedButton.icon(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+          ),
+          onPressed: () => _launchWebUrl(context, url),
+          icon: Icon(
+            icon,
+            color: color,
+            size: isMobile ? 16 : 20,
+          ),
+          label: Text(
+            label.toUpperCase(),
+            style: GoogleFonts.playfairDisplay(
+              color: Colors.white,
+              fontSize: isMobile ? 10 : 14,
+              letterSpacing: 1.0,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _launchWebUrl(BuildContext context, String urlString) async {
+    final uri = Uri.parse(urlString);
+    try {
+      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+        throw 'Could not launch $uri';
+      }
+    } catch (_) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Unable to open link'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    }
   }
 }

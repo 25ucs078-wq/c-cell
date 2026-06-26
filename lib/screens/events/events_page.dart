@@ -10,39 +10,44 @@ class EventsPage extends StatelessWidget {
       'name': 'TEDx LNMIIT',
       'logo': 'assets/assets/images/ted/ted_logo.jpg',
       'image': 'assets/assets/images/ted/ted_logo.jpg',
-      'subtitle': 'Ideas Worth Spreading',
+      'subtitle': 'Forging The Future',
       'description': 'TEDxLNMIIT is an independently organized event that brings together thinkers, innovators, and doers to share inspiring ideas and spark meaningful conversations under the global TED banner.',
+      'instagram': 'https://www.instagram.com/tedxlnmiit/',
+      'email': 'tedx@lnmiit.ac.in',
+      'youtube': 'https://www.youtube.com/@tedxlnmiit',
+      'website': 'https://tedx.lnmiit.ac.in/',
       'coordinators': [
         {
           'name': 'Pranav Vashisth',
           'role': 'Organizer',
-          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg',
+          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg', // photo not added yet
           'phone': '+918445681853',
           'email': '24ucs126@lnmiit.ac.in',
         },
         {
           'name': 'Praneel Dev',
           'role': 'Organizer',
-          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg',
+          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg', // photo not added yet
           'phone': '+918955352024',
           'email': '24ucs202@lnmiit.ac.in',
         },
         {
           'name': 'Samar Goyal',
-          'role': 'Organizer',
-          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg',
+          'role': 'Organizer', 
+          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg', // photo not added yet
           'phone': '+917300458010',
           'email': '24ucs008@lnmiit.ac.in',
         },
         {
           'name': 'Vedha Meghashyam Sinkar',
           'role': 'Organizer',
-          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg',
+          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg', // photo not added yet
           'phone': '+919588483298',
           'email': '24ume011@lnmiit.ac.in',
         },
       ],
       'gallery': [
+        //galeery has old pics of last year so replace with new ones
         'assets/assets/images/ted/ted1.jpg',
         'assets/assets/images/ted/ted2.jpg',
         'assets/assets/images/ted/ted3.jpg',
@@ -54,8 +59,9 @@ class EventsPage extends StatelessWidget {
       'name': 'E-Summit',
       'logo': 'assets/assets/images/esummit/esummit_logo.jpg',
       'image': 'assets/assets/images/esummit/esummit_logo.jpg',
-      'subtitle': 'The Entrepreneurial Spirit of LNMIIT',
+      'subtitle': 'Promoting Innovation and Startup Culture',
       'description': 'E-Summit is the annual flagship entrepreneurship summit of LNMIIT. It serves as a platform to inspire and empower the next generation of startup founders, showcasing innovations, business pitch fests, and expert panel talks.',
+      'instagram': 'https://www.instagram.com/esummit_lnmiit/',
       'coordinators': [
         {
           'name': 'Ayush Agarwal',
@@ -87,6 +93,7 @@ class EventsPage extends StatelessWidget {
         },
       ],
       'gallery': [
+        //same as ted replace with new ones
         'assets/assets/images/esummit/esummit1.jpg',
         'assets/assets/images/esummit/esummit2.jpg',
         'assets/assets/images/esummit/esummit3.jpg',
@@ -200,6 +207,10 @@ class EventsPage extends StatelessWidget {
       ),
     );
     final List<String> galleryImages = List<String>.from(event['gallery'] as List);
+    final String instagram = event['instagram'] as String? ?? '';
+    final String email = event['email'] as String? ?? '';
+    final String youtube = event['youtube'] as String? ?? '';
+    final String website = event['website'] as String? ?? '';
 
     void onCardTap() {
       Navigator.pushNamed(
@@ -211,6 +222,10 @@ class EventsPage extends StatelessWidget {
           'coordinators': coordinators,
           'galleryImages': galleryImages,
           'description': description,
+          'instagram': instagram,
+          'email': email,
+          'youtube': youtube,
+          'website': website,
         },
       );
     }

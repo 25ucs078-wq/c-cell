@@ -10,6 +10,8 @@ class CulturalClubDetailPage extends StatelessWidget {
   final List<Map<String, String>> coordinators;
   final List<String> galleryImages;
   final String description;
+  final String instagram;
+  final String email;
 
   const CulturalClubDetailPage({
     super.key,
@@ -18,6 +20,8 @@ class CulturalClubDetailPage extends StatelessWidget {
     required this.coordinators,
     required this.galleryImages,
     required this.description,
+    this.instagram = '',
+    this.email = '',
   });
 
   @override
@@ -150,6 +154,31 @@ class CulturalClubDetailPage extends StatelessWidget {
                       },
                     ),
                   ),
+                  if (instagram.isNotEmpty || email.isNotEmpty) ...[
+                    const SizedBox(height: 24),
+                    Row(
+                      children: [
+                        if (instagram.isNotEmpty)
+                          _buildClubSocialButton(
+                            context: context,
+                            icon: Icons.camera_alt,
+                            label: "Instagram",
+                            color: const Color(0xFFE1306C),
+                            onTap: () => _launchWebUrl(context, instagram),
+                          ),
+                        if (instagram.isNotEmpty && email.isNotEmpty)
+                          const SizedBox(width: 16),
+                        if (email.isNotEmpty)
+                          _buildClubSocialButton(
+                            context: context,
+                            icon: Icons.email,
+                            label: "Email",
+                            color: Colors.redAccent,
+                            onTap: () => _launchEmail(context, email),
+                          ),
+                      ],
+                    ),
+                  ],
                   const SizedBox(height: 30),
                 ],
               ),
@@ -429,5 +458,71 @@ class CulturalClubDetailPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildClubSocialButton({
+    required BuildContext context,
+    required IconData icon,
+    required String label,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isMobile = screenWidth < 600;
+
+    return Expanded(
+      child: Container(
+        height: 50,
+        decoration: BoxDecoration(
+          color: color.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: color.withValues(alpha: 0.3),
+            width: 1,
+          ),
+        ),
+        child: ElevatedButton.icon(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+          ),
+          onPressed: onTap,
+          icon: Icon(
+            icon,
+            color: color,
+            size: 20,
+          ),
+          label: Text(
+            label.toUpperCase(),
+            style: GoogleFonts.playfairDisplay(
+              color: Colors.white,
+              fontSize: isMobile ? 14 : 16,
+              letterSpacing: 1.2,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _launchWebUrl(BuildContext context, String urlString) async {
+    final uri = Uri.parse(urlString);
+    try {
+      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+        throw 'Could not launch $uri';
+      }
+    } catch (_) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Unable to open link'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    }
   }
 }

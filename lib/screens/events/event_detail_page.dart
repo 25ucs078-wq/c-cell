@@ -10,6 +10,10 @@ class EventDetailPage extends StatelessWidget {
   final List<Map<String, String>> coordinators;
   final List<String> galleryImages;
   final String description;
+  final String instagram;
+  final String email;
+  final String youtube;
+  final String website;
 
   const EventDetailPage({
     super.key,
@@ -18,6 +22,10 @@ class EventDetailPage extends StatelessWidget {
     required this.coordinators,
     required this.galleryImages,
     required this.description,
+    this.instagram = '',
+    this.email = '',
+    this.youtube = '',
+    this.website = '',
   });
 
   @override
@@ -150,6 +158,48 @@ class EventDetailPage extends StatelessWidget {
                       },
                     ),
                   ),
+                  if (instagram.isNotEmpty || email.isNotEmpty || youtube.isNotEmpty || website.isNotEmpty) ...[
+                    const SizedBox(height: 24),
+                    Wrap(
+                      spacing: 12,
+                      runSpacing: 12,
+                      alignment: WrapAlignment.start,
+                      children: [
+                        if (instagram.isNotEmpty)
+                          _buildEventSocialButton(
+                            context: context,
+                            icon: Icons.camera_alt,
+                            label: "Instagram",
+                            color: const Color(0xFFE1306C),
+                            onTap: () => _launchWebUrl(context, instagram),
+                          ),
+                        if (email.isNotEmpty)
+                          _buildEventSocialButton(
+                            context: context,
+                            icon: Icons.email,
+                            label: "Email",
+                            color: Colors.redAccent,
+                            onTap: () => _launchEmail(context, email),
+                          ),
+                        if (youtube.isNotEmpty)
+                          _buildEventSocialButton(
+                            context: context,
+                            icon: Icons.play_circle_filled,
+                            label: "YouTube",
+                            color: const Color(0xFFFF0000),
+                            onTap: () => _launchWebUrl(context, youtube),
+                          ),
+                        if (website.isNotEmpty)
+                          _buildEventSocialButton(
+                            context: context,
+                            icon: Icons.language,
+                            label: "Website",
+                            color: Colors.blueAccent,
+                            onTap: () => _launchWebUrl(context, website),
+                          ),
+                      ],
+                    ),
+                  ],
                   const SizedBox(height: 30),
                 ],
               ),
@@ -428,5 +478,73 @@ class EventDetailPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildEventSocialButton({
+    required BuildContext context,
+    required IconData icon,
+    required String label,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isMobile = screenWidth < 600;
+
+    return Container(
+      height: 48,
+      constraints: BoxConstraints(
+        minWidth: isMobile ? 100 : 140,
+      ),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+          color: color.withValues(alpha: 0.3),
+          width: 1,
+        ),
+      ),
+      child: ElevatedButton.icon(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+          ),
+        ),
+        onPressed: onTap,
+        icon: Icon(
+          icon,
+          color: color,
+          size: 18,
+        ),
+        label: Text(
+          label.toUpperCase(),
+          style: GoogleFonts.playfairDisplay(
+            color: Colors.white,
+            fontSize: isMobile ? 12 : 14,
+            letterSpacing: 1.0,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _launchWebUrl(BuildContext context, String urlString) async {
+    final uri = Uri.parse(urlString);
+    try {
+      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+        throw 'Could not launch $uri';
+      }
+    } catch (_) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Unable to open link'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    }
   }
 }

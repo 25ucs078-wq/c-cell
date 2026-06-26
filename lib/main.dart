@@ -78,6 +78,10 @@ class MyApp extends StatelessWidget {
               name: args['name']!,
               image: args['image']!,
               role: args['role']!,
+              phone: args['phone'] ?? '',
+              email: args['email'] ?? '',
+              instagram: args['instagram'] ?? '',
+              linkedin: args['linkedin'] ?? '',
             );
             break;
           case '/science_tech_detail':
@@ -88,6 +92,8 @@ class MyApp extends StatelessWidget {
               coordinators: args['coordinators']!,
               galleryImages: args['galleryImages']!,
               description: args['description']!,
+              instagram: args['instagram'] ?? '',
+              email: args['email'] ?? '',
             );
             break;
           case '/sports_detail':
@@ -98,6 +104,8 @@ class MyApp extends StatelessWidget {
               coordinators: args['coordinators']!,
               galleryImages: args['galleryImages']!,
               description: args['description']!,
+              instagram: args['instagram'] ?? '',
+              email: args['email'] ?? '',
             );
             break;
           case '/cultural_detail':
@@ -108,6 +116,8 @@ class MyApp extends StatelessWidget {
               coordinators: args['coordinators']!,
               galleryImages: args['galleryImages']!,
               description: args['description']!,
+              instagram: args['instagram'] ?? '',
+              email: args['email'] ?? '',
             );
             break;
           case '/council_detail':
@@ -128,6 +138,10 @@ class MyApp extends StatelessWidget {
               coordinators: args['coordinators']!,
               galleryImages: args['galleryImages']!,
               description: args['description']!,
+              instagram: args['instagram'] ?? '',
+              email: args['email'] ?? '',
+              youtube: args['youtube'] ?? '',
+              website: args['website'] ?? '',
             );
             break;
           default:

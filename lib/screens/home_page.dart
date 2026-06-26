@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:video_player/video_player.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,6 +24,7 @@ class _HomePageState extends State<HomePage> {
 
   late final ScrollController _scrollController;
   double _scrollOpacity = 0.0;
+  VideoPlayerController? _videoController;
 
   @override
   void initState() {
@@ -37,11 +39,23 @@ class _HomePageState extends State<HomePage> {
         });
       }
     });
+    _videoController = VideoPlayerController.asset('assets/images/top_boomerang.mp4');
+    _videoController!.initialize().then((_) {
+      _videoController!.setLooping(true);
+      _videoController!.setVolume(0.0);
+      _videoController!.play();
+      if (mounted) {
+        setState(() {});
+      }
+    }).catchError((error) {
+      debugPrint("Error initializing video player: $error");
+    });
   }
 
   @override
   void dispose() {
     _scrollController.dispose();
+    _videoController?.dispose();
     super.dispose();
   }
 
@@ -716,10 +730,20 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   width: double.infinity,
                   height: heroHeight,
-                  child: Image.asset(
-                    "assets/images/hero_new.jpeg",
-                    fit: BoxFit.cover,
-                  ),
+                  child: (_videoController != null && _videoController!.value.isInitialized)
+                      ? FittedBox(
+                          fit: BoxFit.cover,
+                          clipBehavior: Clip.hardEdge,
+                          child: SizedBox(
+                            width: _videoController!.value.size.width,
+                            height: _videoController!.value.size.height,
+                            child: VideoPlayer(_videoController!),
+                          ),
+                        )
+                      : Image.asset(
+                          "assets/images/hero_new.jpeg",
+                          fit: BoxFit.cover,
+                        ),
                 ),
                 Container(
                   width: double.infinity,
@@ -1116,7 +1140,7 @@ class _HomePageState extends State<HomePage> {
                             key: aboutKey,
                           ),
                           Text(
-                            "CONTINUE YOUR JOURNEY",
+                            "Team C-Cell",
                             style: GoogleFonts.playfairDisplay(
                               color: Colors.white,
                               fontSize: sectionTitleFontSize,
@@ -1135,7 +1159,7 @@ class _HomePageState extends State<HomePage> {
                                 borderRadius: BorderRadius.circular(20),
                                 image: const DecorationImage(
                                   image: AssetImage(
-                                    "assets/images/team_poster.jpeg",
+                                    "assets/images/finalpost.png",
                                   ),
                                   fit: BoxFit.cover,
                                 ),

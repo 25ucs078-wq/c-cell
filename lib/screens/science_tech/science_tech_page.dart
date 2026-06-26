@@ -11,15 +11,15 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Karun Pancholi',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/cybros/cybros_logo.jpg',
-          'phone': '+919999999999',
+          'image': 'assets/assets/images/tech/cybros/cybros_logo.jpg', // not updated
+          'phone': '+919999999999', // not updated
           'email': '24ucs074@lnmiit.ac.in',
         },
         {
           'name': 'Sushmit Sharma',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/cybros/cybros_logo.jpg',
-          'phone': '+918888888888',
+          'image': 'assets/assets/images/tech/cybros/cybros_logo.jpg', // not updated
+          'phone': '+918888888888', // not updated
           'email': '24ucs257@lnmiit.ac.in',
         },
       ];
@@ -30,29 +30,29 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Aryan Agarwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/phoenix/phoenix_logo.png',
-          'phone': '+919999999999',
+          'image': 'assets/assets/images/tech/phoenix/phoenix_logo.png', // not updated
+          'phone': '+919999999999', // not updated
           'email': '24ucs038@lnmiit.ac.in',
         },
         {
           'name': 'Aviral Goyal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/phoenix/phoenix_logo.png',
-          'phone': '+918888888888',
+          'image': 'assets/assets/images/tech/phoenix/phoenix_logo.png', // not updated
+          'phone': '+918888888888', // not updated
           'email': '24uec242@lnmiit.ac.in',
         },
         {
           'name': 'Shamit Rathi',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/phoenix/phoenix_logo.png',
-          'phone': '+918888888888',
+          'image': 'assets/assets/images/tech/phoenix/phoenix_logo.png', // not updated
+          'phone': '+918888888888', // not updated
           'email': '24ucc004@lnmiit.ac.in',
         },
         {
           'name': 'Shreekant Kumawat',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/phoenix/phoenix_logo.png',
-          'phone': '+918888888888',
+          'image': 'assets/assets/images/tech/phoenix/phoenix_logo.png', // not updated
+          'phone': '+918888888888', // not updated
           'email': '24uec183@lnmiit.ac.in',
         },
       ];
@@ -63,22 +63,22 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Dhruv Semalti',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/quizzinga/quizzinga_logo.jpg',
-          'phone': '+919999999999',
+          'image': 'assets/assets/images/tech/quizzinga/quizzinga_logo.jpg', // not updated
+          'phone': '+919999999999', // not updated
           'email': '24ucs283@lnmiit.ac.in',
         },
         {
           'name': 'Sandarbh Gyan',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/quizzinga/quizzinga_logo.jpg',
-          'phone': '+918888888888',
+          'image': 'assets/assets/images/tech/quizzinga/quizzinga_logo.jpg', // not updated
+          'phone': '+918888888888', // not updated
           'email': '24uec019@lnmiit.ac.in',
         },
         {
           'name': 'Viha Arvind Kotak',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/quizzinga/quizzinga_logo.jpg',
-          'phone': '+918888888888',
+          'image': 'assets/assets/images/tech/quizzinga/quizzinga_logo.jpg', // not updated
+          'phone': '+918888888888', // not updated
           'email': '24ucc168@lnmiit.ac.in',
         },
       ];
@@ -89,29 +89,29 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Gourav Bansal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/astronomy/gourav_sir.png',
-          'phone': '+919999999999',
+          'image': 'assets/assets/images/tech/astronomy/gourav_sir.png', // not updated
+          'phone': '+919999999999', // not updated
           'email': '24ucs047@lnmiit.ac.in',
         },
         {
           'name': 'Jivya Jain',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/astronomy/jivya_boss.png',
-          'phone': '+918888888888',
+          'image': 'assets/assets/images/tech/astronomy/jivya_boss.png', // not updated
+          'phone': '+918888888888', // not updated
           'email': '24uec037@lnmiit.ac.in',
         },
         {
           'name': 'Kshitij Verma',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/astronomy/kshitij_sir.png',
-          'phone': '+918888888888',
+          'image': 'assets/assets/images/tech/astronomy/kshitij_sir.png', // not updated
+          'phone': '+918888888888', // not updated
           'email': '24ucc202@lnmiit.ac.in',
         },
         {
           'name': 'Tanushree Sethi',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/astronomy/tanushree_boss.png',
-          'phone': '+918888888888',
+          'image': 'assets/assets/images/tech/astronomy/tanushree_boss.png', // not updated
+          'phone': '+918888888888', // not updated
           'email': '24uec127@lnmiit.ac.in',
         },
       ];
@@ -122,29 +122,29 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Amrendra Vikram Singh',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/cipherclub/cipher_logo.png',
-          'phone': '+919999999999',
+          'image': 'assets/assets/images/tech/cipherclub/cipher_logo.png', // not updated
+          'phone': '+919999999999', // not updated
           'email': '24uec092@lnmiit.ac.in',
         },
         {
           'name': 'Ninaad Mathur',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/cipherclub/cipher_logo.png',
-          'phone': '+918888888888',
+          'image': 'assets/assets/images/tech/cipherclub/cipher_logo.png', // not updated
+          'phone': '+918888888888', // not updated
           'email': '24ucs013@lnmiit.ac.in',
         },
         {
           'name': 'Nitish Matta',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/cipherclub/cipher_logo.png',
-          'phone': '+919999999999',
+          'image': 'assets/assets/images/tech/cipherclub/cipher_logo.png', // not updated
+          'phone': '+919999999999', // not updated
           'email': '24uec217@lnmiit.ac.in',
         },
         {
           'name': 'Vaibhav Rawat',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/cipherclub/cipher_logo.png',
-          'phone': '+918888888888',
+          'image': 'assets/assets/images/tech/cipherclub/cipher_logo.png', // not updated
+          'phone': '+918888888888', // not updated
           'email': '24ucs095@lnmiit.ac.in',
         },
       ];
@@ -155,14 +155,14 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Lokik Ganeriwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech_logo.jpg',
-          'phone': '+918875967149',
+          'image': 'assets/assets/images/tech_logo.jpg', // not updated
+          'phone': '+918875967149', 
           'email': '23ucs634@lnmiit.ac.in',
         },
         {
           'name': 'Arjit Mathur',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech_logo.jpg',
+          'image': 'assets/assets/images/tech_logo.jpg', // not updated
           'phone': '+919352888935',
           'email': '23ucs545@lnmiit.ac.in',
         },
@@ -174,22 +174,22 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Lakshya Mangal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/ecell/ecell_logo.jpg',
-          'phone': '+919999999999',
+          'image': 'assets/assets/images/tech/ecell/ecell_logo.jpg', // not updated
+          'phone': '+919999999999', // not updated
           'email': '24uec196@lnmiit.ac.in',
         },
         {
           'name': 'Panth Moradiya',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/ecell/ecell_logo.jpg',
-          'phone': '+918888888888',
+          'image': 'assets/assets/images/tech/ecell/ecell_logo.jpg', // not updated
+          'phone': '+918888888888', // not updated
           'email': '24ucs120@lnmiit.ac.in',
         },
         {
           'name': 'Ritesh Sarawagi',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/ecell/ecell_logo.jpg',
-          'phone': '+918888888888',
+          'image': 'assets/assets/images/tech/ecell/ecell_logo.jpg', // not updated
+          'phone': '+918888888888', // not updated
           'email': '24uec050@lnmiit.ac.in',
         },
       ];
@@ -200,21 +200,21 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Aalekh Narain',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/debsoc/debsoc_logo.jpg',
+          'image': 'assets/assets/images/tech/debsoc/debsoc_logo.jpg', // not updated
           'phone': '+918851341701',
           'email': '24ucs224@lnmiit.ac.in',
         },
         {
           'name': 'Akansh Saxena',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/debsoc/debsoc_logo.jpg',
+          'image': 'assets/assets/images/tech/debsoc/debsoc_logo.jpg', // not updated
           'phone': '+917668010687',
           'email': '24uec155@lnmiit.ac.in',
         },
         {
           'name': 'Ruhani Sukhija',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/debsoc/debsoc_logo.jpg',
+          'image': 'assets/assets/images/tech/debsoc/debsoc_logo.jpg', // not updated
           'phone': '+917014531991',
           'email': '24ucs108@lnmiit.ac.in',
         },
@@ -468,6 +468,8 @@ class ScienceTechPage extends StatelessWidget {
       ),
     );
     final List<String> galleryImages = List<String>.from(club['gallery'] as List);
+    final String clubInstagram = club['instagram'] as String? ?? 'https://instagram.com/${clubName.toLowerCase().replaceAll(' ', '').replaceAll('-', '')}_lnmiit';
+    final String clubEmail = club['email'] as String? ?? '${clubName.toLowerCase().replaceAll(' ', '').replaceAll('-', '')}@lnmiit.ac.in';
 
     void onCardTap() {
       Navigator.pushNamed(
@@ -479,6 +481,8 @@ class ScienceTechPage extends StatelessWidget {
           'coordinators': coordinators,
           'galleryImages': galleryImages,
           'description': clubDescription,
+          'instagram': clubInstagram,
+          'email': clubEmail,
         },
       );
     }

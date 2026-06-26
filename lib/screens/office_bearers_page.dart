@@ -12,14 +12,14 @@ class OfficeBearersPage extends StatelessWidget {
       "image": "assets/images/logo.jpeg",
       "role": "President",
       "phone": "+919999999999",
-      "email": "president.sg@lnmiit.ac.in",
+      "email": "gym.president@lnmiit.ac.in",
     },
     {
       "name": "Priyanshu Kumar",
       "image": "assets/images/logo.jpeg",
       "role": "Vice President",
       "phone": "+918888888888",
-      "email": "vp.sg@lnmiit.ac.in",
+      "email": "gym.vicepresident@lnmiit.ac.in",
     },
   ];
 

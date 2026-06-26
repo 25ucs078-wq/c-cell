@@ -9,69 +9,87 @@ class MorePage extends StatelessWidget {
   static const List<Map<String, String>> coordinators = [
     {
       "name": "Krishna Khairnar",
-      "image": "assets/images/Krishna.jpeg",
+      "image": "assets/images/krishna.png",
       "role": "COORDINATOR",
       "phone": "+919999999999",
       "email": "krishna@lnmiit.ac.in",
+      "instagram": "https://instagram.com/",
+      "linkedin": "https://linkedin.com/",
     },
     {
       "name": "Harshita Jain",
-      "image": "assets/images/Harshita.jpeg",
+      "image": "assets/images/harshita.png",
       "role": "COORDINATOR",
       "phone": "+918888888888",
       "email": "harshita@lnmiit.ac.in",
+      "instagram": "https://instagram.com/",
+      "linkedin": "https://linkedin.com/",
     },
     {
       "name": "Rahul Sanjay Mukhi",
-      "image": "assets/images/Rahul.jpeg",
+      "image": "assets/images/rahul.png",
       "role": "COORDINATOR",
       "phone": "+917777777777",
       "email": "rahul@lnmiit.ac.in",
+      "instagram": "https://instagram.com/",
+      "linkedin": "https://linkedin.com/",
     },
   ];
 
   static const List<Map<String, String>> associates = [
     {
       "name": "Nishra Kothari",
-      "image": "assets/images/Nishra.jpeg",
+      "image": "assets/images/nishra.png",
       "role": "ASSOCIATE COORDINATOR",
       "phone": "+916666666666",
       "email": "nishra@lnmiit.ac.in",
+      "instagram": "https://instagram.com/",
+      "linkedin": "https://linkedin.com/",
     },
     {
       "name": "Shashwat Kanoongo",
-      "image": "assets/images/Shashwat.jpeg",
+      "image": "assets/images/shashwat.png",
       "role": "ASSOCIATE COORDINATOR",
       "phone": "+915555555555",
       "email": "shashwat@lnmiit.ac.in",
+      "instagram": "https://instagram.com/",
+      "linkedin": "https://linkedin.com/",
     },
     {
       "name": "Yug Nahar",
-      "image": "assets/images/Yug.jpeg",
+      "image": "assets/images/yug.png",
       "role": "ASSOCIATE COORDINATOR",
       "phone": "+914444444444",
       "email": "yug@lnmiit.ac.in",
+      "instagram": "https://instagram.com/",
+      "linkedin": "https://linkedin.com/",
     },
     {
       "name": "Krishangee Tayal",
-      "image": "assets/images/Krishangee.jpeg",
+      "image": "assets/images/krishangee.png",
       "role": "ASSOCIATE COORDINATOR",
       "phone": "+913333333333",
       "email": "krishangee@lnmiit.ac.in",
+      "instagram": "https://instagram.com/",
+      "linkedin": "https://linkedin.com/",
     },
     {
       "name": "Parth Arora",
-      "image": "assets/images/Parth.jpeg",
+      "image": "assets/images/parth.png",
       "role": "ASSOCIATE COORDINATOR",
       "phone": "+912222222222",
       "email": "parth@lnmiit.ac.in",
+      "instagram": "https://instagram.com/",
+      "linkedin": "https://linkedin.com/",
     },
     {
       "name": "Plaksha Gulati",
-      "image": "assets/images/Plaksha.jpeg",
+      "image": "assets/images/plaksha.png",
       "role": "ASSOCIATE COORDINATOR",
       "phone": "+911111111111",
       "email": "plaksha@lnmiit.ac.in",
+      "instagram": "https://instagram.com/",
+      "linkedin": "https://linkedin.com/",
     },
   ];
 
@@ -82,6 +100,8 @@ class MorePage extends StatelessWidget {
       "role": "DEVELOPER",
       "phone": "+919999999999",
       "email": "harsh@lnmiit.ac.in",
+      "instagram": "https://instagram.com/",
+      "linkedin": "https://linkedin.com/",
     },
     {
       "name": "Kunal Agarwal",
@@ -89,6 +109,8 @@ class MorePage extends StatelessWidget {
       "role": "DEVELOPER",
       "phone": "+918888888888",
       "email": "kunal@lnmiit.ac.in",
+      "instagram": "https://instagram.com/",
+      "linkedin": "https://linkedin.com/",
     },
   ];
 
@@ -269,6 +291,8 @@ class MorePage extends StatelessWidget {
     final String role = person['role']!;
     final String phone = person['phone'] ?? '';
     final String email = person['email'] ?? '';
+    final String instagram = person['instagram'] ?? '';
+    final String linkedin = person['linkedin'] ?? '';
 
     if (isMobile) {
       return GestureDetector(
@@ -276,7 +300,15 @@ class MorePage extends StatelessWidget {
           Navigator.pushNamed(
             context,
             '/profile',
-            arguments: {'name': name, 'image': image, 'role': role},
+            arguments: {
+              'name': name,
+              'image': image,
+              'role': role,
+              'phone': phone,
+              'email': email,
+              'instagram': instagram,
+              'linkedin': linkedin,
+            },
           );
         },
         child: GlassCard(
@@ -382,7 +414,15 @@ class MorePage extends StatelessWidget {
         Navigator.pushNamed(
           context,
           '/profile',
-          arguments: {'name': name, 'image': image, 'role': role},
+          arguments: {
+            'name': name,
+            'image': image,
+            'role': role,
+            'phone': phone,
+            'email': email,
+            'instagram': instagram,
+            'linkedin': linkedin,
+          },
         );
       },
       child: GlassCard(
@@ -391,7 +431,7 @@ class MorePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             AspectRatio(
-              aspectRatio: 1.0,
+              aspectRatio: 4 / 5,
               child: Hero(
                 tag: name,
                 child: ClipRRect(
@@ -481,7 +521,15 @@ class MorePage extends StatelessWidget {
                         Navigator.pushNamed(
                           context,
                           '/profile',
-                          arguments: {'name': name, 'image': image, 'role': role},
+                          arguments: {
+                            'name': name,
+                            'image': image,
+                            'role': role,
+                            'phone': phone,
+                            'email': email,
+                            'instagram': instagram,
+                            'linkedin': linkedin,
+                          },
                         );
                       },
                       child: Text(
