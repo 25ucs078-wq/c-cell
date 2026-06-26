@@ -383,19 +383,115 @@ class CulturalPage extends StatelessWidget {
   static List<String> _getGallery(String clubName) {
     if (clubName == 'Aaveg') {
       return [
-        'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Example path
-        'assets/images/hero_new.jpeg',
-        'assets/images/team_poster.jpeg',
+        'assets/assets/images/cultural/aaveg/aaveg1.JPG',
+        'assets/assets/images/cultural/aaveg/aaveg2.jpg',
+        'assets/assets/images/cultural/aaveg/aaeg4.jpg',
+        'assets/assets/images/cultural/aaveg/aaveg4.JPG',
+        'assets/assets/images/cultural/aaveg/aaveg5.jpg',
+        'assets/assets/images/cultural/aaveg/aaveg6.JPG',
+        'assets/assets/images/cultural/aaveg/aaveg7.jpg',
       ];
     }
-
+    if (clubName == 'Capriccio') {
+      return [
+        'assets/assets/images/cultural/capriccio/cap1.jpg',
+        'assets/assets/images/cultural/capriccio/cap2.jpg',
+        'assets/assets/images/cultural/capriccio/cap3.jpg',
+        'assets/assets/images/cultural/capriccio/cap4.jpg',
+        'assets/assets/images/cultural/capriccio/cap5.jpg',
+        'assets/assets/images/cultural/capriccio/cap6.jpg',
+        'assets/assets/images/cultural/capriccio/cap7.jpg',
+        'assets/assets/images/cultural/capriccio/cap8.jpg',
+        'assets/assets/images/cultural/capriccio/cap9.jpg',
+        'assets/assets/images/cultural/capriccio/cap10.jpg',
+      ];
+    }
+    if (clubName == 'Eminence') {
+      return [
+        'assets/assets/images/cultural/eminence/emin1.jpg',
+        'assets/assets/images/cultural/eminence/emin2.jpg',
+        'assets/assets/images/cultural/eminence/emin3.jpg',
+        'assets/assets/images/cultural/eminence/emin4.jpg',
+        'assets/assets/images/cultural/eminence/emin5.jpg',
+        'assets/assets/images/cultural/eminence/emin6.jpg',
+        'assets/assets/images/cultural/eminence/emin7.jpg',
+      ];
+    }
     if (clubName == 'Finlogue') {
       return [
-        'assets/assets/images/cultural/finlogue/fundoo1.jpg',
-        'assets/assets/images/cultural/finlogue/fundoo3.jpg',
-        'assets/assets/images/cultural/finlogue/fundoo4.jpg',
-        'assets/assets/images/cultural/finlogue/fundoo6.jpg',
-        'assets/assets/images/cultural/finlogue/fundoo7.jpg',
+        'assets/assets/images/cultural/finlogue/finlogue_logo.jpeg',
+        'assets/assets/images/cultural/finlogue/aditya.jpeg',
+        'assets/assets/images/cultural/finlogue/aryan.jpeg',
+        'assets/assets/images/cultural/finlogue/akshat.jpeg',
+      ];
+    }
+    if (clubName == 'Imagination') {
+      return [
+        'assets/assets/images/cultural/imagination/imagi1.png',
+        'assets/assets/images/cultural/imagination/imagi3.jpg',
+        'assets/assets/images/cultural/imagination/imagi5.jpg',
+        'assets/assets/images/cultural/imagination/imagi8.jpg',
+        'assets/assets/images/cultural/imagination/imagi10.jpg',
+      ];
+    }
+    if (clubName == 'Insignia') {
+      return [
+        'assets/assets/images/cultural/insignia/insignia1.jpg',
+        'assets/assets/images/cultural/insignia/insignia2.jpg',
+        'assets/assets/images/cultural/insignia/insignia3.jpg',
+        'assets/assets/images/cultural/insignia/insignia4.jpg',
+        'assets/assets/images/cultural/insignia/insignia5.jpg',
+      ];
+    }
+    if (clubName == 'Literary Committee') {
+      return [
+        'assets/assets/images/cultural/lc/lc1.jpeg',
+        'assets/assets/images/cultural/lc/lc2.jpeg',
+        'assets/assets/images/cultural/lc/lc3.jpeg',
+        'assets/assets/images/cultural/lc/lc4.jpeg',
+        'assets/assets/images/cultural/lc/lc5.jpeg',
+        'assets/assets/images/cultural/lc/lc6.jpeg',
+      ];
+    }
+    if (clubName == 'Media Cell') {
+      return [
+        'assets/assets/images/cultural/mediacell/media1.jpg',
+        'assets/assets/images/cultural/mediacell/media2.jpg',
+        'assets/assets/images/cultural/mediacell/media3.jpg',
+      ];
+    }
+    if (clubName == 'Rendition') {
+      return [
+        'assets/assets/images/cultural/rendition/rendition1.jpg',
+        'assets/assets/images/cultural/rendition/rendition2.jpg',
+        'assets/assets/images/cultural/rendition/rendition3.jpg',
+        'assets/assets/images/cultural/rendition/rendition4.jpg',
+      ];
+    }
+    if (clubName == 'Sankalp') {
+      return [
+        'assets/assets/images/cultural/sankalp/sankalp1.jpg',
+        'assets/assets/images/cultural/sankalp/sankalp2.jpg',
+        'assets/assets/images/cultural/sankalp/sankalp3.jpg',
+        'assets/assets/images/cultural/sankalp/sankalp5.jpg',
+        'assets/assets/images/cultural/sankalp/sankalp6.jpg',
+        'assets/assets/images/cultural/sankalp/sankalp8.jpg',
+        'assets/assets/images/cultural/sankalp/sankalp9.jpg',
+        'assets/assets/images/cultural/sankalp/sankalp10.jpg',
+      ];
+    }
+    if (clubName == 'Vignette') {
+      return [
+        'assets/assets/images/cultural/vignette/vign1.jpg',
+        'assets/assets/images/cultural/vignette/vign2.jpg',
+        'assets/assets/images/cultural/vignette/vign3.jpg',
+        'assets/assets/images/cultural/vignette/vign4.jpg',
+        'assets/assets/images/cultural/vignette/vign5.jpg',
+        'assets/assets/images/cultural/vignette/vign6.jpg',
+        'assets/assets/images/cultural/vignette/vign7.jpg',
+        'assets/assets/images/cultural/vignette/vign8.jpg',
+        'assets/assets/images/cultural/vignette/vign9.jpg',
+        'assets/assets/images/cultural/vignette/vign10.jpg',
       ];
     }
 
