@@ -15,6 +15,8 @@ import 'screens/plinth_page.dart';
 import 'screens/desportivos_page.dart';
 import 'screens/profile_page.dart';
 import 'screens/council_detail_page.dart';
+import 'screens/events_page.dart';
+import 'screens/event_detail_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -113,6 +115,19 @@ class MyApp extends StatelessWidget {
             builder = (context) => CouncilDetailPage(
               councilName: args['councilName']!,
               items: args['items']!,
+            );
+            break;
+          case '/events':
+            builder = (context) => const EventsPage();
+            break;
+          case '/event_detail':
+            final args = settings.arguments as Map<String, dynamic>;
+            builder = (context) => EventDetailPage(
+              eventName: args['eventName']!,
+              eventImage: args['eventImage']!,
+              coordinators: args['coordinators']!,
+              galleryImages: args['galleryImages']!,
+              description: args['description']!,
             );
             break;
           default:

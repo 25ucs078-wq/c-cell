@@ -935,6 +935,9 @@ class _HomePageState extends State<HomePage> {
                                 "Events",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/events');
+                                },
                               ),
                             ],
                           ),
