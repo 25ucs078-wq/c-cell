@@ -54,25 +54,52 @@ class ScienceTechClubDetailPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Image.asset(
-                      clubImage,
-                      width: double.infinity,
-                      height: isMobile ? 180 : 240,
-                      fit: BoxFit.cover,
+                  Center(
+                    child: Container(
+                      width: isMobile ? 120 : 180,
+                      height: isMobile ? 120 : 180,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.redAccent, width: 3),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.redAccent.withValues(alpha: 0.3),
+                            blurRadius: 16,
+                            spreadRadius: 2,
+                          ),
+                        ],
+                      ),
+                      child: ClipOval(
+                        child: Image.asset(
+                          clubImage,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              color: Colors.grey[800],
+                              child: Icon(
+                                Icons.image_not_supported,
+                                color: Colors.white54,
+                                size: isMobile ? 48 : 64,
+                              ),
+                            );
+                          },
+                        ),
+                      ),
                     ),
                   ),
-                  SizedBox(height: isMobile ? 20 : 24),
+                  SizedBox(height: isMobile ? 24 : 32),
+                  // Club Description
                   Text(
-                    'COORDINATORS',
-                    style: GoogleFonts.playfairDisplay(
-                      color: Colors.white,
-                      fontSize: isMobile ? 24 : 32,
-                      letterSpacing: 2,
+                    _getClubDescription(clubName),
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      color: Colors.white.withValues(alpha: 0.85),
+                      fontSize: isMobile ? 14 : 16,
+                      height: 1.6,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: isMobile ? 28 : 36),
                   LayoutBuilder(
                     builder: (context, constraints) {
                       double parentWidth = constraints.maxWidth;
@@ -400,5 +427,28 @@ class ScienceTechClubDetailPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _getClubDescription(String name) {
+    switch (name) {
+      case 'Astronomy':
+        return 'The Astronomy Club of LNMIIT sparks curiosity about the cosmos, organizing stargazing sessions, astrophotography workshops, and scientific talks about the universe.';
+      case 'Cipher':
+        return 'The Cryptology & Cyber Security Club, Cipher, empowers students with knowledge in cryptography, network security, ethical hacking, and safe digital practices.';
+      case 'Cybros':
+        return 'The Coding Club of LNMIIT, Cybros, is the premier hub for developers, competitive programmers, and tech enthusiasts, hosting hackathons, coding contests, and development bootcamps.';
+      case 'DebSoc':
+        return 'The Debating Society of LNMIIT, DebSoc, fosters critical thinking and eloquence, hosting debates on global affairs, policy, and philosophy to build strong public speakers.';
+      case 'E-Cell':
+        return 'The Innovation & Entrepreneurship Cell of LNMIIT, E-Cell, nurtures the startup ecosystem, offering mentorship, funding opportunities, and workshops to turn ideas into successful ventures.';
+      case 'Phoenix':
+        return 'The Robotics Club of LNMIIT, Phoenix, encourages students to design, build, and program autonomous and manual robots, representing the institute in national robotics challenges.';
+      case 'Qbit':
+        return 'The Quantum Computing Club of LNMIIT, Qbit, explores the cutting-edge frontier of quantum algorithms, quantum mechanics, and future computing technologies.';
+      case 'Quizzinga':
+        return 'The Quiz Club of LNMIIT, Quizzinga, is a community of trivia buffs, hosting diverse quizzes on general knowledge, pop culture, sports, and science to keep minds sharp.';
+      default:
+        return 'A science & technology club at LNMIIT offering students an active community to explore innovation, building practical skills, and competing in tech events.';
+    }
   }
 }

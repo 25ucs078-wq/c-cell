@@ -54,25 +54,52 @@ class CulturalClubDetailPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Image.asset(
-                      clubImage,
-                      width: double.infinity,
-                      height: isMobile ? 180 : 240,
-                      fit: BoxFit.cover,
+                  Center(
+                    child: Container(
+                      width: isMobile ? 120 : 180,
+                      height: isMobile ? 120 : 180,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.redAccent, width: 3),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.redAccent.withValues(alpha: 0.3),
+                            blurRadius: 16,
+                            spreadRadius: 2,
+                          ),
+                        ],
+                      ),
+                      child: ClipOval(
+                        child: Image.asset(
+                          clubImage,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              color: Colors.grey[800],
+                              child: Icon(
+                                Icons.image_not_supported,
+                                color: Colors.white54,
+                                size: isMobile ? 48 : 64,
+                              ),
+                            );
+                          },
+                        ),
+                      ),
                     ),
                   ),
-                  SizedBox(height: isMobile ? 20 : 24),
+                  SizedBox(height: isMobile ? 24 : 32),
+                  // Club Description
                   Text(
-                    'COORDINATORS',
-                    style: GoogleFonts.playfairDisplay(
-                      color: Colors.white,
-                      fontSize: isMobile ? 24 : 32,
-                      letterSpacing: 2,
+                    _getClubDescription(clubName),
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      color: Colors.white.withValues(alpha: 0.85),
+                      fontSize: isMobile ? 14 : 16,
+                      height: 1.6,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: isMobile ? 28 : 36),
                   LayoutBuilder(
                     builder: (context, constraints) {
                       double parentWidth = constraints.maxWidth;
@@ -400,5 +427,34 @@ class CulturalClubDetailPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _getClubDescription(String name) {
+    switch (name) {
+      case 'Aaveg':
+        return 'Aaveg is the Nukkad Mandali of LNMIIT, using the power of street play (Nukkad Natak) to highlight social issues, raise awareness, and captivate audiences with high-energy performances.';
+      case 'Capriccio':
+        return 'The Music Club of LNMIIT, Capriccio, is a haven for vocalists and instrumentalists, bringing together musical talents to create, perform, and spread the joy of melodies across campus fests.';
+      case 'Eminence':
+        return 'The Fashion Club of LNMIIT, Eminence, redefines style and confidence, providing a creative runway platform for students to showcase trendsetting designs and expressive modeling.';
+      case 'Finlogue':
+        return 'The Fintech Club of LNMIIT, Finlogue, bridges the gap between finance and technology, hosting discussions, workshops, and case study competitions on investments, markets, and blockchain.';
+      case 'Imagination':
+        return 'The Creative Photography and Cinematography Club, Imagination, captures the essence of LNMIIT life, telling visual stories through stunning photo-walks, event coverage, and short films.';
+      case 'Insignia':
+        return 'The Dance Club of LNMIIT, Insignia, is a community of passionate dancers exploring diverse styles, from classical to hip-hop, delivering electrifying performances at institute fests.';
+      case 'Literary Committee':
+        return 'The Abode of Writers at LNMIIT, the Literary Committee fosters creative writing, poetry, debates, and public speaking, nurturing literary expression and critical discourse.';
+      case 'Media Cell':
+        return 'The voice and face of LNMIIT, the Media Cell anchors campus events, conducts interviews, and manages institute public relations, ensuring everyone stays connected and informed.';
+      case 'Rendition':
+        return 'The Theatre Society of LNMIIT, Rendition, brings stories to life on stage, exploring classic and modern plays to build acting prowess, stage presence, and creative direction.';
+      case 'Sankalp':
+        return 'The Social Welfare Club of LNMIIT, Sankalp, is dedicated to giving back to society through community service, blood donation camps, teaching drives, and social awareness campaigns.';
+      case 'Vignette':
+        return 'The Art & Design Club of LNMIIT, Vignette, beautifies the campus and fests with stunning hand-drawn art, digital designs, installations, and creative workshops.';
+      default:
+        return 'A cultural club at LNMIIT offering students a platform to showcase and refine their creative talents, organizing campus events and festival performances.';
+    }
   }
 }
