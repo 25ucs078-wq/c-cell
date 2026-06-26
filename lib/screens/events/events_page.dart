@@ -1,25 +1,97 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../widgets/glass_card.dart';
+import '../../widgets/glass_card.dart';
 
-class StudentFestsPage extends StatelessWidget {
-  const StudentFestsPage({super.key});
+class EventsPage extends StatelessWidget {
+  const EventsPage({super.key});
 
-  static const List<Map<String, String>> fests = [
+  static final List<Map<String, dynamic>> campusEvents = [
     {
-      "name": "Vivacity",
-      "logo": "assets/assets/images/viva/viva_logo.png",
-      "role": "CULTURAL FEST",
+      'name': 'TEDx LNMIIT',
+      'logo': 'assets/assets/images/ted/ted_logo.jpg',
+      'image': 'assets/assets/images/ted/ted_logo.jpg',
+      'subtitle': 'Ideas Worth Spreading',
+      'description': 'TEDxLNMIIT is an independently organized event that brings together thinkers, innovators, and doers to share inspiring ideas and spark meaningful conversations under the global TED banner.',
+      'coordinators': [
+        {
+          'name': 'Pranav Vashisth',
+          'role': 'Organizer',
+          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg',
+          'phone': '+918445681853',
+          'email': '24ucs126@lnmiit.ac.in',
+        },
+        {
+          'name': 'Praneel Dev',
+          'role': 'Organizer',
+          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg',
+          'phone': '+918955352024',
+          'email': '24ucs202@lnmiit.ac.in',
+        },
+        {
+          'name': 'Samar Goyal',
+          'role': 'Organizer',
+          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg',
+          'phone': '+917300458010',
+          'email': '24ucs008@lnmiit.ac.in',
+        },
+        {
+          'name': 'Vedha Meghashyam Sinkar',
+          'role': 'Organizer',
+          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg',
+          'phone': '+919588483298',
+          'email': '24ume011@lnmiit.ac.in',
+        },
+      ],
+      'gallery': [
+        'assets/assets/images/ted/ted1.jpg',
+        'assets/assets/images/ted/ted2.jpg',
+        'assets/assets/images/ted/ted3.jpg',
+        'assets/assets/images/ted/ted4.jpg',
+        'assets/assets/images/ted/ted5.jpg',
+      ],
     },
     {
-      "name": "Plinth",
-      "logo": "assets/assets/images/plinth/plinth_logo.jpg",
-      "role": "TECH FEST",
-    },
-    {
-      "name": "Desportivos",
-      "logo": "assets/assets/images/despo/despo_logo.jpeg",
-      "role": "SPORTS FEST",
+      'name': 'E-Summit',
+      'logo': 'assets/assets/images/esummit/esummit_logo.jpg',
+      'image': 'assets/assets/images/esummit/esummit_logo.jpg',
+      'subtitle': 'The Entrepreneurial Spirit of LNMIIT',
+      'description': 'E-Summit is the annual flagship entrepreneurship summit of LNMIIT. It serves as a platform to inspire and empower the next generation of startup founders, showcasing innovations, business pitch fests, and expert panel talks.',
+      'coordinators': [
+        {
+          'name': 'Ayush Agarwal',
+          'role': 'E-Summit Head',
+          'image': 'assets/assets/images/esummit/ayush.jpeg',
+          'phone': '+919876543210',
+          'email': 'esummit_organizer1@lnmiit.ac.in',
+        },
+        {
+          'name': 'Farhan Sheikh',
+          'role': 'E-Summit Head',
+          'image': 'assets/assets/images/esummit/farhan.jpeg',
+          'phone': '+919876543210',
+          'email': 'esummit_organizer2@lnmiit.ac.in',
+        },
+        {
+          'name': 'Yogya Saraf',
+          'role': 'E-Summit Head',
+          'image': 'assets/assets/images/esummit/yogya.jpeg',
+          'phone': '+919876543210',
+          'email': 'esummit_organizer3@lnmiit.ac.in',
+        },
+        {
+          'name': 'Yug Patel',
+          'role': 'E-Summit Head',
+          'image': 'assets/assets/images/esummit/yug.jpeg',
+          'phone': '+919876543210',
+          'email': 'esummit_organizer4@lnmiit.ac.in',
+        },
+      ],
+      'gallery': [
+        'assets/assets/images/esummit/esummit1.jpg',
+        'assets/assets/images/esummit/esummit2.jpg',
+        'assets/assets/images/esummit/esummit3.jpg',
+        'assets/assets/images/esummit/esummit4.jpg',
+      ],
     },
   ];
 
@@ -39,7 +111,7 @@ class StudentFestsPage extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
-          "STUDENT FESTS",
+          'EVENTS',
           style: GoogleFonts.playfairDisplay(
             color: Colors.redAccent,
             fontSize: isMobile ? 22 : 38,
@@ -60,16 +132,16 @@ class StudentFestsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "DISCOVER OUR MAJOR FESTS",
+                    'EXPLORE EVENTS',
                     style: GoogleFonts.playfairDisplay(
                       color: Colors.white,
-                      fontSize: isMobile ? 24 : 34,
+                      fontSize: isMobile ? 24 : 32,
                       letterSpacing: isMobile ? 1 : 2,
                     ),
                   ),
                   const SizedBox(height: 14),
                   Text(
-                    "Three flagship fests that define the student experience at LNMIIT.",
+                    'Discover the major campus events, speaker sessions, and entrepreneurship summits of LNMIIT.',
                     style: GoogleFonts.poppins(
                       color: Colors.white70,
                       fontSize: isMobile ? 14 : 16,
@@ -95,15 +167,10 @@ class StudentFestsPage extends StatelessWidget {
                       return Wrap(
                         spacing: 20,
                         runSpacing: 20,
-                        children: fests.map((fest) {
+                        children: campusEvents.map((event) {
                           return SizedBox(
                             width: cardWidth,
-                            child: buildFestCard(
-                              context,
-                              fest['name']!,
-                              fest['logo']!,
-                              fest['role']!,
-                            ),
+                            child: _buildEventCard(context, event),
                           );
                         }).toList(),
                       );
@@ -118,28 +185,39 @@ class StudentFestsPage extends StatelessWidget {
     );
   }
 
-  void _navigateToFest(BuildContext context, String name) {
-    if (name == 'Vivacity') {
-      Navigator.pushNamed(context, '/vivacity');
-    } else if (name == 'Plinth') {
-      Navigator.pushNamed(context, '/plinth');
-    } else if (name == 'Desportivos') {
-      Navigator.pushNamed(context, '/desportivos');
-    }
-  }
-
-  Widget buildFestCard(
-    BuildContext context,
-    String name,
-    String image,
-    String role,
-  ) {
+  Widget _buildEventCard(BuildContext context, Map<String, dynamic> event) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final bool isMobile = screenWidth < 600;
 
+    final String name = event['name'] as String;
+    final String image = event['image'] as String;
+    final String logo = event['logo'] as String;
+    final String subtitle = event['subtitle'] as String;
+    final String description = event['description'] as String? ?? '';
+    final List<Map<String, String>> coordinators = List<Map<String, String>>.from(
+      (event['coordinators'] as List).map(
+        (item) => Map<String, String>.from(item as Map),
+      ),
+    );
+    final List<String> galleryImages = List<String>.from(event['gallery'] as List);
+
+    void onCardTap() {
+      Navigator.pushNamed(
+        context,
+        '/event_detail',
+        arguments: {
+          'eventName': name,
+          'eventImage': image,
+          'coordinators': coordinators,
+          'galleryImages': galleryImages,
+          'description': description,
+        },
+      );
+    }
+
     if (isMobile) {
       return GestureDetector(
-        onTap: () => _navigateToFest(context, name),
+        onTap: onCardTap,
         child: GlassCard(
           borderRadius: BorderRadius.circular(16),
           padding: const EdgeInsets.all(12),
@@ -161,13 +239,13 @@ class StudentFestsPage extends StatelessWidget {
                 ),
                 child: ClipOval(
                   child: Image.asset(
-                    image,
+                    logo,
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
                         color: Colors.grey[800],
                         child: const Icon(
-                          Icons.festival,
+                          Icons.event,
                           color: Colors.white54,
                           size: 24,
                         ),
@@ -192,11 +270,13 @@ class StudentFestsPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      role,
+                      subtitle,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.poppins(
-                        color: Colors.redAccent,
+                        color: Colors.white70,
                         fontSize: 12,
-                        fontWeight: FontWeight.w500,
+                        height: 1.4,
                       ),
                     ),
                   ],
@@ -215,7 +295,7 @@ class StudentFestsPage extends StatelessWidget {
     }
 
     return GestureDetector(
-      onTap: () => _navigateToFest(context, name),
+      onTap: onCardTap,
       child: GlassCard(
         borderRadius: BorderRadius.circular(20),
         child: Column(
@@ -248,15 +328,15 @@ class StudentFestsPage extends StatelessWidget {
                     ),
                     child: ClipOval(
                       child: Image.asset(
-                        image,
+                        logo,
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           return Container(
                             color: Colors.grey[800],
                             child: const Icon(
-                              Icons.festival,
+                              Icons.event,
                               color: Colors.white54,
-                              size: 70,
+                              size: 60,
                             ),
                           );
                         },
@@ -283,13 +363,13 @@ class StudentFestsPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    role,
-                    maxLines: 1,
+                    subtitle,
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.poppins(
-                      color: Colors.redAccent,
+                      color: Colors.white70,
                       fontSize: 14,
-                      fontWeight: FontWeight.w500,
+                      height: 1.5,
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -304,7 +384,7 @@ class StudentFestsPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16),
                         ),
                       ),
-                      onPressed: () => _navigateToFest(context, name),
+                      onPressed: onCardTap,
                       child: Text(
                         'VIEW DETAILS',
                         style: GoogleFonts.playfairDisplay(

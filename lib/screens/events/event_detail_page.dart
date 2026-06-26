@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../widgets/glass_card.dart';
-import '../widgets/interactive_gallery_viewer.dart';
+import '../../widgets/glass_card.dart';
+import '../../widgets/interactive_gallery_viewer.dart';
 
 class EventDetailPage extends StatelessWidget {
   final String eventName;

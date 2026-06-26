@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../widgets/glass_card.dart';
+import '../../widgets/glass_card.dart';
+import '../../widgets/interactive_gallery_viewer.dart';
 
-class CouncilDetailPage extends StatelessWidget {
-  final String councilName;
-  final List<Map<String, String>> items;
+class VivacityPage extends StatelessWidget {
+  const VivacityPage({super.key});
 
-  const CouncilDetailPage({super.key, required this.councilName, required this.items});
+  static const List<String> galleryImages = [
+    "assets/images/hero_new.jpeg",
+    "assets/images/team_poster.jpeg",
+    "assets/images/poster.jpeg",
+  ];
+
+  static const List<Map<String, String>> festHeads = [
+    {"name": "Vedang Dixit", "image": "assets/images/logo.jpeg", "role": "Fest Head", "phone": "+919999999999", "email": "vedang@lnmiit.ac.in"},
+    {"name": "Vedant Wadhwa", "image": "assets/images/logo.jpeg", "role": "Fest Head", "phone": "+918888888888", "email": "vedant@lnmiit.ac.in"},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +34,7 @@ class CouncilDetailPage extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
-          councilName.toUpperCase(),
+          "VIVACITY",
           style: GoogleFonts.playfairDisplay(
             color: Colors.redAccent,
             fontSize: isMobile ? 22 : 38,
@@ -44,7 +53,7 @@ class CouncilDetailPage extends StatelessWidget {
                   width: double.infinity,
                   height: isMobile ? 180 : 260,
                   child: Image.asset(
-                    "assets/images/poster.jpeg",
+                    "assets/images/team_poster.jpeg",
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -57,23 +66,14 @@ class CouncilDetailPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "EXPLORE $councilName",
+                        "FEST HEADS",
                         style: GoogleFonts.playfairDisplay(
                           color: Colors.white,
                           fontSize: isMobile ? 24 : 32,
                           letterSpacing: 2,
                         ),
                       ),
-                      const SizedBox(height: 12),
-                      Text(
-                        "A closer look at the people and activities that define $councilName.",
-                        style: GoogleFonts.poppins(
-                          color: Colors.white70,
-                          fontSize: isMobile ? 14 : 16,
-                          height: 1.6,
-                        ),
-                      ),
-                      const SizedBox(height: 30),
+                      const SizedBox(height: 20),
                       LayoutBuilder(
                         builder: (context, constraints) {
                           double parentWidth = constraints.maxWidth;
@@ -92,92 +92,43 @@ class CouncilDetailPage extends StatelessWidget {
                           return Wrap(
                             spacing: 20,
                             runSpacing: 20,
-                            children: items.map((item) {
+                            children: festHeads.map((p) {
                               return SizedBox(
                                 width: cardWidth,
-                                child: _buildItemCard(
+                                child: _buildCard(
                                   context,
-                                  item['name']!,
-                                  item['role']!,
-                                  item['image']!,
-                                  item['phone'] ?? '',
-                                  item['email'] ?? '',
+                                  p['name']!,
+                                  p['image']!,
+                                  p['role']!,
+                                  p['phone'] ?? '',
+                                  p['email'] ?? '',
                                 ),
                               );
                             }).toList(),
                           );
                         },
                       ),
-                      if (councilName.toLowerCase() == 'cultural council') ...[
-                        const SizedBox(height: 30),
-                        Center(
-                          child: Wrap(
-                            spacing: 20,
-                            runSpacing: 16,
-                            alignment: WrapAlignment.center,
-                            children: [
-                              _buildActionButton(
-                                context: context,
-                                text: 'Clubs',
-                                icon: Icons.palette_outlined,
-                                route: '/cultural',
-                              ),
-                              _buildActionButton(
-                                context: context,
-                                text: 'Fest',
-                                icon: Icons.festival_outlined,
-                                route: '/vivacity',
-                              ),
-                            ],
-                          ),
+                      const SizedBox(height: 30),
+                      Text(
+                        "PHOTO GALLERY",
+                        style: GoogleFonts.playfairDisplay(
+                          color: Colors.white,
+                          fontSize: isMobile ? 20 : 24,
+                          letterSpacing: 2,
                         ),
-                      ] else if (councilName.toLowerCase() == 'science & technology council') ...[
-                        const SizedBox(height: 30),
-                        Center(
-                          child: Wrap(
-                            spacing: 20,
-                            runSpacing: 16,
-                            alignment: WrapAlignment.center,
-                            children: [
-                              _buildActionButton(
-                                context: context,
-                                text: 'Clubs',
-                                icon: Icons.computer_outlined,
-                                route: '/science_tech',
-                              ),
-                              _buildActionButton(
-                                context: context,
-                                text: 'Fest',
-                                icon: Icons.festival_outlined,
-                                route: '/plinth',
-                              ),
-                            ],
-                          ),
+                      ),
+                      const SizedBox(height: 16),
+                      SizedBox(
+                        height: 140,
+                        child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: galleryImages.length,
+                          separatorBuilder: (_, _) => const SizedBox(width: 14),
+                          itemBuilder: (context, index) {
+                            return _buildGalleryImage(context, galleryImages, index);
+                          },
                         ),
-                      ] else if (councilName.toLowerCase() == 'sports council') ...[
-                        const SizedBox(height: 30),
-                        Center(
-                          child: Wrap(
-                            spacing: 20,
-                            runSpacing: 16,
-                            alignment: WrapAlignment.center,
-                            children: [
-                              _buildActionButton(
-                                context: context,
-                                text: 'Clubs',
-                                icon: Icons.sports_basketball_outlined,
-                                route: '/sports',
-                              ),
-                              _buildActionButton(
-                                context: context,
-                                text: 'Fest',
-                                icon: Icons.festival_outlined,
-                                route: '/desportivos',
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                      ),
                       const SizedBox(height: 30),
                     ],
                   ),
@@ -190,7 +141,36 @@ class CouncilDetailPage extends StatelessWidget {
     );
   }
 
-  Widget _buildItemCard(BuildContext context, String name, String role, String image, String phone, String email) {
+  Widget _buildGalleryImage(BuildContext context, List<String> allImages, int index) {
+    final String image = allImages[index];
+    return GestureDetector(
+      onTap: () => InteractiveGalleryViewer.show(context, allImages, index),
+      child: Hero(
+        tag: 'gallery_image_${image}_$index',
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Image.asset(
+            image,
+            height: 140,
+            fit: BoxFit.fitHeight,
+            errorBuilder: (context, error, stackTrace) {
+              return Container(
+                width: 220,
+                height: 140,
+                color: Colors.grey[800],
+                child: const Icon(
+                  Icons.image_not_supported,
+                  color: Colors.white54,
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCard(BuildContext context, String name, String image, String role, String phone, String email) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final bool isMobile = screenWidth < 600;
 
@@ -425,69 +405,5 @@ class CouncilDetailPage extends StatelessWidget {
   Future<void> _launchEmail(BuildContext context, String email) async {
     final uri = Uri(scheme: 'mailto', path: email);
     await _launchUrl(context, uri);
-  }
-
-  Widget _buildActionButton({
-    required BuildContext context,
-    required String text,
-    required IconData icon,
-    required String route,
-  }) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final bool isMobile = screenWidth < 600;
-
-    return SizedBox(
-      width: isMobile ? 140 : 180,
-      height: isMobile ? 48 : 56,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.transparent,
-          foregroundColor: Colors.white,
-          shadowColor: Colors.transparent,
-          padding: EdgeInsets.zero,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-            side: const BorderSide(color: Colors.redAccent, width: 1.5),
-          ),
-        ).copyWith(
-          elevation: WidgetStateProperty.all(0),
-        ),
-        onPressed: () {
-          Navigator.pushNamed(context, route);
-        },
-        child: Ink(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.redAccent.withValues(alpha: 0.1),
-                Colors.redAccent.withValues(alpha: 0.25),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Container(
-            alignment: Alignment.center,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(icon, color: Colors.white, size: isMobile ? 18 : 22),
-                const SizedBox(width: 8),
-                Text(
-                  text,
-                  style: GoogleFonts.poppins(
-                    color: Colors.white,
-                    fontSize: isMobile ? 14 : 16,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 1.0,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }

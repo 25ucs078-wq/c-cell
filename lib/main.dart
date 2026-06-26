@@ -8,15 +8,15 @@ import 'screens/sports/sports_page.dart';
 import 'screens/sports/sports_club_detail_page.dart';
 import 'screens/office_bearers_page.dart';
 import 'screens/more_page.dart';
-import 'screens/student_fests_page.dart';
-import 'screens/councils_page.dart';
-import 'screens/vivacity_page.dart';
-import 'screens/plinth_page.dart';
-import 'screens/desportivos_page.dart';
+import 'screens/fests/student_fests_page.dart';
+import 'screens/councils/councils_page.dart';
+import 'screens/fests/vivacity_page.dart';
+import 'screens/fests/plinth_page.dart';
+import 'screens/fests/desportivos_page.dart';
 import 'screens/profile_page.dart';
-import 'screens/council_detail_page.dart';
-import 'screens/events_page.dart';
-import 'screens/event_detail_page.dart';
+import 'screens/councils/council_detail_page.dart';
+import 'screens/events/events_page.dart';
+import 'screens/events/event_detail_page.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../widgets/glass_card.dart';
+import '../../widgets/glass_card.dart';
 
 class CouncilsPage extends StatelessWidget {
   const CouncilsPage({super.key});

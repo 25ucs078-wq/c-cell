@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../widgets/glass_card.dart';
-import '../widgets/interactive_gallery_viewer.dart';
+import '../../widgets/glass_card.dart';
+import '../../widgets/interactive_gallery_viewer.dart';
 
-class VivacityPage extends StatelessWidget {
-  const VivacityPage({super.key});
+class DesportivosPage extends StatelessWidget {
+  const DesportivosPage({super.key});
 
   static const List<String> galleryImages = [
     "assets/images/hero_new.jpeg",
-    "assets/images/team_poster.jpeg",
     "assets/images/poster.jpeg",
+    "assets/images/team_poster.jpeg",
   ];
 
   static const List<Map<String, String>> festHeads = [
-    {"name": "Vedang Dixit", "image": "assets/images/logo.jpeg", "role": "Fest Head", "phone": "+919999999999", "email": "vedang@lnmiit.ac.in"},
-    {"name": "Vedant Wadhwa", "image": "assets/images/logo.jpeg", "role": "Fest Head", "phone": "+918888888888", "email": "vedant@lnmiit.ac.in"},
+    {"name": "Abhas Chaudhary", "image": "assets/images/logo.jpeg", "role": "Fest Head", "phone": "+919999999999", "email": "abhas@lnmiit.ac.in"},
+    {"name": "Arnav Rinawa", "image": "assets/images/logo.jpeg", "role": "Fest Head", "phone": "+918888888888", "email": "arnav@lnmiit.ac.in"},
   ];
 
   @override
@@ -34,7 +34,7 @@ class VivacityPage extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
-          "VIVACITY",
+          "DESPORTIVOS",
           style: GoogleFonts.playfairDisplay(
             color: Colors.redAccent,
             fontSize: isMobile ? 22 : 38,
@@ -53,7 +53,7 @@ class VivacityPage extends StatelessWidget {
                   width: double.infinity,
                   height: isMobile ? 180 : 260,
                   child: Image.asset(
-                    "assets/images/team_poster.jpeg",
+                    "assets/images/hero_new.jpeg",
                     fit: BoxFit.cover,
                   ),
                 ),
