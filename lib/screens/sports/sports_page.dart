@@ -308,6 +308,25 @@ class SportsPage extends StatelessWidget {
       ];
     }
 
+    if (clubName == 'Zenith') {
+      return [
+        {
+          'name': 'Zenith Coordinator 1',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports_logo.jpg',
+          'phone': '+919999999999',
+          'email': 'zenith_coord1@lnmiit.ac.in',
+        },
+        {
+          'name': 'Zenith Coordinator 2',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports_logo.jpg',
+          'phone': '+918888888888',
+          'email': 'zenith_coord2@lnmiit.ac.in',
+        },
+      ];
+    }
+
     return [
       {
         'name': '$clubName Coordinator 1',
@@ -391,6 +410,11 @@ class SportsPage extends StatelessWidget {
         'assets/assets/images/sports/volleyball/volley1.jpg',
         'assets/assets/images/sports/volleyball/volley2.jpg',
         'assets/assets/images/sports/volleyball/volley5.jpg',
+      ];
+    }
+    if (clubName == 'Zenith') {
+      return [
+        'assets/assets/images/sports_logo.jpg',
       ];
     }
 
@@ -491,6 +515,15 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Volleyball'),
       'gallery': _getGallery('Volleyball'),
       'description': "The Volleyball Club at LNMIIT is a vibrant and competitive community for sports enthusiasts who are passionate about the game. As one of the institute's official sports clubs, we aim to promote physical fitness, teamwork, and sportsmanship through regular practice sessions, friendly matches, and participation in inter-college tournaments. Whether you're a beginner or an experienced player, the club welcomes everyone with a love for volleyball. Join us to bump, set, and spike your way into a spirited sports culture!",
+    },
+    {
+      'name': 'Zenith',
+      'icon': 'assets/assets/images/sports_logo.jpg',
+      'subtitle': 'The Fitness Club of LNMIIT',
+      'image': 'assets/assets/images/sports_logo.jpg',
+      'coordinators': _getCoordinators('Zenith'),
+      'gallery': _getGallery('Zenith'),
+      'description': "Zenith is the Fitness Club of LNMIIT. We aim to inspire and guide students toward a healthier, more active lifestyle through guided fitness routines, workout sessions, and wellness events.",
     },
   ];
 
