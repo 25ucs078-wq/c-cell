@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'screens/home_page.dart';
+import 'supabase_config.dart';
+import 'pages/admission_landing_page.dart';
+import 'login_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SupabaseConfig.init();
   runApp(const MyApp());
 }
 
@@ -12,16 +16,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
-      title: "C-CELL",
-
+      title: 'College Admission App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.deepPurple,
-        ),
+        useMaterial3: true,
+        colorSchemeSeed: Colors.blue,
       ),
-
-      home: const HomePage(),
+      routes: {
+        '/': (_) => const AdmissionLandingPage(),
+        '/login': (_) => const LoginPage(),
+      },
     );
   }
 }
