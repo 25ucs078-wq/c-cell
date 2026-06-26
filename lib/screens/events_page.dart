@@ -14,12 +14,33 @@ class EventsPage extends StatelessWidget {
       'description': 'TEDxLNMIIT is an independently organized event that brings together thinkers, innovators, and doers to share inspiring ideas and spark meaningful conversations under the global TED banner.',
       'coordinators': [
         {
-          'name': 'TEDx Organizer',
-          'role': 'Event Organizer',
-          'image': 'assets/assets/images/profile.png',
-          'phone': '+919876543210',
-          'email': 'tedx@lnmiit.ac.in',
-        }
+          'name': 'Pranav Vashisth',
+          'role': 'Organizer',
+          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg',
+          'phone': '+918445681853',
+          'email': '24ucs126@lnmiit.ac.in',
+        },
+        {
+          'name': 'Praneel Dev',
+          'role': 'Organizer',
+          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg',
+          'phone': '+918955352024',
+          'email': '24ucs202@lnmiit.ac.in',
+        },
+        {
+          'name': 'Samar Goyal',
+          'role': 'Organizer',
+          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg',
+          'phone': '+917300458010',
+          'email': '24ucs008@lnmiit.ac.in',
+        },
+        {
+          'name': 'Vedha Meghashyam Sinkar',
+          'role': 'Organizer',
+          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg',
+          'phone': '+919588483298',
+          'email': '24ume011@lnmiit.ac.in',
+        },
       ],
       'gallery': [
         'assets/assets/images/ted/ted1.jpg',
@@ -37,12 +58,33 @@ class EventsPage extends StatelessWidget {
       'description': 'E-Summit is the annual flagship entrepreneurship summit of LNMIIT. It serves as a platform to inspire and empower the next generation of startup founders, showcasing innovations, business pitch fests, and expert panel talks.',
       'coordinators': [
         {
-          'name': 'E-Summit Organizer',
-          'role': 'Event Organizer',
-          'image': 'assets/assets/images/profile.png',
+          'name': 'Ayush Agarwal',
+          'role': 'E-Summit Head',
+          'image': 'assets/assets/images/esummit/ayush.jpeg',
           'phone': '+919876543210',
-          'email': 'esummit@lnmiit.ac.in',
-        }
+          'email': 'esummit_organizer1@lnmiit.ac.in',
+        },
+        {
+          'name': 'Farhan Sheikh',
+          'role': 'E-Summit Head',
+          'image': 'assets/assets/images/esummit/farhan.jpeg',
+          'phone': '+919876543210',
+          'email': 'esummit_organizer2@lnmiit.ac.in',
+        },
+        {
+          'name': 'Yogya Saraf',
+          'role': 'E-Summit Head',
+          'image': 'assets/assets/images/esummit/yogya.jpeg',
+          'phone': '+919876543210',
+          'email': 'esummit_organizer3@lnmiit.ac.in',
+        },
+        {
+          'name': 'Yug Patel',
+          'role': 'E-Summit Head',
+          'image': 'assets/assets/images/esummit/yug.jpeg',
+          'phone': '+919876543210',
+          'email': 'esummit_organizer4@lnmiit.ac.in',
+        },
       ],
       'gallery': [
         'assets/assets/images/esummit/esummit1.jpg',
