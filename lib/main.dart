@@ -85,6 +85,7 @@ class MyApp extends StatelessWidget {
               clubImage: args['clubImage']!,
               coordinators: args['coordinators']!,
               galleryImages: args['galleryImages']!,
+              description: args['description']!,
             );
             break;
           case '/sports_detail':
@@ -94,6 +95,7 @@ class MyApp extends StatelessWidget {
               clubImage: args['clubImage']!,
               coordinators: args['coordinators']!,
               galleryImages: args['galleryImages']!,
+              description: args['description']!,
             );
             break;
           case '/cultural_detail':
@@ -103,6 +105,7 @@ class MyApp extends StatelessWidget {
               clubImage: args['clubImage']!,
               coordinators: args['coordinators']!,
               galleryImages: args['galleryImages']!,
+              description: args['description']!,
             );
             break;
           case '/council_detail':

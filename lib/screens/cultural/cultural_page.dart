@@ -510,6 +510,7 @@ class CulturalPage extends StatelessWidget {
       'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png',
       'coordinators': _getCoordinators('Aaveg'),
       'gallery': _getGallery('Aaveg'),
+      'description': "Aaveg is the Nukkad Natak (street play) club of our college, dedicated to creating social awareness through powerful performances. With a team of 20–25 members, we bring important societal issues to life through impactful street plays.We perform not only at various inter-college events but also in public with flashmobs at crowded places",
     },
     {
       'name': 'Capriccio',
@@ -518,6 +519,7 @@ class CulturalPage extends StatelessWidget {
       'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg',
       'coordinators': _getCoordinators('Capriccio'),
       'gallery': _getGallery('Capriccio'),
+      'description': "Step into a world where melodies speak, rhythms connect, and music becomes a way of life. At Capriccio, we’re a tight-knit crew of singers, instrumentalists, and producers who vibe, jam, and grow together. With every session, we create memories, share knowledge, and build bonds that last far beyond college. It’s more than music—it’s family!",
     },
     {
       'name': 'Eminence',
@@ -526,6 +528,7 @@ class CulturalPage extends StatelessWidget {
       'image': 'assets/assets/images/cultural/eminence/eminence_logo.jpg',
       'coordinators': _getCoordinators('Eminence'),
       'gallery': _getGallery('Eminence'),
+      'description': 'Eminence is a fashion-forward club where style meets passion. From choreographed ramp walks to fashion-themed events, we explore all aspects of fashion. Our club is a space for aspiring models, stylists, and fashion enthusiasts to grow and shine. We believe fashion is not just about clothes — it’s about attitude and identity.',
     },
     {
       'name': 'Finlogue',
@@ -534,6 +537,7 @@ class CulturalPage extends StatelessWidget {
       'image': 'assets/assets/images/cultural/finlogue/finlogue_logo.jpeg',
       'coordinators': _getCoordinators('Finlogue'),
       'gallery': _getGallery('Finlogue'),
+      'description': 'The Fintech Club of LNMIIT, Finlogue, bridges the gap between finance and technology, hosting discussions, workshops, and case study competitions on investments, markets, and blockchain.',
     },
     {
       'name': 'Imagination',
@@ -542,6 +546,7 @@ class CulturalPage extends StatelessWidget {
       'image': 'assets/assets/images/cultural/imagination/imagination_logo.jpeg',
       'coordinators': _getCoordinators('Imagination'),
       'gallery': _getGallery('Imagination'),
+      'description': 'IMAGINATION is the creative photography and cinematography club of The LNM Institute of Information Technology. It is a vibrant community of passionate individuals who explore the world through lenses, pixels, and ideas — turning vision into impactful visuals.',
     },
     {
       'name': 'Insignia',
@@ -550,6 +555,7 @@ class CulturalPage extends StatelessWidget {
       'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg',
       'coordinators': _getCoordinators('Insignia'),
       'gallery': _getGallery('Insignia'),
+      'description': "INSIGNIA, the official dance club of LNMIIT, is a powerhouse of passion, rhythm, and relentless dedication. We pour our heart and soul into every move, crafting performances that leave a mark. Winning doesn't matter—shining is.",
     },
     {
       'name': 'Literary Committee',
@@ -558,6 +564,7 @@ class CulturalPage extends StatelessWidget {
       'image': 'assets/assets/images/cultural/lc/lc_logo.jpg',
       'coordinators': _getCoordinators('Literary Committee'),
       'gallery': _getGallery('Literary Committee'),
+      'description': 'Putting the CULT in culture, the Literary Committee is a mosh pit fueled by caffeine-riddled fanatics who walk on walls and drink up aquariums. An isle of those who romanticize Sisyphean suffering while thinking of nostalgia as the closest thing to a home. The Literary Committee does it all—with flair and a touch of melancholy.',
     },
     {
       'name': 'Media Cell',
@@ -566,6 +573,7 @@ class CulturalPage extends StatelessWidget {
       'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg',
       'coordinators': _getCoordinators('Media Cell'),
       'gallery': _getGallery('Media Cell'),
+      'description': 'Media Cell isn’t just a club—it’s a platform for expression. Rooted in the idea of “media” as a medium, it offers students a space to build confidence, stage presence, and spontaneous speaking skills through interactive events. From anchoring major college fests to hosting formats like Doulogue and Knockout Ads, it ensures every voice is heard. At its core, Media Cell turns communication into connection—and gives every voice its medium',
     },
     {
       'name': 'Rendition',
@@ -574,6 +582,7 @@ class CulturalPage extends StatelessWidget {
       'image': 'assets/assets/images/cultural/rendition/rendition_logo.png',
       'coordinators': _getCoordinators('Rendition'),
       'gallery': _getGallery('Rendition'),
+      'description': 'Rendition is the theatre club of LNMIIT, where stories come alive on stage. From expressive mime performances and powerful monoacts to engaging stage plays, the club celebrates the art of acting in all its forms. We believe in the magic of live performance and the ability of theatre to connect, inspire, and transform. Whether through silent gestures or commanding dialogues, Rendition gives voice to creativity and passion.',
     },
     {
       'name': 'Sankalp',
@@ -582,6 +591,7 @@ class CulturalPage extends StatelessWidget {
       'image': 'assets/assets/images/cultural/sankalp/sankalp_logo.jpg',
       'coordinators': _getCoordinators('Sankalp'),
       'gallery': _getGallery('Sankalp'),
+      'description': 'Sankalp is the social club of our college, driven by the spirit of service and compassion. We work to educate underprivileged children in nearby villages, uplift mess workers through literacy programs, and lead initiatives like cloth distribution. At Sankalp, we believe in turning intentions into actions and building a better tomorrow—one life at a time.',
     },
     {
       'name': 'Vignette',
@@ -590,6 +600,7 @@ class CulturalPage extends StatelessWidget {
       'image': 'assets/assets/images/cultural/vignette/logo_unit.png',
       'coordinators': _getCoordinators('Vignette'),
       'gallery': _getGallery('Vignette'),
+      'description': 'Vignette - the Art and Craft Club of LNMIIT, is the creative heart of the campus. Its vibrant artworks bring the campus to life, adding color, energy, and character to every corner. From sketching on sheets to painting walls and even faces, it’s a space where imagination feels at home. With a canvas, a piece of fabric, or just an idea, you are free to create, in your own way.',
     },
   ];
 
@@ -682,6 +693,7 @@ class CulturalPage extends StatelessWidget {
     final String clubImage = club['image'] as String;
     final String clubIcon = club['icon'] as String;
     final String clubSubtitle = club['subtitle'] as String;
+    final String clubDescription = club['description'] as String? ?? '';
     final List<Map<String, String>> coordinators = List<Map<String, String>>.from(
       (club['coordinators'] as List).map(
         (item) => Map<String, String>.from(item as Map),
@@ -698,6 +710,7 @@ class CulturalPage extends StatelessWidget {
           'clubImage': clubImage,
           'coordinators': coordinators,
           'galleryImages': galleryImages,
+          'description': clubDescription,
         },
       );
     }

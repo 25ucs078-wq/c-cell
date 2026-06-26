@@ -9,6 +9,7 @@ class SportsClubDetailPage extends StatelessWidget {
   final String clubImage;
   final List<Map<String, String>> coordinators;
   final List<String> galleryImages;
+  final String description;
 
   const SportsClubDetailPage({
     super.key,
@@ -16,6 +17,7 @@ class SportsClubDetailPage extends StatelessWidget {
     required this.clubImage,
     required this.coordinators,
     required this.galleryImages,
+    required this.description,
   });
 
   @override
@@ -90,7 +92,7 @@ class SportsClubDetailPage extends StatelessWidget {
                   SizedBox(height: isMobile ? 24 : 32),
                   // Club Description
                   Text(
-                    _getClubDescription(clubName),
+                    description,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                       color: Colors.white.withValues(alpha: 0.85),
@@ -427,32 +429,5 @@ class SportsClubDetailPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  String _getClubDescription(String name) {
-    switch (name) {
-      case 'Badminton':
-        return 'The Badminton Club at LNMIIT brings together passionate players to practice, compete, and excel, fostering agility, precision, and a strong sportsman spirit on and off the court.';
-      case 'Basketball':
-        return 'Dribble, shoot, and score. The Basketball Club is dedicated to building strong team chemistry, tactical gameplay, and athletic excellence through rigorous training and inter-college tournaments.';
-      case 'Chess':
-        return 'A hub for strategic minds. The Chess Club promotes critical thinking, tactical planning, and focus, hosting regular tournaments and training sessions for enthusiasts and competitive players.';
-      case 'Cricket':
-        return 'The Cricket Club represents the passion and energy of LNMIIT on the pitch, uniting players in a culture of discipline, teamwork, and competitive excellence in matches and fests.';
-      case 'Football':
-        return 'Driven by passion and united by teamwork, the Football Club focuses on tactical skill, physical endurance, and the beautiful game, representing LNMIIT in various collegiate leagues.';
-      case 'Kabaddi':
-        return 'Rooted in strength, strategy, and agility, the Kabaddi Club keeps the traditional sport alive and thriving at LNMIIT with high-intensity training and robust team spirit.';
-      case 'Lawn Tennis':
-        return 'The Lawn Tennis Club offers a dynamic platform for players to refine their groundstrokes, serves, and match strategies, fostering a love for the sport on our premier campus courts.';
-      case 'Squash':
-        return 'A fast-paced arena of speed and reflexes. The Squash Club provides players with training in stamina, speed, and court strategy, encouraging a highly active lifestyle.';
-      case 'Table Tennis':
-        return 'Precision, speed, and concentration. The Table Tennis Club hosts competitive face-offs and practice sessions, helping players master spins and quick reflexes.';
-      case 'Volleyball':
-        return 'Spike your way to victory. The Volleyball Club emphasizes power, timing, and seamless coordination, bringing together players to enjoy and excel at this thrilling team sport.';
-      default:
-        return 'A sports club at LNMIIT dedicated to building athletic excellence, teamwork, and competitive spirit among students.';
-    }
   }
 }

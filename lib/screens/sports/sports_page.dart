@@ -409,6 +409,7 @@ class SportsPage extends StatelessWidget {
       'image': 'assets/assets/images/sports/badminton/badminton_logo.jpeg',
       'coordinators': _getCoordinators('Badminton'),
       'gallery': _getGallery('Badminton'),
+      'description': "The Badminton Club is where ambition meets discipline — a court for those who play to win and train to dominate. Every match is a test, every session a step toward becoming unbeatable. It’s not just about playing; it’s about proving you’re better than yesterday.",
     },
     {
       'name': 'Basketball',
@@ -417,6 +418,7 @@ class SportsPage extends StatelessWidget {
       'image': 'assets/assets/images/sports/basketball/basketball_logo.png',
       'coordinators': _getCoordinators('Basketball'),
       'gallery': _getGallery('Basketball'),
+      'description': "Our Basketball Club is a place for students who love the game. We practice regularly, play matches, and grow as a team. Whether you’re a beginner or experienced, everyone’s welcome to join.",
     },
     {
       'name': 'Chess',
@@ -425,6 +427,7 @@ class SportsPage extends StatelessWidget {
       'image': 'assets/assets/images/sports/chess/chess_logo.jpg',
       'coordinators': _getCoordinators('Chess'),
       'gallery': _getGallery('Chess'),
+      'description': "The Chess Club brings together students who share an interest in chess. It’s a space for strategic thinking, friendly competition, and continuous learning. Open to all skill levels, the club promotes a love for the game and a sense of community.",
     },
     {
       'name': 'Cricket',
@@ -433,6 +436,7 @@ class SportsPage extends StatelessWidget {
       'image': 'assets/assets/images/sports/cricket/cricket_logo.jpeg',
       'coordinators': _getCoordinators('Cricket'),
       'gallery': _getGallery('Cricket'),
+      'description': "At LNMIIT, cricket is more than just a game-its a shared passion that brings students across batches. The cricket culture here fosters not only teamwork and competitiveness but also creates a homely bond with seniors and its a place where memories are made beyond scorecard.",
     },
     {
       'name': 'Football',
@@ -441,6 +445,7 @@ class SportsPage extends StatelessWidget {
       'image': 'assets/assets/images/sports/football/football_logo.jpg',
       'coordinators': _getCoordinators('Football'),
       'gallery': _getGallery('Football'),
+      'description': "Just a bunch of football fanatics who live for the game – whether it's sweating it out on the field or supporting their favourite clubs. LNMFC is all about teamwork, passion, and having a blast while playing the sport we love. Everyone’s welcome, from casual kickers to future pros!",
     },
     {
       'name': 'Kabaddi',
@@ -449,6 +454,7 @@ class SportsPage extends StatelessWidget {
       'image': 'assets/assets/images/sports/kabaddi/kabaddi_logo.jpeg',
       'coordinators': _getCoordinators('Kabaddi'),
       'gallery': _getGallery('Kabaddi'),
+      'description': "Ready to bring the heat on the mat? LNMIIT Kabaddi is where passion meets power. With consistent podium finishes at Despo and Udghosh, we’re building legends — one tackle at a time. Join us and #LePanga! ",
     },
     {
       'name': 'Lawn Tennis',
@@ -457,6 +463,7 @@ class SportsPage extends StatelessWidget {
       'image': 'assets/assets/images/sports/lawn_tennis/lawnt_logo.png',
       'coordinators': _getCoordinators('Lawn Tennis'),
       'gallery': _getGallery('Lawn Tennis'),
+      'description': "The Lawn Tennis Club welcomes everyone, whether you’re a complete beginner or an experienced player. We hold regular practice sessions, friendly matches, and competitive tournaments throughout the year. It’s a great space to improve your game, stay active, and be part of a supportive tennis community",
     },
     {
       'name': 'Squash',
@@ -465,6 +472,7 @@ class SportsPage extends StatelessWidget {
       'image': 'assets/assets/images/sports/squash/squash_logo.jpeg',
       'coordinators': _getCoordinators('Squash'),
       'gallery': _getGallery('Squash'),
+      'description': "The Squash Club is a fun and energetic space for anyone who loves the game or wants to try something new. We play regularly, help each other improve, and enjoy a bit of friendly competition along the way. Whether you're just starting out or have been playing for years, you're always welcome to join us. It's all about staying active, meeting people, and having a great time on court!",
     },
     {
       'name': 'Table Tennis',
@@ -473,6 +481,7 @@ class SportsPage extends StatelessWidget {
       'image': 'assets/assets/images/sports/table_tennis/tablet_logo.png',
       'coordinators': _getCoordinators('Table Tennis'),
       'gallery': _getGallery('Table Tennis'),
+      'description': "The Table Tennis Club is a passionate and competitive group dedicated to learning and improving the sport. With a history of securing top positions in past competitions, the club proudly includes state-level players who lead by example. Members train rigorously and regularly participate in friendly matches with other colleges to gain experience and build camaraderie.",
     },
     {
       'name': 'Volleyball',
@@ -481,6 +490,7 @@ class SportsPage extends StatelessWidget {
       'image': 'assets/assets/images/sports/volleyball/volleyball_logo.jpg',
       'coordinators': _getCoordinators('Volleyball'),
       'gallery': _getGallery('Volleyball'),
+      'description': "The Volleyball Club at LNMIIT is a vibrant and competitive community for sports enthusiasts who are passionate about the game. As one of the institute's official sports clubs, we aim to promote physical fitness, teamwork, and sportsmanship through regular practice sessions, friendly matches, and participation in inter-college tournaments. Whether you're a beginner or an experienced player, the club welcomes everyone with a love for volleyball. Join us to bump, set, and spike your way into a spirited sports culture!",
     },
   ];
 
@@ -573,6 +583,7 @@ class SportsPage extends StatelessWidget {
     final String clubImage = club['image'] as String;
     final String clubIcon = club['icon'] as String;
     final String clubSubtitle = club['subtitle'] as String;
+    final String clubDescription = club['description'] as String? ?? '';
     final List<Map<String, String>> coordinators = List<Map<String, String>>.from(
       (club['coordinators'] as List).map(
         (item) => Map<String, String>.from(item as Map),
@@ -589,6 +600,7 @@ class SportsPage extends StatelessWidget {
           'clubImage': clubImage,
           'coordinators': coordinators,
           'galleryImages': galleryImages,
+          'description': clubDescription,
         },
       );
     }

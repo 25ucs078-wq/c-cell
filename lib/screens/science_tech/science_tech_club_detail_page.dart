@@ -9,6 +9,7 @@ class ScienceTechClubDetailPage extends StatelessWidget {
   final String clubImage;
   final List<Map<String, String>> coordinators;
   final List<String> galleryImages;
+  final String description;
 
   const ScienceTechClubDetailPage({
     super.key,
@@ -16,6 +17,7 @@ class ScienceTechClubDetailPage extends StatelessWidget {
     required this.clubImage,
     required this.coordinators,
     required this.galleryImages,
+    required this.description,
   });
 
   @override
@@ -90,7 +92,7 @@ class ScienceTechClubDetailPage extends StatelessWidget {
                   SizedBox(height: isMobile ? 24 : 32),
                   // Club Description
                   Text(
-                    _getClubDescription(clubName),
+                    description,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                       color: Colors.white.withValues(alpha: 0.85),
@@ -427,28 +429,5 @@ class ScienceTechClubDetailPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  String _getClubDescription(String name) {
-    switch (name) {
-      case 'Astronomy':
-        return 'The Astronomy Club of LNMIIT sparks curiosity about the cosmos, organizing stargazing sessions, astrophotography workshops, and scientific talks about the universe.';
-      case 'Cipher':
-        return 'The Cryptology & Cyber Security Club, Cipher, empowers students with knowledge in cryptography, network security, ethical hacking, and safe digital practices.';
-      case 'Cybros':
-        return 'The Coding Club of LNMIIT, Cybros, is the premier hub for developers, competitive programmers, and tech enthusiasts, hosting hackathons, coding contests, and development bootcamps.';
-      case 'DebSoc':
-        return 'The Debating Society of LNMIIT, DebSoc, fosters critical thinking and eloquence, hosting debates on global affairs, policy, and philosophy to build strong public speakers.';
-      case 'E-Cell':
-        return 'The Innovation & Entrepreneurship Cell of LNMIIT, E-Cell, nurtures the startup ecosystem, offering mentorship, funding opportunities, and workshops to turn ideas into successful ventures.';
-      case 'Phoenix':
-        return 'The Robotics Club of LNMIIT, Phoenix, encourages students to design, build, and program autonomous and manual robots, representing the institute in national robotics challenges.';
-      case 'Qbit':
-        return 'The Quantum Computing Club of LNMIIT, Qbit, explores the cutting-edge frontier of quantum algorithms, quantum mechanics, and future computing technologies.';
-      case 'Quizzinga':
-        return 'The Quiz Club of LNMIIT, Quizzinga, is a community of trivia buffs, hosting diverse quizzes on general knowledge, pop culture, sports, and science to keep minds sharp.';
-      default:
-        return 'A science & technology club at LNMIIT offering students an active community to explore innovation, building practical skills, and competing in tech events.';
-    }
   }
 }

@@ -305,6 +305,7 @@ class ScienceTechPage extends StatelessWidget {
       'image': 'assets/assets/images/tech/astronomy/astro_logo.jpg',
       'coordinators': _getCoordinators('Astronomy'),
       'gallery': _getGallery('Astronomy'),
+      'description': "The Astronomy Club fuels student passion for the wonders of astronomy and space exploration, sparking curiosity about the universe’s endless mysteries. As one of LNMIIT’s most active clubs, we bring together creative and enthusiastic minds to host thrilling, high-energy events that captivate everyone. From stargazing nights to cosmic quizzes, our year-round activities keep the excitement alive—because college life isn’t just about academics, it’s about unforgettable experiences too!",
     },
     {
       'name': 'Cipher',
@@ -313,6 +314,7 @@ class ScienceTechPage extends StatelessWidget {
       'image': 'assets/assets/images/tech/cipherclub/cipher_logo.png',
       'coordinators': _getCoordinators('Cipher'),
       'gallery': _getGallery('Cipher'),
+      'description': "With the mission to empower and educate, CIPHER is the Cybersecurity and Blockchain club focused on fostering awareness, innovation, and a strong technical culture. It provides a space for students to explore digital security and decentralized technologies, grow through collaboration, and engage with two of the most impactful domains shaping the future.",
     },
     {
       'name': 'Cybros',
@@ -321,6 +323,7 @@ class ScienceTechPage extends StatelessWidget {
       'image': 'assets/assets/images/tech/cybros/cybros_logo.jpg',
       'coordinators': _getCoordinators('Cybros'),
       'gallery': _getGallery('Cybros'),
+      'description': "Cybros is a competitive programming club dedicated to fostering a strong coding culture within the college. We promote algorithmic thinking, conduct regular contests, and help students build problem-solving skills through consistent practice and collaboration.",
     },
     {
       'name': 'DebSoc',
@@ -329,6 +332,7 @@ class ScienceTechPage extends StatelessWidget {
       'image': 'assets/assets/images/tech/debsoc/debsoc_logo.jpg',
       'coordinators': _getCoordinators('DebSoc'),
       'gallery': _getGallery('DebSoc'),
+      'description': "Lord Byron once said, “Those who will not reason are bigots, those who cannot are fools, and those who dare not are slaves.” At LNMIIT, we believe true growth comes from questioning, debating, and refining your voice. Enter The Debate Society (DebSoc)—where ideas clash, minds sharpen, and words become power. From fiery MUNs and parliamentary debates to gripping extempores, we cultivate rational thinkers and fearless speakers. Whether you're a seasoned orator or a curious beginner, DebSoc shapes you into a master of persuasion—one argument at a time. Because in a world of noise, the strongest voice wins.",
     },
     {
       'name': 'E-Cell',
@@ -337,6 +341,7 @@ class ScienceTechPage extends StatelessWidget {
       'image': 'assets/assets/images/tech/ecell/ecell_logo.jpg',
       'coordinators': _getCoordinators('E-Cell'),
       'gallery': _getGallery('E-Cell'),
+      'description': "Dive into entrepreneurship, crypto, stocks, Web3, and beyond with The Entrepreneurship Club—your hub for mastering the skills that shape tomorrow. From event planning and marketing to management, sponsorships, content creation, and design, we sharpen the tools you need to thrive. We collaborate with top tech colleges across India, bringing you real-world exposure through funding events, startup founder interactions, and deep dives into the startup ecosystem. Here, ideas meet execution—and learners become leaders.",
     },
     {
       'name': 'Phoenix',
@@ -345,6 +350,7 @@ class ScienceTechPage extends StatelessWidget {
       'image': 'assets/assets/images/tech/phoenix/phoenix_logo.png',
       'coordinators': _getCoordinators('Phoenix'),
       'gallery': _getGallery('Phoenix'),
+      "description": "Phoenix , The Robotics club of LNMIIT Jaipur is a vibrant community of tech enthusiasts committed to hands-on innovation, collaborative problem-solving, and excellence in robotics. We actively design, build, and program intelligent systems while proudly representing our institution in prestigious nationwide competitions, fostering both technical expertise and a spirit of innovation.",
     },
     {
       'name': 'Qbit',
@@ -353,6 +359,7 @@ class ScienceTechPage extends StatelessWidget {
       'image': 'assets/assets/images/tech_logo.jpg',
       'coordinators': _getCoordinators('Qbit'),
       'gallery': _getGallery('Qbit'),
+      'description': 'The Quantum Computing Club of LNMIIT, Qbit, explores the cutting-edge frontier of quantum algorithms, quantum mechanics, and future computing technologies.',
     },
     {
       'name': 'Quizzinga',
@@ -361,6 +368,7 @@ class ScienceTechPage extends StatelessWidget {
       'image': 'assets/assets/images/tech/quizzinga/quizzinga_logo.jpg',
       'coordinators': _getCoordinators('Quizzinga'),
       'gallery': _getGallery('Quizzinga'),
+      "description": "We are Quizzinga, The official quizzing club of LNMIIT. Some consider us a cult of nerds (may or may not be true), while others call us a buzzing hivemind of trivia enthusiasts. If you like trivia nights, auctions or winning big prizes, Quizzinga might just be your turf. \nVENI VIDI VICI!!!",
     },
   ];
 
@@ -453,6 +461,7 @@ class ScienceTechPage extends StatelessWidget {
     final String clubImage = club['image'] as String;
     final String clubIcon = club['icon'] as String;
     final String clubSubtitle = club['subtitle'] as String;
+    final String clubDescription = club['description'] as String? ?? '';
     final List<Map<String, String>> coordinators = List<Map<String, String>>.from(
       (club['coordinators'] as List).map(
         (item) => Map<String, String>.from(item as Map),
@@ -469,6 +478,7 @@ class ScienceTechPage extends StatelessWidget {
           'clubImage': clubImage,
           'coordinators': coordinators,
           'galleryImages': galleryImages,
+          'description': clubDescription,
         },
       );
     }
