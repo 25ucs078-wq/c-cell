@@ -136,28 +136,28 @@ class SportsPage extends StatelessWidget {
         {
           'name': 'Kavyansh Mittal (C)',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/football/football_logo.jpg',
+          'image': 'assets/assets/images/sports/football/kavyansh.jpeg',
           'phone': '+919999999999',
           'email': '24uec092@lnmiit.ac.in',
         },
         {
           'name': 'Harsh Gupta',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/football/football_logo.jpg',
+          'image': 'assets/assets/images/sports/football/harsh.jpeg',
           'phone': '+918888888888',
           'email': '24ucs013@lnmiit.ac.in',
         },
         {
           'name': 'Rishabh Agarwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/football/football_logo.jpg',
+          'image': 'assets/assets/images/sports/football/rishabh.jpeg',
           'phone': '+918888888888',
           'email': '24ucs013@lnmiit.ac.in',
         },
         {
           'name': 'Sahadra Rana',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/football/football_logo.jpg',
+          'image': 'assets/assets/images/sports/football/sahadra.jpeg',
           'phone': '+918888888888',
           'email': '24ucs013@lnmiit.ac.in',
         },
@@ -349,9 +349,13 @@ class SportsPage extends StatelessWidget {
     }
     if (clubName == 'Football') {
       return [
-        'assets/assets/images/sports/football/foot1.jpg',
-        'assets/assets/images/sports/football/foot2.jpg',
-        'assets/assets/images/sports/football/foot3.jpg',
+        'assets/assets/images/sports/football/fc1.jpeg',
+        'assets/assets/images/sports/football/fc2.jpeg',
+        'assets/assets/images/sports/football/fc3.jpeg',
+        'assets/assets/images/sports/football/fc4.jpeg',
+        'assets/assets/images/sports/football/fc5.jpeg',
+        'assets/assets/images/sports/football/fc6.jpeg',
+        'assets/assets/images/sports/football/fc7.jpeg',
       ];
     }
     if (clubName == 'Kabaddi') {

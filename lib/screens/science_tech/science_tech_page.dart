@@ -164,7 +164,7 @@ class ScienceTechPage extends StatelessWidget {
           'role': 'Coordinator',
           'image': 'assets/assets/images/tech_logo.jpg',
           'phone': '+919352888935',
-          'email': '24ucs545@lnmiit.ac.in',
+          'email': '23ucs545@lnmiit.ac.in',
         },
       ];
     }
@@ -176,21 +176,21 @@ class ScienceTechPage extends StatelessWidget {
           'role': 'Coordinator',
           'image': 'assets/assets/images/tech/ecell/ecell_logo.jpg',
           'phone': '+919999999999',
-          'email': '24ucs220@lnmiit.ac.in',
+          'email': '24uec196@lnmiit.ac.in',
         },
         {
           'name': 'Panth Moradiya',
           'role': 'Coordinator',
           'image': 'assets/assets/images/tech/ecell/ecell_logo.jpg',
           'phone': '+918888888888',
-          'email': '24ucc064@lnmiit.ac.in',
+          'email': '24ucs120@lnmiit.ac.in',
         },
         {
           'name': 'Ritesh Sarawagi',
           'role': 'Coordinator',
           'image': 'assets/assets/images/tech/ecell/ecell_logo.jpg',
           'phone': '+918888888888',
-          'email': '24ucc064@lnmiit.ac.in',
+          'email': '24uec050@lnmiit.ac.in',
         },
       ];
     }
@@ -201,21 +201,21 @@ class ScienceTechPage extends StatelessWidget {
           'name': 'Aalekh Narain',
           'role': 'Coordinator',
           'image': 'assets/assets/images/tech/debsoc/debsoc_logo.jpg',
-          'phone': '+919999999999',
+          'phone': '+918851341701',
           'email': '24ucs224@lnmiit.ac.in',
         },
         {
           'name': 'Akansh Saxena',
           'role': 'Coordinator',
           'image': 'assets/assets/images/tech/debsoc/debsoc_logo.jpg',
-          'phone': '+918888888888',
+          'phone': '+917668010687',
           'email': '24uec155@lnmiit.ac.in',
         },
         {
           'name': 'Ruhani Sukhija',
           'role': 'Coordinator',
           'image': 'assets/assets/images/tech/debsoc/debsoc_logo.jpg',
-          'phone': '+918888888888',
+          'phone': '+917014531991',
           'email': '24ucs108@lnmiit.ac.in',
         },
       ];

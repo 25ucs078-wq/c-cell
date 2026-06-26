@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/glass_card.dart';
+import '../widgets/interactive_gallery_viewer.dart';
 
 class DesportivosPage extends StatelessWidget {
   const DesportivosPage({super.key});
@@ -124,7 +125,7 @@ class DesportivosPage extends StatelessWidget {
                           itemCount: galleryImages.length,
                           separatorBuilder: (_, _) => const SizedBox(width: 14),
                           itemBuilder: (context, index) {
-                            return _buildGalleryImage(galleryImages[index]);
+                            return _buildGalleryImage(context, galleryImages, index);
                           },
                         ),
                       ),
@@ -140,14 +141,31 @@ class DesportivosPage extends StatelessWidget {
     );
   }
 
-  Widget _buildGalleryImage(String image) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: Image.asset(
-        image,
-        width: 220,
-        height: 140,
-        fit: BoxFit.cover,
+  Widget _buildGalleryImage(BuildContext context, List<String> allImages, int index) {
+    final String image = allImages[index];
+    return GestureDetector(
+      onTap: () => InteractiveGalleryViewer.show(context, allImages, index),
+      child: Hero(
+        tag: 'gallery_image_${image}_$index',
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Image.asset(
+            image,
+            height: 140,
+            fit: BoxFit.fitHeight,
+            errorBuilder: (context, error, stackTrace) {
+              return Container(
+                width: 220,
+                height: 140,
+                color: Colors.grey[800],
+                child: const Icon(
+                  Icons.image_not_supported,
+                  color: Colors.white54,
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
   }
