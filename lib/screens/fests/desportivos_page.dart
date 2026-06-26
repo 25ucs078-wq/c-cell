@@ -146,7 +146,7 @@ class DesportivosPage extends StatelessWidget {
                             icon: Icons.play_circle_filled,
                             label: "YouTube",
                             color: const Color(0xFFFF0000),
-                            url: "https://www.youtube.com/@desportivoslnmiit",
+                            url: "https://www.youtube.com/@desportivoslnmiit2733",
                           ),
                           const SizedBox(width: 12),
                           _buildFestSocialButton(

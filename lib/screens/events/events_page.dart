@@ -13,9 +13,9 @@ class EventsPage extends StatelessWidget {
       'subtitle': 'Forging The Future',
       'description': 'TEDxLNMIIT is an independently organized event that brings together thinkers, innovators, and doers to share inspiring ideas and spark meaningful conversations under the global TED banner.',
       'instagram': 'https://www.instagram.com/tedxlnmiit/',
-      'email': 'tedx@lnmiit.ac.in',
-      'youtube': 'https://www.youtube.com/@tedxlnmiit',
-      'website': 'https://tedx.lnmiit.ac.in/',
+      'email': 'tedxlnmiit@lnmiit.ac.in',
+      'youtube': 'https://www.youtube.com/@TEDxLNMIIT',
+      'website': 'https://tedxlnmiit.in/',
       'coordinators': [
         {
           'name': 'Pranav Vashisth',
@@ -61,7 +61,7 @@ class EventsPage extends StatelessWidget {
       'image': 'assets/assets/images/esummit/esummit_logo.jpg',
       'subtitle': 'Promoting Innovation and Startup Culture',
       'description': 'E-Summit is the annual flagship entrepreneurship summit of LNMIIT. It serves as a platform to inspire and empower the next generation of startup founders, showcasing innovations, business pitch fests, and expert panel talks.',
-      'instagram': 'https://www.instagram.com/esummit_lnmiit/',
+      'instagram': 'https://www.instagram.com/esummitlnmiit/',
       'coordinators': [
         {
           'name': 'Ayush Agarwal',

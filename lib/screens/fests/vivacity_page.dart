@@ -138,7 +138,7 @@ class VivacityPage extends StatelessWidget {
                             icon: Icons.camera_alt,
                             label: "Instagram",
                             color: const Color(0xFFE1306C),
-                            url: "https://www.instagram.com/lnmiitvivacity/",
+                            url: "https://www.instagram.com/vivacity_lnmiit/",
                           ),
                           const SizedBox(width: 12),
                           _buildFestSocialButton(
@@ -146,7 +146,7 @@ class VivacityPage extends StatelessWidget {
                             icon: Icons.play_circle_filled,
                             label: "YouTube",
                             color: const Color(0xFFFF0000),
-                            url: "https://www.youtube.com/@vivacitylnmiit",
+                            url: "https://www.youtube.com/@VivacityLNMIIT",
                           ),
                           const SizedBox(width: 12),
                           _buildFestSocialButton(
