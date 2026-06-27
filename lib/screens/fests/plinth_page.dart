@@ -52,7 +52,7 @@ class PlinthPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 YoutubePromoPlayer(
-                  videoId: "K3YhP1yY34M",
+                  videoUrl: "https://youtu.be/w-l5RaAPj0o?si=Sc2I3t9g_vxdfqtK",
                   fallbackImageUrl: "assets/images/poster.jpeg",
                   height: isMobile ? 180 : 260,
                 ),

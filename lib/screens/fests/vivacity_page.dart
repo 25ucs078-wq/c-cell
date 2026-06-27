@@ -52,7 +52,7 @@ class VivacityPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 YoutubePromoPlayer(
-                  videoId: "qOU1GGSG9Y9",
+                  videoUrl: "https://youtu.be/1xyrpnRfusg?si=iDiAR0XeRLL-j1dd",
                   fallbackImageUrl: "assets/images/team_poster.jpeg",
                   height: isMobile ? 180 : 260,
                 ),

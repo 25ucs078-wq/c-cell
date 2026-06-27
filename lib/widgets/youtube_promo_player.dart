@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class YoutubePromoPlayer extends StatefulWidget {
-  final String videoId;
+  final String videoUrl;
   final String fallbackImageUrl;
   final double height;
 
   const YoutubePromoPlayer({
     super.key,
-    required this.videoId,
+    required this.videoUrl,
     required this.fallbackImageUrl,
     required this.height,
   });
@@ -28,8 +28,11 @@ class _YoutubePromoPlayerState extends State<YoutubePromoPlayer> {
   @override
   void initState() {
     super.initState();
+    final parsedId = YoutubePlayerController.convertUrlToId(widget.videoUrl);
+    final videoId = parsedId ?? widget.videoUrl;
+
     _controller = YoutubePlayerController.fromVideoId(
-      videoId: widget.videoId,
+      videoId: videoId,
       autoPlay: true,
       params: const YoutubePlayerParams(
         showControls: false,

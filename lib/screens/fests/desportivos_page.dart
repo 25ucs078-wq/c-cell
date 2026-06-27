@@ -52,7 +52,7 @@ class DesportivosPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 YoutubePromoPlayer(
-                  videoId: "eLzT4YhD2o8",
+                  videoUrl: "https://youtu.be/9G0H9GHHCVo?si=UOyGMxsXoAN641Qj",
                   fallbackImageUrl: "assets/images/hero_new.jpeg",
                   height: isMobile ? 180 : 260,
                 ),
