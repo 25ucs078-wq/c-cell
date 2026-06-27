@@ -312,11 +312,17 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           onPressed: onTap,
-          icon: Icon(
-            icon,
-            color: color,
-            size: 20,
-          ),
+          icon: label.toLowerCase() == 'instagram'
+              ? Image.asset(
+                  'assets/assets/images/intagram.png',
+                  width: 20,
+                  height: 20,
+                )
+              : Icon(
+                  icon,
+                  color: color,
+                  size: 20,
+                ),
           label: Text(
             label.toUpperCase(),
             style: GoogleFonts.playfairDisplay(

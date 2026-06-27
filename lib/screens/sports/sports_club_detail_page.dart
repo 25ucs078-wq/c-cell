@@ -154,28 +154,17 @@ class SportsClubDetailPage extends StatelessWidget {
                       },
                     ),
                   ),
-                  if (instagram.isNotEmpty || email.isNotEmpty) ...[
+                  if (instagram.isNotEmpty) ...[
                     const SizedBox(height: 24),
                     Row(
                       children: [
-                        if (instagram.isNotEmpty)
-                          _buildClubSocialButton(
-                            context: context,
-                            icon: Icons.camera_alt,
-                            label: "Instagram",
-                            color: const Color(0xFFE1306C),
-                            onTap: () => _launchWebUrl(context, instagram),
-                          ),
-                        if (instagram.isNotEmpty && email.isNotEmpty)
-                          const SizedBox(width: 16),
-                        if (email.isNotEmpty)
-                          _buildClubSocialButton(
-                            context: context,
-                            icon: Icons.email,
-                            label: "Email",
-                            color: Colors.redAccent,
-                            onTap: () => _launchEmail(context, email),
-                          ),
+                        _buildClubSocialButton(
+                          context: context,
+                          icon: Icons.camera_alt,
+                          label: "Instagram",
+                          color: const Color(0xFFE1306C),
+                          onTap: () => _launchWebUrl(context, instagram),
+                        ),
                       ],
                     ),
                   ],
@@ -490,11 +479,29 @@ class SportsClubDetailPage extends StatelessWidget {
             ),
           ),
           onPressed: onTap,
-          icon: Icon(
-            icon,
-            color: color,
-            size: 20,
-          ),
+          icon: label.toLowerCase() == 'instagram'
+              ? Image.asset(
+                  'assets/assets/images/intagram.png',
+                  width: 20,
+                  height: 20,
+                )
+              : label.toLowerCase() == 'email'
+                  ? Image.asset(
+                      'assets/assets/images/gmail.png',
+                      width: 20,
+                      height: 20,
+                    )
+                  : label.toLowerCase() == 'youtube'
+                      ? Image.asset(
+                          'assets/assets/images/youtube.png',
+                          width: 20,
+                          height: 20,
+                        )
+                      : Icon(
+                          icon,
+                          color: color,
+                          size: 20,
+                        ),
           label: Text(
             label.toUpperCase(),
             style: GoogleFonts.playfairDisplay(

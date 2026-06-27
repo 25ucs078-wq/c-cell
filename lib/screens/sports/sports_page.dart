@@ -434,6 +434,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Badminton'),
       'gallery': _getGallery('Badminton'),
       'description': "The Badminton Club is where ambition meets discipline — a court for those who play to win and train to dominate. Every match is a test, every session a step toward becoming unbeatable. It’s not just about playing; it’s about proving you’re better than yesterday.",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
     },
     {
       'name': 'Basketball',
@@ -443,6 +444,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Basketball'),
       'gallery': _getGallery('Basketball'),
       'description': "Our Basketball Club is a place for students who love the game. We practice regularly, play matches, and grow as a team. Whether you’re a beginner or experienced, everyone’s welcome to join.",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
     },
     {
       'name': 'Chess',
@@ -452,6 +454,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Chess'),
       'gallery': _getGallery('Chess'),
       'description': "The Chess Club brings together students who share an interest in chess. It’s a space for strategic thinking, friendly competition, and continuous learning. Open to all skill levels, the club promotes a love for the game and a sense of community.",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
     },
     {
       'name': 'Cricket',
@@ -461,6 +464,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Cricket'),
       'gallery': _getGallery('Cricket'),
       'description': "At LNMIIT, cricket is more than just a game-its a shared passion that brings students across batches. The cricket culture here fosters not only teamwork and competitiveness but also creates a homely bond with seniors and its a place where memories are made beyond scorecard.",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
     },
     {
       'name': 'Football',
@@ -470,6 +474,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Football'),
       'gallery': _getGallery('Football'),
       'description': "Just a bunch of football fanatics who live for the game – whether it's sweating it out on the field or supporting their favourite clubs. LNMFC is all about teamwork, passion, and having a blast while playing the sport we love. Everyone’s welcome, from casual kickers to future pros!",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
     },
     {
       'name': 'Kabaddi',
@@ -479,6 +484,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Kabaddi'),
       'gallery': _getGallery('Kabaddi'),
       'description': "Ready to bring the heat on the mat? LNMIIT Kabaddi is where passion meets power. With consistent podium finishes at Despo and Udghosh, we’re building legends — one tackle at a time. Join us and #LePanga! ",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
     },
     {
       'name': 'Lawn Tennis',
@@ -488,6 +494,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Lawn Tennis'),
       'gallery': _getGallery('Lawn Tennis'),
       'description': "The Lawn Tennis Club welcomes everyone, whether you’re a complete beginner or an experienced player. We hold regular practice sessions, friendly matches, and competitive tournaments throughout the year. It’s a great space to improve your game, stay active, and be part of a supportive tennis community",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
     },
     {
       'name': 'Squash',
@@ -497,6 +504,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Squash'),
       'gallery': _getGallery('Squash'),
       'description': "The Squash Club is a fun and energetic space for anyone who loves the game or wants to try something new. We play regularly, help each other improve, and enjoy a bit of friendly competition along the way. Whether you're just starting out or have been playing for years, you're always welcome to join us. It's all about staying active, meeting people, and having a great time on court!",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
     },
     {
       'name': 'Table Tennis',
@@ -506,6 +514,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Table Tennis'),
       'gallery': _getGallery('Table Tennis'),
       'description': "The Table Tennis Club is a passionate and competitive group dedicated to learning and improving the sport. With a history of securing top positions in past competitions, the club proudly includes state-level players who lead by example. Members train rigorously and regularly participate in friendly matches with other colleges to gain experience and build camaraderie.",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
     },
     {
       'name': 'Volleyball',
@@ -515,6 +524,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Volleyball'),
       'gallery': _getGallery('Volleyball'),
       'description': "The Volleyball Club at LNMIIT is a vibrant and competitive community for sports enthusiasts who are passionate about the game. As one of the institute's official sports clubs, we aim to promote physical fitness, teamwork, and sportsmanship through regular practice sessions, friendly matches, and participation in inter-college tournaments. Whether you're a beginner or an experienced player, the club welcomes everyone with a love for volleyball. Join us to bump, set, and spike your way into a spirited sports culture!",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
     },
     {
       'name': 'Zenith',
@@ -524,6 +534,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Zenith'),
       'gallery': _getGallery('Zenith'),
       'description': "Zenith is the Fitness Club of LNMIIT. We aim to inspire and guide students toward a healthier, more active lifestyle through guided fitness routines, workout sessions, and wellness events.",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
     },
   ];
 
@@ -624,7 +635,7 @@ class SportsPage extends StatelessWidget {
     );
     final List<String> galleryImages = List<String>.from(club['gallery'] as List);
     final String clubInstagram = club['instagram'] as String? ?? 'https://instagram.com/${clubName.toLowerCase().replaceAll(' ', '').replaceAll('-', '')}_lnmiit';
-    final String clubEmail = club['email'] as String? ?? '${clubName.toLowerCase().replaceAll(' ', '').replaceAll('-', '')}@lnmiit.ac.in';
+    final String clubEmail = club['email'] as String? ?? '';
 
     void onCardTap() {
       Navigator.pushNamed(

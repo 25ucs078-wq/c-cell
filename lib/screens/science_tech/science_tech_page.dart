@@ -289,12 +289,7 @@ class ScienceTechPage extends StatelessWidget {
         'assets/assets/images/tech/debsoc/deb3.jpg',
       ];
     }
-
-    return [
-      'assets/images/hero_new.jpeg',
-      'assets/images/team_poster.jpeg',
-      'assets/images/photowalk.jpeg',
-    ];
+    return [];
   }
 
   static final List<Map<String, dynamic>> techClubs = [
@@ -306,7 +301,7 @@ class ScienceTechPage extends StatelessWidget {
       'coordinators': _getCoordinators('Astronomy'),
       'gallery': _getGallery('Astronomy'),
       'description': "The Astronomy Club fuels student passion for the wonders of astronomy and space exploration, sparking curiosity about the universe’s endless mysteries. As one of LNMIIT’s most active clubs, we bring together creative and enthusiastic minds to host thrilling, high-energy events that captivate everyone. From stargazing nights to cosmic quizzes, our year-round activities keep the excitement alive—because college life isn’t just about academics, it’s about unforgettable experiences too!",
-      'instagram': 'https://www.instagram.com/astronomy.lnmiit/',
+      'instagram': 'https://www.instagram.com/astronomylnmiit/',
       'email': 'astronomyclub@lnmiit.ac.in',
     },
     {
@@ -339,7 +334,7 @@ class ScienceTechPage extends StatelessWidget {
       'coordinators': _getCoordinators('DebSoc'),
       'gallery': _getGallery('DebSoc'),
       'description': "Lord Byron once said, “Those who will not reason are bigots, those who cannot are fools, and those who dare not are slaves.” At LNMIIT, we believe true growth comes from questioning, debating, and refining your voice. Enter The Debate Society (DebSoc)—where ideas clash, minds sharpen, and words become power. From fiery MUNs and parliamentary debates to gripping extempores, we cultivate rational thinkers and fearless speakers. Whether you're a seasoned orator or a curious beginner, DebSoc shapes you into a master of persuasion—one argument at a time. Because in a world of noise, the strongest voice wins.",
-      'instagram': 'https://www.instagram.com/debsoc_lnmiit/',
+      'instagram': 'https://www.instagram.com/thedebatesocietylnmiit/',
       'email': 'debsoc@lnmiit.ac.in',
     },
     {
@@ -350,7 +345,7 @@ class ScienceTechPage extends StatelessWidget {
       'coordinators': _getCoordinators('E-Cell'),
       'gallery': _getGallery('E-Cell'),
       'description': "Dive into entrepreneurship, crypto, stocks, Web3, and beyond with The Entrepreneurship Club—your hub for mastering the skills that shape tomorrow. From event planning and marketing to management, sponsorships, content creation, and design, we sharpen the tools you need to thrive. We collaborate with top tech colleges across India, bringing you real-world exposure through funding events, startup founder interactions, and deep dives into the startup ecosystem. Here, ideas meet execution—and learners become leaders.",
-      'instagram': 'https://www.instagram.com/ecell_lnmiit/',
+      'instagram': 'https://www.instagram.com/ecelllnmiit/',
       'email': 'ecell@lnmiit.ac.in',
     },
     {
@@ -361,7 +356,7 @@ class ScienceTechPage extends StatelessWidget {
       'coordinators': _getCoordinators('Phoenix'),
       'gallery': _getGallery('Phoenix'),
       "description": "Phoenix , The Robotics club of LNMIIT Jaipur is a vibrant community of tech enthusiasts committed to hands-on innovation, collaborative problem-solving, and excellence in robotics. We actively design, build, and program intelligent systems while proudly representing our institution in prestigious nationwide competitions, fostering both technical expertise and a spirit of innovation.",
-      'instagram': 'https://www.instagram.com/phoenix_robotics/',
+      'instagram': 'https://www.instagram.com/phoenix.lnmiit/',
       'email': 'phoenixclub@lnmiit.ac.in',
     },
     {
@@ -383,7 +378,7 @@ class ScienceTechPage extends StatelessWidget {
       'coordinators': _getCoordinators('Quizzinga'),
       'gallery': _getGallery('Quizzinga'),
       "description": "We are Quizzinga, The official quizzing club of LNMIIT. Some consider us a cult of nerds (may or may not be true), while others call us a buzzing hivemind of trivia enthusiasts. If you like trivia nights, auctions or winning big prizes, Quizzinga might just be your turf. \nVENI VIDI VICI!!!",
-      'instagram': 'https://www.instagram.com/quizzinga_lnmiit/',
+      'instagram': 'https://www.instagram.com/quizzingalnm/',
       'email': 'quizzinga@lnmiit.ac.in',
     },
   ];

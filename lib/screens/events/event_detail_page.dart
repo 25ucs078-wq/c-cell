@@ -513,11 +513,29 @@ class EventDetailPage extends StatelessWidget {
           ),
         ),
         onPressed: onTap,
-        icon: Icon(
-          icon,
-          color: color,
-          size: 18,
-        ),
+        icon: label.toLowerCase() == 'instagram'
+            ? Image.asset(
+                'assets/assets/images/intagram.png',
+                width: 18,
+                height: 18,
+              )
+            : label.toLowerCase() == 'email'
+                ? Image.asset(
+                    'assets/assets/images/gmail.png',
+                    width: 18,
+                    height: 18,
+                  )
+                : label.toLowerCase() == 'youtube'
+                    ? Image.asset(
+                        'assets/assets/images/youtube.png',
+                        width: 18,
+                        height: 18,
+                      )
+                    : Icon(
+                        icon,
+                        color: color,
+                        size: 18,
+                      ),
         label: Text(
           label.toUpperCase(),
           style: GoogleFonts.playfairDisplay(

@@ -466,11 +466,29 @@ class PlinthPage extends StatelessWidget {
             ),
           ),
           onPressed: () => _launchWebUrl(context, url),
-          icon: Icon(
-            icon,
-            color: color,
-            size: isMobile ? 16 : 20,
-          ),
+          icon: label.toLowerCase() == 'instagram'
+              ? Image.asset(
+                  'assets/assets/images/intagram.png',
+                  width: isMobile ? 16 : 20,
+                  height: isMobile ? 16 : 20,
+                )
+              : label.toLowerCase() == 'email'
+                  ? Image.asset(
+                      'assets/assets/images/gmail.png',
+                      width: isMobile ? 16 : 20,
+                      height: isMobile ? 16 : 20,
+                    )
+                  : label.toLowerCase() == 'youtube'
+                      ? Image.asset(
+                          'assets/assets/images/youtube.png',
+                          width: isMobile ? 16 : 20,
+                          height: isMobile ? 16 : 20,
+                        )
+                      : Icon(
+                          icon,
+                          color: color,
+                          size: isMobile ? 16 : 20,
+                        ),
           label: Text(
             label.toUpperCase(),
             style: GoogleFonts.playfairDisplay(
