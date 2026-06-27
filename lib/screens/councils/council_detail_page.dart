@@ -6,8 +6,14 @@ import '../../widgets/glass_card.dart';
 class CouncilDetailPage extends StatelessWidget {
   final String councilName;
   final List<Map<String, String>> items;
+  final String councilImage;
 
-  const CouncilDetailPage({super.key, required this.councilName, required this.items});
+  const CouncilDetailPage({
+    super.key,
+    required this.councilName,
+    required this.items,
+    this.councilImage = 'assets/assets/images/gymkhana.jpg',
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +46,38 @@ class CouncilDetailPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: isMobile ? 180 : 260,
-                  child: Image.asset(
-                    "assets/images/poster.jpeg",
-                    fit: BoxFit.cover,
+                const SizedBox(height: 20),
+                Center(
+                  child: Container(
+                    width: isMobile ? 120 : 180,
+                    height: isMobile ? 120 : 180,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.redAccent, width: 3),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.redAccent.withValues(alpha: 0.3),
+                          blurRadius: 16,
+                          spreadRadius: 2,
+                        ),
+                      ],
+                    ),
+                    child: ClipOval(
+                      child: Image.asset(
+                        councilImage,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            color: Colors.grey[800],
+                            child: Icon(
+                              Icons.image_not_supported,
+                              color: Colors.white54,
+                              size: isMobile ? 48 : 64,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
                   ),
                 ),
                 Padding(

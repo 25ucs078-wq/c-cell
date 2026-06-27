@@ -125,6 +125,7 @@ class MyApp extends StatelessWidget {
             builder = (context) => CouncilDetailPage(
               councilName: args['councilName']!,
               items: args['items']!,
+              councilImage: args['councilImage'] ?? 'assets/assets/images/gymkhana.jpg',
             );
             break;
           case '/events':

@@ -147,6 +147,7 @@ class CouncilsPage extends StatelessWidget {
         arguments: {
           'councilName': title,
           'items': items,
+          'councilImage': icon,
         },
       );
     }
