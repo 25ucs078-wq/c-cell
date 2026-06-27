@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../widgets/glass_card.dart';
 import '../../widgets/interactive_gallery_viewer.dart';
+import '../../widgets/youtube_promo_player.dart';
 
 class PlinthPage extends StatelessWidget {
   const PlinthPage({super.key});
@@ -50,13 +51,10 @@ class PlinthPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: double.infinity,
+                YoutubePromoPlayer(
+                  videoId: "K3YhP1yY34M",
+                  fallbackImageUrl: "assets/images/poster.jpeg",
                   height: isMobile ? 180 : 260,
-                  child: Image.asset(
-                    "assets/images/poster.jpeg",
-                    fit: BoxFit.cover,
-                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(

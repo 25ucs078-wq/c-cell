@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../widgets/glass_card.dart';
 import '../../widgets/interactive_gallery_viewer.dart';
+import '../../widgets/youtube_promo_player.dart';
 
 class VivacityPage extends StatelessWidget {
   const VivacityPage({super.key});
@@ -50,13 +51,10 @@ class VivacityPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: double.infinity,
+                YoutubePromoPlayer(
+                  videoId: "qOU1GGSG9Y9",
+                  fallbackImageUrl: "assets/images/team_poster.jpeg",
                   height: isMobile ? 180 : 260,
-                  child: Image.asset(
-                    "assets/images/team_poster.jpeg",
-                    fit: BoxFit.cover,
-                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(
