@@ -468,7 +468,7 @@ class VivacityPage extends StatelessWidget {
           onPressed: () => _launchWebUrl(context, url),
           icon: label.toLowerCase() == 'instagram'
               ? Image.asset(
-                  'assets/assets/images/intagram.png',
+                  'assets/assets/images/instagram.png',
                   width: isMobile ? 16 : 20,
                   height: isMobile ? 16 : 20,
                 )

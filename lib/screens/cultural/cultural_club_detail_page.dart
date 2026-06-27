@@ -492,7 +492,7 @@ class CulturalClubDetailPage extends StatelessWidget {
           onPressed: onTap,
           icon: label.toLowerCase() == 'instagram'
               ? Image.asset(
-                  'assets/assets/images/intagram.png',
+                  'assets/assets/images/instagram.png',
                   width: 20,
                   height: 20,
                 )
