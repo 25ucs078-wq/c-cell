@@ -383,38 +383,17 @@ class CulturalPage extends StatelessWidget {
   static List<String> _getGallery(String clubName) {
     if (clubName == 'Aaveg') {
       return [
-        'assets/assets/images/cultural/aaveg/aaveg1.JPG',
-        'assets/assets/images/cultural/aaveg/aaveg2.jpg',
-        'assets/assets/images/cultural/aaveg/aaeg4.jpg',
-        'assets/assets/images/cultural/aaveg/aaveg4.JPG',
-        'assets/assets/images/cultural/aaveg/aaveg5.jpg',
-        'assets/assets/images/cultural/aaveg/aaveg6.JPG',
-        'assets/assets/images/cultural/aaveg/aaveg7.jpg',
+        'assets/assets/images/cultural/aaveg/aaveg1.JPG'
       ];
     }
     if (clubName == 'Capriccio') {
       return [
-        'assets/assets/images/cultural/capriccio/cap1.jpg',
-        'assets/assets/images/cultural/capriccio/cap2.jpg',
-        'assets/assets/images/cultural/capriccio/cap3.jpg',
-        'assets/assets/images/cultural/capriccio/cap4.jpg',
-        'assets/assets/images/cultural/capriccio/cap5.jpg',
-        'assets/assets/images/cultural/capriccio/cap6.jpg',
-        'assets/assets/images/cultural/capriccio/cap7.jpg',
-        'assets/assets/images/cultural/capriccio/cap8.jpg',
-        'assets/assets/images/cultural/capriccio/cap9.jpg',
-        'assets/assets/images/cultural/capriccio/cap10.jpg',
+        'assets/assets/images/cultural/capriccio/cap1.jpg'
       ];
     }
     if (clubName == 'Eminence') {
       return [
-        'assets/assets/images/cultural/eminence/emin1.jpg',
-        'assets/assets/images/cultural/eminence/emin2.jpg',
-        'assets/assets/images/cultural/eminence/emin3.jpg',
-        'assets/assets/images/cultural/eminence/emin4.jpg',
-        'assets/assets/images/cultural/eminence/emin5.jpg',
-        'assets/assets/images/cultural/eminence/emin6.jpg',
-        'assets/assets/images/cultural/eminence/emin7.jpg',
+        'assets/assets/images/cultural/eminence/emin1.jpg'
       ];
     }
     if (clubName == 'Finlogue') {
@@ -427,20 +406,12 @@ class CulturalPage extends StatelessWidget {
     }
     if (clubName == 'Imagination') {
       return [
-        'assets/assets/images/cultural/imagination/imagi1.png',
-        'assets/assets/images/cultural/imagination/imagi3.jpg',
-        'assets/assets/images/cultural/imagination/imagi5.jpg',
-        'assets/assets/images/cultural/imagination/imagi8.jpg',
-        'assets/assets/images/cultural/imagination/imagi10.jpg',
+        'assets/assets/images/cultural/imagination/imagi1.png'
       ];
     }
     if (clubName == 'Insignia') {
       return [
-        'assets/assets/images/cultural/insignia/insignia1.jpg',
-        'assets/assets/images/cultural/insignia/insignia2.jpg',
-        'assets/assets/images/cultural/insignia/insignia3.jpg',
-        'assets/assets/images/cultural/insignia/insignia4.jpg',
-        'assets/assets/images/cultural/insignia/insignia5.jpg',
+        'assets/assets/images/cultural/insignia/insignia1.jpg'
       ];
     }
     if (clubName == 'Literary Committee') {
@@ -455,51 +426,25 @@ class CulturalPage extends StatelessWidget {
     }
     if (clubName == 'Media Cell') {
       return [
-        'assets/assets/images/cultural/mediacell/media1.jpg',
-        'assets/assets/images/cultural/mediacell/media2.jpg',
-        'assets/assets/images/cultural/mediacell/media3.jpg',
+        'assets/assets/images/cultural/mediacell/media1.jpg'
       ];
     }
     if (clubName == 'Rendition') {
       return [
-        'assets/assets/images/cultural/rendition/rendition1.jpg',
-        'assets/assets/images/cultural/rendition/rendition2.jpg',
-        'assets/assets/images/cultural/rendition/rendition3.jpg',
-        'assets/assets/images/cultural/rendition/rendition4.jpg',
+        'assets/assets/images/cultural/rendition/rendition1.jpg'
       ];
     }
     if (clubName == 'Sankalp') {
       return [
-        'assets/assets/images/cultural/sankalp/sankalp1.jpg',
-        'assets/assets/images/cultural/sankalp/sankalp2.jpg',
-        'assets/assets/images/cultural/sankalp/sankalp3.jpg',
-        'assets/assets/images/cultural/sankalp/sankalp5.jpg',
-        'assets/assets/images/cultural/sankalp/sankalp6.jpg',
-        'assets/assets/images/cultural/sankalp/sankalp8.jpg',
-        'assets/assets/images/cultural/sankalp/sankalp9.jpg',
-        'assets/assets/images/cultural/sankalp/sankalp10.jpg',
+        'assets/assets/images/cultural/sankalp/sankalp1.jpg'
       ];
     }
     if (clubName == 'Vignette') {
       return [
-        'assets/assets/images/cultural/vignette/vign1.jpg',
-        'assets/assets/images/cultural/vignette/vign2.jpg',
-        'assets/assets/images/cultural/vignette/vign3.jpg',
-        'assets/assets/images/cultural/vignette/vign4.jpg',
-        'assets/assets/images/cultural/vignette/vign5.jpg',
-        'assets/assets/images/cultural/vignette/vign6.jpg',
-        'assets/assets/images/cultural/vignette/vign7.jpg',
-        'assets/assets/images/cultural/vignette/vign8.jpg',
-        'assets/assets/images/cultural/vignette/vign9.jpg',
-        'assets/assets/images/cultural/vignette/vign10.jpg',
+        'assets/assets/images/cultural/vignette/vign1.jpg'
       ];
     }
-
-    return [
-      'assets/images/hero_new.jpeg',
-      'assets/images/team_poster.jpeg',
-      'assets/images/photowalk.jpeg',
-    ];
+    return [];
   }
 
   static final List<Map<String, dynamic>> culturalClubs = [

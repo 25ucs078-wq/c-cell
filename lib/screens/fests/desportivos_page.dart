@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../widgets/glass_card.dart';
 import '../../widgets/interactive_gallery_viewer.dart';
-import '../../widgets/youtube_promo_player.dart';
 
 class DesportivosPage extends StatelessWidget {
   const DesportivosPage({super.key});
@@ -16,8 +15,20 @@ class DesportivosPage extends StatelessWidget {
   ];
 
   static const List<Map<String, String>> festHeads = [
-    {"name": "Abhas Chaudhary", "image": "assets/images/logo.jpeg", "role": "Fest Head", "phone": "+919999999999", "email": "desportivos@lnmiit.ac.in"}, // image, phone number not added
-    {"name": "Arnav Rinawa", "image": "assets/images/logo.jpeg", "role": "Fest Head", "phone": "+918888888888", "email": "desportivos@lnmiit.ac.in"}, // image, phone number not added
+    {
+      "name": "Abhas Chaudhary",
+      "image": "assets/images/logo.jpeg",
+      "role": "Fest Head",
+      "phone": "+919999999999",
+      "email": "desportivos@lnmiit.ac.in"
+    },
+    {
+      "name": "Arnav Rinawa",
+      "image": "assets/images/logo.jpeg",
+      "role": "Fest Head",
+      "phone": "+918888888888",
+      "email": "desportivos@lnmiit.ac.in"
+    },
   ];
 
   @override
@@ -48,119 +59,137 @@ class DesportivosPage extends StatelessWidget {
         child: Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 1000),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                YoutubePromoPlayer(
-                  videoUrl: "https://youtu.be/9G0H9GHHCVo?si=UOyGMxsXoAN641Qj",
-                  fallbackImageUrl: "assets/images/hero_new.jpeg",
-                  height: isMobile ? 180 : 260,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: isMobile ? 16 : 20,
-                    vertical: isMobile ? 16 : 20,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "FEST HEADS",
-                        style: GoogleFonts.playfairDisplay(
-                          color: Colors.white,
-                          fontSize: isMobile ? 24 : 32,
-                          letterSpacing: 2,
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      LayoutBuilder(
-                        builder: (context, constraints) {
-                          double parentWidth = constraints.maxWidth;
-                          int crossAxisCount = 1;
-                          if (parentWidth >= 1100) {
-                            crossAxisCount = 4;
-                          } else if (parentWidth >= 600) {
-                            crossAxisCount = 2;
-                          } else {
-                            crossAxisCount = 1;
-                          }
-
-                          // Calculate item width dynamically
-                          double cardWidth = (parentWidth - (crossAxisCount - 1) * 20) / crossAxisCount;
-
-                          return Wrap(
-                            spacing: 20,
-                            runSpacing: 20,
-                            children: festHeads.map((p) {
-                              return SizedBox(
-                                width: cardWidth,
-                                child: _buildCard(
-                                  context,
-                                  p['name']!,
-                                  p['image']!,
-                                  p['role']!,
-                                  p['phone'] ?? '',
-                                  p['email'] ?? '',
-                                ),
-                              );
-                            }).toList(),
-                          );
-                        },
-                      ),
-                      const SizedBox(height: 30),
-                      Text(
-                        "PHOTO GALLERY",
-                        style: GoogleFonts.playfairDisplay(
-                          color: Colors.white,
-                          fontSize: isMobile ? 20 : 24,
-                          letterSpacing: 2,
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      SizedBox(
-                        height: 140,
-                        child: ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: galleryImages.length,
-                          separatorBuilder: (_, _) => const SizedBox(width: 14),
-                          itemBuilder: (context, index) {
-                            return _buildGalleryImage(context, galleryImages, index);
-                          },
-                        ),
-                      ),
-                      const SizedBox(height: 24),
-                      Row(
-                        children: [
-                          _buildFestSocialButton(
-                            context: context,
-                            icon: Icons.camera_alt,
-                            label: "Instagram",
-                            color: const Color(0xFFE1306C),
-                            url: "https://www.instagram.com/desportivos.lnmiit/",
-                          ),
-                          const SizedBox(width: 12),
-                          _buildFestSocialButton(
-                            context: context,
-                            icon: Icons.play_circle_filled,
-                            label: "YouTube",
-                            color: const Color(0xFFFF0000),
-                            url: "https://www.youtube.com/@desportivoslnmiit2733",
-                          ),
-                          const SizedBox(width: 12),
-                          _buildFestSocialButton(
-                            context: context,
-                            icon: Icons.language,
-                            label: "Website",
-                            color: Colors.blueAccent,
-                            url: "https://desportivos.lnmiit.ac.in/",
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: isMobile ? 16 : 20,
+                vertical: isMobile ? 16 : 24,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Container(
+                      width: isMobile ? 120 : 180,
+                      height: isMobile ? 120 : 180,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.redAccent, width: 3),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.redAccent.withValues(alpha: 0.3),
+                            blurRadius: 16,
+                            spreadRadius: 2,
                           ),
                         ],
                       ),
-                      const SizedBox(height: 30),
+                      child: ClipOval(
+                        child: Image.asset(
+                          "assets/assets/images/despo/despo_logo.jpeg",
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              color: Colors.grey[800],
+                              child: Icon(
+                                Icons.image_not_supported,
+                                color: Colors.white54,
+                                size: isMobile ? 48 : 64,
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: isMobile ? 24 : 32),
+                  Text(
+                    "Desportivos is the annual national sports fest of LNMIIT. It brings together outstanding athletes and sports teams from institutions across the country to compete in high-energy tournaments, celebrating athleticism, teamwork, and competitive spirit.",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      color: Colors.white.withValues(alpha: 0.85),
+                      fontSize: isMobile ? 14 : 16,
+                      height: 1.6,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  SizedBox(height: isMobile ? 28 : 36),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      double parentWidth = constraints.maxWidth;
+                      int crossAxisCount = 1;
+                      if (parentWidth >= 900) {
+                        crossAxisCount = 4;
+                      } else if (parentWidth >= 600) {
+                        crossAxisCount = 2;
+                      } else {
+                        crossAxisCount = 1;
+                      }
+
+                      double cardWidth = (parentWidth - (crossAxisCount - 1) * 16) / crossAxisCount;
+
+                      return Wrap(
+                        spacing: 16,
+                        runSpacing: 16,
+                        children: festHeads.map((person) {
+                          return SizedBox(
+                            width: cardWidth,
+                            child: _buildFestHeadCard(context, person),
+                          );
+                        }).toList(),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 30),
+                  Text(
+                    'PHOTO GALLERY',
+                    style: GoogleFonts.playfairDisplay(
+                      color: Colors.white,
+                      fontSize: isMobile ? 20 : 24,
+                      letterSpacing: 2,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    height: 140,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: galleryImages.length,
+                      separatorBuilder: (_, _) => const SizedBox(width: 14),
+                      itemBuilder: (context, index) {
+                        return _buildGalleryImage(context, galleryImages, index);
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  Row(
+                    children: [
+                      _buildFestSocialButton(
+                        context: context,
+                        icon: Icons.camera_alt,
+                        label: "Instagram",
+                        color: const Color(0xFFE1306C),
+                        onTap: () => _launchWebUrl(context, "https://www.instagram.com/desportivos.lnmiit/"),
+                      ),
+                      const SizedBox(width: 16),
+                      _buildFestSocialButton(
+                        context: context,
+                        icon: Icons.play_circle_filled,
+                        label: "YouTube",
+                        color: const Color(0xFFFF0000),
+                        onTap: () => _launchWebUrl(context, "https://www.youtube.com/@DesportivosLNMIIT"),
+                      ),
+                      const SizedBox(width: 16),
+                      _buildFestSocialButton(
+                        context: context,
+                        icon: Icons.language,
+                        label: "Website",
+                        color: Colors.blueAccent,
+                        onTap: () => _launchWebUrl(context, "https://desportivos.lnmiit.ac.in/"),
+                      ),
                     ],
                   ),
-                ),
-              ],
+                  const SizedBox(height: 30),
+                ],
+              ),
             ),
           ),
         ),
@@ -168,38 +197,15 @@ class DesportivosPage extends StatelessWidget {
     );
   }
 
-  Widget _buildGalleryImage(BuildContext context, List<String> allImages, int index) {
-    final String image = allImages[index];
-    return GestureDetector(
-      onTap: () => InteractiveGalleryViewer.show(context, allImages, index),
-      child: Hero(
-        tag: 'gallery_image_${image}_$index',
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Image.asset(
-            image,
-            height: 140,
-            fit: BoxFit.fitHeight,
-            errorBuilder: (context, error, stackTrace) {
-              return Container(
-                width: 220,
-                height: 140,
-                color: Colors.grey[800],
-                child: const Icon(
-                  Icons.image_not_supported,
-                  color: Colors.white54,
-                ),
-              );
-            },
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildCard(BuildContext context, String name, String image, String role, String phone, String email) {
+  Widget _buildFestHeadCard(BuildContext context, Map<String, String> person) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final bool isMobile = screenWidth < 600;
+
+    final String name = person['name'] ?? 'TBD';
+    final String role = person['role'] ?? 'Fest Head';
+    final String image = person['image'] ?? 'assets/images/logo.jpeg';
+    final String phone = person['phone'] ?? '';
+    final String email = person['email'] ?? '';
 
     if (isMobile) {
       return GlassCard(
@@ -318,22 +324,21 @@ class DesportivosPage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   name,
                   textAlign: TextAlign.center,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.playfairDisplay(
+                  style: GoogleFonts.poppins(
                     color: Colors.white,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 4),
                 Text(
                   role,
                   textAlign: TextAlign.center,
@@ -341,13 +346,13 @@ class DesportivosPage extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.poppins(
                     color: Colors.redAccent,
-                    fontSize: 14,
+                    fontSize: 12,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 10),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     _buildContactButton(
                       context: context,
@@ -356,7 +361,6 @@ class DesportivosPage extends StatelessWidget {
                       tooltip: 'Call',
                       onTap: () => _launchPhone(context, phone),
                     ),
-                    const SizedBox(width: 8),
                     _buildContactButton(
                       context: context,
                       icon: Icons.email,
@@ -434,12 +438,41 @@ class DesportivosPage extends StatelessWidget {
     await _launchUrl(context, uri);
   }
 
+  Widget _buildGalleryImage(BuildContext context, List<String> allImages, int index) {
+    final String image = allImages[index];
+    return GestureDetector(
+      onTap: () => InteractiveGalleryViewer.show(context, allImages, index),
+      child: Hero(
+        tag: 'gallery_image_${image}_$index',
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Image.asset(
+            image,
+            height: 140,
+            fit: BoxFit.fitHeight,
+            errorBuilder: (context, error, stackTrace) {
+              return Container(
+                width: 220,
+                height: 140,
+                color: Colors.grey[800],
+                child: const Icon(
+                  Icons.image_not_supported,
+                  color: Colors.white54,
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _buildFestSocialButton({
     required BuildContext context,
     required IconData icon,
     required String label,
     required Color color,
-    required String url,
+    required VoidCallback onTap,
   }) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final bool isMobile = screenWidth < 600;
@@ -463,36 +496,36 @@ class DesportivosPage extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
             ),
           ),
-          onPressed: () => _launchWebUrl(context, url),
+          onPressed: onTap,
           icon: label.toLowerCase() == 'instagram'
               ? Image.asset(
                   'assets/assets/images/instagram.png',
-                  width: isMobile ? 16 : 20,
-                  height: isMobile ? 16 : 20,
+                  width: 20,
+                  height: 20,
                 )
               : label.toLowerCase() == 'email'
                   ? Image.asset(
                       'assets/assets/images/gmail.png',
-                      width: isMobile ? 16 : 20,
-                      height: isMobile ? 16 : 20,
+                      width: 20,
+                      height: 20,
                     )
                   : label.toLowerCase() == 'youtube'
                       ? Image.asset(
                           'assets/assets/images/youtube.png',
-                          width: isMobile ? 16 : 20,
-                          height: isMobile ? 16 : 20,
+                          width: 20,
+                          height: 20,
                         )
                       : Icon(
                           icon,
                           color: color,
-                          size: isMobile ? 16 : 20,
+                          size: 20,
                         ),
           label: Text(
             label.toUpperCase(),
             style: GoogleFonts.playfairDisplay(
               color: Colors.white,
-              fontSize: isMobile ? 10 : 14,
-              letterSpacing: 1.0,
+              fontSize: isMobile ? 14 : 16,
+              letterSpacing: 1.2,
             ),
           ),
         ),

@@ -235,58 +235,42 @@ class ScienceTechPage extends StatelessWidget {
   static List<String> _getGallery(String clubName) {
     if (clubName == 'Cybros') {
       return [
-        'assets/assets/images/tech/cybros/cybros1.jpg',
-        'assets/assets/images/tech/cybros/cybros2.jpg',
-        'assets/assets/images/tech/cybros/cybros3.jpg',
+        'assets/assets/images/tech/cybros/cybros1.jpg'
       ];
     }
     if (clubName == 'Phoenix') {
       return [
-        'assets/assets/images/tech/phoenix/phoenix1.jpg',
-        'assets/assets/images/tech/phoenix/phoenix2.jpg',
-        'assets/assets/images/tech/phoenix/phoenix3.jpg',
+        'assets/assets/images/tech/phoenix/phoenix1.jpg'
       ];
     }
     if (clubName == 'Quizzinga') {
       return [
-        'assets/assets/images/tech/quizzinga/quizzinga1.jpg',
-        'assets/assets/images/tech/quizzinga/quizzinga2.jpg',
-        'assets/assets/images/tech/quizzinga/quizzinga3.jpg',
+        'assets/assets/images/tech/quizzinga/quizzinga1.jpg'
       ];
     }
     if (clubName == 'Astronomy') {
       return [
-        'assets/assets/images/tech/astronomy/astro1.jpg',
-        'assets/assets/images/tech/astronomy/astro2.jpg',
-        'assets/assets/images/tech/astronomy/astro3.JPG',
+        'assets/assets/images/tech/astronomy/astro1.jpg'
       ];
     }
     if (clubName == 'Cipher') {
       return [
-        'assets/assets/images/tech/cipherclub/cipher1.jpeg',
-        'assets/assets/images/tech/cipherclub/cipher2.jpg',
-        'assets/assets/images/tech/cipherclub/cipher3.jpeg',
+        'assets/assets/images/tech/cipherclub/cipher1.jpeg'
       ];
     }
     if (clubName == 'Qbit') {
       return [
-        'assets/images/hero_new.jpeg',
-        'assets/images/team_poster.jpeg',
-        'assets/images/photowalk.jpeg',
+        'assets/assets/images/tech/qbit/qbit1.jpeg'
       ];
     }
     if (clubName == 'E-Cell') {
       return [
-        'assets/assets/images/tech/ecell/ecell1.jpg',
-        'assets/assets/images/tech/ecell/ecell2.jpg',
-        'assets/assets/images/tech/ecell/ecell3.jpg',
+        'assets/assets/images/tech/ecell/ecell1.jpg'
       ];
     }
     if (clubName == 'DebSoc') {
       return [
-        'assets/assets/images/tech/debsoc/deb1.jpg',
-        'assets/assets/images/tech/debsoc/deb2.jpg',
-        'assets/assets/images/tech/debsoc/deb3.jpg',
+        'assets/assets/images/tech/debsoc/deb1.jpg'
       ];
     }
     return [];

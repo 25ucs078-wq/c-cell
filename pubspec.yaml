@@ -15,7 +15,6 @@ dependencies:
   google_fonts: ^6.3.0
   url_launcher: ^6.1.10
   video_player: ^2.11.1
-  youtube_player_iframe: ^6.0.2
   
 dev_dependencies:
   flutter_test:

@@ -341,29 +341,22 @@ class SportsPage extends StatelessWidget {
   static List<String> _getGallery(String clubName) {
     if (clubName == 'Badminton') {
       return [
-        'assets/assets/images/sports/badminton/bad1.jpeg',
-        'assets/assets/images/sports/badminton/bad2.jpeg',
-        'assets/assets/images/sports/badminton/bad3.jpeg',
+        'assets/assets/images/sports/badminton/bad1.jpeg'
       ];
     }
     if (clubName == 'Basketball') {
       return [
-        'assets/assets/images/sports/basketball/basket1.jpeg',
-        'assets/assets/images/sports/basketball/basket2.jpeg',
-        'assets/assets/images/sports/basketball/basket3.jpeg',
+        'assets/assets/images/sports/basketball/basket1.jpeg'
       ];
     }
     if (clubName == 'Chess') {
       return [
-        'assets/assets/images/sports/chess/chess1.jpg',
-        'assets/assets/images/sports/chess/chess2.jpg',
+        'assets/assets/images/sports/chess/chess1.jpg'
       ];
     }
     if (clubName == 'Cricket') {
       return [
-        'assets/assets/images/sports/cricket/cricket1.jpeg',
-        'assets/assets/images/sports/cricket/cricket2.jpeg',
-        'assets/assets/images/sports/cricket/cricket3.jpeg',
+        'assets/assets/images/sports/cricket/cricket1.jpeg'
       ];
     }
     if (clubName == 'Football') {
@@ -379,50 +372,35 @@ class SportsPage extends StatelessWidget {
     }
     if (clubName == 'Kabaddi') {
       return [
-        'assets/assets/images/sports/kabaddi/kabaddi1.jpeg',
-        'assets/assets/images/sports/kabaddi/kabaddi2.jpeg',
-        'assets/assets/images/sports/kabaddi/kabaddi3.jpeg',
+        'assets/assets/images/sports/kabaddi/kabaddi1.jpeg'
       ];
     }
     if (clubName == 'Lawn Tennis') {
       return [
-        'assets/assets/images/sports/lawn_tennis/lawn1.jpeg',
-        'assets/assets/images/sports/lawn_tennis/lawn2.jpeg',
-        'assets/assets/images/sports/lawn_tennis/lawn3.jpeg',
+        'assets/assets/images/sports/lawn_tennis/lawn1.jpeg'
       ];
     }
     if (clubName == 'Squash') {
       return [
-        'assets/assets/images/sports/squash/squash1.jpeg',
-        'assets/assets/images/sports/squash/squash2.jpg',
-        'assets/assets/images/sports/squash/squash3.jpg',
+        'assets/assets/images/sports/squash/squash1.jpeg'
       ];
     }
     if (clubName == 'Table Tennis') {
       return [
-        'assets/assets/images/sports/table_tennis/tablt1.jpg',
-        'assets/assets/images/sports/table_tennis/talblt2.jpg',
-        'assets/assets/images/sports/table_tennis/tablt3.jpg',
+        'assets/assets/images/sports/table_tennis/tablt1.jpg'
       ];
     }
     if (clubName == 'Volleyball') {
       return [
-        'assets/assets/images/sports/volleyball/volley1.jpg',
-        'assets/assets/images/sports/volleyball/volley2.jpg',
-        'assets/assets/images/sports/volleyball/volley5.jpg',
+        'assets/assets/images/sports/volleyball/volley1.jpg'
       ];
     }
     if (clubName == 'Zenith') {
       return [
-        'assets/assets/images/sports_logo.jpg',
+        'assets/assets/images/sports/zenith/zenith1.jpg'
       ];
     }
-
-    return [
-      'assets/images/hero_new.jpeg',
-      'assets/images/team_poster.jpeg',
-      'assets/images/photowalk.jpeg',
-    ];
+    return [];
   }
 
   static final List<Map<String, dynamic>> sportsClubs = [
