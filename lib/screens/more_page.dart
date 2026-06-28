@@ -94,6 +94,17 @@ class MorePage extends StatelessWidget {
   ];
 
   static const List<Map<String, String>> developers = [
+
+    {
+      "name": "Dhwani Patel",
+      "image": "assets/images/Dhwani.jpeg",
+      "role": "DEVELOPER",
+      "phone": "+918888888999",
+      "email": "dhwani@lnmiit.ac.in",
+      "instagram": "https://instagram.com/",
+      "linkedin": "https://linkedin.com/",
+    },
+
     {
       "name": "Harsh Kumar",
       "image": "assets/images/harsh.jpeg",
