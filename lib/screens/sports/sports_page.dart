@@ -1,0 +1,819 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../../widgets/glass_card.dart';
+
+class SportsPage extends StatelessWidget {
+  const SportsPage({super.key});
+
+  static List<Map<String, String>> _getCoordinators(String clubName) {
+    if (clubName == 'Badminton') {
+      return [
+        {
+          'name': 'Aditya Jakhar',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/badminton/badminton_logo.jpeg', // Photo not updated
+          'phone': '+919999999999', // number not updated
+          'email': '24ucs252@lnmiit.ac.in',
+        },
+        {
+          'name': 'Parth Pandey',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/badminton/badminton_logo.jpeg', // Photo not updated
+          'phone': '+917989280464', // recheck this number
+          'email': '24uec146@lnmiit.ac.in',
+        },
+        {
+          'name': 'Sanvi Rastogi',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/badminton/badminton_logo.jpeg', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24ucs251@lnmiit.ac.in',
+        },
+      ];
+    }
+
+    if (clubName == 'Basketball') {
+      return [
+        {
+          'name': 'Jatin Kukreja',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/basketball/basketball_logo.png', // Photo not updated
+          'phone': '+919999999999', // number not updated
+          'email': '24dec027@lnmiit.ac.in',
+        },
+        {
+          'name': 'Raghav Agarwal',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/basketball/basketball_logo.png', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24ucs045@lnmiit.ac.in',
+        },
+        {
+          'name': 'Tanmay Poswalia',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/basketball/basketball_logo.png', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24uec267@lnmiit.ac.in',
+        },
+        {
+          'name': 'Vedansh Vashisth',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/basketball/basketball_logo.png', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24uec024@lnmiit.ac.in',
+        }
+      ];
+    }
+
+    if (clubName == 'Chess') {
+      return [
+        {
+          'name': 'Divyansh Aggarwal',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/chess/chess_logo.jpg', // Photo not updated
+          'phone': '+919999999999', // number not updated
+          'email': '24ucs194@lnmiit.ac.in', // recheck this email
+        },
+        {
+          'name': 'Kavya Jain',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/chess/chess_logo.jpg', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24ucs058@lnmiit.ac.in',
+        },
+        {
+          'name': 'Lakshit Singhvi',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/chess/chess_logo.jpg', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24ume091@lnmiit.ac.in', 
+        }
+      ];
+    }
+
+    if (clubName == 'Cricket') {
+      return [
+        {
+          'name': 'Abhinav Dhwaj Prasad Singh',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/cricket/cricket_logo.jpeg', // Photo not updated
+          'phone': '+919999999999', // number not updated
+          'email': '24ume099@lnmiit.ac.in',
+        },
+        {
+          'name': 'Divyansh Shrivastava',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/cricket/cricket_logo.jpeg', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24dec052@lnmiit.ac.in',
+        },
+        {
+          'name': 'Garvit Girdhar',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/cricket/cricket_logo.jpeg', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24uec079@lnmiit.ac.in',
+        },
+        {
+          'name': 'Tanmay Pareek',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/cricket/cricket_logo.jpeg', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24uec030@lnmiit.ac.in',
+        },
+        {
+          'name': 'Saurav Singh',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/cricket/cricket_logo.jpeg', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24ucc162@lnmiit.ac.in',
+        }
+      ];
+    }
+
+    if (clubName == 'Football') {
+      return [
+        {
+          'name': 'Kavyansh Mittal (C)',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/football/kavyansh.jpeg',
+          'phone': '+919358293314',
+          'email': '24ucs113@lnmiit.ac.in',
+        },
+        {
+          'name': 'Harsh Gupta',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/football/harsh.jpeg',
+          'phone': '+917877125453',
+          'email': '24dec044@lnmiit.ac.in',
+        },
+        {
+          'name': 'Rishabh Agarwal',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/football/rishabh.jpeg',
+          'phone': '+917597479079',
+          'email': '24uec246@lnmiit.ac.in',
+        },
+        {
+          'name': 'Sahadra Rana',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/football/sahadra.jpeg',
+          'phone': '+918770384204',
+          'email': '24uec084@lnmiit.ac.in',
+        },
+      ];
+    }
+
+    if (clubName == 'Kabaddi') {
+      return [
+        {
+          'name': 'Abhinav',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/kabaddi/kabaddi_logo.jpeg', //Photo not updated
+          'phone': '+919999999999', // number not updated
+          'email': '24@lnmiit.ac.in', // email not updated
+        },
+        {
+          'name': 'Manish Bana',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/kabaddi/kabaddi_logo.jpeg', //Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24ucc188@lnmiit.ac.in',
+        },
+        {
+          'name': 'Nikhil Kumar',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/kabaddi/kabaddi_logo.jpeg', //Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24uec209@lnmiit.ac.in', // recheck this email 
+        },
+        {
+          'name': 'Shivam Sharma',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/kabaddi/kabaddi_logo.jpeg', //Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24@lnmiit.ac.in', // email not updated
+        },
+      ];
+    }
+
+    if (clubName == 'Lawn Tennis') {
+      return [
+        {
+          'name': 'Kushagra Maheshwari',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/lawn_tennis/lawnt_logo.png', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24ucs206@lnmiit.ac.in',
+        },
+        {
+          'name': 'Lakshya Chandak',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/cultural/sankalp/lakshya.jpeg',
+          'phone': '+919511506144',
+          'email': '24ucc205@lnmiit.ac.in',
+        },
+      ];
+    }
+
+    if (clubName == 'Squash') {
+      return [
+        {
+          'name': 'Aditya Jindal',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/squash/squash_logo.jpeg', // Photo not updated
+          'phone': '+919999999999', // number not updated
+          'email': '24uec091@lnmiit.ac.in', 
+        },
+        {
+          'name': 'Vansh Sharma',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/squash/squash_logo.jpeg', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24uec120@lnmiit.ac.in',
+        },
+      ];
+    }
+
+    if (clubName == 'Table Tennis') {
+      return [
+        {
+          'name': 'Aashil Bhutra',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/table_tennis/tablet_logo.png', // Photo not updated
+          'phone': '+919999999999', // number not updated
+          'email': '24ume048@lnmiit.ac.in',
+        },
+        {
+          'name': 'Arjun Mukherjee',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/table_tennis/tablet_logo.png', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24uec053@lnmiit.ac.in',
+        },
+        {
+          'name': 'Shivansh Gupta',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/table_tennis/tablet_logo.png', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24uec228@lnmiit.ac.in',
+        },
+        {
+          'name': 'Urvi Salecha',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/table_tennis/tablet_logo.png', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24imai001@lnmiit.ac.in',
+        },
+      ];
+    }
+
+    if (clubName == 'Volleyball') {
+      return [
+        {
+          'name': 'Apoorva Jain',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/volleyball/volleyball_logo.jpg', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24uec200@lnmiit.ac.in',
+        },
+        {
+          'name': 'Ayush Raj Shahi',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/volleyball/volleyball_logo.jpg', // Photo not updated
+          'phone': '+919999999999', // number not updated
+          'email': '24@lnmiit.ac.in', // email not updated
+        },
+        {
+          'name': 'Dinakar', // recheck this name
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/volleyball/volleyball_logo.jpg', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24ucs037@lnmiit.ac.in',
+        },
+        {
+          'name': 'Panth Moradiya',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/volleyball/volleyball_logo.jpg', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24ucs120@lnmiit.ac.in',
+        },
+        {
+          'name': 'Saniya Sharma',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/volleyball/volleyball_logo.jpg', // Photo not updated
+          'phone': '+918888888888', // number not updated
+          'email': '24ucs081@lnmiit.ac.in',
+        },
+      ];
+    }
+
+    if (clubName == 'Zenith') {
+      return [
+        {
+          'name': 'Diwas Pandey',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports_logo.jpg', // Photo not updated yet
+          'phone': '+918279822447',
+          'email': '24imai004@lnmiit.ac.in',
+        },
+        {
+          'name': 'Lakshit Agarwal',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports_logo.jpg', // Photo not updated yet
+          'phone': '+918888888888', // Number not updated yet
+          'email': '24ucc089@lnmiit.ac.in',
+        },
+      ];
+    }
+
+    return [
+      {
+        'name': '$clubName Coordinator 1',
+        'role': 'Club Coordinator',
+        'image': 'assets/assets/images/tech_logo.jpg',
+        'phone': '+919876543210',
+        'email': '${clubName.toLowerCase().replaceAll(' ', '')}_coord1@lnmiit.ac.in',
+      },
+    ];
+  }
+
+  static List<String> _getGallery(String clubName) {
+    if (clubName == 'Badminton') {
+      return [
+        'assets/assets/images/sports/badminton/bad1.jpeg'
+      ];
+    }
+    if (clubName == 'Basketball') {
+      return [
+        'assets/assets/images/sports/basketball/basket1.jpeg'
+      ];
+    }
+    if (clubName == 'Chess') {
+      return [
+        'assets/assets/images/sports/chess/chess1.jpg'
+      ];
+    }
+    if (clubName == 'Cricket') {
+      return [
+        'assets/assets/images/sports/cricket/cricket1.jpeg'
+      ];
+    }
+    if (clubName == 'Football') {
+      return [
+        'assets/assets/images/sports/football/fc1.jpeg',
+        'assets/assets/images/sports/football/fc2.jpeg',
+        'assets/assets/images/sports/football/fc3.jpeg',
+        'assets/assets/images/sports/football/fc4.jpeg',
+        'assets/assets/images/sports/football/fc5.jpeg',
+        'assets/assets/images/sports/football/fc6.jpeg',
+        'assets/assets/images/sports/football/fc7.jpeg',
+      ];
+    }
+    if (clubName == 'Kabaddi') {
+      return [
+        'assets/assets/images/sports/kabaddi/kabaddi1.jpeg'
+      ];
+    }
+    if (clubName == 'Lawn Tennis') {
+      return [
+        'assets/assets/images/sports/lawn_tennis/lawn1.jpeg'
+      ];
+    }
+    if (clubName == 'Squash') {
+      return [
+        'assets/assets/images/sports/squash/squash1.jpeg'
+      ];
+    }
+    if (clubName == 'Table Tennis') {
+      return [
+        'assets/assets/images/sports/table_tennis/tablt1.jpg'
+      ];
+    }
+    if (clubName == 'Volleyball') {
+      return [
+        'assets/assets/images/sports/volleyball/volley1.jpg'
+      ];
+    }
+    if (clubName == 'Zenith') {
+      return [
+        'assets/assets/images/sports/zenith/zenith1.jpg'
+      ];
+    }
+    return [];
+  }
+
+  static final List<Map<String, dynamic>> sportsClubs = [
+    {
+      'name': 'Badminton',
+      'icon': 'assets/assets/images/sports/badminton/badminton_logo.jpeg',
+      'subtitle': 'Badminton Club of LNMIIT',
+      'image': 'assets/assets/images/sports/badminton/badminton_logo.jpeg',
+      'coordinators': _getCoordinators('Badminton'),
+      'gallery': _getGallery('Badminton'),
+      'description': "The Badminton Club is where ambition meets discipline — a court for those who play to win and train to dominate. Every match is a test, every session a step toward becoming unbeatable. It’s not just about playing; it’s about proving you’re better than yesterday.",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
+    },
+    {
+      'name': 'Basketball',
+      'icon': 'assets/assets/images/sports/basketball/basketball_logo.png',
+      'subtitle': 'Basketball Club of LNMIIT',
+      'image': 'assets/assets/images/sports/basketball/basketball_logo.png',
+      'coordinators': _getCoordinators('Basketball'),
+      'gallery': _getGallery('Basketball'),
+      'description': "Our Basketball Club is a place for students who love the game. We practice regularly, play matches, and grow as a team. Whether you’re a beginner or experienced, everyone’s welcome to join.",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
+    },
+    {
+      'name': 'Chess',
+      'icon': 'assets/assets/images/sports/chess/chess_logo.jpg',
+      'subtitle': 'Chess Club of LNMIIT',
+      'image': 'assets/assets/images/sports/chess/chess_logo.jpg',
+      'coordinators': _getCoordinators('Chess'),
+      'gallery': _getGallery('Chess'),
+      'description': "The Chess Club brings together students who share an interest in chess. It’s a space for strategic thinking, friendly competition, and continuous learning. Open to all skill levels, the club promotes a love for the game and a sense of community.",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
+    },
+    {
+      'name': 'Cricket',
+      'icon': 'assets/assets/images/sports/cricket/cricket_logo.jpeg',
+      'subtitle': 'Cricket Club of LNMIIT',
+      'image': 'assets/assets/images/sports/cricket/cricket_logo.jpeg',
+      'coordinators': _getCoordinators('Cricket'),
+      'gallery': _getGallery('Cricket'),
+      'description': "At LNMIIT, cricket is more than just a game-its a shared passion that brings students across batches. The cricket culture here fosters not only teamwork and competitiveness but also creates a homely bond with seniors and its a place where memories are made beyond scorecard.",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
+    },
+    {
+      'name': 'Football',
+      'icon': 'assets/assets/images/sports/football/football_logo.jpg',
+      'subtitle': 'Football Club of LNMIIT',
+      'image': 'assets/assets/images/sports/football/football_logo.jpg',
+      'coordinators': _getCoordinators('Football'),
+      'gallery': _getGallery('Football'),
+      'description': "Just a bunch of football fanatics who live for the game – whether it's sweating it out on the field or supporting their favourite clubs. LNMFC is all about teamwork, passion, and having a blast while playing the sport we love. Everyone’s welcome, from casual kickers to future pros!",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
+    },
+    {
+      'name': 'Kabaddi',
+      'icon': 'assets/assets/images/sports/kabaddi/kabaddi_logo.jpeg',
+      'subtitle': 'Kabaddi Club of LNMIIT',
+      'image': 'assets/assets/images/sports/kabaddi/kabaddi_logo.jpeg',
+      'coordinators': _getCoordinators('Kabaddi'),
+      'gallery': _getGallery('Kabaddi'),
+      'description': "Ready to bring the heat on the mat? LNMIIT Kabaddi is where passion meets power. With consistent podium finishes at Despo and Udghosh, we’re building legends — one tackle at a time. Join us and #LePanga! ",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
+    },
+    {
+      'name': 'Lawn Tennis',
+      'icon': 'assets/assets/images/sports/lawn_tennis/lawnt_logo.png',
+      'subtitle': 'Lawn Tennis Club of LNMIIT',
+      'image': 'assets/assets/images/sports/lawn_tennis/lawnt_logo.png',
+      'coordinators': _getCoordinators('Lawn Tennis'),
+      'gallery': _getGallery('Lawn Tennis'),
+      'description': "The Lawn Tennis Club welcomes everyone, whether you’re a complete beginner or an experienced player. We hold regular practice sessions, friendly matches, and competitive tournaments throughout the year. It’s a great space to improve your game, stay active, and be part of a supportive tennis community",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
+    },
+    {
+      'name': 'Squash',
+      'icon': 'assets/assets/images/sports/squash/squash_logo.jpeg',
+      'subtitle': 'Squash Club of LNMIIT',
+      'image': 'assets/assets/images/sports/squash/squash_logo.jpeg',
+      'coordinators': _getCoordinators('Squash'),
+      'gallery': _getGallery('Squash'),
+      'description': "The Squash Club is a fun and energetic space for anyone who loves the game or wants to try something new. We play regularly, help each other improve, and enjoy a bit of friendly competition along the way. Whether you're just starting out or have been playing for years, you're always welcome to join us. It's all about staying active, meeting people, and having a great time on court!",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
+    },
+    {
+      'name': 'Table Tennis',
+      'icon': 'assets/assets/images/sports/table_tennis/tablet_logo.png',
+      'subtitle': 'Table Tennis Club of LNMIIT',
+      'image': 'assets/assets/images/sports/table_tennis/tablet_logo.png',
+      'coordinators': _getCoordinators('Table Tennis'),
+      'gallery': _getGallery('Table Tennis'),
+      'description': "The Table Tennis Club is a passionate and competitive group dedicated to learning and improving the sport. With a history of securing top positions in past competitions, the club proudly includes state-level players who lead by example. Members train rigorously and regularly participate in friendly matches with other colleges to gain experience and build camaraderie.",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
+    },
+    {
+      'name': 'Volleyball',
+      'icon': 'assets/assets/images/sports/volleyball/volleyball_logo.jpg',
+      'subtitle': 'Volleyball Club of LNMIIT',
+      'image': 'assets/assets/images/sports/volleyball/volleyball_logo.jpg',
+      'coordinators': _getCoordinators('Volleyball'),
+      'gallery': _getGallery('Volleyball'),
+      'description': "The Volleyball Club at LNMIIT is a vibrant and competitive community for sports enthusiasts who are passionate about the game. As one of the institute's official sports clubs, we aim to promote physical fitness, teamwork, and sportsmanship through regular practice sessions, friendly matches, and participation in inter-college tournaments. Whether you're a beginner or an experienced player, the club welcomes everyone with a love for volleyball. Join us to bump, set, and spike your way into a spirited sports culture!",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
+    },
+    {
+      'name': 'Zenith',
+      'icon': 'assets/assets/images/sports_logo.jpg',
+      'subtitle': 'The Fitness Club of LNMIIT',
+      'image': 'assets/assets/images/sports_logo.jpg',
+      'coordinators': _getCoordinators('Zenith'),
+      'gallery': _getGallery('Zenith'),
+      'description': "Zenith is the Fitness Club of LNMIIT. We aim to inspire and guide students toward a healthier, more active lifestyle through guided fitness routines, workout sessions, and wellness events.",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isMobile = screenWidth < 600;
+
+    return Scaffold(
+      backgroundColor: const Color(0xFF050816),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF050816),
+        elevation: 0,
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: Text(
+          'SPORTS CLUBS',
+          style: GoogleFonts.playfairDisplay(
+            color: Colors.redAccent,
+            fontSize: isMobile ? 22 : 38,
+            letterSpacing: isMobile ? 2 : 4,
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 1000),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: isMobile ? 16 : 20,
+                vertical: isMobile ? 16 : 24,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'EXPLORE SPORTS CLUBS',
+                    style: GoogleFonts.playfairDisplay(
+                      color: Colors.white,
+                      fontSize: isMobile ? 24 : 32,
+                      letterSpacing: isMobile ? 1 : 2,
+                    ),
+                  ),
+                  SizedBox(height: isMobile ? 16 : 20),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      double parentWidth = constraints.maxWidth;
+                      int crossAxisCount = 1;
+                      if (parentWidth >= 1100) {
+                        crossAxisCount = 4;
+                      } else if (parentWidth >= 600) {
+                        crossAxisCount = 2;
+                      } else {
+                        crossAxisCount = 1;
+                      }
+
+                      // Calculate item width dynamically
+                      double cardWidth = (parentWidth - (crossAxisCount - 1) * 20) / crossAxisCount;
+
+                      return Wrap(
+                        spacing: 20,
+                        runSpacing: 20,
+                        children: sportsClubs.map((club) {
+                          return SizedBox(
+                            width: cardWidth,
+                            child: _buildClubCard(context, club),
+                          );
+                        }).toList(),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildClubCard(BuildContext context, Map<String, dynamic> club) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isMobile = screenWidth < 600;
+
+    final String clubName = club['name'] as String;
+    final String clubImage = club['image'] as String;
+    final String clubIcon = club['icon'] as String;
+    final String clubSubtitle = club['subtitle'] as String;
+    final String clubDescription = club['description'] as String? ?? '';
+    final List<Map<String, String>> coordinators = List<Map<String, String>>.from(
+      (club['coordinators'] as List).map(
+        (item) => Map<String, String>.from(item as Map),
+      ),
+    );
+    final List<String> galleryImages = List<String>.from(club['gallery'] as List);
+    final String clubInstagram = club['instagram'] as String? ?? 'https://instagram.com/${clubName.toLowerCase().replaceAll(' ', '').replaceAll('-', '')}_lnmiit';
+    final String clubEmail = club['email'] as String? ?? '';
+
+    void onCardTap() {
+      Navigator.pushNamed(
+        context,
+        '/sports_detail',
+        arguments: {
+          'clubName': clubName,
+          'clubImage': clubImage,
+          'coordinators': coordinators,
+          'galleryImages': galleryImages,
+          'description': clubDescription,
+          'instagram': clubInstagram,
+          'email': clubEmail,
+        },
+      );
+    }
+
+    if (isMobile) {
+      // Sleek horizontal list card for mobile app
+      return GestureDetector(
+        onTap: onCardTap,
+        child: GlassCard(
+          borderRadius: BorderRadius.circular(16),
+          padding: const EdgeInsets.all(12),
+          child: Row(
+            children: [
+              Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.redAccent, width: 2),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.redAccent.withValues(alpha: 0.2),
+                      blurRadius: 8,
+                      spreadRadius: 1,
+                    ),
+                  ],
+                ),
+                child: ClipOval(
+                  child: Image.asset(
+                    clubIcon,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        color: Colors.grey[800],
+                        child: const Icon(
+                          Icons.image_not_supported,
+                          color: Colors.white54,
+                          size: 24,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      clubName,
+                      style: GoogleFonts.playfairDisplay(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      clubSubtitle,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.poppins(
+                        color: Colors.white70,
+                        fontSize: 12,
+                        height: 1.4,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 8),
+              const Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.redAccent,
+                size: 16,
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    // Original vertical layout for desktop/web
+    return GestureDetector(
+      onTap: onCardTap,
+      child: GlassCard(
+        borderRadius: BorderRadius.circular(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AspectRatio(
+              aspectRatio: 1.0,
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white10,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                ),
+                child: Center(
+                  child: Container(
+                    width: 180,
+                    height: 180,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.redAccent, width: 2.5),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.redAccent.withValues(alpha: 0.3),
+                          blurRadius: 12,
+                          spreadRadius: 2,
+                        ),
+                      ],
+                    ),
+                    child: ClipOval(
+                      child: Image.asset(
+                        clubIcon,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            color: Colors.grey[800],
+                            child: const Icon(
+                              Icons.image_not_supported,
+                              color: Colors.white54,
+                              size: 60,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    clubName,
+                    style: GoogleFonts.playfairDisplay(
+                      color: Colors.white,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    clubSubtitle,
+                    style: GoogleFonts.poppins(
+                      color: Colors.white70,
+                      fontSize: 14,
+                      height: 1.5,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                      onPressed: onCardTap,
+                      child: Text(
+                        'VIEW CLUB',
+                        style: GoogleFonts.playfairDisplay(
+                          fontSize: 16,
+                          letterSpacing: 1.5,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
