@@ -77,15 +77,15 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Avesh Khan',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/eminence/eminence_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/eminence/Avesh_khan.jpeg', 
           'phone': '+919999999999', // number not updated
           'email': '24ucs127@lnmiit.ac.in',
         },
         {
-          'name': 'Kushagra',
+          'name': 'Kushagra Maheshwari',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/eminence/eminence_logo.jpg', // Replace with their actual photo path
-          'phone': '+919265774219', // recheck once
+          'image': 'assets/assets/images/cultural/eminence/Kushagra.jpeg', 
+          'phone': '+919265774219', 
           'email': '24ucs087@lnmiit.ac.in',
         },
       ];
@@ -157,21 +157,21 @@ class CulturalPage extends StatelessWidget {
           'name': 'Ananya Surana',
           'role': 'Coordinator',
           'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg', // not updated
-          'phone': '+919999999999', // not updated
+          'phone': '+918866006777',
           'email': '24ucc090@lnmiit.ac.in',
         },
         {
           'name': 'Kavin Goyal',
           'role': 'Coordinator',
           'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg', // not updated
-          'phone': '+918888888888', // not updated
+          'phone': '+918058005044', 
           'email': '24dcs010@lnmiit.ac.in',
         },
         {
           'name': 'Shivansh Singh',
           'role': 'Coordinator',
           'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg', // not updated
-          'phone': '+917777777777', // not updated
+          'phone': '+918529132553', 
           'email': '24dec049@lnmiit.ac.in',
         },
       ];
