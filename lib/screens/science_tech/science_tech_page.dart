@@ -71,14 +71,14 @@ class ScienceTechPage extends StatelessWidget {
           'name': 'Sandarbh Gyan',
           'role': 'Coordinator',
           'image': 'assets/assets/images/tech/quizzinga/quizzinga_logo.jpg', // not updated
-          'phone': '+918888888888', // not updated
+          'phone': '+917762049885',
           'email': '24uec019@lnmiit.ac.in',
         },
         {
           'name': 'Viha Arvind Kotak',
           'role': 'Coordinator',
           'image': 'assets/assets/images/tech/quizzinga/quizzinga_logo.jpg', // not updated
-          'phone': '+918888888888', // not updated
+          'phone': '+919409633133',
           'email': '24ucc168@lnmiit.ac.in',
         },
       ];
@@ -90,28 +90,28 @@ class ScienceTechPage extends StatelessWidget {
           'name': 'Gourav Bansal',
           'role': 'Coordinator',
           'image': 'assets/assets/images/tech/astronomy/gourav_sir.png', // not updated
-          'phone': '+919999999999', // not updated
+          'phone': '+918146507797',
           'email': '24ucs047@lnmiit.ac.in',
         },
         {
           'name': 'Jivya Jain',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/astronomy/jivya_boss.png', // not updated
-          'phone': '+918888888888', // not updated
+          'image': 'assets/assets/images/tech/astronomy/jivya.jpeg',
+          'phone': '+917597209911',
           'email': '24uec037@lnmiit.ac.in',
         },
         {
           'name': 'Kshitij Verma',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/astronomy/kshitij_sir.png', // not updated
-          'phone': '+918888888888', // not updated
+          'image': 'assets/assets/images/tech/astronomy/kshitij.jpeg',
+          'phone': '+919137243003',
           'email': '24ucc202@lnmiit.ac.in',
         },
         {
           'name': 'Tanushree Sethi',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/astronomy/tanushree_boss.png', // not updated
-          'phone': '+918888888888', // not updated
+          'image': 'assets/assets/images/tech/astronomy/tanushree.jpeg',
+          'phone': '+917568164924',
           'email': '24uec127@lnmiit.ac.in',
         },
       ];
@@ -155,14 +155,14 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Lokik Ganeriwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech_logo.jpg', // not updated
+          'image': 'assets/assets/images/lokik.jpeg',
           'phone': '+918875967149', 
           'email': '23ucs634@lnmiit.ac.in',
         },
         {
           'name': 'Arjit Mathur',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech_logo.jpg', // not updated
+          'image': 'assets/assets/images/arjit.jpeg',
           'phone': '+919352888935',
           'email': '23ucs545@lnmiit.ac.in',
         },
@@ -207,7 +207,7 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Akansh Saxena',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/debsoc/debsoc_logo.jpg', // not updated
+          'image': 'assets/assets/images/tech/debsoc/akansh.jpeg',
           'phone': '+917668010687',
           'email': '24uec155@lnmiit.ac.in',
         },
@@ -250,7 +250,7 @@ class ScienceTechPage extends StatelessWidget {
     }
     if (clubName == 'Astronomy') {
       return [
-        'assets/assets/images/tech/astronomy/astro1.jpg'
+        'assets/assets/images/tech/astronomy/astro1.jpeg'
       ];
     }
     if (clubName == 'Cipher') {

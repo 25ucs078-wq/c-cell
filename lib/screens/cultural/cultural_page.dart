@@ -26,7 +26,7 @@ class CulturalPage extends StatelessWidget {
           'name': 'Tanuj Tulsyan',
           'role': 'Coordinator',
           'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
-          'phone': '+917777777777', // number not updated
+          'phone': '+917627097460',
           'email': '24ucc169@lnmiit.ac.in',
         },
         {
@@ -44,21 +44,21 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Ashmit Dudani',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/capriccio/ashmit.jpeg',
           'phone': '+918849166245',
           'email': '24dcs014@lnmiit.ac.in',
         },
         {
           'name': 'Nandini Sharma',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/capriccio/nandini.jpeg',
           'phone': '+918955027762',
           'email': '24ucs273@lnmiit.ac.in',
         },
         {
           'name': 'Nilesh Agarwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/capriccio/nilesh.jpeg',
           'phone': '+917296879571',
           'email': '24uec214@lnmiit.ac.in',
         },
@@ -130,7 +130,7 @@ class CulturalPage extends StatelessWidget {
         'name': 'Garvita Joshi',
         'role': 'Coordinator',
         'image': 'assets/assets/images/cultural/fundoo/fundoo1.jpeg', //To be inserted
-        'phone': '+919468655389', // To be changed
+        'phone': '+916350209890',
         'email': '24uec144@lnmiit.ac.in',
       },
       {
@@ -149,7 +149,7 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Aditya Prakash',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/imagination/imagi_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/imagination/aditya.jpeg',
           'phone': '+919639837550',
           'email': '24uec087@lnmiit.ac.in',
         },
@@ -163,7 +163,7 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Ayush Agarwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/imagination/imagi_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/imagination/ayush.jpeg',
           'phone': '+917355568914',
           'email': '24ucc171@lnmiit.ac.in',
         },
@@ -190,14 +190,14 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Kavin Goyal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg', // not updated
+          'image': 'assets/assets/images/cultural/insignia/kavin.jpeg',
           'phone': '+918058005044', 
           'email': '24dcs010@lnmiit.ac.in',
         },
         {
           'name': 'Shivansh Singh',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg', // not updated
+          'image': 'assets/assets/images/cultural/insignia/shivansh.jpeg',
           'phone': '+918529132553', 
           'email': '24dec049@lnmiit.ac.in',
         },
@@ -210,7 +210,7 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Armaan Jain',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/lc/armaan.png',
+          'image': 'assets/assets/images/cultural/lc/armaan.jpeg',
           'phone': '+919509915121',
           'email': '24ucc192@lnmiit.ac.in',
         },
@@ -285,14 +285,14 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Nikhila S Hari',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/rendition/rendition_logo.png', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/rendition/nikhila.jpeg',
           'phone': '+919012233022',
           'email': '24uec163@lnmiit.ac.in',
         },
         {
           'name': 'Shah Manav Tarakkumar',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/rendition/rendition_logo.png', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/rendition/manav.jpeg',
           'phone': '+919825361585',
           'email': '24ucc157@lnmiit.ac.in',
         },
@@ -443,7 +443,14 @@ class CulturalPage extends StatelessWidget {
     }
     if (clubName == 'Insignia') {
       return [
-        'assets/assets/images/cultural/insignia/insignia1.jpg'
+        'assets/assets/images/cultural/insignia/insignia1.jpeg',
+        'assets/assets/images/cultural/insignia/insignia2.jpeg',
+        'assets/assets/images/cultural/insignia/insignia3.jpeg',
+        'assets/assets/images/cultural/insignia/insignia4.jpeg',
+        'assets/assets/images/cultural/insignia/insignia5.jpeg',
+        'assets/assets/images/cultural/insignia/insignia6.jpeg',
+        'assets/assets/images/cultural/insignia/insignia7.jpeg',
+        'assets/assets/images/cultural/insignia/insignia8.jpeg',
       ];
     }
     if (clubName == 'Literary Committee') {
@@ -454,6 +461,7 @@ class CulturalPage extends StatelessWidget {
         'assets/assets/images/cultural/lc/lc4.jpeg',
         'assets/assets/images/cultural/lc/lc5.jpeg',
         'assets/assets/images/cultural/lc/lc6.jpeg',
+        'assets/assets/images/cultural/lc/lc7.jpeg',
       ];
     }
     if (clubName == 'Media Cell') {
@@ -463,7 +471,9 @@ class CulturalPage extends StatelessWidget {
     }
     if (clubName == 'Rendition') {
       return [
-        'assets/assets/images/cultural/rendition/rendition1.jpg'
+        'assets/assets/images/cultural/rendition/rendition1.jpeg',
+        'assets/assets/images/cultural/rendition/rendition2.jpeg',
+        'assets/assets/images/cultural/rendition/rendition3.jpeg',
       ];
     }
     if (clubName == 'Sankalp') {
@@ -473,7 +483,16 @@ class CulturalPage extends StatelessWidget {
     }
     if (clubName == 'Vignette') {
       return [
-        'assets/assets/images/cultural/vignette/vign1.jpg'
+        'assets/assets/images/cultural/vignette/vign1.jpeg',
+        'assets/assets/images/cultural/vignette/vign2.jpeg',
+        'assets/assets/images/cultural/vignette/vign3.jpeg',
+        'assets/assets/images/cultural/vignette/vign4.jpeg',
+        'assets/assets/images/cultural/vignette/vign5.jpeg',
+        'assets/assets/images/cultural/vignette/vign6.jpeg',
+        'assets/assets/images/cultural/vignette/vign7.jpeg',
+        'assets/assets/images/cultural/vignette/vign8.jpeg',
+        'assets/assets/images/cultural/vignette/vign9.jpeg',
+        'assets/assets/images/cultural/vignette/vign10.jpeg', 
       ];
     }
     return [];
