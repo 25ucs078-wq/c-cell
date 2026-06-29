@@ -174,22 +174,22 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Lakshya Mangal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/ecell/ecell_logo.jpg', // not updated
-          'phone': '+919999999999', // not updated
+          'image': 'assets/assets/images/tech/ecell/lakshya.jpeg',
+          'phone': '+918529216481', 
           'email': '24uec196@lnmiit.ac.in',
         },
         {
           'name': 'Panth Moradiya',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/ecell/ecell_logo.jpg', // not updated
-          'phone': '+918888888888', // not updated
+          'image': 'assets/assets/images/tech/ecell/panth.jpeg',
+          'phone': '+919979901008',
           'email': '24ucs120@lnmiit.ac.in',
         },
         {
           'name': 'Ritesh Sarawagi',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/ecell/ecell_logo.jpg', // not updated
-          'phone': '+918888888888', // not updated
+          'image': 'assets/assets/images/tech/ecell/ritesh.jpeg',
+          'phone': '+919461834682',
           'email': '24uec050@lnmiit.ac.in',
         },
       ];
