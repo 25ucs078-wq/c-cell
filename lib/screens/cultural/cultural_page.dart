@@ -122,21 +122,21 @@ class CulturalPage extends StatelessWidget {
        {
         'name': 'Jash Chirag Monani',
         'role': 'Coordinator',
-        'image': 'assets/assets/images/cultural/fundoo/fundoo1.jpeg', //To be inserted
-        'phone': '+916268131180', // To be changed
+        'image': 'assets/assets/images/cultural/fundoo/jash.jpeg',
+        'phone': '+917016175481', 
         'email': '24uec206@lnmiit.ac.in',
       },
       {
         'name': 'Garvita Joshi',
         'role': 'Coordinator',
-        'image': 'assets/assets/images/cultural/fundoo/fundoo1.jpeg', //To be inserted
+        'image': 'assets/assets/images/cultural/fundoo/garvita.jpeg', 
         'phone': '+916350209890',
         'email': '24uec144@lnmiit.ac.in',
       },
       {
         'name': 'Pranav Vilas Dumbre',
         'role': 'Coordinator',
-        'image': 'assets/assets/images/cultural/fundoo/fundoo1.jpeg', //To be inserted
+        'image': 'assets/assets/images/cultural/fundoo/pranav.jpeg',
         'phone': '+919389618050', // To be changed
         'email': '24uec177@lnmiit.ac.in',
       },
