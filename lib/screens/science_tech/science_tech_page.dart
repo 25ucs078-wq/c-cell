@@ -214,7 +214,7 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Ruhani Sukhija',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/debsoc/debsoc_logo.jpg', // not updated
+          'image': 'assets/assets/images/tech/debsoc/ruhani.jpeg',
           'phone': '+917014531991',
           'email': '24ucs108@lnmiit.ac.in',
         },
