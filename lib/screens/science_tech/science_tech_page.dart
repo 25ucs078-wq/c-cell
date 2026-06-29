@@ -155,14 +155,14 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Lokik Ganeriwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/lokik.jpeg',
+          'image': 'assets/assets/images/tech/qbit/lokik.jpeg',
           'phone': '+918875967149', 
           'email': '23ucs634@lnmiit.ac.in',
         },
         {
           'name': 'Arjit Mathur',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/arjit.jpeg',
+          'image': 'assets/assets/images/tech/qbit/arjit.jpeg',
           'phone': '+919352888935',
           'email': '23ucs545@lnmiit.ac.in',
         },
@@ -345,9 +345,9 @@ class ScienceTechPage extends StatelessWidget {
     },
     {
       'name': 'Qbit',
-      'icon': 'assets/assets/images/tech_logo.jpg',
+      'icon': 'assets/assets/images/tech/qbit/qbit_logo.png',
       'subtitle': 'The Quantum Computing Club of LNMIIT',
-      'image': 'assets/assets/images/tech_logo.jpg',
+      'image': 'assets/assets/images/tech/qbit/qbit_logo.png',
       'coordinators': _getCoordinators('Qbit'),
       'gallery': _getGallery('Qbit'),
       'description': 'The Quantum Computing Club of LNMIIT, Qbit, explores the cutting-edge frontier of quantum algorithms, quantum mechanics, and future computing technologies.',
