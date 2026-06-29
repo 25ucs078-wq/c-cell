@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:video_player/video_player.dart';
+import 'notes_pyqs_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -1132,6 +1133,24 @@ class _HomePageState extends State<HomePage> {
                                 "Emergency",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: NotesRoute.builder,
+                                ),
+                                );
+                                },
+                                child: buildEventCard(
+                                405,
+                                Colors.blue,
+                                Icons.menu_book,
+                                "Notes / PYQs",
+                                isSmallScreen: isSmallScreen,
+                                listCardHeight: listCardHeight,
+                                ),
                               ),
                             ],
                           ),
