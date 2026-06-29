@@ -117,6 +117,33 @@ class CulturalPage extends StatelessWidget {
       ];
     }
 
+    if (clubName == 'Fundoo') {
+      return [
+       {
+        'name': 'Jash Chirag Monani',
+        'role': 'Coordinator',
+        'image': 'assets/assets/images/cultural/fundoo/fundoo1.jpeg', //To be inserted
+        'phone': '+916268131180', // To be changed
+        'email': '24uec206@lnmiit.ac.in',
+      },
+      {
+        'name': 'Garvita Joshi',
+        'role': 'Coordinator',
+        'image': 'assets/assets/images/cultural/fundoo/fundoo1.jpeg', //To be inserted
+        'phone': '+919468655389', // To be changed
+        'email': '24uec144@lnmiit.ac.in',
+      },
+      {
+        'name': 'Pranav Vilas Dumbre',
+        'role': 'Coordinator',
+        'image': 'assets/assets/images/cultural/fundoo/fundoo1.jpeg', //To be inserted
+        'phone': '+919389618050', // To be changed
+        'email': '24uec177@lnmiit.ac.in',
+      },
+
+      ];
+    }
+
     if (clubName == 'Imagination') {
       return [
         {
@@ -404,6 +431,11 @@ class CulturalPage extends StatelessWidget {
         'assets/assets/images/cultural/finlogue/akshat.jpeg',
       ];
     }
+    if (clubName == 'Fundoo') {
+      return [
+        'assets/assets/images/cultural/fundoo/fundoo1.jpeg'
+      ];
+    }
     if (clubName == 'Imagination') {
       return [
         'assets/assets/images/cultural/imagination/imagi1.png'
@@ -490,6 +522,16 @@ class CulturalPage extends StatelessWidget {
       'gallery': _getGallery('Finlogue'),
       'description': 'The Fintech Club of LNMIIT, Finlogue, bridges the gap between finance and technology, hosting discussions, workshops, and case study competitions on investments, markets, and blockchain.',
       'instagram': 'https://www.instagram.com/finlogue.lnmiit/',
+    },
+    {
+      'name': 'Fundoo',
+      'icon': 'assets/assets/images/cultural/fundoo/fundoo1.jpeg',
+      'subtitle': 'The Festival club of LNMIIT',
+      'image': 'assets/assets/images/cultural/fundoo/fundoo1.jpeg',
+      'coordinators': _getCoordinators('Fundoo'),
+      'gallery': _getGallery('Fundoo'),
+      'description': 'The Festival Club of LNMIIT, where every festival feels like home',
+      'instagram': 'https://www.instagram.com/fundoo.lnmiit/',
     },
     {
       'name': 'Imagination',
