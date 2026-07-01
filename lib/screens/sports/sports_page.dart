@@ -70,21 +70,21 @@ class SportsPage extends StatelessWidget {
         {
           'name': 'Divyansh Aggarwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/chess/chess_logo.jpg', // Photo not updated
+          'image': 'assets/assets/images/sports/chess/divyansh.jpeg',
           'phone': '+919999999999', // number not updated
           'email': '24ucs194@lnmiit.ac.in', // recheck this email
         },
         {
           'name': 'Kavya Jain',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/chess/chess_logo.jpg', // Photo not updated
+          'image': 'assets/assets/images/sports/chess/kavya.jpeg',
           'phone': '+918888888888', // number not updated
           'email': '24ucs058@lnmiit.ac.in',
         },
         {
           'name': 'Lakshit Singhvi',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/chess/chess_logo.jpg', // Photo not updated
+          'image': 'assets/assets/images/sports/chess/lakshit.jpeg',
           'phone': '+918888888888', // number not updated
           'email': '24ume091@lnmiit.ac.in', 
         }
@@ -273,35 +273,35 @@ class SportsPage extends StatelessWidget {
         {
           'name': 'Apoorva Jain',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/volleyball/volleyball_logo.jpg', // Photo not updated
+          'image': 'assets/assets/images/sports/volleyball/apoorva.jpeg',
           'phone': '+918888888888', // number not updated
           'email': '24uec200@lnmiit.ac.in',
         },
         {
           'name': 'Ayush Raj Shahi',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/volleyball/volleyball_logo.jpg', // Photo not updated
+          'image': 'assets/assets/images/sports/volleyball/ayush.jpeg',
           'phone': '+919999999999', // number not updated
           'email': '24@lnmiit.ac.in', // email not updated
         },
         {
           'name': 'Dinakar', // recheck this name
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/volleyball/volleyball_logo.jpg', // Photo not updated
+          'image': 'assets/assets/images/sports/volleyball/dinakar.jpeg',
           'phone': '+918888888888', // number not updated
           'email': '24ucs037@lnmiit.ac.in',
         },
         {
           'name': 'Panth Moradiya',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/volleyball/volleyball_logo.jpg', // Photo not updated
+          'image': 'assets/assets/images/sports/volleyball/panth.jpg',
           'phone': '+918888888888', // number not updated
           'email': '24ucs120@lnmiit.ac.in',
         },
         {
           'name': 'Saniya Sharma',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/volleyball/volleyball_logo.jpg', // Photo not updated
+          'image': 'assets/assets/images/sports/volleyball/saniya.jpeg',
           'phone': '+918888888888', // number not updated
           'email': '24ucs081@lnmiit.ac.in',
         },
@@ -351,7 +351,11 @@ class SportsPage extends StatelessWidget {
     }
     if (clubName == 'Chess') {
       return [
-        'assets/assets/images/sports/chess/chess1.jpg'
+        'assets/assets/images/sports/chess/chess1.jpg',
+        'assets/assets/images/sports/chess/chess2.jpg',
+        'assets/assets/images/sports/chess/chess3.jpg',
+        'assets/assets/images/sports/chess/chess4.jpg',
+        'assets/assets/images/sports/chess/chess5.jpg',
       ];
     }
     if (clubName == 'Cricket') {

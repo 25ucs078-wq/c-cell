@@ -70,14 +70,14 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Sandarbh Gyan',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/quizzinga/quizzinga_logo.jpg', // not updated
+          'image': 'assets/assets/images/tech/quizzinga/sandarbh.jpeg',
           'phone': '+917762049885',
           'email': '24uec019@lnmiit.ac.in',
         },
         {
           'name': 'Viha Arvind Kotak',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/quizzinga/quizzinga_logo.jpg', // not updated
+          'image': 'assets/assets/images/tech/quizzinga/viha.jpeg',
           'phone': '+919409633133',
           'email': '24ucc168@lnmiit.ac.in',
         },
@@ -89,7 +89,7 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Gourav Bansal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/astronomy/gourav_sir.png', // not updated
+          'image': 'assets/assets/images/tech/astronomy/gourav.jpeg',
           'phone': '+918146507797',
           'email': '24ucs047@lnmiit.ac.in',
         },

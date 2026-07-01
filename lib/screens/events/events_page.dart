@@ -20,28 +20,28 @@ class EventsPage extends StatelessWidget {
         {
           'name': 'Pranav Vashisth',
           'role': 'Organizer',
-          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg', // photo not added yet
+          'image': 'assets/assets/images/ted/pranav.jpeg',
           'phone': '+918445681853',
           'email': '24ucs126@lnmiit.ac.in',
         },
         {
           'name': 'Praneel Dev',
           'role': 'Organizer',
-          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg', // photo not added yet
+          'image': 'assets/assets/images/ted/praneel.jpeg',
           'phone': '+918955352024',
           'email': '24ucs202@lnmiit.ac.in',
         },
         {
           'name': 'Samar Goyal',
           'role': 'Organizer', 
-          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg', // photo not added yet
+          'image': 'assets/assets/images/ted/samar.jpeg',
           'phone': '+917300458010',
           'email': '24ucs008@lnmiit.ac.in',
         },
         {
           'name': 'Vedha Meghashyam Sinkar',
           'role': 'Organizer',
-          'image': 'assets/assets/images/cultural/mediacell/media_logo.jpg', // photo not added yet
+          'image': 'assets/assets/images/ted/vedha.jpeg',
           'phone': '+919588483298',
           'email': '24ume011@lnmiit.ac.in',
         },
