@@ -65,6 +65,18 @@ class SportsPage extends StatelessWidget {
       ];
     }
 
+    if (clubName == 'Carrom') {
+      return [
+        {
+          'name': 'Dhruv Bansal',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/carrom/dhruv.jpeg',
+          'phone': '+919530072263',
+          'email': '24ucc185@lnmiit.ac.in',
+        },
+      ];
+    }
+
     if (clubName == 'Chess') {
       return [
         {
@@ -349,6 +361,9 @@ class SportsPage extends StatelessWidget {
         'assets/assets/images/sports/basketball/basket1.jpeg'
       ];
     }
+    if (clubName == 'Carrom') {
+      return [];
+    }
     if (clubName == 'Chess') {
       return [
         'assets/assets/images/sports/chess/chess1.jpg',
@@ -426,6 +441,16 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Basketball'),
       'gallery': _getGallery('Basketball'),
       'description': "Our Basketball Club is a place for students who love the game. We practice regularly, play matches, and grow as a team. Whether you’re a beginner or experienced, everyone’s welcome to join.",
+      'instagram': 'https://www.instagram.com/cclnmiit/',
+    },
+    {
+      'name': 'Carrom',
+      'icon': 'assets/assets/images/sports_logo.jpg',
+      'subtitle': 'Carrom Club of LNMIIT',
+      'image': 'assets/assets/images/sports_logo.jpg',
+      'coordinators': _getCoordinators('Carrom'),
+      'gallery': _getGallery('Carrom'),
+      'description': "The Carrom Club of LNMIIT brings together enthusiasts of precision, focus, and tactical indoor sports. A platform for casual matches and competitive tournaments alike, where strategy meets touch on the board.",
       'instagram': 'https://www.instagram.com/cclnmiit/',
     },
     {
