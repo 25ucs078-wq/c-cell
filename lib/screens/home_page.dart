@@ -17,6 +17,7 @@ class _HomePageState extends State<HomePage> {
   int hoveredHeaderLink = -1;
 
   final GlobalKey eventsKey = GlobalKey();
+  final GlobalKey facultiesKey = GlobalKey();
   final GlobalKey gymkhanaKey = GlobalKey();
   final GlobalKey trendingKey = GlobalKey();
   final GlobalKey clubsKey = GlobalKey();
@@ -147,11 +148,12 @@ class _HomePageState extends State<HomePage> {
             Row(
               children: [
                 _buildHeaderNavLink(0, "Events", eventsKey),
-                _buildHeaderNavLink(1, "Gymkhana", gymkhanaKey),
-                _buildHeaderNavLink(2, "Trending", trendingKey),
-                _buildHeaderNavLink(3, "Clubs", clubsKey),
-                _buildHeaderNavLink(4, "Quick Access", quickKey),
-                _buildHeaderNavLink(5, "About", aboutKey),
+                _buildHeaderNavLink(1, "Faculties", facultiesKey),
+                _buildHeaderNavLink(2, "Gymkhana", gymkhanaKey),
+                _buildHeaderNavLink(3, "Trending", trendingKey),
+                _buildHeaderNavLink(4, "Clubs", clubsKey),
+                _buildHeaderNavLink(5, "Quick Access", quickKey),
+                _buildHeaderNavLink(6, "About", aboutKey),
                 const SizedBox(width: 20),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -453,11 +455,11 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: ListTile(
                       leading: const Icon(
-                        Icons.account_balance,
+                        Icons.school,
                         color: Colors.white,
                       ),
                       title: const Text(
-                        "Gymkhana Councils",
+                        "Faculties",
                         style: TextStyle(
                           color: Colors.white,
                         ),
@@ -465,7 +467,7 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         navigateToSection(
                           1,
-                          gymkhanaKey,
+                          facultiesKey,
                         );
                       },
                     ),
@@ -506,11 +508,11 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: ListTile(
                       leading: const Icon(
-                        Icons.local_fire_department,
+                        Icons.account_balance,
                         color: Colors.white,
                       ),
                       title: const Text(
-                        "Trending Campus",
+                        "Gymkhana Councils",
                         style: TextStyle(
                           color: Colors.white,
                         ),
@@ -518,7 +520,7 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         navigateToSection(
                           2,
-                          trendingKey,
+                          gymkhanaKey,
                         );
                       },
                     ),
@@ -559,11 +561,11 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: ListTile(
                       leading: const Icon(
-                        Icons.groups,
+                        Icons.local_fire_department,
                         color: Colors.white,
                       ),
                       title: const Text(
-                        "Clubs",
+                        "Trending Campus",
                         style: TextStyle(
                           color: Colors.white,
                         ),
@@ -571,7 +573,7 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         navigateToSection(
                           3,
-                          clubsKey,
+                          trendingKey,
                         );
                       },
                     ),
@@ -612,11 +614,11 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: ListTile(
                       leading: const Icon(
-                        Icons.flash_on,
+                        Icons.groups,
                         color: Colors.white,
                       ),
                       title: const Text(
-                        "Quick Access",
+                        "Clubs",
                         style: TextStyle(
                           color: Colors.white,
                         ),
@@ -624,7 +626,7 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         navigateToSection(
                           4,
-                          quickKey,
+                          clubsKey,
                         );
                       },
                     ),
@@ -665,6 +667,59 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: ListTile(
                       leading: const Icon(
+                        Icons.flash_on,
+                        color: Colors.white,
+                      ),
+                      title: const Text(
+                        "Quick Access",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      onTap: () {
+                        navigateToSection(
+                          5,
+                          quickKey,
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            AnimatedContainer(
+              duration: const Duration(
+                milliseconds: 300,
+              ),
+              curve: Curves.easeInOut,
+              margin: const EdgeInsets.only(bottom: 12),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(14),
+                gradient: LinearGradient(
+                  colors: selectedIndex == 6
+                      ? [
+                          Colors.redAccent.withValues(alpha: 0.35),
+                          Colors.redAccent.withValues(alpha: 0.12),
+                        ]
+                      : [
+                          Colors.transparent,
+                          Colors.transparent,
+                        ],
+                ),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    width: 5,
+                    height: 72,
+                    decoration: BoxDecoration(
+                      color: selectedIndex == 6 ? Colors.redAccent : Colors.transparent,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  Expanded(
+                    child: ListTile(
+                      leading: const Icon(
                         Icons.info_outline,
                         color: Colors.white,
                       ),
@@ -676,7 +731,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       onTap: () {
                         navigateToSection(
-                          5,
+                          6,
                           aboutKey,
                         );
                       },
@@ -905,6 +960,57 @@ class _HomePageState extends State<HomePage> {
                               buildPosterCard(12, "assets/images/photowalk.jpeg", "Photowalk", isSmallScreen: isSmallScreen, listCardHeight: listCardHeight),
                               buildPosterCard(13, "assets/images/market_moguls.jpeg", "Market Moguls", isSmallScreen: isSmallScreen, listCardHeight: listCardHeight),
                               buildPosterCard(14, "assets/images/batch_photography.jpeg", "Batch Photography", isSmallScreen: isSmallScreen, listCardHeight: listCardHeight),
+                            ],
+                          ),
+                          SizedBox(height: sectionSpacing),
+                          Container(
+                            key: facultiesKey,
+                          ),
+                          Text(
+                            "FACULTIES",
+                            style: GoogleFonts.playfairDisplay(
+                              color: Colors.white,
+                              fontSize: sectionTitleFontSize,
+                              letterSpacing: 2,
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          _buildSectionContent(
+                            height: listCardHeight,
+                            isSmallScreen: isSmallScreen,
+                            children: [
+                              buildEventCard(
+                                500,
+                                Colors.blueAccent,
+                                Icons.school,
+                                "Director",
+                                isSmallScreen: isSmallScreen,
+                                listCardHeight: listCardHeight,
+                              ),
+                              buildEventCard(
+                                501,
+                                Colors.deepPurpleAccent,
+                                Icons.badge,
+                                "HODs",
+                                isSmallScreen: isSmallScreen,
+                                listCardHeight: listCardHeight,
+                              ),
+                              buildEventCard(
+                                502,
+                                Colors.teal,
+                                Icons.contact_phone,
+                                "Important Contacts",
+                                isSmallScreen: isSmallScreen,
+                                listCardHeight: listCardHeight,
+                              ),
+                              buildEventCard(
+                                503,
+                                Colors.orangeAccent,
+                                Icons.apartment,
+                                "Hostel Contacts",
+                                isSmallScreen: isSmallScreen,
+                                listCardHeight: listCardHeight,
+                              ),
                             ],
                           ),
                           SizedBox(height: sectionSpacing),
