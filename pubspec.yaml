@@ -27,6 +27,10 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/assets/
+    - assets/assets/pages/
+    - assets/assets/pages/faces/
+    - assets/assets/pdfs/
     - assets/assets/images/cultural/aaveg/
     - assets/assets/images/cultural/capriccio/
     - assets/assets/images/cultural/eminence/
