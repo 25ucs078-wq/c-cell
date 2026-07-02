@@ -8,8 +8,8 @@ class MorePage extends StatelessWidget {
 
   static const List<Map<String, String>> facultyConvenors = [
     {
-      "name": "Faculty Convenor",
-      "image": "assets/images/logo.jpeg",
+      "name": "Dr. Usha Kanoongo",
+      "image": "assets/assets/images/usha_mam.jpg",
       "role": "FACULTY CONVENOR",
     },
   ];

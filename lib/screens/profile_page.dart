@@ -142,7 +142,7 @@ class ProfilePage extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            "Convenor's message will be updated here.",
+                            "The LNMIIT Counselling and Guidance Cell is the bridge between students and the institute, helping them to settle into their new environment both emotionally and practically.\n\nFrom the moment students step onto campus, the cell supports students through reporting and admission process, assists with document verification, and answers common doubts or concern faced by incoming batches.\n\nBeyond the administrative help, the cell organises the orientation programme to familiarize students with campus life, conducts interactive sessions and facilitates the Student-Faculty Mentorship Programme-creating a strong support system throughout the academic year.",
                             style: GoogleFonts.poppins(
                               color: Colors.white70,
                               fontSize: isMobile ? 14 : 16,
