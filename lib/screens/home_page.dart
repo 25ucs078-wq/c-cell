@@ -250,10 +250,13 @@ class _HomePageState extends State<HomePage> {
         ),
       );
     } else {
-      return Wrap(
-        spacing: 20,
-        runSpacing: 20,
-        children: children,
+      return ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 1005),
+        child: Wrap(
+          spacing: 20,
+          runSpacing: 20,
+          children: children,
+        ),
       );
     }
   }
