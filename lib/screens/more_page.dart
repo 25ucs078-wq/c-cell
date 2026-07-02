@@ -6,6 +6,14 @@ import '../widgets/glass_card.dart';
 class MorePage extends StatelessWidget {
   const MorePage({super.key});
 
+  static const List<Map<String, String>> facultyConvenors = [
+    {
+      "name": "Faculty Convenor",
+      "image": "assets/images/logo.jpeg",
+      "role": "FACULTY CONVENOR",
+    },
+  ];
+
   static const List<Map<String, String>> mentors = [
     {
       "name": "Aditya Kansal",
@@ -253,6 +261,10 @@ class MorePage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: isMobile ? 30 : 40),
+                      buildSectionTitle("FACULTY CONVENOR"),
+                      const SizedBox(height: 20),
+                      buildResponsiveGrid(facultyConvenors),
+                      SizedBox(height: isMobile ? 30 : 40),
                       buildSectionTitle("TEAM MENTORS"),
                       const SizedBox(height: 20),
                       buildResponsiveGrid(mentors),
@@ -311,6 +323,7 @@ class MorePage extends StatelessWidget {
         double cardWidth = (parentWidth - (crossAxisCount - 1) * 20) / crossAxisCount;
 
         return Wrap(
+          alignment: WrapAlignment.center,
           spacing: 20,
           runSpacing: 20,
           children: people.map((person) {
@@ -336,23 +349,27 @@ class MorePage extends StatelessWidget {
     final String instagram = person['instagram'] ?? '';
     final String linkedin = person['linkedin'] ?? '';
 
+    final bool enableProfile = role != 'TEAM MENTOR';
+
     if (isMobile) {
       return GestureDetector(
-        onTap: () {
-          Navigator.pushNamed(
-            context,
-            '/profile',
-            arguments: {
-              'name': name,
-              'image': image,
-              'role': role,
-              'phone': phone,
-              'email': email,
-              'instagram': instagram,
-              'linkedin': linkedin,
-            },
-          );
-        },
+        onTap: enableProfile
+            ? () {
+                Navigator.pushNamed(
+                  context,
+                  '/profile',
+                  arguments: {
+                    'name': name,
+                    'image': image,
+                    'role': role,
+                    'phone': phone,
+                    'email': email,
+                    'instagram': instagram,
+                    'linkedin': linkedin,
+                  },
+                );
+              }
+            : null,
         child: GlassCard(
           borderRadius: BorderRadius.circular(16),
           padding: const EdgeInsets.all(12),
@@ -362,7 +379,7 @@ class MorePage extends StatelessWidget {
                 width: 60,
                 height: 60,
                 decoration: BoxDecoration(
-                  shape: BoxShape.circle,
+                  borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.redAccent, width: 2),
                   boxShadow: [
                     BoxShadow(
@@ -374,7 +391,8 @@ class MorePage extends StatelessWidget {
                 ),
                 child: Hero(
                   tag: name,
-                  child: ClipOval(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
                     child: Image.asset(
                       image,
                       fit: BoxFit.cover,
@@ -442,11 +460,12 @@ class MorePage extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
               ],
-              const Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.redAccent,
-                size: 16,
-              ),
+              if (enableProfile)
+                const Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.redAccent,
+                  size: 16,
+                ),
             ],
           ),
         ),
@@ -454,28 +473,30 @@ class MorePage extends StatelessWidget {
     }
 
     return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          '/profile',
-          arguments: {
-            'name': name,
-            'image': image,
-            'role': role,
-            'phone': phone,
-            'email': email,
-            'instagram': instagram,
-            'linkedin': linkedin,
-          },
-        );
-      },
+      onTap: enableProfile
+          ? () {
+              Navigator.pushNamed(
+                context,
+                '/profile',
+                arguments: {
+                  'name': name,
+                  'image': image,
+                  'role': role,
+                  'phone': phone,
+                  'email': email,
+                  'instagram': instagram,
+                  'linkedin': linkedin,
+                },
+              );
+            }
+          : null,
       child: GlassCard(
         borderRadius: BorderRadius.circular(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             AspectRatio(
-              aspectRatio: 4 / 5,
+              aspectRatio: 1.0,
               child: Hero(
                 tag: name,
                 child: ClipRRect(
@@ -501,7 +522,7 @@ class MorePage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -512,11 +533,11 @@ class MorePage extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.playfairDisplay(
                       color: Colors.white,
-                      fontSize: 22,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 8),
                   Text(
                     role,
                     textAlign: TextAlign.center,
@@ -524,12 +545,12 @@ class MorePage extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.poppins(
                       color: Colors.redAccent,
-                      fontSize: 14,
+                      fontSize: 13,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const SizedBox(height: 16),
                   if (phone.isNotEmpty || email.isNotEmpty) ...[
+                    const SizedBox(height: 14),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -550,43 +571,45 @@ class MorePage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20),
                   ],
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
+                  if (enableProfile) ...[
+                    const SizedBox(height: 14),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.black,
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
                         ),
-                      ),
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          '/profile',
-                          arguments: {
-                            'name': name,
-                            'image': image,
-                            'role': role,
-                            'phone': phone,
-                            'email': email,
-                            'instagram': instagram,
-                            'linkedin': linkedin,
-                          },
-                        );
-                      },
-                      child: Text(
-                        'VIEW PROFILE',
-                        style: GoogleFonts.playfairDisplay(
-                          fontSize: 16,
-                          letterSpacing: 1.5,
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            '/profile',
+                            arguments: {
+                              'name': name,
+                              'image': image,
+                              'role': role,
+                              'phone': phone,
+                              'email': email,
+                              'instagram': instagram,
+                              'linkedin': linkedin,
+                            },
+                          );
+                        },
+                        child: Text(
+                          'VIEW PROFILE',
+                          style: GoogleFonts.playfairDisplay(
+                            fontSize: 16,
+                            letterSpacing: 1.5,
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ],
               ),
             ),

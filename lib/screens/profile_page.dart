@@ -131,41 +131,61 @@ class ProfilePage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "❝",
-                          style: GoogleFonts.playfairDisplay(
-                            color: Colors.redAccent,
-                            fontSize: isMobile ? 48 : 60,
-                            height: 0.8,
+                        if (role.toUpperCase().contains('CONVENOR')) ...[
+                          Text(
+                            "CONVENOR'S MESSAGE",
+                            style: GoogleFonts.playfairDisplay(
+                              color: Colors.redAccent,
+                              fontSize: isMobile ? 20 : 24,
+                              letterSpacing: 1.5,
+                            ),
                           ),
-                        ),
-                        Text(
-                          "Making chaos look\nsurprisingly manageable.",
-                          style: GoogleFonts.poppins(
-                            color: Colors.white,
-                            fontSize: isMobile ? 16 : 18,
-                            fontWeight: FontWeight.w500,
-                            height: 1.5,
+                          const SizedBox(height: 10),
+                          Text(
+                            "Convenor's message will be updated here.",
+                            style: GoogleFonts.poppins(
+                              color: Colors.white70,
+                              fontSize: isMobile ? 14 : 16,
+                              height: 1.7,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: isMobile ? 20 : 24),
-                        Text(
-                          "ABOUT",
-                          style: GoogleFonts.playfairDisplay(
-                            color: Colors.redAccent,
-                            fontSize: isMobile ? 20 : 24,
-                            letterSpacing: 1.5,
+                        ] else ...[
+                          Text(
+                            "❝",
+                            style: GoogleFonts.playfairDisplay(
+                              color: Colors.redAccent,
+                              fontSize: isMobile ? 48 : 60,
+                              height: 0.8,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          "Helping freshers settle into campus life and ensuring that nobody feels alone during their journey at LNMIIT.",
-                          style: GoogleFonts.poppins(
-                            color: Colors.white70,
-                            fontSize: isMobile ? 14 : 16,
-                            height: 1.7,
+                          Text(
+                            "Making chaos look\nsurprisingly manageable.",
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontSize: isMobile ? 16 : 18,
+                              fontWeight: FontWeight.w500,
+                              height: 1.5,
+                            ),
                           ),
-                        ),
+                          SizedBox(height: isMobile ? 20 : 24),
+                          Text(
+                            "ABOUT",
+                            style: GoogleFonts.playfairDisplay(
+                              color: Colors.redAccent,
+                              fontSize: isMobile ? 20 : 24,
+                              letterSpacing: 1.5,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            "Helping freshers settle into campus life and ensuring that nobody feels alone during their journey at LNMIIT.",
+                            style: GoogleFonts.poppins(
+                              color: Colors.white70,
+                              fontSize: isMobile ? 14 : 16,
+                              height: 1.7,
+                            ),
+                          ),
+                        ],
                       ],
                     ),
                   ),
