@@ -12,21 +12,21 @@ class SportsPage extends StatelessWidget {
           'name': 'Aditya Jakhar',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/badminton/badminton_logo.jpeg', // Photo not updated
-          'phone': '+919999999999', // number not updated
+          'phone': '+917375995596',
           'email': '24ucs252@lnmiit.ac.in',
         },
         {
           'name': 'Parth Pandey',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/badminton/badminton_logo.jpeg', // Photo not updated
-          'phone': '+917989280464', // recheck this number
+          'phone': '+917989280464',
           'email': '24uec146@lnmiit.ac.in',
         },
         {
           'name': 'Sanvi Rastogi',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/badminton/badminton_logo.jpeg', // Photo not updated
-          'phone': '+918888888888', // number not updated
+          'phone': '+919910682200', 
           'email': '24ucs251@lnmiit.ac.in',
         },
       ];
@@ -38,28 +38,28 @@ class SportsPage extends StatelessWidget {
           'name': 'Jatin Kukreja',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/basketball/basketball_logo.png', // Photo not updated
-          'phone': '+919999999999', // number not updated
+          'phone': '+918114417723',
           'email': '24dec027@lnmiit.ac.in',
         },
         {
           'name': 'Raghav Agarwal',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/basketball/basketball_logo.png', // Photo not updated
-          'phone': '+918888888888', // number not updated
+          'phone': '+918700335877', 
           'email': '24ucs045@lnmiit.ac.in',
         },
         {
           'name': 'Tanmay Poswalia',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/basketball/basketball_logo.png', // Photo not updated
-          'phone': '+918888888888', // number not updated
+          'phone': '+918619709786', 
           'email': '24uec267@lnmiit.ac.in',
         },
         {
           'name': 'Vedansh Vashisth',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/basketball/basketball_logo.png', // Photo not updated
-          'phone': '+918888888888', // number not updated
+          'phone': '+919358893766', 
           'email': '24uec024@lnmiit.ac.in',
         }
       ];
@@ -71,21 +71,21 @@ class SportsPage extends StatelessWidget {
           'name': 'Divyansh Aggarwal',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/chess/divyansh.jpeg',
-          'phone': '+919999999999', // number not updated
-          'email': '24ucs194@lnmiit.ac.in', // recheck this email
+          'phone': '+918851850902', 
+          'email': '24ucs194@lnmiit.ac.in', 
         },
         {
           'name': 'Kavya Jain',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/chess/kavya.jpeg',
-          'phone': '+918888888888', // number not updated
+          'phone': '+919828781683', 
           'email': '24ucs058@lnmiit.ac.in',
         },
         {
           'name': 'Lakshit Singhvi',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/chess/lakshit.jpeg',
-          'phone': '+918888888888', // number not updated
+          'phone': '+919414224997', 
           'email': '24ume091@lnmiit.ac.in', 
         }
       ];
@@ -96,36 +96,36 @@ class SportsPage extends StatelessWidget {
         {
           'name': 'Abhinav Dhwaj Prasad Singh',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/cricket/cricket_logo.jpeg', // Photo not updated
-          'phone': '+919999999999', // number not updated
+          'image': 'assets/assets/images/sports/cricket/abhinav.jpeg',
+          'phone': '+918272898972', 
           'email': '24ume099@lnmiit.ac.in',
         },
         {
           'name': 'Divyansh Shrivastava',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/cricket/cricket_logo.jpeg', // Photo not updated
-          'phone': '+918888888888', // number not updated
+          'image': 'assets/assets/images/sports/cricket/divyansh.jpeg',
+          'phone': '+919685950980', 
           'email': '24dec052@lnmiit.ac.in',
         },
         {
           'name': 'Garvit Girdhar',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/cricket/cricket_logo.jpeg', // Photo not updated
-          'phone': '+918888888888', // number not updated
+          'image': 'assets/assets/images/sports/cricket/garvit.jpeg',
+          'phone': '+918307511018', 
           'email': '24uec079@lnmiit.ac.in',
         },
         {
           'name': 'Tanmay Pareek',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/cricket/cricket_logo.jpeg', // Photo not updated
-          'phone': '+918888888888', // number not updated
+          'image': 'assets/assets/images/sports/cricket/tanmay.jpeg',
+          'phone': '+917976863144', 
           'email': '24uec030@lnmiit.ac.in',
         },
         {
           'name': 'Saurav Singh',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/cricket/cricket_logo.jpeg', // Photo not updated
-          'phone': '+918888888888', // number not updated
+          'image': 'assets/assets/images/sports/cricket/saurav.jpeg',
+          'phone': '+919116067041', 
           'email': '24ucc162@lnmiit.ac.in',
         }
       ];
@@ -167,32 +167,32 @@ class SportsPage extends StatelessWidget {
     if (clubName == 'Kabaddi') {
       return [
         {
-          'name': 'Abhinav',
+          'name': 'Abhinav Ashish Mishra',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/kabaddi/kabaddi_logo.jpeg', //Photo not updated
-          'phone': '+919999999999', // number not updated
-          'email': '24@lnmiit.ac.in', // email not updated
+          'phone': '+919509630248',
+          'email': '24ucc203@lnmiit.ac.in',
         },
         {
           'name': 'Manish Bana',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/kabaddi/kabaddi_logo.jpeg', //Photo not updated
-          'phone': '+918888888888', // number not updated
+          'phone': '+919358788048', 
           'email': '24ucc188@lnmiit.ac.in',
         },
         {
           'name': 'Nikhil Kumar',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/kabaddi/kabaddi_logo.jpeg', //Photo not updated
-          'phone': '+918888888888', // number not updated
-          'email': '24uec209@lnmiit.ac.in', // recheck this email 
+          'phone': '+919650545397',
+          'email': '24uec209@lnmiit.ac.in', 
         },
         {
           'name': 'Shivam Sharma',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/kabaddi/kabaddi_logo.jpeg', //Photo not updated
-          'phone': '+918888888888', // number not updated
-          'email': '24@lnmiit.ac.in', // email not updated
+          'phone': '+916264025706',
+          'email': '24u@lnmiit.ac.in', // email not updated
         },
       ];
     }
@@ -202,8 +202,8 @@ class SportsPage extends StatelessWidget {
         {
           'name': 'Kushagra Maheshwari',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/lawn_tennis/lawnt_logo.png', // Photo not updated
-          'phone': '+918888888888', // number not updated
+          'image': 'assets/assets/images/cultural/eminence/kushagra.jpeg',
+          'phone': '+919265774219', 
           'email': '24ucs206@lnmiit.ac.in',
         },
         {
@@ -222,14 +222,14 @@ class SportsPage extends StatelessWidget {
           'name': 'Aditya Jindal',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/squash/squash_logo.jpeg', // Photo not updated
-          'phone': '+919999999999', // number not updated
+          'phone': '+919016420001',
           'email': '24uec091@lnmiit.ac.in', 
         },
         {
           'name': 'Vansh Sharma',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/squash/squash_logo.jpeg', // Photo not updated
-          'phone': '+918888888888', // number not updated
+          'phone': '+917982332659',
           'email': '24uec120@lnmiit.ac.in',
         },
       ];

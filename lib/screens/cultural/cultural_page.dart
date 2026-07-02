@@ -65,7 +65,7 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Parth Arora',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/capriccio/capriccio_logo.jpg', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/capriccio/parth.jpeg',
           'phone': '+918949092441',
           'email': '24imai005@lnmiit.ac.in',
         },
@@ -550,9 +550,9 @@ class CulturalPage extends StatelessWidget {
     },
     {
       'name': 'Fundoo',
-      'icon': 'assets/assets/images/cultural/fundoo/fundoo1.jpeg',
+      'icon': 'assets/assets/images/cultural/fundoo/fundoo_logo.jpg',
       'subtitle': 'The Festival club of LNMIIT',
-      'image': 'assets/assets/images/cultural/fundoo/fundoo1.jpeg',
+      'image': 'assets/assets/images/cultural/fundoo/fundoo_logo.jpg',
       'coordinators': _getCoordinators('Fundoo'),
       'gallery': _getGallery('Fundoo'),
       'description': 'The Festival Club of LNMIIT, where every festival feels like home',
