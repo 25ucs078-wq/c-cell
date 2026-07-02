@@ -170,83 +170,88 @@ class ProfilePage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: isMobile ? 24 : 32),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          height: 55,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFB20710),
-                            borderRadius: BorderRadius.circular(16),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.redAccent.withValues(alpha: 0.3),
-                                blurRadius: 15,
-                                offset: const Offset(0, 4),
-                              ),
-                            ],
-                          ),
-                          child: ElevatedButton.icon(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.transparent,
-                              shadowColor: Colors.transparent,
-                              shape: RoundedRectangleBorder(
+                  if (phone.isNotEmpty || email.isNotEmpty) ...[
+                    Row(
+                      children: [
+                        if (phone.isNotEmpty)
+                          Expanded(
+                            child: Container(
+                              height: 55,
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFB20710),
                                 borderRadius: BorderRadius.circular(16),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.redAccent.withValues(alpha: 0.3),
+                                    blurRadius: 15,
+                                    offset: const Offset(0, 4),
+                                  ),
+                                ],
                               ),
-                            ),
-                            onPressed: phone.isNotEmpty ? () => _launchPhone(context, phone) : null,
-                            icon: const Icon(
-                              Icons.phone,
-                              color: Colors.white,
-                            ),
-                            label: Text(
-                              "CALL",
-                              style: GoogleFonts.playfairDisplay(
-                                color: Colors.white,
-                                fontSize: isMobile ? 18 : 20,
-                                letterSpacing: 1.5,
+                              child: ElevatedButton.icon(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.transparent,
+                                  shadowColor: Colors.transparent,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                ),
+                                onPressed: () => _launchPhone(context, phone),
+                                icon: const Icon(
+                                  Icons.phone,
+                                  color: Colors.white,
+                                ),
+                                label: Text(
+                                  "CALL",
+                                  style: GoogleFonts.playfairDisplay(
+                                    color: Colors.white,
+                                    fontSize: isMobile ? 18 : 20,
+                                    letterSpacing: 1.5,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        child: Container(
-                          height: 55,
-                          decoration: BoxDecoration(
-                            color: Colors.white.withValues(alpha: 0.08),
-                            borderRadius: BorderRadius.circular(16),
-                            border: Border.all(
-                              color: Colors.white24,
-                            ),
-                          ),
-                          child: ElevatedButton.icon(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.transparent,
-                              shadowColor: Colors.transparent,
-                              shape: RoundedRectangleBorder(
+                        if (phone.isNotEmpty && email.isNotEmpty)
+                          const SizedBox(width: 16),
+                        if (email.isNotEmpty)
+                          Expanded(
+                            child: Container(
+                              height: 55,
+                              decoration: BoxDecoration(
+                                color: Colors.white.withValues(alpha: 0.08),
                                 borderRadius: BorderRadius.circular(16),
+                                border: Border.all(
+                                  color: Colors.white24,
+                                ),
                               ),
-                            ),
-                            onPressed: email.isNotEmpty ? () => _launchEmail(context, email) : null,
-                            icon: const Icon(
-                              Icons.email,
-                              color: Colors.white,
-                            ),
-                            label: Text(
-                              "MAIL",
-                              style: GoogleFonts.playfairDisplay(
-                                color: Colors.white,
-                                fontSize: isMobile ? 18 : 20,
-                                letterSpacing: 1.5,
+                              child: ElevatedButton.icon(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.transparent,
+                                  shadowColor: Colors.transparent,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                ),
+                                onPressed: () => _launchEmail(context, email),
+                                icon: const Icon(
+                                  Icons.email,
+                                  color: Colors.white,
+                                ),
+                                label: Text(
+                                  "MAIL",
+                                  style: GoogleFonts.playfairDisplay(
+                                    color: Colors.white,
+                                    fontSize: isMobile ? 18 : 20,
+                                    letterSpacing: 1.5,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
+                  ],
                   if (instagram.isNotEmpty || linkedin.isNotEmpty) ...[
                     const SizedBox(height: 16),
                     Row(

@@ -6,6 +6,24 @@ import '../widgets/glass_card.dart';
 class MorePage extends StatelessWidget {
   const MorePage({super.key});
 
+  static const List<Map<String, String>> mentors = [
+    {
+      "name": "Aditya Kansal",
+      "image": "assets/assets/images/aditya_kansal.webp",
+      "role": "TEAM MENTOR",
+    },
+    {
+      "name": "Kunal Sharma",
+      "image": "assets/assets/images/kunal_sharma.png",
+      "role": "TEAM MENTOR",
+    },
+    {
+      "name": "Neha Raniwala",
+      "image": "assets/assets/images/neha_raniwala.jpg",
+      "role": "TEAM MENTOR",
+    },
+  ];
+
   static const List<Map<String, String>> coordinators = [
     {
       "name": "Krishna Khairnar",
@@ -235,6 +253,10 @@ class MorePage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: isMobile ? 30 : 40),
+                      buildSectionTitle("TEAM MENTORS"),
+                      const SizedBox(height: 20),
+                      buildResponsiveGrid(mentors),
+                      SizedBox(height: isMobile ? 30 : 40),
                       buildSectionTitle("COORDINATORS"),
                       const SizedBox(height: 20),
                       buildResponsiveGrid(coordinators),
@@ -397,27 +419,29 @@ class MorePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  _buildContactButton(
-                    context: context,
-                    icon: Icons.phone,
-                    isEnabled: phone.isNotEmpty,
-                    tooltip: 'Call',
-                    onTap: () => _launchPhone(context, phone),
-                  ),
-                  const SizedBox(width: 4),
-                  _buildContactButton(
-                    context: context,
-                    icon: Icons.email,
-                    isEnabled: email.isNotEmpty,
-                    tooltip: 'Email',
-                    onTap: () => _launchEmail(context, email),
-                  ),
-                ],
-              ),
-              const SizedBox(width: 8),
+              if (phone.isNotEmpty || email.isNotEmpty) ...[
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _buildContactButton(
+                      context: context,
+                      icon: Icons.phone,
+                      isEnabled: phone.isNotEmpty,
+                      tooltip: 'Call',
+                      onTap: () => _launchPhone(context, phone),
+                    ),
+                    const SizedBox(width: 4),
+                    _buildContactButton(
+                      context: context,
+                      icon: Icons.email,
+                      isEnabled: email.isNotEmpty,
+                      tooltip: 'Email',
+                      onTap: () => _launchEmail(context, email),
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 8),
+              ],
               const Icon(
                 Icons.arrow_forward_ios,
                 color: Colors.redAccent,
@@ -505,27 +529,29 @@ class MorePage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _buildContactButton(
-                        context: context,
-                        icon: Icons.phone,
-                        isEnabled: phone.isNotEmpty,
-                        tooltip: 'Call',
-                        onTap: () => _launchPhone(context, phone),
-                      ),
-                      const SizedBox(width: 8),
-                      _buildContactButton(
-                        context: context,
-                        icon: Icons.email,
-                        isEnabled: email.isNotEmpty,
-                        tooltip: 'Email',
-                        onTap: () => _launchEmail(context, email),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
+                  if (phone.isNotEmpty || email.isNotEmpty) ...[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _buildContactButton(
+                          context: context,
+                          icon: Icons.phone,
+                          isEnabled: phone.isNotEmpty,
+                          tooltip: 'Call',
+                          onTap: () => _launchPhone(context, phone),
+                        ),
+                        const SizedBox(width: 8),
+                        _buildContactButton(
+                          context: context,
+                          icon: Icons.email,
+                          isEnabled: email.isNotEmpty,
+                          tooltip: 'Email',
+                          onTap: () => _launchEmail(context, email),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                  ],
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
