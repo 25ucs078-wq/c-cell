@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:video_player/video_player.dart';
 import 'notes_pyqs_page.dart';
+import 'profile_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -986,6 +987,18 @@ class _HomePageState extends State<HomePage> {
                                 "Director",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const ProfilePage(
+                                        name: "Prof. Rahul Banerjee",
+                                        role: "Director",
+                                        image: "assets/assets/pages/faces/rahul_banerjee_2.jpg",
+                                      ),
+                                    ),
+                                  );
+                                },
                               ),
                               buildEventCard(
                                 501,
