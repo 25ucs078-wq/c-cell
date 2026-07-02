@@ -187,6 +187,7 @@ class _HomePageState extends State<HomePage> {
     final isHovered = hoveredHeaderLink == index;
 
     return MouseRegion(
+      cursor: SystemMouseCursors.click,
       onEnter: (_) => setState(() => hoveredHeaderLink = index),
       onExit: (_) => setState(() => hoveredHeaderLink = -1),
       child: GestureDetector(
@@ -562,7 +563,7 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.white,
                       ),
                       title: const Text(
-                        "Clubs & Societies",
+                        "Clubs",
                         style: TextStyle(
                           color: Colors.white,
                         ),
@@ -1025,7 +1026,7 @@ class _HomePageState extends State<HomePage> {
                             key: clubsKey,
                           ),
                           Text(
-                            "CLUBS & SOCIETIES",
+                            "CLUBS",
                             style: GoogleFonts.playfairDisplay(
                               color: Colors.white,
                               fontSize: sectionTitleFontSize,
@@ -1069,14 +1070,6 @@ class _HomePageState extends State<HomePage> {
                                 onTap: () {
                                   Navigator.pushNamed(context, '/sports');
                                 },
-                              ),
-                              buildEventCard(
-                                303,
-                                Colors.amber,
-                                Icons.volunteer_activism,
-                                "Social",
-                                isSmallScreen: isSmallScreen,
-                                listCardHeight: listCardHeight,
                               ),
                             ],
                           ),
@@ -1124,7 +1117,7 @@ class _HomePageState extends State<HomePage> {
                               buildEventCard(
                                 403,
                                 Colors.pink,
-                                Icons.map,
+                                Icons.directions_bus,
                                 "Bus Schedule",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
@@ -1137,23 +1130,45 @@ class _HomePageState extends State<HomePage> {
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
                               ),
-                              GestureDetector(
-                                onTap: () {
-                                Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: NotesRoute.builder,
-                                ),
-                                );
-                                },
-                                child: buildEventCard(
+                              buildEventCard(
                                 405,
                                 Colors.blue,
                                 Icons.menu_book,
                                 "Notes / PYQs",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
-                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: NotesRoute.builder,
+                                    ),
+                                  );
+                                },
+                              ),
+                              buildEventCard(
+                                406,
+                                Colors.purpleAccent,
+                                Icons.school,
+                                "Curriculum",
+                                isSmallScreen: isSmallScreen,
+                                listCardHeight: listCardHeight,
+                              ),
+                              buildEventCard(
+                                407,
+                                Colors.cyan,
+                                Icons.link,
+                                "Important Links",
+                                isSmallScreen: isSmallScreen,
+                                listCardHeight: listCardHeight,
+                              ),
+                              buildEventCard(
+                                408,
+                                Colors.amber,
+                                Icons.sports_esports,
+                                "Games",
+                                isSmallScreen: isSmallScreen,
+                                listCardHeight: listCardHeight,
                               ),
                             ],
                           ),
@@ -1170,10 +1185,12 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(context, '/more');
-                            },
+                          MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/more');
+                              },
                             child: Container(
                               height: aboutCardHeight,
                               width: double.infinity,
@@ -1225,6 +1242,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                           ),
+                          ),
                           SizedBox(height: sectionSpacing),
                           SizedBox(height: isSmallScreen ? 40 : 50),
                         ],
@@ -1265,9 +1283,11 @@ class _HomePageState extends State<HomePage> {
     required bool isSmallScreen,
     required double listCardHeight,
   }) {
+    final bool isHovered = hoveredCard == index;
     return GestureDetector(
       onTap: onTap,
       child: MouseRegion(
+        cursor: onTap != null ? SystemMouseCursors.click : SystemMouseCursors.basic,
         onEnter: (_) {
           setState(() {
             hoveredCard = index;
@@ -1278,57 +1298,56 @@ class _HomePageState extends State<HomePage> {
             hoveredCard = -1;
           });
         },
-        child: AnimatedContainer(
-          duration: const Duration(
-            milliseconds: 250,
-          ),
-          width: hoveredCard == index ? 185 : 170,
-          height: hoveredCard == index ? listCardHeight : listCardHeight - 10,
-          margin: EdgeInsets.only(
-            right: isSmallScreen ? 15 : 0,
-            top: hoveredCard == index ? 0 : 10,
-            bottom: hoveredCard == index ? 10 : 0,
-          ),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                color.withValues(alpha: 0.9),
-                color.withValues(alpha: 0.5),
-              ],
+        child: AnimatedScale(
+          scale: isHovered ? 1.04 : 1.0,
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeOutCubic,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            width: 170,
+            height: listCardHeight,
+            margin: EdgeInsets.only(
+              right: isSmallScreen ? 15 : 0,
             ),
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: hoveredCard == index
-                ? [
-                    BoxShadow(
-                      color: color.withValues(
-                        alpha: 0.45,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  color.withValues(alpha: 0.9),
+                  color.withValues(alpha: 0.5),
+                ],
+              ),
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: isHovered
+                  ? [
+                      BoxShadow(
+                        color: color.withValues(alpha: 0.45),
+                        blurRadius: 20,
+                        spreadRadius: 2,
                       ),
-                      blurRadius: 20,
-                      spreadRadius: 2,
-                    ),
-                  ]
-                : [],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Icon(
-                  icon,
-                  color: Colors.white,
-                  size: hoveredCard == index ? 50 : 45,
-                ),
-                const Spacer(),
-                Text(
-                  title,
-                  style: GoogleFonts.poppins(
+                    ]
+                  : [],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(
+                    icon,
                     color: Colors.white,
-                    fontSize: hoveredCard == index ? 22 : 20,
-                    fontWeight: FontWeight.bold,
+                    size: isHovered ? 48 : 45,
                   ),
-                ),
-              ],
+                  const Spacer(),
+                  Text(
+                    title,
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: isHovered ? 21 : 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -1343,7 +1362,9 @@ class _HomePageState extends State<HomePage> {
     required bool isSmallScreen,
     required double listCardHeight,
   }) {
+    final bool isHovered = hoveredCard == index;
     return MouseRegion(
+      cursor: SystemMouseCursors.click,
       onEnter: (_) {
         setState(() {
           hoveredCard = index;
@@ -1354,59 +1375,56 @@ class _HomePageState extends State<HomePage> {
           hoveredCard = -1;
         });
       },
-      child: AnimatedContainer(
-        duration: const Duration(
-          milliseconds: 250,
-        ),
-        width: hoveredCard == index ? 185 : 170,
-        height: hoveredCard == index ? listCardHeight : listCardHeight - 10,
-        margin: EdgeInsets.only(
-          right: isSmallScreen ? 15 : 0,
-          top: hoveredCard == index ? 0 : 10,
-          bottom: hoveredCard == index ? 10 : 0,
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: hoveredCard == index
-              ? [
-                  BoxShadow(
-                    color: Colors.redAccent.withValues(
-                      alpha: 0.4,
-                    ),
-                    blurRadius: 25,
-                    spreadRadius: 3,
-                  ),
-                ]
-              : [],
-          image: DecorationImage(
-            image: AssetImage(image),
-            fit: BoxFit.cover,
+      child: AnimatedScale(
+        scale: isHovered ? 1.04 : 1.0,
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeOutCubic,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          width: 170,
+          height: listCardHeight,
+          margin: EdgeInsets.only(
+            right: isSmallScreen ? 15 : 0,
           ),
-        ),
-        child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.transparent,
-                Colors.black87,
-              ],
+            boxShadow: isHovered
+                ? [
+                    BoxShadow(
+                      color: Colors.redAccent.withValues(alpha: 0.4),
+                      blurRadius: 25,
+                      spreadRadius: 3,
+                    ),
+                  ]
+                : [],
+            image: DecorationImage(
+              image: AssetImage(image),
+              fit: BoxFit.cover,
             ),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(
-              16,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              gradient: const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.transparent,
+                  Colors.black87,
+                ],
+              ),
             ),
-            child: Align(
-              alignment: Alignment.bottomLeft,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Align(
+                alignment: Alignment.bottomLeft,
                 child: Text(
-                title,
-                style: GoogleFonts.playfairDisplay(
-                  color: Colors.white,
-                  fontSize: hoveredCard == index ? 31 : 28,
-                  letterSpacing: 1.5,
+                  title,
+                  style: GoogleFonts.playfairDisplay(
+                    color: Colors.white,
+                    fontSize: isHovered ? 29 : 28,
+                    letterSpacing: 1.5,
+                  ),
                 ),
               ),
             ),
