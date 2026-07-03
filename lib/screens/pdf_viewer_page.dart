@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class PdfViewerPage extends StatefulWidget {
   final String title;
@@ -80,15 +79,16 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
     super.dispose();
   }
 
-  Future<void> _openExternal() async {
-    try {
-      final Uri url = Uri.parse(widget.pdfPath);
-      if (await canLaunchUrl(url)) {
-        await launchUrl(url, mode: LaunchMode.externalApplication);
-      }
-    } catch (e) {
-      debugPrint("Could not open PDF externally: $e");
-    }
+  void _zoomIn() {
+    final double currentZoom = _pdfViewerController.zoomLevel;
+    final double newZoom = (currentZoom + 0.25).clamp(1.0, 3.0);
+    _pdfViewerController.zoomLevel = newZoom;
+  }
+
+  void _zoomOut() {
+    final double currentZoom = _pdfViewerController.zoomLevel;
+    final double newZoom = (currentZoom - 0.25).clamp(1.0, 3.0);
+    _pdfViewerController.zoomLevel = newZoom;
   }
 
   @override
@@ -112,12 +112,17 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
           overflow: TextOverflow.ellipsis,
         ),
         actions: [
-          if (kIsWeb)
-            IconButton(
-              icon: const Icon(Icons.open_in_new, color: Colors.white70),
-              tooltip: "Open in new window",
-              onPressed: _openExternal,
-            ),
+          IconButton(
+            icon: const Icon(Icons.zoom_out_rounded, color: Colors.white70),
+            tooltip: "Zoom Out",
+            onPressed: _zoomOut,
+          ),
+          IconButton(
+            icon: const Icon(Icons.zoom_in_rounded, color: Colors.white70),
+            tooltip: "Zoom In",
+            onPressed: _zoomIn,
+          ),
+          const SizedBox(width: 8),
         ],
         shape: const Border(
           bottom: BorderSide(
