@@ -6,8 +6,9 @@ import 'package:video_player/video_player.dart';
 import 'notes_pyqs_page.dart';
 import 'profile_page.dart';
 
-// TODO: Replace with actual Mess Menu Google Drive URL when provided
 const String messMenuDriveUrl = "https://drive.google.com/drive/folders/1vCqyE7QiiFn6ExJsw3PdktB4wD_Q_5vo";
+
+const String busScheduleUrl = "https://lnmiit.ac.in/transportation/";
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -1035,6 +1036,9 @@ class _HomePageState extends State<HomePage> {
                                 "Bus Schedule",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
+                                onTap: () {
+                                  _launchURL(busScheduleUrl);
+                                },
                               ),
                               buildEventCard(
                                 404,
