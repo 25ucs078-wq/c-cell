@@ -17,6 +17,8 @@ import 'screens/profile_page.dart';
 import 'screens/councils/council_detail_page.dart';
 import 'screens/events/events_page.dart';
 import 'screens/events/event_detail_page.dart';
+import 'screens/curriculum_page.dart';
+import 'screens/pdf_viewer_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -53,6 +55,16 @@ class MyApp extends StatelessWidget {
             break;
           case '/office_bearers':
             builder = (context) => const OfficeBearersPage();
+            break;
+          case '/curriculum':
+            builder = (context) => const CurriculumPage();
+            break;
+          case '/pdf_viewer':
+            final args = settings.arguments as Map<String, dynamic>;
+            builder = (context) => PdfViewerPage(
+              title: args['title']!,
+              pdfPath: args['pdfPath']!,
+            );
             break;
           case '/more':
             builder = (context) => const MorePage();

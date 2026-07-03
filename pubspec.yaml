@@ -32,6 +32,9 @@ flutter:
     - assets/assets/pages/
     - assets/assets/pages/faces/
     - assets/assets/pdfs/
+    - assets/assets/pdfs/curriculum/
+    - assets/assets/pdfs/calendar/
+    - assets/assets/pdfs/acadsmap/
     - assets/assets/images/cultural/aaveg/
     - assets/assets/images/cultural/capriccio/
     - assets/assets/images/cultural/eminence/

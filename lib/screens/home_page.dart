@@ -1009,6 +1009,16 @@ class _HomePageState extends State<HomePage> {
                                 "Academic Calendar",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    '/pdf_viewer',
+                                    arguments: {
+                                      'title': 'Academic Calendar',
+                                      'pdfPath': 'assets/assets/pdfs/calendar/academic_calendar.pdf',
+                                    },
+                                  );
+                                },
                               ),
                               buildEventCard(
                                 401,
@@ -1017,6 +1027,16 @@ class _HomePageState extends State<HomePage> {
                                 "Campus Map",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    '/pdf_viewer',
+                                    arguments: {
+                                      'title': 'Campus Map',
+                                      'pdfPath': 'assets/assets/pdfs/acadsmap/AcadsAreamap.pdf',
+                                    },
+                                  );
+                                },
                               ),
                               buildEventCard(
                                 402,
@@ -1071,6 +1091,9 @@ class _HomePageState extends State<HomePage> {
                                 "Curriculum",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/curriculum');
+                                },
                               ),
                               buildEventCard(
                                 407,
