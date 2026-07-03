@@ -588,7 +588,7 @@ class CulturalPage extends StatelessWidget {
       'coordinators': _getCoordinators('Literary Committee'),
       'gallery': _getGallery('Literary Committee'),
       'description': 'Putting the CULT in culture, the Literary Committee is a mosh pit fueled by caffeine-riddled fanatics who walk on walls and drink up aquariums. An isle of those who romanticize Sisyphean suffering while thinking of nostalgia as the closest thing to a home. The Literary Committee does it all—with flair and a touch of melancholy.',
-      'instagram': 'https://www.instagram.com/literary.lnmiit/',
+      'instagram': 'https://www.instagram.com/literary_lnmiit/',
       'email': 'literary@lnmiit.ac.in',
     },
     {

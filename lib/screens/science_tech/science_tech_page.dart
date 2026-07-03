@@ -329,7 +329,7 @@ class ScienceTechPage extends StatelessWidget {
       'coordinators': _getCoordinators('E-Cell'),
       'gallery': _getGallery('E-Cell'),
       'description': "Dive into entrepreneurship, crypto, stocks, Web3, and beyond with The Entrepreneurship Club—your hub for mastering the skills that shape tomorrow. From event planning and marketing to management, sponsorships, content creation, and design, we sharpen the tools you need to thrive. We collaborate with top tech colleges across India, bringing you real-world exposure through funding events, startup founder interactions, and deep dives into the startup ecosystem. Here, ideas meet execution—and learners become leaders.",
-      'instagram': 'https://www.instagram.com/ecelllnmiit/',
+      'instagram': 'https://www.instagram.com/ecell.lnmiit/',
       'email': 'ecell@lnmiit.ac.in',
     },
     {
