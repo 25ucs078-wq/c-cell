@@ -63,8 +63,8 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Dhruv Semalti',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/quizzinga/quizzinga_logo.jpg', // not updated
-          'phone': '+919999999999', // not updated
+          'image': 'assets/assets/images/tech/quizzinga/dhruv.jpeg',
+          'phone': '+919458371714',
           'email': '24ucs283@lnmiit.ac.in',
         },
         {
@@ -250,7 +250,14 @@ class ScienceTechPage extends StatelessWidget {
     }
     if (clubName == 'Astronomy') {
       return [
-        'assets/assets/images/tech/astronomy/astro1.jpeg'
+        'assets/assets/images/tech/astronomy/astro1.jpeg',
+        'assets/assets/images/tech/astronomy/astro2.jpeg',
+        'assets/assets/images/tech/astronomy/astro3.jpeg',
+        'assets/assets/images/tech/astronomy/astro4.jpeg',
+        'assets/assets/images/tech/astronomy/astro5.jpeg',
+        'assets/assets/images/tech/astronomy/astro6.jpeg',
+        'assets/assets/images/tech/astronomy/astro7.jpeg',
+        'assets/assets/images/tech/astronomy/astro8.jpeg',
       ];
     }
     if (clubName == 'Cipher') {

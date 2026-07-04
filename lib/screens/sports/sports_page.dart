@@ -11,21 +11,21 @@ class SportsPage extends StatelessWidget {
         {
           'name': 'Aditya Jakhar',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/badminton/badminton_logo.jpeg', // Photo not updated
+          'image': 'assets/assets/images/sports/badminton/aditya.jpeg',
           'phone': '+917375995596',
           'email': '24ucs252@lnmiit.ac.in',
         },
         {
           'name': 'Parth Pandey',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/badminton/badminton_logo.jpeg', // Photo not updated
+          'image': 'assets/assets/images/sports/badminton/parth.jpeg',
           'phone': '+917989280464',
           'email': '24uec146@lnmiit.ac.in',
         },
         {
           'name': 'Sanvi Rastogi',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/badminton/badminton_logo.jpeg', // Photo not updated
+          'image': 'assets/assets/images/sports/badminton/sanvi.jpeg',
           'phone': '+919910682200', 
           'email': '24ucs251@lnmiit.ac.in',
         },
@@ -259,14 +259,14 @@ class SportsPage extends StatelessWidget {
         {
           'name': 'Arjun Mukherjee',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/table_tennis/tablet_logo.png', // Photo not updated
+          'image': 'assets/assets/images/sports/table_tennis/arjun.jpeg',
           'phone': '+918888888888', // number not updated
           'email': '24uec053@lnmiit.ac.in',
         },
         {
           'name': 'Shivansh Gupta',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/table_tennis/tablet_logo.png', // Photo not updated
+          'image': 'assets/assets/images/sports/table_tennis/shivansh.jpeg',
           'phone': '+918888888888', // number not updated
           'email': '24uec228@lnmiit.ac.in',
         },
@@ -353,7 +353,11 @@ class SportsPage extends StatelessWidget {
   static List<String> _getGallery(String clubName) {
     if (clubName == 'Badminton') {
       return [
-        'assets/assets/images/sports/badminton/bad1.jpeg'
+        'assets/assets/images/sports/badminton/badminton1.jpeg',
+        'assets/assets/images/sports/badminton/badminton2.jpeg',
+        'assets/assets/images/sports/badminton/badminton3.jpeg',
+        'assets/assets/images/sports/badminton/badminton4.jpeg',
+        'assets/assets/images/sports/badminton/badminton5.jpeg',
       ];
     }
     if (clubName == 'Basketball') {

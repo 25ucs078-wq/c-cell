@@ -11,29 +11,29 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Aditya Agarwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
-          'phone': '+919999999999', // number not updated
+          'image': 'assets/assets/images/cultural/aaveg/aditya.jpeg', 
+          'phone': '+918303813838',
           'email': '24ucs220@lnmiit.ac.in',
         },
         {
           'name': 'Shourya Kavadia',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
-          'phone': '+918888888888', // number not updated
+          'image': 'assets/assets/images/cultural/aaveg/shourya.jpeg',
+          'phone': '+918955930035', 
           'email': '24ucc064@lnmiit.ac.in',
         },
         {
           'name': 'Tanuj Tulsyan',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/aaveg/tanuj.jpeg',
           'phone': '+917627097460',
           'email': '24ucc169@lnmiit.ac.in',
         },
         {
           'name': 'Yash Gupta',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/aaveg/aaveg_logo.png', // Replace with their actual photo path
-          'phone': '+916666666666', // number not updated
+          'image': 'assets/assets/images/cultural/aaveg/yash.jpeg',
+          'phone': '+917357194662', 
           'email': '24ucc099@lnmiit.ac.in',
         },
       ];
@@ -410,7 +410,13 @@ class CulturalPage extends StatelessWidget {
   static List<String> _getGallery(String clubName) {
     if (clubName == 'Aaveg') {
       return [
-        'assets/assets/images/cultural/aaveg/aaveg1.JPG'
+        'assets/assets/images/cultural/aaveg/aaveg1.jpeg',
+        'assets/assets/images/cultural/aaveg/aaveg2.jpeg',
+        'assets/assets/images/cultural/aaveg/aaveg3.jpeg',
+        'assets/assets/images/cultural/aaveg/aaveg4.jpeg',
+        'assets/assets/images/cultural/aaveg/aaveg5.jpeg',
+        'assets/assets/images/cultural/aaveg/aaveg6.jpeg',
+        'assets/assets/images/cultural/aaveg/aaveg7.jpeg',
       ];
     }
     if (clubName == 'Capriccio') {
@@ -433,7 +439,15 @@ class CulturalPage extends StatelessWidget {
     }
     if (clubName == 'Fundoo') {
       return [
-        'assets/assets/images/cultural/fundoo/fundoo1.jpeg'
+        'assets/assets/images/cultural/fundoo/fundoo1.jpeg',
+        'assets/assets/images/cultural/fundoo/fundoo2.jpeg',
+        'assets/assets/images/cultural/fundoo/fundoo3.jpeg',
+        'assets/assets/images/cultural/fundoo/fundoo4.jpeg',
+        'assets/assets/images/cultural/fundoo/fundoo5.jpeg',
+        'assets/assets/images/cultural/fundoo/fundoo6.jpeg',
+        'assets/assets/images/cultural/fundoo/fundoo7.jpeg',
+        'assets/assets/images/cultural/fundoo/fundoo8.jpeg',
+        'assets/assets/images/cultural/fundoo/fundoo9.jpeg',
       ];
     }
     if (clubName == 'Imagination') {
