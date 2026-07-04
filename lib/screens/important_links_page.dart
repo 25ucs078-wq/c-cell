@@ -20,7 +20,7 @@ class ImportantLinksPage extends StatelessWidget {
       "url": "https://moodle.lnmiit.ac.in",
     },
     {
-      "title": "Scholaship Policy",
+      "title": "Scholarship Policy",
       "url": "https://lnmiit.ac.in/scholarships-assistantships/",
     },
     {
