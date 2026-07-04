@@ -1165,6 +1165,9 @@ class _HomePageState extends State<HomePage> {
                                 "HODs",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/hods');
+                                },
                               ),
                               buildEventCard(
                                 502,

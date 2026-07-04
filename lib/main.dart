@@ -19,6 +19,7 @@ import 'screens/events/events_page.dart';
 import 'screens/events/event_detail_page.dart';
 import 'screens/curriculum_page.dart';
 import 'screens/pdf_viewer_page.dart';
+import 'screens/hods_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,6 +56,9 @@ class MyApp extends StatelessWidget {
             break;
           case '/office_bearers':
             builder = (context) => const OfficeBearersPage();
+            break;
+          case '/hods':
+            builder = (context) => const HodsPage();
             break;
           case '/curriculum':
             builder = (context) => const CurriculumPage();

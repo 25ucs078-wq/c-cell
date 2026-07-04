@@ -55,13 +55,13 @@ class _NotesPyqsPageState extends State<NotesPyqsPage> {
                 color: isHovered ? const Color(0xff161A33) : const Color(0xff0F1123),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: isHovered ? accentColor : const Color(0xff1E2243).withOpacity(0.6),
+                  color: isHovered ? accentColor : const Color(0xff1E2243).withValues(alpha: 0.6),
                   width: 1.2,
                 ),
                 boxShadow: isHovered
                     ? [
                         BoxShadow(
-                          color: accentColor.withOpacity(0.15),
+                          color: accentColor.withValues(alpha: 0.15),
                           blurRadius: 15,
                           offset: const Offset(0, 4),
                         )
@@ -73,7 +73,7 @@ class _NotesPyqsPageState extends State<NotesPyqsPage> {
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: accentColor.withOpacity(0.12),
+                      color: accentColor.withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Icon(
