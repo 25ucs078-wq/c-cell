@@ -251,13 +251,13 @@ class ScienceTechPage extends StatelessWidget {
     if (clubName == 'Astronomy') {
       return [
         'assets/assets/images/tech/astronomy/astro1.jpeg',
-        'assets/assets/images/tech/astronomy/astro2.jpeg',
-        'assets/assets/images/tech/astronomy/astro3.jpeg',
-        'assets/assets/images/tech/astronomy/astro4.jpeg',
-        'assets/assets/images/tech/astronomy/astro5.jpeg',
-        'assets/assets/images/tech/astronomy/astro6.jpeg',
-        'assets/assets/images/tech/astronomy/astro7.jpeg',
-        'assets/assets/images/tech/astronomy/astro8.jpeg',
+        'assets/assets/images/tech/astronomy/astro2.png',
+        'assets/assets/images/tech/astronomy/astro3.png',
+        'assets/assets/images/tech/astronomy/astro4.png',
+        'assets/assets/images/tech/astronomy/astro5.png',
+        'assets/assets/images/tech/astronomy/astro6.png',
+        'assets/assets/images/tech/astronomy/astro7.png',
+        'assets/assets/images/tech/astronomy/astro8.png',
       ];
     }
     if (clubName == 'Cipher') {

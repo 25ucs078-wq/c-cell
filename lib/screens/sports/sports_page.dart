@@ -214,7 +214,7 @@ class SportsPage extends StatelessWidget {
         {
           'name': 'Kushagra Maheshwari',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/eminence/kushagra.jpeg',
+          'image': 'assets/assets/images/cultural/eminence/Kushagra.jpeg',
           'phone': '+919265774219', 
           'email': '24ucs206@lnmiit.ac.in',
         },
@@ -370,11 +370,11 @@ class SportsPage extends StatelessWidget {
     }
     if (clubName == 'Chess') {
       return [
-        'assets/assets/images/sports/chess/chess1.jpg',
-        'assets/assets/images/sports/chess/chess2.jpg',
-        'assets/assets/images/sports/chess/chess3.jpg',
-        'assets/assets/images/sports/chess/chess4.jpg',
-        'assets/assets/images/sports/chess/chess5.jpg',
+        'assets/assets/images/sports/chess/chess1.jpeg',
+        'assets/assets/images/sports/chess/chess2.jpeg',
+        'assets/assets/images/sports/chess/chess3.jpeg',
+        'assets/assets/images/sports/chess/chess4.jpeg',
+        'assets/assets/images/sports/chess/chess5.jpeg',
       ];
     }
     if (clubName == 'Cricket') {
