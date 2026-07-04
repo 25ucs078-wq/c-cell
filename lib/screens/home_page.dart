@@ -1102,6 +1102,9 @@ class _HomePageState extends State<HomePage> {
                                 "Important Links",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/important_links');
+                                },
                               ),
                               buildEventCard(
                                 408,
