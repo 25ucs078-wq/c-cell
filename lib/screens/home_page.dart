@@ -1176,6 +1176,9 @@ class _HomePageState extends State<HomePage> {
                                 "Important Contacts",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/important_contacts');
+                                },
                               ),
                               buildEventCard(
                                 503,
