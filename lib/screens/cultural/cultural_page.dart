@@ -137,7 +137,7 @@ class CulturalPage extends StatelessWidget {
         'name': 'Pranav Vilas Dumbre',
         'role': 'Coordinator',
         'image': 'assets/assets/images/cultural/fundoo/pranav.jpeg',
-        'phone': '+919389618050', // To be changed
+        'phone': '+918605303625', 
         'email': '24uec177@lnmiit.ac.in',
       },
 

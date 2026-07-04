@@ -1187,6 +1187,9 @@ class _HomePageState extends State<HomePage> {
                                 "Hostel Contacts",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/hostel_contacts');
+                                },
                               ),
                             ],
                           ),
