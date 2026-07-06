@@ -265,8 +265,8 @@ class ScienceTechPage extends StatelessWidget {
         'assets/assets/images/tech/astronomy/astro7.png',
         'assets/assets/images/tech/astronomy/astro8.png',
         'assets/assets/images/tech/astronomy/astro9.png',
-        'assets/assets/images/tech/astronomy/astro10.jpeg',
-        'assets/assets/images/tech/astronomy/astro11.jpeg',
+        'assets/assets/images/tech/astronomy/astro10.png',
+        'assets/assets/images/tech/astronomy/astro11.png',
       ];
     }
     if (clubName == 'Cipher') {
