@@ -452,7 +452,7 @@ class CulturalPage extends StatelessWidget {
     }
     if (clubName == 'Imagination') {
       return [
-        'assets/assets/images/cultural/imagination/imagi1.HEIC'
+        'assets/assets/images/cultural/imagination/imagi1.png',
       ];
     }
     if (clubName == 'Insignia') {
