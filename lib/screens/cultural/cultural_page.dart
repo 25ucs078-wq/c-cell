@@ -183,7 +183,7 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Ananya Surana',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/insignia/insignia_logo.jpg', // not updated
+          'image': 'assets/assets/images/cultural/insignia/ananya.jpeg',
           'phone': '+918866006777',
           'email': '24ucc090@lnmiit.ac.in',
         },
@@ -452,7 +452,7 @@ class CulturalPage extends StatelessWidget {
     }
     if (clubName == 'Imagination') {
       return [
-        'assets/assets/images/cultural/imagination/imagi1.png'
+        'assets/assets/images/cultural/imagination/imagi1.HEIC'
       ];
     }
     if (clubName == 'Insignia') {

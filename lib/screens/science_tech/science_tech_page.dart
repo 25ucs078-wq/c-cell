@@ -245,19 +245,28 @@ class ScienceTechPage extends StatelessWidget {
     }
     if (clubName == 'Quizzinga') {
       return [
-        'assets/assets/images/tech/quizzinga/quizzinga1.jpg'
+        'assets/assets/images/tech/quizzinga/quizzinga1.jpeg',
+        'assets/assets/images/tech/quizzinga/quizzinga2.jpeg',
+        'assets/assets/images/tech/quizzinga/quizzinga3.jpeg',
+        'assets/assets/images/tech/quizzinga/quizzinga4.jpeg',
+        'assets/assets/images/tech/quizzinga/quizzinga5.jpeg',
+        'assets/assets/images/tech/quizzinga/quizzinga6.jpeg',
+        'assets/assets/images/tech/quizzinga/quizzinga7.jpeg',
       ];
     }
     if (clubName == 'Astronomy') {
       return [
-        'assets/assets/images/tech/astronomy/astro1.jpeg',
+        'assets/assets/images/tech/astronomy/astro1.JPG',
         'assets/assets/images/tech/astronomy/astro2.png',
         'assets/assets/images/tech/astronomy/astro3.png',
         'assets/assets/images/tech/astronomy/astro4.png',
-        'assets/assets/images/tech/astronomy/astro5.png',
+        'assets/assets/images/tech/astronomy/astro5.jpeg',
         'assets/assets/images/tech/astronomy/astro6.png',
         'assets/assets/images/tech/astronomy/astro7.png',
         'assets/assets/images/tech/astronomy/astro8.png',
+        'assets/assets/images/tech/astronomy/astro9.png',
+        'assets/assets/images/tech/astronomy/astro10.jpeg',
+        'assets/assets/images/tech/astronomy/astro11.jpeg',
       ];
     }
     if (clubName == 'Cipher') {

@@ -179,32 +179,32 @@ class SportsPage extends StatelessWidget {
     if (clubName == 'Kabaddi') {
       return [
         {
+          'name': 'Shivam Sharma',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/sports/kabaddi/shivam.jpeg',
+          'phone': '+916264025706',
+          'email': '24u@lnmiit.ac.in', // email not updated
+        },
+        {
           'name': 'Abhinav Ashish Mishra',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/kabaddi/kabaddi_logo.jpeg', //Photo not updated
+          'image': 'assets/assets/images/sports/kabaddi/abhinav.jpeg',
           'phone': '+919509630248',
           'email': '24ucc203@lnmiit.ac.in',
         },
         {
           'name': 'Manish Bana',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/kabaddi/kabaddi_logo.jpeg', //Photo not updated
+          'image': 'assets/assets/images/sports/kabaddi/manish.jpeg',
           'phone': '+919358788048', 
           'email': '24ucc188@lnmiit.ac.in',
         },
         {
           'name': 'Nikhil Kumar',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/kabaddi/kabaddi_logo.jpeg', //Photo not updated
+          'image': 'assets/assets/images/sports/kabaddi/nikhil.jpeg',
           'phone': '+919650545397',
           'email': '24uec209@lnmiit.ac.in', 
-        },
-        {
-          'name': 'Shivam Sharma',
-          'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/kabaddi/kabaddi_logo.jpeg', //Photo not updated
-          'phone': '+916264025706',
-          'email': '24u@lnmiit.ac.in', // email not updated
         },
       ];
     }
@@ -395,7 +395,10 @@ class SportsPage extends StatelessWidget {
     }
     if (clubName == 'Kabaddi') {
       return [
-        'assets/assets/images/sports/kabaddi/kabaddi1.jpeg'
+        'assets/assets/images/sports/kabaddi/kabaddi1.jpeg',
+        'assets/assets/images/sports/kabaddi/kabaddi2.jpeg',
+        'assets/assets/images/sports/kabaddi/kabaddi3.jpeg',
+        'assets/assets/images/sports/kabaddi/kabaddi4.jpeg',
       ];
     }
     if (clubName == 'Lawn Tennis') {
