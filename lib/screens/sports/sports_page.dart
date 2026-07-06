@@ -183,7 +183,7 @@ class SportsPage extends StatelessWidget {
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/kabaddi/shivam.jpeg',
           'phone': '+916264025706',
-          'email': '24u@lnmiit.ac.in', // email not updated
+          'email': '24ucs269@lnmiit.ac.in', 
         },
         {
           'name': 'Abhinav Ashish Mishra',
