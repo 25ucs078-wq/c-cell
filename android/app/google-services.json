@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1091655361396",
+    "project_id": "c-cell-backend",
+    "storage_bucket": "c-cell-backend.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091655361396:android:d867989c54120553ea0221",
+        "android_client_info": {
+          "package_name": "com.example.c_cell_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1091655361396-j7mcq2clu709mo5e3pq6dc9f0vg49edl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXj7jckrYPOvHM9WfuGxN9xhpv92i8K1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1091655361396-j7mcq2clu709mo5e3pq6dc9f0vg49edl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1091655361396-f2s2k3r30lpbb6f02nlmgm3lflkeu23t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.cCellApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
