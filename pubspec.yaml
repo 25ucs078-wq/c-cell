@@ -16,6 +16,10 @@ dependencies:
   url_launcher: ^6.1.10
   video_player: ^2.11.1
   syncfusion_flutter_pdfviewer: ^33.2.15
+  firebase_core: ^4.11.0
+  firebase_auth: ^6.5.4
+  cloud_firestore: ^6.6.0
+  google_sign_in: ^7.2.0
   
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -61,17 +62,19 @@ class _HomePageState extends State<HomePage> {
         _scrollOpacityNotifier.value = opacity;
       }
     });
-    _videoController = VideoPlayerController.asset('assets/images/top_boomerang.mp4');
-    _videoController!.initialize().then((_) {
-      _videoController!.setLooping(true);
-      _videoController!.setVolume(0.0);
-      _videoController!.play();
-      if (mounted) {
-        setState(() {});
-      }
-    }).catchError((error) {
-      debugPrint("Error initializing video player: $error");
-    });
+    if (kIsWeb) {
+      _videoController = VideoPlayerController.asset('assets/images/top_boomerang.mp4');
+      _videoController!.initialize().then((_) {
+        _videoController!.setLooping(true);
+        _videoController!.setVolume(0.0);
+        _videoController!.play();
+        if (mounted) {
+          setState(() {});
+        }
+      }).catchError((error) {
+        debugPrint("Error initializing video player: $error");
+      });
+    }
   }
 
   @override
