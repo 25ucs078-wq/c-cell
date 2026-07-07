@@ -568,67 +568,164 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
   void _showInstructionsSheet(AdmissionStage stage, bool isDone) {
     showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       backgroundColor: const Color(0xFF090A1A),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       builder: (context) {
-        return Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Row(
+        final TextEditingController passcodeController = TextEditingController();
+        bool isVerifying = false;
+
+        return StatefulBuilder(
+          builder: (context, setSheetState) {
+            return Padding(
+              padding: EdgeInsets.only(
+                left: 32,
+                right: 32,
+                top: 32,
+                bottom: MediaQuery.of(context).viewInsets.bottom + 32,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: isDone ? Colors.green.withValues(alpha: 0.15) : Colors.redAccent.withValues(alpha: 0.15),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text(
-                      isDone ? 'COMPLETED' : 'PENDING',
-                      style: GoogleFonts.poppins(
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
-                        color: isDone ? Colors.green : Colors.redAccent,
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: isDone ? Colors.green.withValues(alpha: 0.15) : Colors.redAccent.withValues(alpha: 0.15),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          isDone ? 'COMPLETED' : 'PENDING',
+                          style: GoogleFonts.poppins(
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                            color: isDone ? Colors.green : Colors.redAccent,
+                          ),
+                        ),
                       ),
+                      const Spacer(),
+                      IconButton(
+                        icon: const Icon(Icons.close, color: Colors.white54),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    stage.title,
+                    style: GoogleFonts.outfit(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    'Department: ${stage.department} | Room: ${stage.roomNo}',
+                    style: GoogleFonts.poppins(fontSize: 13, color: Colors.white54),
+                  ),
+                  const Divider(color: Colors.white10, height: 32),
+                  Text(
+                    'Instructions',
+                    style: GoogleFonts.outfit(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    stage.instructions,
+                    style: GoogleFonts.poppins(fontSize: 13, color: Colors.white70, height: 1.5),
+                  ),
+                  
+                  // If the stage is pending, display the manual verification code entry form
+                  if (!isDone) ...[
+                    const Divider(color: Colors.white10, height: 32),
+                    Text(
+                      'Officer Verification',
+                      style: GoogleFonts.outfit(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
-                  ),
-                  const Spacer(),
-                  IconButton(
-                    icon: const Icon(Icons.close, color: Colors.white54),
-                    onPressed: () => Navigator.pop(context),
-                  ),
+                    const SizedBox(height: 12),
+                    TextField(
+                      controller: passcodeController,
+                      obscureText: true,
+                      style: const TextStyle(color: Colors.white),
+                      decoration: _inputDecoration('Desk Verification Code', 'Enter desk passcode', Icons.lock_outline),
+                    ),
+                    const SizedBox(height: 16),
+                    isVerifying
+                        ? const Center(
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(Colors.redAccent),
+                            ),
+                          )
+                        : ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.redAccent,
+                              padding: const EdgeInsets.symmetric(vertical: 14),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                            ),
+                            onPressed: () async {
+                              final code = passcodeController.text.trim();
+                              if (code.isEmpty) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text('Please enter the verification code.')),
+                                );
+                                return;
+                              }
+
+                              setSheetState(() {
+                                isVerifying = true;
+                              });
+
+                              try {
+                                await _admissionsService.verifyStageViaCloudFunction(
+                                  cycleId: _cycleId!,
+                                  tempId: _boundTempId!,
+                                  stageId: stage.id,
+                                  passcode: code,
+                                );
+
+                                if (context.mounted) {
+                                  Navigator.pop(context); // Close bottom sheet
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      backgroundColor: Colors.green,
+                                      content: Text('${stage.title} verified successfully!'),
+                                    ),
+                                  );
+                                }
+                              } catch (e) {
+                                setSheetState(() {
+                                  isVerifying = false;
+                                });
+                                if (context.mounted) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      backgroundColor: Colors.redAccent,
+                                      content: Text(e.toString().replaceAll('Exception: ', '')),
+                                    ),
+                                  );
+                                }
+                              }
+                            },
+                            child: Text(
+                              'Verify Stage',
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                  ],
+                  const SizedBox(height: 16),
                 ],
               ),
-              const SizedBox(height: 16),
-              Text(
-                stage.title,
-                style: GoogleFonts.outfit(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
-              ),
-              const SizedBox(height: 6),
-              Text(
-                'Department: ${stage.department} | Room: ${stage.roomNo}',
-                style: GoogleFonts.poppins(fontSize: 13, color: Colors.white54),
-              ),
-              const Divider(color: Colors.white10, height: 32),
-              Text(
-                'Instructions',
-                style: GoogleFonts.outfit(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                stage.instructions,
-                style: GoogleFonts.poppins(fontSize: 13, color: Colors.white70, height: 1.5),
-              ),
-              const SizedBox(height: 32),
-            ],
-          ),
+            );
+          },
         );
       },
-    );
+    ).then((_) {
+      _bootstrapAdmissions(); // Refresh configuration/state on sheet close
+    });
   }
 
   InputDecoration _inputDecoration(String label, String hint, IconData icon) {

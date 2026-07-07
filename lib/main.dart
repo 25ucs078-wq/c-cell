@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter/foundation.dart';
 import 'firebase_options.dart';
 import 'screens/auth/auth_wrapper.dart';
 import 'screens/auth/google_login_page.dart';
@@ -38,6 +39,14 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await GoogleSignIn.instance.initialize();
+
+  if (kDebugMode) {
+    // Uncomment these lines to connect to local Firebase Emulators for testing:
+    // FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+    // FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+    // FirebaseFunctions.instance.useFunctionsEmulator('localhost', 5001);
+  }
+
   runApp(const MyApp());
 }
 

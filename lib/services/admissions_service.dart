@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/foundation.dart';
 import '../models/admission_candidate_model.dart';
 import '../models/admission_stage_model.dart';
@@ -261,6 +262,32 @@ class AdmissionsService {
     } catch (e) {
       debugPrint('Error verifying candidate stage: $e');
       rethrow;
+    }
+  }
+
+  // 11. Verify stage passcode securely on the backend using Cloud Functions
+  Future<void> verifyStageViaCloudFunction({
+    required String cycleId,
+    required String tempId,
+    required String stageId,
+    required String passcode,
+  }) async {
+    try {
+      final HttpsCallable callable = FirebaseFunctions.instance.httpsCallable('verifyStageCode');
+      
+      await callable.call(<String, dynamic>{
+        'cycleId': cycleId,
+        'tempId': tempId,
+        'stageId': stageId,
+        'passcode': passcode,
+      });
+      debugPrint('Successfully verified stage $stageId on the backend.');
+    } on FirebaseFunctionsException catch (e) {
+      debugPrint('FirebaseFunctionsException verifying stage: ${e.code} - ${e.message}');
+      throw Exception(e.message ?? 'Verification failed.');
+    } catch (e) {
+      debugPrint('Unexpected error during Cloud Function verification: $e');
+      throw Exception('An unexpected verification error occurred.');
     }
   }
 }
