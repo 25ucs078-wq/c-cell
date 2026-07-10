@@ -421,20 +421,42 @@ class CulturalPage extends StatelessWidget {
     }
     if (clubName == 'Capriccio') {
       return [
-        'assets/assets/images/cultural/capriccio/cap1.jpg'
+        'assets/assets/images/cultural/capriccio/capriccio1.jpeg',
+        'assets/assets/images/cultural/capriccio/capriccio2.jpeg',
+        'assets/assets/images/cultural/capriccio/capriccio3.jpeg',
+        'assets/assets/images/cultural/capriccio/capriccio4.jpeg',
+        'assets/assets/images/cultural/capriccio/capriccio5.jpeg',
+        'assets/assets/images/cultural/capriccio/capriccio6.jpeg',
       ];
     }
     if (clubName == 'Eminence') {
       return [
-        'assets/assets/images/cultural/eminence/emin1.jpg'
+        'assets/assets/images/cultural/eminence/eminence1.jpeg',
+        'assets/assets/images/cultural/eminence/eminence2.jpeg',
+        'assets/assets/images/cultural/eminence/eminence3.jpeg',
+        'assets/assets/images/cultural/eminence/eminence4.jpeg',
+        'assets/assets/images/cultural/eminence/eminence5.jpeg',
+        'assets/assets/images/cultural/eminence/eminence6.jpeg',
+        'assets/assets/images/cultural/eminence/eminence7.jpeg',
+        'assets/assets/images/cultural/eminence/eminence8.jpeg',
+        'assets/assets/images/cultural/eminence/eminence9.jpeg',
+        'assets/assets/images/cultural/eminence/eminence10.jpeg',
+        'assets/assets/images/cultural/eminence/eminence11.jpeg',
       ];
     }
     if (clubName == 'Finlogue') {
       return [
-        'assets/assets/images/cultural/finlogue/finlogue_logo.jpeg',
-        'assets/assets/images/cultural/finlogue/aditya.jpeg',
-        'assets/assets/images/cultural/finlogue/aryan.jpeg',
-        'assets/assets/images/cultural/finlogue/akshat.jpeg',
+        'assets/assets/images/cultural/finlogue/finlogue1.jpeg',
+        'assets/assets/images/cultural/finlogue/finlogue2.jpeg',
+        'assets/assets/images/cultural/finlogue/finlogue3.jpeg',
+        'assets/assets/images/cultural/finlogue/finlogue4.jpeg',
+        'assets/assets/images/cultural/finlogue/finlogue5.jpeg',
+        'assets/assets/images/cultural/finlogue/finlogue6.jpg',
+        'assets/assets/images/cultural/finlogue/finlogue7.jpeg',
+        'assets/assets/images/cultural/finlogue/finlogue8.jpeg',
+        'assets/assets/images/cultural/finlogue/finlogue9.jpeg',
+        'assets/assets/images/cultural/finlogue/finlogue10.jpeg',
+        'assets/assets/images/cultural/finlogue/finlogue11.jpeg',
       ];
     }
     if (clubName == 'Fundoo') {
@@ -452,7 +474,17 @@ class CulturalPage extends StatelessWidget {
     }
     if (clubName == 'Imagination') {
       return [
-        'assets/assets/images/cultural/imagination/imagi1.png',
+        'assets/assets/images/cultural/imagination/imagi1.jpg',
+        'assets/assets/images/cultural/imagination/imagi2.png',
+        'assets/assets/images/cultural/imagination/imagi3.JPG',
+        'assets/assets/images/cultural/imagination/imagi4.JPG',
+        'assets/assets/images/cultural/imagination/imagi5.JPG',
+        'assets/assets/images/cultural/imagination/imagi6.JPG',
+        'assets/assets/images/cultural/imagination/imagi7.jpg',
+        'assets/assets/images/cultural/imagination/imagi8.jpg',
+        'assets/assets/images/cultural/imagination/imagi9.jpg',
+        'assets/assets/images/cultural/imagination/imagi10.JPG',
+        'assets/assets/images/cultural/imagination/imagi11.jpg',  
       ];
     }
     if (clubName == 'Insignia') {

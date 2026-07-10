@@ -9,18 +9,32 @@ class ScienceTechPage extends StatelessWidget {
     if (clubName == 'Cybros') {
       return [
         {
+          'name': 'Abhinav Dogra',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/tech/cybros/abhinav.jpeg',
+          'phone': '+917018268818',
+          'email': '23uec564@lnmiit.ac.in',
+        },
+        {
+          'name': 'Lokesh Malik',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/tech/cybros/lokesh.jpeg',
+          'phone': '+918295912631',
+          'email': '23uec507@lnmiit.ac.in',
+        },
+        {
           'name': 'Karun Pancholi',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/cybros/cybros_logo.jpg', // not updated
-          'phone': '+919999999999', // not updated
+          'image': 'assets/assets/images/tech/cybros/karun.jpeg',
+          'phone': '+918890081317',
           'email': '24ucs074@lnmiit.ac.in',
         },
         {
           'name': 'Sushmit Sharma',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/cybros/cybros_logo.jpg', // not updated
-          'phone': '+918888888888', // not updated
-          'email': '24ucs257@lnmiit.ac.in',
+          'image': 'assets/assets/images/tech/cybros/sushmit.jpeg',
+          'phone': '+917454822183', 
+          'email': '23ucsc80@lnmiit.ac.in',
         },
       ];
     }
@@ -200,7 +214,7 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Aalekh Narain',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/debsoc/debsoc_logo.jpg', // not updated
+          'image': 'assets/assets/images/tech/debsoc/aalekh.jpeg',
           'phone': '+918851341701',
           'email': '24ucs224@lnmiit.ac.in',
         },
@@ -235,7 +249,12 @@ class ScienceTechPage extends StatelessWidget {
   static List<String> _getGallery(String clubName) {
     if (clubName == 'Cybros') {
       return [
-        'assets/assets/images/tech/cybros/cybros1.jpg'
+        'assets/assets/images/tech/cybros/cybros1.jpg',
+        'assets/assets/images/tech/cybros/cybros2.jpg',
+        'assets/assets/images/tech/cybros/cybros3.jpg',
+        'assets/assets/images/tech/cybros/cybros4.jpg',
+        'assets/assets/images/tech/cybros/cybros5.jpg',
+        'assets/assets/images/tech/cybros/cybros6.jpg',
       ];
     }
     if (clubName == 'Phoenix') {
