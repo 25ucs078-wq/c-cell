@@ -608,7 +608,7 @@ class CulturalPage extends StatelessWidget {
       'name': 'Imagination',
       'icon': 'assets/assets/images/cultural/imagination/imagi_logo.jpg',
       'subtitle': 'Creative photography and cinematography Club',
-      'image': 'assets/assets/images/cultural/imagination/imagination_logo.jpeg',
+      'image': 'assets/assets/images/cultural/imagination/imagi_logo.jpg',
       'coordinators': _getCoordinators('Imagination'),
       'gallery': _getGallery('Imagination'),
       'description': 'IMAGINATION is the creative photography and cinematography club of The LNM Institute of Information Technology. It is a vibrant community of passionate individuals who explore the world through lenses, pixels, and ideas — turning vision into impactful visuals.',
