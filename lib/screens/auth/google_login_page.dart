@@ -6,14 +6,15 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../services/auth_service.dart';
 
 class GoogleLoginPage extends StatefulWidget {
-  const GoogleLoginPage({super.key});
+  final AuthService? authService;
+  const GoogleLoginPage({super.key, this.authService});
 
   @override
   State<GoogleLoginPage> createState() => _GoogleLoginPageState();
 }
 
 class _GoogleLoginPageState extends State<GoogleLoginPage> with SingleTickerProviderStateMixin {
-  final AuthService _authService = AuthService();
+  late final AuthService _authService;
   bool _isLoading = false;
   String? _errorMessage;
 
@@ -24,6 +25,7 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> with SingleTickerProv
   @override
   void initState() {
     super.initState();
+    _authService = widget.authService ?? AuthService();
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1000),
@@ -64,12 +66,12 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> with SingleTickerProv
         case 'unverified-email':
           return 'Access Denied: Your Google account email is not verified.';
         default:
-          return error.message ?? 'Authentication error occurred. Please try again.';
+          return 'Authentication error [${error.code}]: ${error.message ?? 'Please try again.'}';
       }
     }
 
     if (error is FirebaseException) {
-      return 'Database connection failed. Please try again later.';
+      return 'Firebase Error [${error.code}]: ${error.message ?? 'Database connection failed.'}';
     }
 
     if (error is PlatformException) {
@@ -81,11 +83,11 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> with SingleTickerProv
         case 'sign_in_canceled':
           return 'Sign-in was cancelled.';
         default:
-          return 'Platform error: ${error.message ?? error.code}';
+          return 'Platform error [${error.code}]: ${error.message ?? 'No details available.'}';
       }
     }
 
-    return 'An unexpected error occurred. Please try again.';
+    return 'Unexpected error: ${error.toString()}';
   }
 
   Future<void> _handleSignIn() async {
@@ -296,12 +298,15 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> with SingleTickerProv
                                         ),
                                       ),
                                       const SizedBox(width: 14),
-                                      Text(
-                                        'Continue with Google',
-                                        style: GoogleFonts.poppins(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w600,
-                                          letterSpacing: 0.5,
+                                      Flexible(
+                                        child: Text(
+                                          'Continue with Google',
+                                          overflow: TextOverflow.ellipsis,
+                                          style: GoogleFonts.poppins(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w600,
+                                            letterSpacing: 0.5,
+                                          ),
                                         ),
                                       ),
                                     ],

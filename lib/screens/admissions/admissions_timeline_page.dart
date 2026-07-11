@@ -8,14 +8,15 @@ import '../../models/admission_candidate_model.dart';
 import '../../models/admission_stage_model.dart';
 
 class AdmissionsTimelinePage extends StatefulWidget {
-  const AdmissionsTimelinePage({super.key});
+  final AdmissionsService? admissionsService;
+  const AdmissionsTimelinePage({super.key, this.admissionsService});
 
   @override
   State<AdmissionsTimelinePage> createState() => _AdmissionsTimelinePageState();
 }
 
 class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
-  final AdmissionsService _admissionsService = AdmissionsService();
+  late final AdmissionsService _admissionsService;
   
   bool _initializing = true;
   bool _isLoading = false;
@@ -31,6 +32,7 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
   @override
   void initState() {
     super.initState();
+    _admissionsService = widget.admissionsService ?? AdmissionsService();
     _bootstrapAdmissions();
   }
 
@@ -50,21 +52,35 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
     });
 
     try {
-      // 1. Get app configuration
+      // 1. Ensure Firebase authenticated session BEFORE any Firestore reads are executed
+      await _admissionsService.ensureAuthenticated();
+
+      // 2. Retrieve the app configuration document
       final config = await _admissionsService.getAppConfig();
-      if (config == null || config['activeAdmissionCycle'] == null) {
-        throw Exception('Admissions system is currently offline.');
+      if (config == null) {
+        throw Exception('Admissions system is not yet configured. Please create the app configuration (configs/app_config) document.');
+      }
+
+      if (config['activeAdmissionCycle'] == null) {
+        throw Exception('Configuration Error: activeAdmissionCycle is missing inconfigs/app_config.');
       }
 
       _cycleId = config['activeAdmissionCycle'];
-
-      // 2. Ensure Firebase authenticated session (signs in anonymously if needed)
-      await _admissionsService.ensureAuthenticated();
 
       // 3. Check if current session UID is already bound to a candidate
       final boundId = await _admissionsService.getBoundTempId(_cycleId!);
       if (boundId != null) {
         _boundTempId = boundId;
+      }
+    } on FirebaseException catch (e) {
+      if (e.code == 'unavailable') {
+        setState(() {
+          _errorMessage = 'Network Connection Error: Unable to reach Firebase Firestore. Please check your internet connection or emulator settings.';
+        });
+      } else {
+        setState(() {
+          _errorMessage = 'Firestore Error [${e.code}]: ${e.message ?? 'Unknown error occurred.'}';
+        });
       }
     } catch (e) {
       setState(() {
