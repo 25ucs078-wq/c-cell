@@ -38,7 +38,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await GoogleSignIn.instance.initialize();
+  
+  try {
+    await GoogleSignIn.instance.initialize();
+  } catch (e) {
+    debugPrint('GoogleSignIn initialization failed: $e');
+  }
 
   if (kDebugMode) {
     // Uncomment these lines to connect to local Firebase Emulators for testing:

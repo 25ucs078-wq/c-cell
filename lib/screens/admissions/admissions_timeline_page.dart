@@ -130,7 +130,7 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
       // Initialize Google Sign-In instance
       final GoogleSignIn googleSignIn = GoogleSignIn.instance;
       final googleUser = await googleSignIn.authenticate();
-      
+
       final googleAuth = googleUser.authentication;
       final AuthCredential credential = GoogleAuthProvider.credential(
         idToken: googleAuth.idToken,
