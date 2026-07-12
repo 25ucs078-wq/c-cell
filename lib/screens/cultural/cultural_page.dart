@@ -278,7 +278,7 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Madhav Agrawal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/rendition/rendition_logo.png', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/rendition/madhav.jpeg',
           'phone': '+919530097783',
           'email': '24ucs213@lnmiit.ac.in',
         },
