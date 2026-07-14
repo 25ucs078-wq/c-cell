@@ -312,12 +312,29 @@ class ScienceTechPage extends StatelessWidget {
     }
     if (clubName == 'E-Cell') {
       return [
-        'assets/assets/images/tech/ecell/ecell1.jpg'
+        'assets/assets/images/tech/ecell/ecell1.jpg',
+        'assets/assets/images/tech/ecell/ecell2.jpg',
+        'assets/assets/images/tech/ecell/ecell3.jpg',
+        'assets/assets/images/tech/ecell/ecell4.jpg',
+        'assets/assets/images/tech/ecell/ecell5.jpg',
+        'assets/assets/images/tech/ecell/ecell6.jpg',
+        'assets/assets/images/tech/ecell/ecell7.jpg',
+        'assets/assets/images/tech/ecell/ecell8.jpg',
       ];
     }
     if (clubName == 'DebSoc') {
       return [
-        'assets/assets/images/tech/debsoc/deb1.jpg'
+        'assets/assets/images/tech/debsoc/deb1.jpg',
+        'assets/assets/images/tech/debsoc/deb2.jpg',
+        'assets/assets/images/tech/debsoc/deb3.jpg',
+        'assets/assets/images/tech/debsoc/deb4.jpg',
+        'assets/assets/images/tech/debsoc/deb5.jpg',
+        'assets/assets/images/tech/debsoc/deb6.jpg',
+        'assets/assets/images/tech/debsoc/deb7.jpg',
+        'assets/assets/images/tech/debsoc/deb8.jpg',
+        'assets/assets/images/tech/debsoc/deb9.jpg',
+        'assets/assets/images/tech/debsoc/deb10.jpg',
+        'assets/assets/images/tech/debsoc/deb11.jpg',
       ];
     }
     return [];

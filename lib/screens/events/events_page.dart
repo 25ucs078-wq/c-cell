@@ -107,6 +107,7 @@ class EventsPage extends StatelessWidget {
         'assets/assets/images/esummit/esummit5.jpg',
         'assets/assets/images/esummit/esummit6.jpg',
         'assets/assets/images/esummit/esummit7.jpg',
+        'assets/assets/images/esummit/esummit8.jpg',
       ],
     },
   ];
