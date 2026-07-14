@@ -37,28 +37,28 @@ class SportsPage extends StatelessWidget {
         {
           'name': 'Jatin Kukreja',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/basketball/basketball_logo.png', // Photo not updated
+          'image': 'assets/assets/images/sports/basketball/jatin.jpeg',
           'phone': '+918114417723',
           'email': '24dec027@lnmiit.ac.in',
         },
         {
           'name': 'Raghav Agarwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/basketball/basketball_logo.png', // Photo not updated
+          'image': 'assets/assets/images/sports/basketball/raghav.jpeg', 
           'phone': '+918700335877', 
           'email': '24ucs045@lnmiit.ac.in',
         },
         {
           'name': 'Tanmay Poswalia',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/basketball/basketball_logo.png', // Photo not updated
+          'image': 'assets/assets/images/sports/basketball/tanmay.jpeg', 
           'phone': '+918619709786', 
           'email': '24uec267@lnmiit.ac.in',
         },
         {
           'name': 'Vedansh Vashisth',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/basketball/basketball_logo.png', // Photo not updated
+          'image': 'assets/assets/images/sports/basketball/vedansh.jpeg', 
           'phone': '+919358893766', 
           'email': '24uec024@lnmiit.ac.in',
         }
@@ -403,7 +403,10 @@ class SportsPage extends StatelessWidget {
     }
     if (clubName == 'Lawn Tennis') {
       return [
-        'assets/assets/images/sports/lawn_tennis/lawn1.jpeg'
+        'assets/assets/images/sports/lawn_tennis/lawnt1.jpeg',
+        'assets/assets/images/sports/lawn_tennis/lawnt2.JPG',
+        'assets/assets/images/sports/lawn_tennis/lawnt3.jpg',
+        'assets/assets/images/sports/lawn_tennis/lawnt4.jpg',
       ];
     }
     if (clubName == 'Squash') {
@@ -418,7 +421,11 @@ class SportsPage extends StatelessWidget {
     }
     if (clubName == 'Volleyball') {
       return [
-        'assets/assets/images/sports/volleyball/volley1.jpg'
+        'assets/assets/images/sports/volleyball/volley1.jpeg',
+        'assets/assets/images/sports/volleyball/volley2.jpeg',
+        'assets/assets/images/sports/volleyball/volley3.jpeg',
+        'assets/assets/images/sports/volleyball/volley4.jpeg',
+        'assets/assets/images/sports/volleyball/volley5.jpeg',
       ];
     }
     if (clubName == 'Zenith') {
