@@ -23,6 +23,7 @@ import 'screens/hods_page.dart';
 import 'screens/important_contacts_page.dart';
 import 'screens/hostel_contacts_page.dart';
 import 'screens/important_links_page.dart';
+import 'screens/spi_calculator_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -47,6 +48,9 @@ class MyApp extends StatelessWidget {
         switch (settings.name) {
           case '/':
             builder = (context) => const HomePage();
+            break;
+          case '/spi_calculator':
+            builder = (context) => const SpiCalculatorPage();
             break;
           case '/science_tech':
             builder = (context) => const ScienceTechPage();

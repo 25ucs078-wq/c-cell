@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:video_player/video_player.dart';
 import 'notes_pyqs_page.dart';
 import 'profile_page.dart';
 
@@ -41,14 +40,12 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey eventsKey = GlobalKey();
   final GlobalKey facultiesKey = GlobalKey();
   final GlobalKey gymkhanaKey = GlobalKey();
-  final GlobalKey trendingKey = GlobalKey();
   final GlobalKey clubsKey = GlobalKey();
   final GlobalKey quickKey = GlobalKey();
   final GlobalKey aboutKey = GlobalKey();
 
   late final ScrollController _scrollController;
   final ValueNotifier<double> _scrollOpacityNotifier = ValueNotifier<double>(0.0);
-  VideoPlayerController? _videoController;
 
   @override
   void initState() {
@@ -61,24 +58,12 @@ class _HomePageState extends State<HomePage> {
         _scrollOpacityNotifier.value = opacity;
       }
     });
-    _videoController = VideoPlayerController.asset('assets/images/top_boomerang.mp4');
-    _videoController!.initialize().then((_) {
-      _videoController!.setLooping(true);
-      _videoController!.setVolume(0.0);
-      _videoController!.play();
-      if (mounted) {
-        setState(() {});
-      }
-    }).catchError((error) {
-      debugPrint("Error initializing video player: $error");
-    });
   }
 
   @override
   void dispose() {
     _scrollController.dispose();
     _scrollOpacityNotifier.dispose();
-    _videoController?.dispose();
     super.dispose();
   }
 
@@ -172,9 +157,8 @@ class _HomePageState extends State<HomePage> {
                 _buildHeaderNavLink(1, "Quick Access", quickKey),
                 _buildHeaderNavLink(2, "Faculties", facultiesKey),
                 _buildHeaderNavLink(3, "Gymkhana", gymkhanaKey),
-                _buildHeaderNavLink(4, "Trending", trendingKey),
-                _buildHeaderNavLink(5, "Clubs", clubsKey),
-                _buildHeaderNavLink(6, "About", aboutKey),
+                _buildHeaderNavLink(4, "Clubs", clubsKey),
+                _buildHeaderNavLink(5, "About", aboutKey),
                 const SizedBox(width: 20),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -635,11 +619,11 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: ListTile(
                       leading: const Icon(
-                        Icons.local_fire_department,
+                        Icons.groups,
                         color: Colors.white,
                       ),
                       title: const Text(
-                        "Trending Campus",
+                        "Clubs",
                         style: TextStyle(
                           color: Colors.white,
                         ),
@@ -647,7 +631,7 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         navigateToSection(
                           4,
-                          trendingKey,
+                          clubsKey,
                         );
                       },
                     ),
@@ -688,59 +672,6 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: ListTile(
                       leading: const Icon(
-                        Icons.groups,
-                        color: Colors.white,
-                      ),
-                      title: const Text(
-                        "Clubs",
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      onTap: () {
-                        navigateToSection(
-                          5,
-                          clubsKey,
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            AnimatedContainer(
-              duration: const Duration(
-                milliseconds: 300,
-              ),
-              curve: Curves.easeInOut,
-              margin: const EdgeInsets.only(bottom: 12),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(14),
-                gradient: LinearGradient(
-                  colors: selectedIndex == 6
-                      ? [
-                          Colors.redAccent.withValues(alpha: 0.35),
-                          Colors.redAccent.withValues(alpha: 0.12),
-                        ]
-                      : [
-                          Colors.transparent,
-                          Colors.transparent,
-                        ],
-                ),
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    width: 5,
-                    height: 72,
-                    decoration: BoxDecoration(
-                      color: selectedIndex == 6 ? Colors.redAccent : Colors.transparent,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  Expanded(
-                    child: ListTile(
-                      leading: const Icon(
                         Icons.info_outline,
                         color: Colors.white,
                       ),
@@ -752,7 +683,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       onTap: () {
                         navigateToSection(
-                          6,
+                          5,
                           aboutKey,
                         );
                       },
@@ -813,20 +744,10 @@ class _HomePageState extends State<HomePage> {
                   child: SizedBox(
                     width: double.infinity,
                     height: heroHeight,
-                    child: (_videoController != null && _videoController!.value.isInitialized)
-                        ? FittedBox(
-                            fit: BoxFit.cover,
-                            clipBehavior: Clip.hardEdge,
-                            child: SizedBox(
-                              width: _videoController!.value.size.width,
-                              height: _videoController!.value.size.height,
-                              child: VideoPlayer(_videoController!),
-                            ),
-                          )
-                        : Image.asset(
-                            "assets/images/hero_new.jpeg",
-                            fit: BoxFit.cover,
-                          ),
+                    child: Image.asset(
+                      "assets/images/hero_new.jpeg",
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 Container(
@@ -1062,9 +983,9 @@ class _HomePageState extends State<HomePage> {
                               ),
                               buildEventCard(
                                 404,
-                                Colors.redAccent,
-                                Icons.phone,
-                                "Emergency",
+                                Colors.pink,
+                                Icons.campaign,
+                                "Campus Buzz",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
                               ),
@@ -1121,6 +1042,9 @@ class _HomePageState extends State<HomePage> {
                                 "SPI Calculator",
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/spi_calculator');
+                                },
                               ),
                             ],
                           ),
@@ -1259,57 +1183,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ],
                           ),
-                          SizedBox(height: sectionSpacing),
-                          Container(
-                            key: trendingKey,
-                          ),
-                          Text(
-                            "TRENDING ON CAMPUS",
-                            style: GoogleFonts.playfairDisplay(
-                              color: Colors.white,
-                              fontSize: sectionTitleFontSize,
-                              letterSpacing: 2,
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          _buildSectionContent(
-                            height: listCardHeight,
-                            isSmallScreen: isSmallScreen,
-                            children: [
-                              buildEventCard(
-                                200,
-                                Colors.pink,
-                                Icons.campaign,
-                                "Campus Buzz",
-                                isSmallScreen: isSmallScreen,
-                                listCardHeight: listCardHeight,
-                              ),
-                              buildEventCard(
-                                201,
-                                Colors.orange,
-                                Icons.local_fire_department,
-                                "Vivacity Merch",
-                                isSmallScreen: isSmallScreen,
-                                listCardHeight: listCardHeight,
-                              ),
-                              buildEventCard(
-                                202,
-                                Colors.red,
-                                Icons.architecture,
-                                "Plinth Merch",
-                                isSmallScreen: isSmallScreen,
-                                listCardHeight: listCardHeight,
-                              ),
-                              buildEventCard(
-                                203,
-                                Colors.blueGrey,
-                                Icons.sports_esports,
-                                "Desportivos Merch",
-                                isSmallScreen: isSmallScreen,
-                                listCardHeight: listCardHeight,
-                              ),
-                            ],
-                          ),
+
                           SizedBox(height: sectionSpacing),
                           Container(
                             key: clubsKey,
