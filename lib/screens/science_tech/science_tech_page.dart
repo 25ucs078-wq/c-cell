@@ -44,29 +44,29 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Aryan Agarwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/phoenix/phoenix_logo.png', // not updated
-          'phone': '+919999999999', // not updated
+          'image': 'assets/assets/images/tech/phoenix/aryan.jpeg',
+          'phone': '+918949088873',
           'email': '24ucs038@lnmiit.ac.in',
         },
         {
           'name': 'Aviral Goyal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/phoenix/phoenix_logo.png', // not updated
-          'phone': '+918888888888', // not updated
+          'image': 'assets/assets/images/tech/phoenix/aviral.jpg',
+          'phone': '+917830353557',
           'email': '24uec242@lnmiit.ac.in',
         },
         {
           'name': 'Shamit Rathi',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/phoenix/phoenix_logo.png', // not updated
-          'phone': '+918888888888', // not updated
+          'image': 'assets/assets/images/tech/phoenix/shamit.jpeg',
+          'phone': '+919460044695',
           'email': '24ucc004@lnmiit.ac.in',
         },
         {
           'name': 'Shreekant Kumawat',
           'role': 'Coordinator',
           'image': 'assets/assets/images/tech/phoenix/phoenix_logo.png', // not updated
-          'phone': '+918888888888', // not updated
+          'phone': '+919587826474',
           'email': '24uec183@lnmiit.ac.in',
         },
       ];
@@ -330,7 +330,7 @@ class ScienceTechPage extends StatelessWidget {
         'assets/assets/images/tech/debsoc/deb4.jpg',
         'assets/assets/images/tech/debsoc/deb5.jpg',
         'assets/assets/images/tech/debsoc/deb6.jpg',
-        'assets/assets/images/tech/debsoc/deb7.jpg',
+        'assets/assets/images/tech/debsoc/deb7.JPG',
         'assets/assets/images/tech/debsoc/deb8.jpg',
         'assets/assets/images/tech/debsoc/deb9.jpg',
         'assets/assets/images/tech/debsoc/deb10.jpg',
