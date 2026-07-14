@@ -106,20 +106,6 @@ class _SpiCalculatorPageState extends State<SpiCalculatorPage> {
       'gradient': [Color(0xff00acc1), Color(0xff00838f)],
       'icon': Icons.psychology,
     },
-    {
-      'code': 'CSE_CS',
-      'label': 'CSE (Cyber Security)',
-      'disabled': true,
-      'gradient': [Color(0xff455a64), Color(0xff263238)],
-      'icon': Icons.security,
-    },
-    {
-      'code': 'ECE_V',
-      'label': 'ECE (VLSI Design & Technology)',
-      'disabled': true,
-      'gradient': [Color(0xffd81b60), Color(0xff880e4f)],
-      'icon': Icons.memory,
-    },
   ];
 
   final Map<String, Map<int, dynamic>> _curriculum = {
@@ -785,29 +771,6 @@ class _SpiCalculatorPageState extends State<SpiCalculatorPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Notice Banner
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: const Color(0xff2a0b0d).withValues(alpha: 0.2),
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      color: const Color(0xffff5722).withValues(alpha: 0.15),
-                    ),
-                  ),
-                  child: Text(
-                    "⚠ NOTICE: CURRICULUM DATA FOR CSE (CYBER SECURITY) AND ECE (VLSI DESIGN & TECHNOLOGY) WILL BE ADDED SOON.",
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
-                      color: const Color(0xffffab91),
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 24),
-
                 // STEP 1: Branch selection
                 Text(
                   "01_ SELECT BRANCH",

@@ -100,11 +100,13 @@ class EventsPage extends StatelessWidget {
         },
       ],
       'gallery': [
-        //same as ted replace with new ones
         'assets/assets/images/esummit/esummit1.jpg',
         'assets/assets/images/esummit/esummit2.jpg',
         'assets/assets/images/esummit/esummit3.jpg',
         'assets/assets/images/esummit/esummit4.jpg',
+        'assets/assets/images/esummit/esummit5.jpg',
+        'assets/assets/images/esummit/esummit6.jpg',
+        'assets/assets/images/esummit/esummit7.jpg',
       ],
     },
   ];
