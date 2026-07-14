@@ -1,10 +1,25 @@
 const admin = require('firebase-admin');
 
-// Point to the local Firestore Emulator
-process.env.FIRESTORE_EMULATOR_HOST = 'localhost:8080';
+// 1. Production Safeguard Check
+const emulatorHost = process.env.FIRESTORE_EMULATOR_HOST;
+const allowProduction = process.env.ALLOW_PRODUCTION_SEED === 'true';
+
+if (!emulatorHost && !allowProduction) {
+  console.error(
+    '\n[ERROR] Production environment detected. Refusing to seed Firestore.\n' +
+    'Explicit production seeding must be enabled by setting ALLOW_PRODUCTION_SEED=true.\n'
+  );
+  process.exit(1);
+}
+
+if (emulatorHost) {
+  console.log(`Connecting to Firestore Emulator at: ${emulatorHost}`);
+} else {
+  console.log('WARNING: Seeding PRODUCTION database as ALLOW_PRODUCTION_SEED=true is set.');
+}
 
 admin.initializeApp({
-  projectId: 'c-cell-backend'
+  projectId: emulatorHost ? 'c-cell-backend' : undefined
 });
 
 const db = admin.firestore();
