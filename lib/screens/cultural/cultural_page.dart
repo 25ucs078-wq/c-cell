@@ -512,7 +512,13 @@ class CulturalPage extends StatelessWidget {
     }
     if (clubName == 'Media Cell') {
       return [
-        'assets/assets/images/cultural/mediacell/media1.jpg'
+        'assets/assets/images/cultural/mediacell/media1.jpeg',
+        'assets/assets/images/cultural/mediacell/media2.jpeg',
+        'assets/assets/images/cultural/mediacell/media3.jpeg',
+        'assets/assets/images/cultural/mediacell/media4.jpeg',
+        'assets/assets/images/cultural/mediacell/media5.jpeg',
+        'assets/assets/images/cultural/mediacell/media6.jpeg',
+        'assets/assets/images/cultural/mediacell/media7.jpeg',
       ];
     }
     if (clubName == 'Rendition') {

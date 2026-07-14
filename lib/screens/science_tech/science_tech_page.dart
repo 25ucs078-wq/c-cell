@@ -136,29 +136,29 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Amrendra Vikram Singh',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/cipherclub/cipher_logo.png', // not updated
-          'phone': '+919999999999', // not updated
+          'image': 'assets/assets/images/tech/cipherclub/amrendra.jpeg', 
+          'phone': '+919999999999',
           'email': '24uec092@lnmiit.ac.in',
         },
         {
           'name': 'Ninaad Mathur',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/cipherclub/cipher_logo.png', // not updated
-          'phone': '+918888888888', // not updated
+          'image': 'assets/assets/images/tech/cipherclub/ninaad.jpeg', 
+          'phone': '+918888888888', 
           'email': '24ucs013@lnmiit.ac.in',
         },
         {
           'name': 'Nitish Matta',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/cipherclub/cipher_logo.png', // not updated
-          'phone': '+919999999999', // not updated
+          'image': 'assets/assets/images/tech/cipherclub/nitish.jpeg', 
+          'phone': '+919999999999', 
           'email': '24uec217@lnmiit.ac.in',
         },
         {
           'name': 'Vaibhav Rawat',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/cipherclub/cipher_logo.png', // not updated
-          'phone': '+918888888888', // not updated
+          'image': 'assets/assets/images/tech/cipherclub/vaibhav.JPG', 
+          'phone': '+918888888888', 
           'email': '24ucs095@lnmiit.ac.in',
         },
       ];
@@ -259,7 +259,12 @@ class ScienceTechPage extends StatelessWidget {
     }
     if (clubName == 'Phoenix') {
       return [
-        'assets/assets/images/tech/phoenix/phoenix1.jpg'
+        'assets/assets/images/tech/phoenix/phoenix1.jpeg',
+        'assets/assets/images/tech/phoenix/phoenix2.jpeg',
+        'assets/assets/images/tech/phoenix/phoenix3.jpeg',
+        'assets/assets/images/tech/phoenix/phoenix4.jpeg',
+        'assets/assets/images/tech/phoenix/phoenix5.jpeg',
+        'assets/assets/images/tech/phoenix/phoenix6.jpeg',
       ];
     }
     if (clubName == 'Quizzinga') {
@@ -290,13 +295,20 @@ class ScienceTechPage extends StatelessWidget {
     }
     if (clubName == 'Cipher') {
       return [
-        'assets/assets/images/tech/cipherclub/cipher1.jpeg'
+        'assets/assets/images/tech/cipherclub/cipher0.jpg',
+        'assets/assets/images/tech/cipherclub/cipher1.JPG',
+        'assets/assets/images/tech/cipherclub/cipher2.jpg',
+        'assets/assets/images/tech/cipherclub/cipher3.JPG',
+        'assets/assets/images/tech/cipherclub/cipher4.JPG',
+        'assets/assets/images/tech/cipherclub/cipher5.JPG',
+        'assets/assets/images/tech/cipherclub/cipher6.JPG',
+        'assets/assets/images/tech/cipherclub/cipher7.JPG',
+        'assets/assets/images/tech/cipherclub/cipher8.JPG',
+        'assets/assets/images/tech/cipherclub/cipher9.JPG',
       ];
     }
     if (clubName == 'Qbit') {
-      return [
-        'assets/assets/images/tech/qbit/qbit1.jpeg'
-      ];
+      return [];
     }
     if (clubName == 'E-Cell') {
       return [
