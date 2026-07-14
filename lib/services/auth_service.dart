@@ -26,7 +26,30 @@ class AuthService {
   // Google Sign-In with Domain Restriction
   Future<User?> signInWithGoogle() async {
     try {
-      // 1. Trigger the Google Sign-In flow
+      if (kIsWeb) {
+        final GoogleAuthProvider provider = GoogleAuthProvider();
+        provider.setCustomParameters({'prompt': 'select_account'});
+        final UserCredential credential = await _auth.signInWithPopup(provider);
+        final user = credential.user;
+        if (user == null) {
+          throw FirebaseAuthException(
+            code: 'null-user',
+            message: 'Firebase User creation failed.',
+          );
+        }
+
+        // Enforce @lnmiit.ac.in domain restriction
+        final String email = user.email?.trim().toLowerCase() ?? '';
+        if (!email.endsWith('@lnmiit.ac.in')) {
+          await _auth.signOut();
+          throw UnauthorizedDomainException(
+            'Access Denied: Only @lnmiit.ac.in email accounts are authorized.',
+          );
+        }
+        return user;
+      }
+
+      // 1. Trigger the Google Sign-In flow (Android / iOS)
       final googleUser = await _googleSignIn.authenticate();
 
       // 2. Enforce @lnmiit.ac.in domain restriction

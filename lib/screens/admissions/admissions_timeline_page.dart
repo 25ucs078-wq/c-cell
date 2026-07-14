@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -52,22 +53,20 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
     });
 
     try {
-      // 1. Ensure Firebase authenticated session BEFORE any Firestore reads are executed
-      await _admissionsService.ensureAuthenticated();
-
-      // 2. Retrieve the app configuration document
+      // 1. Retrieve the app configuration document (Publicly readable under firestore.rules)
       final config = await _admissionsService.getAppConfig();
       if (config == null) {
         throw Exception('Admissions system is not yet configured. Please create the app configuration (configs/app_config) document.');
       }
 
       if (config['activeAdmissionCycle'] == null) {
-        throw Exception('Configuration Error: activeAdmissionCycle is missing inconfigs/app_config.');
+        throw Exception('Configuration Error: activeAdmissionCycle is missing in configs/app_config.');
       }
 
       _cycleId = config['activeAdmissionCycle'];
 
-      // 3. Check if current session UID is already bound to a candidate
+      // 2. Check if current session UID is already bound to a candidate
+      // Note: Returns null safely if the user is not logged in yet.
       final boundId = await _admissionsService.getBoundTempId(_cycleId!);
       if (boundId != null) {
         _boundTempId = boundId;
@@ -114,6 +113,9 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
     });
 
     try {
+      // Ensure the anonymous authenticated session is active before binding
+      await _admissionsService.ensureAuthenticated();
+
       await _admissionsService.bindCandidate(
         cycleId: _cycleId!,
         tempId: tempId,
@@ -143,17 +145,27 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
     });
 
     try {
-      // Initialize Google Sign-In instance
-      final GoogleSignIn googleSignIn = GoogleSignIn.instance;
-      final googleUser = await googleSignIn.authenticate();
+      if (kIsWeb) {
+        final GoogleAuthProvider provider = GoogleAuthProvider();
+        provider.setCustomParameters({'prompt': 'select_account'});
+        final user = FirebaseAuth.instance.currentUser;
+        if (user == null) {
+          throw Exception('No active session to upgrade.');
+        }
+        await user.linkWithProvider(provider);
+      } else {
+        // Initialize Google Sign-In instance (Android / iOS)
+        final GoogleSignIn googleSignIn = GoogleSignIn.instance;
+        final googleUser = await googleSignIn.authenticate();
 
-      final googleAuth = googleUser.authentication;
-      final AuthCredential credential = GoogleAuthProvider.credential(
-        idToken: googleAuth.idToken,
-      );
+        final googleAuth = googleUser.authentication;
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          idToken: googleAuth.idToken,
+        );
 
-      // Link credentials to the existing anonymous user account (preserves UID!)
-      await _admissionsService.linkOfficialAccount(credential);
+        // Link credentials to the existing anonymous user account (preserves UID!)
+        await _admissionsService.linkOfficialAccount(credential);
+      }
 
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
