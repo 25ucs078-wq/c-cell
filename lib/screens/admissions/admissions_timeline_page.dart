@@ -25,6 +25,10 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
   String? _boundTempId;
   String? _errorMessage;
 
+  // Active stages and completed stage sets for client-side passcode matching
+  List<AdmissionStage> _activeStages = [];
+  Set<String> _completedStageIdsSet = {};
+
   // Controllers for binding form
   final TextEditingController _tempIdController = TextEditingController();
   final TextEditingController _jeeAppNoController = TextEditingController();
@@ -383,11 +387,13 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
             }
 
             final stages = stagesSnap.data ?? [];
+            _activeStages = stages;
 
             return StreamBuilder<Set<String>>(
               stream: _admissionsService.streamCompletedStages(_cycleId!, _boundTempId!),
               builder: (context, completedSnap) {
                 final completedSet = completedSnap.data ?? {};
+                _completedStageIdsSet = completedSet;
 
                 return _buildDashboard(candidate, stages, completedSet);
               },
@@ -704,11 +710,13 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
                               });
 
                               try {
-                                await _admissionsService.verifyStageViaCloudFunction(
+                                await _admissionsService.verifyStageViaPasscode(
                                   cycleId: _cycleId!,
                                   tempId: _boundTempId!,
                                   stageId: stage.id,
                                   passcode: code,
+                                  currentCompletedStageIds: _completedStageIdsSet.toList(),
+                                  allEnabledStageIds: _activeStages.map((s) => s.id).toList(),
                                 );
 
                                 if (context.mounted) {

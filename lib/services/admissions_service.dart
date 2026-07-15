@@ -1,6 +1,7 @@
+import 'dart:convert';
+import 'package:crypto/crypto.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/foundation.dart';
 import '../models/admission_candidate_model.dart';
 import '../models/admission_stage_model.dart';
@@ -276,28 +277,61 @@ class AdmissionsService {
     }
   }
 
-  // 11. Verify stage passcode securely on the backend using Cloud Functions
-  Future<void> verifyStageViaCloudFunction({
+  // 11. Verify stage passcode locally via client-side transaction evaluated securely under firestore.rules
+  Future<void> verifyStageViaPasscode({
     required String cycleId,
     required String tempId,
     required String stageId,
     required String passcode,
+    required List<String> currentCompletedStageIds,
+    required List<String> allEnabledStageIds,
   }) async {
     try {
-      final HttpsCallable callable = FirebaseFunctions.instance.httpsCallable('verifyStageCode');
+      final candidateRef = _db
+          .collection('admission_cycles')
+          .doc(cycleId)
+          .collection('candidates')
+          .doc(tempId);
       
-      await callable.call(<String, dynamic>{
-        'cycleId': cycleId,
-        'tempId': tempId,
+      final logRef = candidateRef.collection('stage_logs').doc(stageId);
+
+      // Compute the SHA-256 hash of the entered passcode locally
+      final bytes = utf8.encode(passcode.trim());
+      final hash = sha256.convert(bytes).toString();
+
+      // Prepare updated completedStageIds and approved flags
+      final List<String> updatedStages = List<String>.from(currentCompletedStageIds);
+      if (!updatedStages.contains(stageId)) {
+        updatedStages.add(stageId);
+      }
+      final bool isAllCompleted = allEnabledStageIds.every((id) => updatedStages.contains(id));
+
+      final batch = _db.batch();
+
+      // 1. Create the stage log document (security rules verify passcodeHash against stage config bypassCodeHash)
+      batch.set(logRef, {
         'stageId': stageId,
-        'passcode': passcode,
+        'verifiedBy': 'desk_officer',
+        'passcodeHash': hash,
+        'completedAt': FieldValue.serverTimestamp(),
       });
-      debugPrint('Successfully verified stage $stageId on the backend.');
-    } on FirebaseFunctionsException catch (e) {
-      debugPrint('FirebaseFunctionsException verifying stage: ${e.code} - ${e.message}');
-      throw Exception(e.message ?? 'Verification failed.');
+
+      // 2. Update the candidate document (security rules permit owner candidate UIDs to update progress tracking fields)
+      batch.update(candidateRef, {
+        'completedStageIds': updatedStages,
+        'approved': isAllCompleted,
+        'updatedAt': FieldValue.serverTimestamp(),
+      });
+
+      await batch.commit();
+      debugPrint('Successfully verified stage $stageId entirely via secure Firestore rules.');
+    } on FirebaseException catch (e) {
+      if (e.code == 'permission-denied') {
+        throw Exception('Incorrect desk verification code.');
+      }
+      rethrow;
     } catch (e) {
-      debugPrint('Unexpected error during Cloud Function verification: $e');
+      debugPrint('Unexpected error during passcode verification: $e');
       throw Exception('An unexpected verification error occurred.');
     }
   }

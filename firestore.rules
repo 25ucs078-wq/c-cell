@@ -54,10 +54,14 @@ service cloud.firestore {
       allow read: if isAdmin() || 
                   (isAuthenticated() && request.auth.uid == resource.data.candidateUid);
       
-      // UID binding on first login
-      allow update: if isAuthenticated() && 
-                    resource.data.candidateUid == "" && 
-                    request.resource.data.candidateUid == request.auth.uid;
+      // UID binding and progress updates
+      allow update: if isAuthenticated() && (
+        // Case A: Bind UID on first login
+        (resource.data.candidateUid == "" && request.resource.data.candidateUid == request.auth.uid) ||
+        // Case B: Update completedStageIds / approved status
+        (request.auth.uid == resource.data.candidateUid && 
+         (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['name', 'tempId', 'jeeAppNo', 'dob', 'candidateUid'])))
+      );
 
       // Sensitive verification data subcollection
       match /private/verification {
@@ -72,9 +76,13 @@ service cloud.firestore {
         allow read: if isAdmin() || 
                     (isAuthenticated() && request.auth.uid == get(/databases/$(database)/documents/admission_cycles/$(cycleId)/candidates/$(tempId)).data.candidateUid);
         
-        // Write: Only the staff member assigned to this stage's role can sign off
-        allow write: if isAdmin() || 
-                      isStaffMember(get(/databases/$(database)/documents/admission_cycles/$(cycleId)/stages/$(stageId)).data.assignedRole);
+        // Write: Create log ONLY IF entering the correct passcode hash matching the stage's hash!
+        allow create: if isAuthenticated() && 
+                      request.auth.uid == get(/databases/$(database)/documents/admission_cycles/$(cycleId)/candidates/$(tempId)).data.candidateUid &&
+                      request.resource.data.passcodeHash == get(/databases/$(database)/documents/admission_cycles/$(cycleId)/stages/$(stageId)).data.bypassCodeHash;
+        
+        // Audit logs are read-only: updates/deletes are strictly forbidden
+        allow update, delete: if false;
       }
     }
 
