@@ -41,7 +41,6 @@ class AdmissionsService {
   Future<AdmissionCandidate> bindCandidate({
     required String cycleId,
     required String appNo,
-    String? recoveryPasscode,
   }) async {
     try {
       final User? currentUser = _auth.currentUser;
@@ -55,25 +54,10 @@ class AdmissionsService {
           .collection('candidates')
           .doc(appNo);
 
-      // Fetch stages outside the transaction since transaction.get() does not support Query types
-      QuerySnapshot<Map<String, dynamic>>? stagesSnap;
-      if (recoveryPasscode != null && recoveryPasscode.isNotEmpty) {
-        stagesSnap = await _db
-            .collection('admission_cycles')
-            .doc(cycleId)
-            .collection('stages')
-            .where('isEnabled', isEqualTo: true)
-            .get();
-      }
-
       return await _db.runTransaction<AdmissionCandidate>((transaction) async {
         final candidateSnap = await transaction.get(candidateRef);
 
         if (!candidateSnap.exists) {
-          if (recoveryPasscode != null && recoveryPasscode.isNotEmpty) {
-            throw Exception('Cannot recover a session that does not exist.');
-          }
-
           // Create a new candidate session document dynamically (manual verification happens at physical desks)
           final newCandidateData = {
             'candidateUid': currentUser.uid,
@@ -103,40 +87,8 @@ class AdmissionsService {
             // Already bound to this device/session
             return AdmissionCandidate.fromMap(data, appNo);
           } else {
-            // Document is already bound to a different UID. Check for recovery authorization
-            if (recoveryPasscode != null && recoveryPasscode.isNotEmpty && stagesSnap != null) {
-              final bytes = utf8.encode(recoveryPasscode.trim());
-              final enteredHash = sha256.convert(bytes).toString();
-
-              String? matchedStageId;
-              for (final doc in stagesSnap.docs) {
-                if (doc.data()['bypassCodeHash'] == enteredHash) {
-                  matchedStageId = doc.id;
-                  break;
-                }
-              }
-
-              if (matchedStageId != null) {
-                // Passcode is valid! Rebind device UID
-                transaction.update(candidateRef, {
-                  'candidateUid': currentUser.uid,
-                  'recoveryStageId': matchedStageId,
-                  'recoveryPasscodeHash': enteredHash,
-                  'updatedAt': FieldValue.serverTimestamp(),
-                });
-
-                final updatedData = Map<String, dynamic>.from(data);
-                updatedData['candidateUid'] = currentUser.uid;
-                updatedData['recoveryStageId'] = matchedStageId;
-                updatedData['recoveryPasscodeHash'] = enteredHash;
-                return AdmissionCandidate.fromMap(updatedData, appNo);
-              } else {
-                throw Exception('Incorrect officer recovery code.');
-              }
-            } else {
-              // Signal the UI that recovery passcode entry is required
-              throw Exception('already-bound');
-            }
+            // Bound to a different UID (prevent duplicate claims on different devices)
+            throw Exception('This Application Number is already registered on another device. Please contact C-Cell helpdesk to reset your session.');
           }
         }
       });

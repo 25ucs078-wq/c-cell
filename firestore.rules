@@ -60,13 +60,13 @@ service cloud.firestore {
                     request.resource.data.completedStageIds == [] &&
                     request.resource.data.approved == false;
 
-      // UID binding, progress updates, and device recovery
+      // UID binding and progress updates
       allow update: if isAuthenticated() && (
-        // Case A: Bind UID on first login (if pre-created with empty candidateUid)
+        // Case A: Bind UID on first login (if pre-created with empty candidateUid or reset by admin)
         (resource.data.candidateUid == "" && request.resource.data.candidateUid == request.auth.uid) ||
         // Case B: Update completedStageIds / approved status
         (request.auth.uid == resource.data.candidateUid && 
-         (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['tempId', 'candidateUid', 'recoveryStageId', 'recoveryPasscodeHash'])) &&
+         (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['tempId', 'candidateUid'])) &&
          // Guard: If completedStageIds grows, enforce batch creation and strict sequential ordering
          (request.resource.data.completedStageIds.size() == resource.data.completedStageIds.size() ||
           (request.resource.data.completedStageIds.size() == resource.data.completedStageIds.size() + 1 &&
@@ -74,13 +74,7 @@ service cloud.firestore {
            existsAfter(/databases/$(database)/documents/admission_cycles/$(cycleId)/candidates/$(tempId)/stage_logs/$(request.resource.data.completedStageIds[request.resource.data.completedStageIds.size() - 1])) &&
            // 2. Ensure added stage's order is exactly equal to current completed size + 1 (strict sequential order)
            get(/databases/$(database)/documents/admission_cycles/$(cycleId)/stages/$(request.resource.data.completedStageIds[request.resource.data.completedStageIds.size() - 1])).data.stageOrder == resource.data.completedStageIds.size() + 1))
-        ) ||
-        // Case C: Secure session recovery rebind (requires valid recovery passcode hash matching stage config)
-        (resource.data.candidateUid != "" &&
-         request.resource.data.candidateUid == request.auth.uid &&
-         exists(/databases/$(database)/documents/admission_cycles/$(cycleId)/stages/$(request.resource.data.recoveryStageId)) &&
-         get(/databases/$(database)/documents/admission_cycles/$(cycleId)/stages/$(request.resource.data.recoveryStageId)).data.bypassCodeHash == request.resource.data.recoveryPasscodeHash &&
-         (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['tempId'])))
+        )
       );
 
       // stage_logs subcollection rules

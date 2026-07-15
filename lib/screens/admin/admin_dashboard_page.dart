@@ -266,6 +266,48 @@ class _AdminDashboardPageState extends State<AdminDashboardPage> with SingleTick
     }
   }
 
+  // Reset candidate session after admin confirmation
+  Future<void> _handleResetSession(String tempId) async {
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: const Color(0xFF090A1A),
+        title: const Text('Reset Candidate Session', style: TextStyle(color: Colors.white)),
+        content: Text('Are you sure you want to disconnect all devices and reset the login session for Application Number $tempId?\n\nThis will allow them to login on a new device while preserving all completed stage logs.', style: const TextStyle(color: Colors.white70)),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancel', style: TextStyle(color: Colors.white54)),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Reset', style: TextStyle(color: Colors.white)),
+          ),
+        ],
+      ),
+    );
+
+    if (confirm != true) return;
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      await _adminService.resetCandidateSession(_cycleId!, tempId);
+      _showSnackbar('Session reset successfully for $tempId!', Colors.green);
+    } catch (e) {
+      _showSnackbar('Error resetting session: $e', Colors.redAccent);
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -593,16 +635,33 @@ class _AdminDashboardPageState extends State<AdminDashboardPage> with SingleTick
                                   ],
                                 ),
                               ),
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: candidate.officialEmail.isEmpty ? Colors.redAccent : Colors.white12,
-                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                                ),
-                                onPressed: () => _showEmailAllocationDialog(candidate.tempId),
-                                child: Text(
-                                  candidate.officialEmail.isEmpty ? 'Allocate Email' : 'Re-allocate',
-                                  style: GoogleFonts.poppins(fontSize: 12, color: Colors.white),
-                                ),
+                              Row(
+                                children: [
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: candidate.officialEmail.isEmpty ? Colors.redAccent : Colors.white12,
+                                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                    ),
+                                    onPressed: () => _showEmailAllocationDialog(candidate.tempId),
+                                    child: Text(
+                                      candidate.officialEmail.isEmpty ? 'Allocate Email' : 'Re-allocate',
+                                      style: GoogleFonts.poppins(fontSize: 11, color: Colors.white),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  if (candidate.candidateUid.isNotEmpty)
+                                    ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.orangeAccent,
+                                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                      ),
+                                      onPressed: () => _handleResetSession(candidate.tempId),
+                                      child: Text(
+                                        'Reset Session',
+                                        style: GoogleFonts.poppins(fontSize: 11, color: Colors.black, fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                ],
                               )
                             ],
                           ),

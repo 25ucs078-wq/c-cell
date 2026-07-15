@@ -197,4 +197,27 @@ class AdminService {
         .limit(40)
         .snapshots();
   }
+
+  // 9. Reset Candidate Session (Clears candidateUid to allow device re-binding)
+  Future<void> resetCandidateSession(String cycleId, String tempId) async {
+    try {
+      await _db
+          .collection('admission_cycles')
+          .doc(cycleId)
+          .collection('candidates')
+          .doc(tempId)
+          .update({
+        'candidateUid': '',
+        'updatedAt': FieldValue.serverTimestamp(),
+      });
+      
+      await logAdminAction('RESET_CANDIDATE_SESSION', {
+        'cycleId': cycleId,
+        'tempId': tempId,
+      });
+    } catch (e) {
+      debugPrint('Error resetting candidate session: $e');
+      rethrow;
+    }
+  }
 }

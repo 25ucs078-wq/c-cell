@@ -131,15 +131,9 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
         _boundTempId = appNo;
       });
     } catch (e) {
-      final errorMsg = e.toString().replaceAll('Exception: ', '');
-      if (errorMsg.contains('already-bound')) {
-        // Trigger device recovery passcode authorization flow
-        _showDeviceRecoverySheet(appNo);
-      } else {
-        setState(() {
-          _errorMessage = errorMsg;
-        });
-      }
+      setState(() {
+        _errorMessage = e.toString().replaceAll('Exception: ', '');
+      });
     } finally {
       if (mounted) {
         setState(() {
@@ -147,147 +141,6 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
         });
       }
     }
-  }
-
-  // Bottom sheet requesting desk officer passcode to authorize device recovery rebind
-  void _showDeviceRecoverySheet(String appNo) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: const Color(0xFF090A1A),
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-      ),
-      builder: (context) {
-        final TextEditingController passcodeController = TextEditingController();
-        bool isRecovering = false;
-
-        return StatefulBuilder(
-          builder: (context, setSheetState) {
-            return Padding(
-              padding: EdgeInsets.only(
-                left: 32,
-                right: 32,
-                top: 32,
-                bottom: MediaQuery.of(context).viewInsets.bottom + 32,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Row(
-                    children: [
-                      const Icon(Icons.warning_amber_rounded, color: Colors.orangeAccent),
-                      const SizedBox(width: 12),
-                      Text(
-                        'Device Recovery Required',
-                        style: GoogleFonts.outfit(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-                      ),
-                      const Spacer(),
-                      IconButton(
-                        icon: const Icon(Icons.close, color: Colors.white54),
-                        onPressed: () => Navigator.pop(context),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    'This Application Number ($appNo) is already associated with another device.\n\n'
-                    'To recover your progress on this device, please ask a C-Cell desk officer to enter their verification code.',
-                    style: GoogleFonts.poppins(fontSize: 13, color: Colors.white70, height: 1.5),
-                  ),
-                  const Divider(color: Colors.white10, height: 32),
-                  TextField(
-                    controller: passcodeController,
-                    obscureText: true,
-                    style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      labelText: 'Desk Verification Code',
-                      labelStyle: GoogleFonts.poppins(color: Colors.white54),
-                      hintText: 'Enter desk passcode',
-                      hintStyle: GoogleFonts.poppins(color: Colors.white24),
-                      prefixIcon: const Icon(Icons.lock_outline, color: Colors.white30),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(color: Colors.white10),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(color: Colors.redAccent),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  isRecovering
-                      ? const Center(
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(Colors.redAccent),
-                          ),
-                        )
-                      : ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.redAccent,
-                            padding: const EdgeInsets.symmetric(vertical: 14),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                          ),
-                          onPressed: () async {
-                            final code = passcodeController.text.trim();
-                            if (code.isEmpty) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('Please enter the officer verification code.')),
-                              );
-                              return;
-                            }
-
-                            setSheetState(() {
-                              isRecovering = true;
-                            });
-
-                            try {
-                              await _admissionsService.bindCandidate(
-                                cycleId: _cycleId!,
-                                appNo: appNo,
-                                recoveryPasscode: code,
-                              );
-
-                              if (context.mounted) {
-                                Navigator.pop(context); // Close bottom sheet
-                                setState(() {
-                                  _boundTempId = appNo;
-                                });
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    backgroundColor: Colors.green,
-                                    content: Text('Session successfully recovered on this device!'),
-                                  ),
-                                );
-                              }
-                            } catch (e) {
-                              setSheetState(() {
-                                isRecovering = false;
-                              });
-                              if (context.mounted) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    backgroundColor: Colors.redAccent,
-                                    content: Text(e.toString().replaceAll('Exception: ', '')),
-                                  ),
-                                );
-                              }
-                            }
-                          },
-                          child: Text(
-                            'Authorize & Recover',
-                            style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white),
-                          ),
-                        ),
-                ],
-              ),
-            );
-          },
-        );
-      },
-    );
   }
 
   // Account Linking (Upgrade Anonymous Account to official Google account)
