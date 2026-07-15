@@ -54,13 +54,19 @@ service cloud.firestore {
       allow read: if isAdmin() || 
                   (isAuthenticated() && request.auth.uid == resource.data.candidateUid);
       
+      // Dynamic creation of onboarding session document
+      allow create: if isAuthenticated() && 
+                    request.resource.data.candidateUid == request.auth.uid &&
+                    request.resource.data.completedStageIds == [] &&
+                    request.resource.data.approved == false;
+
       // UID binding and progress updates
       allow update: if isAuthenticated() && (
-        // Case A: Bind UID on first login
+        // Case A: Bind UID on first login (if pre-created with empty candidateUid)
         (resource.data.candidateUid == "" && request.resource.data.candidateUid == request.auth.uid) ||
         // Case B: Update completedStageIds / approved status
         (request.auth.uid == resource.data.candidateUid && 
-         (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['name', 'tempId', 'jeeAppNo', 'dob', 'candidateUid'])) &&
+         (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['tempId', 'candidateUid'])) &&
          // Guard: If completedStageIds grows, enforce batch creation and strict sequential ordering
          (request.resource.data.completedStageIds.size() == resource.data.completedStageIds.size() ||
           (request.resource.data.completedStageIds.size() == resource.data.completedStageIds.size() + 1 &&
@@ -70,13 +76,6 @@ service cloud.firestore {
            get(/databases/$(database)/documents/admission_cycles/$(cycleId)/stages/$(request.resource.data.completedStageIds[request.resource.data.completedStageIds.size() - 1])).data.stageOrder == resource.data.completedStageIds.size() + 1))
         )
       );
-
-      // Sensitive verification data subcollection
-      match /private/verification {
-        // Only allow reading verification data if candidate is NOT yet bound to a UID
-        allow read: if get(/databases/$(database)/documents/admission_cycles/$(cycleId)/candidates/$(tempId)).data.candidateUid == "";
-        allow write: if isAdmin();
-      }
 
       // stage_logs subcollection rules
       match /stage_logs/{stageId} {

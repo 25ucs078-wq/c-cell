@@ -37,74 +37,59 @@ class AdmissionsService {
     }
   }
 
-  // 3. Verify candidate and bind their Anonymous Firebase UID
+  // 3. Register or bind a candidate's session with their Anonymous Firebase UID
   Future<AdmissionCandidate> bindCandidate({
     required String cycleId,
-    required String tempId,
-    required String jeeAppNo,
-    required String dob,
+    required String appNo,
   }) async {
     try {
-      final candidateRef = _db
-          .collection('admission_cycles')
-          .doc(cycleId)
-          .collection('candidates')
-          .doc(tempId);
-
-      // 1. Fetch the private verification document first.
-      // Under firestore.rules, this is allowed for any authenticated user
-      // ONLY IF the parent candidate document has candidateUid == "".
-      final verificationRef = candidateRef.collection('private').doc('verification');
-      DocumentSnapshot<Map<String, dynamic>> verificationSnap;
-      try {
-        verificationSnap = await verificationRef.get();
-      } on FirebaseException catch (e) {
-        if (e.code == 'permission-denied') {
-          // If permission is denied, it means either:
-          // a) The candidate does not exist.
-          // b) The candidate is already bound to a UID (so candidateUid == "" is false).
-          throw Exception('Verification failed: Candidate ID not found or already bound to a device.');
-        }
-        rethrow;
-      }
-
-      if (!verificationSnap.exists) {
-        throw Exception('Verification record missing. Please contact admissions desk.');
-      }
-
-      final verData = verificationSnap.data()!;
-      final dbJee = verData['jeeAppNo']?.toString().trim();
-      final dbDob = verData['dob']?.toString().trim();
-
-      if (dbJee != jeeAppNo.trim() || dbDob != dob.trim()) {
-        throw Exception('Incorrect JEE Application Number or Date of Birth.');
-      }
-
-      // 2. Bind UID
       final User? currentUser = _auth.currentUser;
       if (currentUser == null) {
         throw Exception('Authentication session lost. Please reload the app.');
       }
 
-      // Perform the update. This is allowed under rules because:
-      // - The user is authenticated.
-      // - The old candidateUid is "".
-      // - The new candidateUid matches currentUser.uid.
-      await candidateRef.update({
-        'candidateUid': currentUser.uid,
-        'updatedAt': FieldValue.serverTimestamp(),
-      });
+      final candidateRef = _db
+          .collection('admission_cycles')
+          .doc(cycleId)
+          .collection('candidates')
+          .doc(appNo);
 
-      // 3. Fetch the candidate data now that the UID is successfully bound!
-      // Since candidateUid is now equal to the currentUser's UID,
-      // the read rule allows this read!
       final candidateSnap = await candidateRef.get();
-      final candidateData = candidateSnap.data();
 
-      return AdmissionCandidate.fromMap(
-        {...?candidateData, 'candidateUid': currentUser.uid},
-        tempId,
-      );
+      if (!candidateSnap.exists) {
+        // Create a new candidate session document dynamically (manual verification happens at physical desks)
+        final newCandidateData = {
+          'candidateUid': currentUser.uid,
+          'fullName': 'Fresher',
+          'branch': 'Candidate',
+          'completedStageIds': [],
+          'approved': false,
+          'updatedAt': FieldValue.serverTimestamp(),
+        };
+        await candidateRef.set(newCandidateData);
+        return AdmissionCandidate.fromMap(newCandidateData, appNo);
+      } else {
+        // Document exists, check UID association
+        final data = candidateSnap.data()!;
+        final String existingUid = data['candidateUid'] ?? '';
+
+        if (existingUid == '') {
+          // Bind the anonymous UID to the existing record
+          await candidateRef.update({
+            'candidateUid': currentUser.uid,
+            'updatedAt': FieldValue.serverTimestamp(),
+          });
+          final updatedData = Map<String, dynamic>.from(data);
+          updatedData['candidateUid'] = currentUser.uid;
+          return AdmissionCandidate.fromMap(updatedData, appNo);
+        } else if (existingUid == currentUser.uid) {
+          // Already bound to this device/session
+          return AdmissionCandidate.fromMap(data, appNo);
+        } else {
+          // Bound to a different UID (prevent duplicate claims on different devices)
+          throw Exception('This Application Number is already registered on another device.');
+        }
+      }
     } catch (e) {
       debugPrint('Error binding candidate: $e');
       rethrow;

@@ -110,24 +110,6 @@ async function seed() {
     await db.collection('admission_cycles').doc('2026').collection('stages').doc(s.id).set(s);
   }
 
-  console.log('3. Seeding candidate (LNMSV5KB)...');
-  await db.collection('admission_cycles').doc('2026').collection('candidates').doc('LNMSV5KB').set({
-    tempId: 'LNMSV5KB',
-    name: 'Rahul Sharma',
-    jeeAppNo: '2403102495',
-    dob: '2006-08-15',
-    candidateUid: '',
-    completedStageIds: [],
-    approved: false,
-    updatedAt: admin.firestore.FieldValue.serverTimestamp()
-  });
-
-  // Seed private verification subdocument
-  await db.collection('admission_cycles').doc('2026').collection('candidates').doc('LNMSV5KB').collection('private').doc('verification').set({
-    jeeAppNo: '2403102495',
-    dob: '2006-08-15'
-  });
-
   console.log('Database seeded successfully!');
 }
 

@@ -29,10 +29,8 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
   List<AdmissionStage> _activeStages = [];
   Set<String> _completedStageIdsSet = {};
 
-  // Controllers for binding form
-  final TextEditingController _tempIdController = TextEditingController();
-  final TextEditingController _jeeAppNoController = TextEditingController();
-  final TextEditingController _dobController = TextEditingController();
+  // Controller for Application Number onboarding field
+  final TextEditingController _appNoController = TextEditingController();
 
   @override
   void initState() {
@@ -43,9 +41,7 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
 
   @override
   void dispose() {
-    _tempIdController.dispose();
-    _jeeAppNoController.dispose();
-    _dobController.dispose();
+    _appNoController.dispose();
     super.dispose();
   }
 
@@ -100,13 +96,11 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
 
   // Form submit to bind candidate UID
   Future<void> _handleBind() async {
-    final tempId = _tempIdController.text.trim();
-    final jeeAppNo = _jeeAppNoController.text.trim();
-    final dob = _dobController.text.trim();
+    final appNo = _appNoController.text.trim();
 
-    if (tempId.isEmpty || jeeAppNo.isEmpty || dob.isEmpty) {
+    if (appNo.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please fill all verification fields.')),
+        const SnackBar(content: Text('Please enter your Application Number.')),
       );
       return;
     }
@@ -122,12 +116,10 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
 
       await _admissionsService.bindCandidate(
         cycleId: _cycleId!,
-        tempId: tempId,
-        jeeAppNo: jeeAppNo,
-        dob: dob,
+        appNo: appNo,
       );
       setState(() {
-        _boundTempId = tempId;
+        _boundTempId = appNo;
       });
     } catch (e) {
       setState(() {
@@ -228,9 +220,7 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
                 // Clear binding in state to return to login form
                 setState(() {
                   _boundTempId = null;
-                  _tempIdController.clear();
-                  _jeeAppNoController.clear();
-                  _dobController.clear();
+                  _appNoController.clear();
                 });
               },
               tooltip: 'Disconnect Profile',
@@ -277,7 +267,7 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
     );
   }
 
-  // Login form for JEE & Temp ID Verification
+  // Login form for Application Number entry
   Widget _buildBindingForm() {
     return Center(
       child: SingleChildScrollView(
@@ -295,13 +285,13 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  'Verify Candidate ID',
+                  'Freshers Admission Tracker',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.outfit(fontSize: 26, fontWeight: FontWeight.bold, color: Colors.white),
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Enter details printed on your registration slip to bind this device.',
+                  'Enter your Application Number to associate it with this device.',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.poppins(fontSize: 12, color: Colors.white54),
                 ),
@@ -322,21 +312,9 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
                   const SizedBox(height: 16),
                 ],
                 TextField(
-                  controller: _tempIdController,
+                  controller: _appNoController,
                   style: const TextStyle(color: Colors.white),
-                  decoration: _inputDecoration('Temporary ID', 'e.g. LNM10025', Icons.badge_outlined),
-                ),
-                const SizedBox(height: 16),
-                TextField(
-                  controller: _jeeAppNoController,
-                  style: const TextStyle(color: Colors.white),
-                  decoration: _inputDecoration('JEE Application Number', 'e.g. 2403102495', Icons.app_registration),
-                ),
-                const SizedBox(height: 16),
-                TextField(
-                  controller: _dobController,
-                  style: const TextStyle(color: Colors.white),
-                  decoration: _inputDecoration('Date of Birth (YYYY-MM-DD)', 'e.g. 2006-08-15', Icons.calendar_month),
+                  decoration: _inputDecoration('Application Number', 'e.g. 2403102495', Icons.app_registration),
                 ),
                 const SizedBox(height: 28),
                 _isLoading
@@ -353,7 +331,7 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
                         ),
                         onPressed: _handleBind,
                         child: Text(
-                          'Verify & Proceed',
+                          'Continue',
                           style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
                         ),
                       ),
@@ -438,15 +416,37 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
                   ],
                 ),
               ),
-              if (isAllCompleted && candidate.officialEmail.isNotEmpty)
-                _isLoading
-                    ? const CircularProgressIndicator()
-                    : ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                        icon: const Icon(Icons.cloud_upload_outlined, color: Colors.white),
-                        label: Text('Upgrade ID', style: GoogleFonts.poppins(color: Colors.white, fontWeight: FontWeight.bold)),
-                        onPressed: _handleAccountUpgrade,
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (isAllCompleted && candidate.officialEmail.isNotEmpty) ...[
+                    _isLoading
+                        ? const CircularProgressIndicator()
+                        : ElevatedButton.icon(
+                            style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+                            icon: const Icon(Icons.cloud_upload_outlined, color: Colors.white),
+                            label: Text('Upgrade ID', style: GoogleFonts.poppins(color: Colors.white, fontWeight: FontWeight.bold)),
+                            onPressed: _handleAccountUpgrade,
+                          ),
+                    const SizedBox(width: 16),
+                  ],
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Application No.',
+                        style: GoogleFonts.poppins(fontSize: 11, color: Colors.white54, fontWeight: FontWeight.w600),
                       ),
+                      const SizedBox(height: 2),
+                      Text(
+                        candidate.tempId,
+                        style: GoogleFonts.outfit(fontSize: 18, color: Colors.greenAccent, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ],
           ),
         ),

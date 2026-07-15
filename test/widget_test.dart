@@ -180,10 +180,9 @@ void main() {
 
     await tester.pumpAndSettle();
 
-    // Verify Candidate ID Verification form elements load successfully
-    expect(find.text('Verify Candidate ID'), findsOneWidget);
-    expect(find.text('Temporary ID'), findsOneWidget);
-    expect(find.text('JEE Application Number'), findsOneWidget);
-    expect(find.text('Date of Birth (YYYY-MM-DD)'), findsOneWidget);
+    // Verify Freshers Admission Tracker form elements load successfully
+    expect(find.text('Freshers Admission Tracker'), findsOneWidget);
+    expect(find.text('Application Number'), findsOneWidget);
+    expect(find.text('Continue'), findsOneWidget);
   });
 }
