@@ -23,6 +23,7 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
   bool _isLoading = false;
   String? _cycleId;
   String? _boundTempId;
+  String? _bootstrapErrorMessage;
   String? _errorMessage;
 
   // Active stages and completed stage sets for client-side passcode matching
@@ -49,6 +50,7 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
   Future<void> _bootstrapAdmissions() async {
     setState(() {
       _initializing = true;
+      _bootstrapErrorMessage = null;
       _errorMessage = null;
     });
 
@@ -74,16 +76,16 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
     } on FirebaseException catch (e) {
       if (e.code == 'unavailable') {
         setState(() {
-          _errorMessage = 'Network Connection Error: Unable to reach Firebase Firestore. Please check your internet connection or emulator settings.';
+          _bootstrapErrorMessage = 'Network Connection Error: Unable to reach Firebase Firestore. Please check your internet connection or emulator settings.';
         });
       } else {
         setState(() {
-          _errorMessage = 'Firestore Error [${e.code}]: ${e.message ?? 'Unknown error occurred.'}';
+          _bootstrapErrorMessage = 'Firestore Error [${e.code}]: ${e.message ?? 'Unknown error occurred.'}';
         });
       }
     } catch (e) {
       setState(() {
-        _errorMessage = e.toString().replaceAll('Exception: ', '');
+        _bootstrapErrorMessage = e.toString().replaceAll('Exception: ', '');
       });
     } finally {
       if (mounted) {
@@ -96,22 +98,31 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
 
   // Form submit to bind candidate UID
   Future<void> _handleBind() async {
-    final appNo = _appNoController.text.trim();
+    final appNoRaw = _appNoController.text.trim();
+    final appNo = appNoRaw.toUpperCase();
 
     if (appNo.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please enter your Application Number.')),
-      );
+      setState(() {
+        _errorMessage = 'Please enter your Application Number.';
+      });
       return;
     }
 
-    // Application Number Validation: digits only and exactly 10 digits
-    final regExp = RegExp(r'^\d{10}$');
+    // Application Number Validation: matching LNMIIT format (LNMXXNXX)
+    final regExp = RegExp(r'^LNM[A-Z]{2}\d[A-Z]{2}$');
     if (!regExp.hasMatch(appNo)) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Invalid Application Number. Must be exactly 10 digits.')),
-      );
+      setState(() {
+        _errorMessage = 'Invalid format. Must follow LNMIIT pattern (e.g., LNMSV5KB).';
+      });
       return;
+    }
+
+    // Automatically update text to uppercase and trimmed for visual feedback
+    if (_appNoController.text != appNo) {
+      _appNoController.text = appNo;
+      _appNoController.selection = TextSelection.fromPosition(
+        TextPosition(offset: appNo.length),
+      );
     }
 
     setState(() {
@@ -236,7 +247,7 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
             ),
         ],
       ),
-      body: _errorMessage != null && _boundTempId == null
+      body: _bootstrapErrorMessage != null
           ? _buildErrorScreen()
           : _boundTempId == null
               ? _buildBindingForm()
@@ -260,7 +271,7 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
             ),
             const SizedBox(height: 8),
             Text(
-              _errorMessage!,
+              _bootstrapErrorMessage ?? 'An unexpected bootstrap error occurred.',
               textAlign: TextAlign.center,
               style: GoogleFonts.poppins(color: Colors.white70, fontSize: 14),
             ),
@@ -323,7 +334,7 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
                 TextField(
                   controller: _appNoController,
                   style: const TextStyle(color: Colors.white),
-                  decoration: _inputDecoration('Application Number', 'e.g. 2403102495', Icons.app_registration),
+                  decoration: _inputDecoration('Application Number', 'e.g. LNMSV5KB', Icons.app_registration),
                 ),
                 const SizedBox(height: 28),
                 _isLoading
@@ -357,6 +368,19 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
     return StreamBuilder<AdmissionCandidate?>(
       stream: _admissionsService.streamCandidate(_cycleId!, _boundTempId!),
       builder: (context, candidateSnap) {
+        if (candidateSnap.hasError) {
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Text(
+                'Error loading candidate profile: ${candidateSnap.error.toString().replaceAll('Exception: ', '')}',
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.redAccent),
+              ),
+            ),
+          );
+        }
+
         if (candidateSnap.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         }
@@ -369,6 +393,19 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
         return StreamBuilder<List<AdmissionStage>>(
           stream: _admissionsService.streamStages(_cycleId!),
           builder: (context, stagesSnap) {
+            if (stagesSnap.hasError) {
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Text(
+                    'Error loading admission stages: ${stagesSnap.error.toString().replaceAll('Exception: ', '')}',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.redAccent),
+                  ),
+                ),
+              );
+            }
+
             if (stagesSnap.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
             }
@@ -379,6 +416,23 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
             return StreamBuilder<Set<String>>(
               stream: _admissionsService.streamCompletedStages(_cycleId!, _boundTempId!),
               builder: (context, completedSnap) {
+                if (completedSnap.hasError) {
+                  return Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(24),
+                      child: Text(
+                        'Error loading progress: ${completedSnap.error.toString().replaceAll('Exception: ', '')}',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(color: Colors.redAccent),
+                      ),
+                    ),
+                  );
+                }
+
+                if (completedSnap.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
                 final completedSet = completedSnap.data ?? {};
                 _completedStageIdsSet = completedSet;
 
