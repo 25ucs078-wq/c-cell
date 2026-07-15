@@ -50,9 +50,13 @@ service cloud.firestore {
 
     // candidates collection rules
     match /admission_cycles/{cycleId}/candidates/{tempId} {
-      // Candidates can view their own profile if bound; staff and admins can view
+      // Candidates can view their own profile if bound, if it doesn't exist yet, or if it is unbound
       allow read: if isAdmin() || 
-                  (isAuthenticated() && request.auth.uid == resource.data.candidateUid);
+                  (isAuthenticated() && (
+                    resource == null || 
+                    resource.data.candidateUid == "" || 
+                    request.auth.uid == resource.data.candidateUid
+                  ));
       
       // Dynamic creation of onboarding session document
       allow create: if isAuthenticated() && 
