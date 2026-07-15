@@ -50,21 +50,22 @@ class AdmissionsService {
           .collection('candidates')
           .doc(tempId);
 
-      final candidateSnap = await candidateRef.get();
-      if (!candidateSnap.exists) {
-        throw Exception('Candidate ID not found.');
-      }
-
-      final candidateData = candidateSnap.data();
-      if (candidateData != null &&
-          candidateData['candidateUid'] != null &&
-          candidateData['candidateUid'].toString().trim().isNotEmpty) {
-        throw Exception('This Candidate profile is already bound to a device.');
-      }
-
-      // Fetch the private verification document
+      // 1. Fetch the private verification document first.
+      // Under firestore.rules, this is allowed for any authenticated user
+      // ONLY IF the parent candidate document has candidateUid == "".
       final verificationRef = candidateRef.collection('private').doc('verification');
-      final verificationSnap = await verificationRef.get();
+      DocumentSnapshot<Map<String, dynamic>> verificationSnap;
+      try {
+        verificationSnap = await verificationRef.get();
+      } on FirebaseException catch (e) {
+        if (e.code == 'permission-denied') {
+          // If permission is denied, it means either:
+          // a) The candidate does not exist.
+          // b) The candidate is already bound to a UID (so candidateUid == "" is false).
+          throw Exception('Verification failed: Candidate ID not found or already bound to a device.');
+        }
+        rethrow;
+      }
 
       if (!verificationSnap.exists) {
         throw Exception('Verification record missing. Please contact admissions desk.');
@@ -78,16 +79,26 @@ class AdmissionsService {
         throw Exception('Incorrect JEE Application Number or Date of Birth.');
       }
 
-      // Bind UID
+      // 2. Bind UID
       final User? currentUser = _auth.currentUser;
       if (currentUser == null) {
         throw Exception('Authentication session lost. Please reload the app.');
       }
 
+      // Perform the update. This is allowed under rules because:
+      // - The user is authenticated.
+      // - The old candidateUid is "".
+      // - The new candidateUid matches currentUser.uid.
       await candidateRef.update({
         'candidateUid': currentUser.uid,
         'updatedAt': FieldValue.serverTimestamp(),
       });
+
+      // 3. Fetch the candidate data now that the UID is successfully bound!
+      // Since candidateUid is now equal to the currentUser's UID,
+      // the read rule allows this read!
+      final candidateSnap = await candidateRef.get();
+      final candidateData = candidateSnap.data();
 
       return AdmissionCandidate.fromMap(
         {...?candidateData, 'candidateUid': currentUser.uid},
