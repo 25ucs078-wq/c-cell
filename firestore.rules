@@ -60,7 +60,12 @@ service cloud.firestore {
         (resource.data.candidateUid == "" && request.resource.data.candidateUid == request.auth.uid) ||
         // Case B: Update completedStageIds / approved status
         (request.auth.uid == resource.data.candidateUid && 
-         (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['name', 'tempId', 'jeeAppNo', 'dob', 'candidateUid'])))
+         (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['name', 'tempId', 'jeeAppNo', 'dob', 'candidateUid'])) &&
+         // Guard: If completedStageIds grows, the added stage must have a valid log created in the same transaction/batch
+         (request.resource.data.completedStageIds.size() == resource.data.completedStageIds.size() ||
+          (request.resource.data.completedStageIds.size() == resource.data.completedStageIds.size() + 1 &&
+           existsAfter(/databases/$(database)/documents/admission_cycles/$(cycleId)/candidates/$(tempId)/stage_logs/$(request.resource.data.completedStageIds[request.resource.data.completedStageIds.size() - 1]))))
+        )
       );
 
       // Sensitive verification data subcollection
