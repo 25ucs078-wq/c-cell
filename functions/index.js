@@ -1,23 +1,16 @@
-const { onCall, HttpsError } = require("firebase-functions/v2/https");
+const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const crypto = require("crypto");
 
 admin.initializeApp();
 const db = admin.firestore();
 
-// Restrict CORS origins to localhost (dev) and deployed Firebase Hosting domains (production)
-const allowedOrigins = [
-  "http://localhost:8080",
-  "https://c-cell-backend.web.app",
-  "https://c-cell-backend.firebaseapp.com"
-];
-
-// Secure Cloud Function to verify desk passcode and write status changes on the backend
-exports.verifyStageCode = onCall({ cors: allowedOrigins }, async (request) => {
+// Secure Cloud Function to verify desk passcode and write status changes on the backend (v1 compatible)
+exports.verifyStageCode = functions.https.onCall(async (data, context) => {
   // 1. Validate inputs
-  const { cycleId, tempId, stageId, passcode } = request.data;
+  const { cycleId, tempId, stageId, passcode } = data;
   if (!cycleId || !tempId || !stageId || !passcode) {
-    throw new HttpsError(
+    throw new functions.https.HttpsError(
       "invalid-argument",
       "Missing required fields (cycleId, tempId, stageId, passcode)."
     );
@@ -33,13 +26,13 @@ exports.verifyStageCode = onCall({ cors: allowedOrigins }, async (request) => {
         
     const stageSnap = await stageRef.get();
     if (!stageSnap.exists) {
-      throw new HttpsError("not-found", "Stage config not found.");
+      throw new functions.https.HttpsError("not-found", "Stage config not found.");
     }
 
     const stageData = stageSnap.data();
     const dbHash = stageData.bypassCodeHash;
     if (!dbHash) {
-      throw new HttpsError(
+      throw new functions.https.HttpsError(
         "failed-precondition", 
         "Verification code is not configured on the server for this stage."
       );
@@ -50,7 +43,7 @@ exports.verifyStageCode = onCall({ cors: allowedOrigins }, async (request) => {
 
     // 4. Validate passcode match
     if (enteredHash !== dbHash) {
-      throw new HttpsError("permission-denied", "Incorrect desk verification code.");
+      throw new functions.https.HttpsError("permission-denied", "Incorrect desk verification code.");
     }
 
     // 5. Execute progress update inside a Firestore Transaction
@@ -66,7 +59,7 @@ exports.verifyStageCode = onCall({ cors: allowedOrigins }, async (request) => {
     await db.runTransaction(async (transaction) => {
       const candidateSnap = await transaction.get(candidateRef);
       if (!candidateSnap.exists) {
-        throw new HttpsError("not-found", "Candidate profile not found.");
+        throw new functions.https.HttpsError("not-found", "Candidate profile not found.");
       }
 
       // Fetch all enabled stages to determine if candidate is approved
@@ -92,16 +85,16 @@ exports.verifyStageCode = onCall({ cors: allowedOrigins }, async (request) => {
       // Write stage sign-off log
       transaction.set(logRef, {
         stageId: stageId,
-        verifiedBy: request.auth ? request.auth.uid : "desk_officer",
+        verifiedBy: context.auth ? context.auth.uid : "desk_officer",
         completedAt: admin.firestore.FieldValue.serverTimestamp()
       });
     });
 
     return { success: true };
   } catch (e) {
-    if (e instanceof HttpsError) {
+    if (e instanceof functions.https.HttpsError) {
       throw e;
     }
-    throw new HttpsError("internal", e.message || "Internal error occurred.");
+    throw new functions.https.HttpsError("internal", e.message || "Internal error occurred.");
   }
 });
