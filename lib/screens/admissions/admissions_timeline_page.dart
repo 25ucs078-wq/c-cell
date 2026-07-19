@@ -172,7 +172,7 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
         if (user == null) {
           throw Exception('No active session to upgrade.');
         }
-        await user.linkWithProvider(provider);
+        await user.linkWithPopup(provider);
       } else {
         // Initialize Google Sign-In instance (Android / iOS)
         final GoogleSignIn googleSignIn = GoogleSignIn.instance;
