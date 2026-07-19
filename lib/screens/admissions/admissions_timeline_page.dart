@@ -7,6 +7,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import '../../services/admissions_service.dart';
 import '../../models/admission_candidate_model.dart';
 import '../../models/admission_stage_model.dart';
+import '../../services/auth_service.dart';
 
 class AdmissionsTimelinePage extends StatefulWidget {
   final AdmissionsService? admissionsService;
@@ -163,7 +164,10 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
     try {
       if (kIsWeb) {
         final GoogleAuthProvider provider = GoogleAuthProvider();
-        provider.setCustomParameters({'prompt': 'select_account'});
+        provider.setCustomParameters({
+          'prompt': 'select_account',
+          'hd': 'lnmiit.ac.in',
+        });
         final user = FirebaseAuth.instance.currentUser;
         if (user == null) {
           throw Exception('No active session to upgrade.');
@@ -174,6 +178,12 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
         final GoogleSignIn googleSignIn = GoogleSignIn.instance;
         final googleUser = await googleSignIn.authenticate();
 
+        final String email = googleUser.email.trim().toLowerCase();
+        if (!email.endsWith('@lnmiit.ac.in')) {
+          await googleSignIn.signOut();
+          throw Exception('Access Denied: Only @lnmiit.ac.in email accounts are authorized.');
+        }
+
         final googleAuth = googleUser.authentication;
         final AuthCredential credential = GoogleAuthProvider.credential(
           idToken: googleAuth.idToken,
@@ -183,6 +193,28 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
         await _admissionsService.linkOfficialAccount(credential);
       }
 
+      final updatedUser = FirebaseAuth.instance.currentUser;
+      if (updatedUser == null) {
+        throw Exception('No authenticated user found after linking.');
+      }
+
+      // Enforce @lnmiit.ac.in domain restriction
+      final String email = updatedUser.email?.trim().toLowerCase() ?? '';
+      if (!email.endsWith('@lnmiit.ac.in')) {
+        // Unlink the provider to clean up
+        for (final info in updatedUser.providerData) {
+          if (info.providerId == 'google.com') {
+            await updatedUser.unlink(info.providerId);
+            break;
+          }
+        }
+        throw Exception('Access Denied: Only @lnmiit.ac.in email accounts are authorized.');
+      }
+
+      // 4. Create/update users/{uid} document in Firestore
+      final AuthService authService = AuthService();
+      await authService.syncUserProfile(updatedUser);
+
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -191,14 +223,14 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
         ),
       );
       
-      // Navigate to premium loading and home page
-      Navigator.pushReplacementNamed(context, '/loading');
+      // 5. Navigate to Home Page, clearing the navigation stack
+      Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: Colors.redAccent,
-          content: Text('Upgrade failed: ${e.toString()}'),
+          content: Text('Upgrade failed: ${e.toString().replaceAll('Exception: ', '')}'),
         ),
       );
     } finally {
@@ -233,7 +265,9 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
           style: GoogleFonts.outfit(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         actions: [
-          if (_boundTempId != null)
+          if (_boundTempId != null &&
+              !(_activeStages.isNotEmpty &&
+                  _activeStages.every((s) => _completedStageIdsSet.contains(s.id))))
             IconButton(
               icon: const Icon(Icons.logout, color: Colors.redAccent),
               onPressed: () {
@@ -435,6 +469,13 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
 
                 final completedSet = completedSnap.data ?? {};
                 _completedStageIdsSet = completedSet;
+
+                final isAllCompleted = stages.isNotEmpty &&
+                    stages.every((s) => completedSet.contains(s.id));
+
+                if (isAllCompleted) {
+                  return _buildCompletedScreen();
+                }
 
                 return _buildDashboard(candidate, stages, completedSet);
               },
@@ -843,6 +884,124 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.08)),
+      ),
+    );
+  }
+
+  Widget _buildCompletedScreen() {
+    return Center(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(24.0),
+        child: Card(
+          color: Colors.white.withValues(alpha: 0.02),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24),
+            side: BorderSide(color: Colors.white.withValues(alpha: 0.05)),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 40.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Success Icon
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.green.withValues(alpha: 0.1),
+                    border: Border.all(color: Colors.green.withValues(alpha: 0.3), width: 2),
+                  ),
+                  child: const Icon(
+                    Icons.check_circle_outline,
+                    size: 72,
+                    color: Colors.greenAccent,
+                  ),
+                ),
+                const SizedBox(height: 32),
+                // Title
+                Text(
+                  'Admission Completed Successfully',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.outfit(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                // Subtitle
+                Text(
+                  'All admission stages have been completed successfully.',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    color: Colors.greenAccent,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                // Description
+                Text(
+                  'Please continue with your official LNMIIT Google account to activate your student profile.',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.poppins(
+                    fontSize: 13,
+                    color: Colors.white54,
+                    height: 1.5,
+                  ),
+                ),
+                const Divider(color: Colors.white10, height: 40),
+                _isLoading
+                    ? const CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.greenAccent),
+                      )
+                    : SizedBox(
+                        width: double.infinity,
+                        height: 54,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.green,
+                            foregroundColor: Colors.white,
+                            elevation: 5,
+                            shadowColor: Colors.green.withValues(alpha: 0.4),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                          ),
+                          onPressed: _handleAccountUpgrade,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.network(
+                                'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png',
+                                height: 20,
+                                width: 20,
+                                errorBuilder: (context, error, stackTrace) => const Icon(
+                                  Icons.account_balance,
+                                  size: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(width: 14),
+                              Flexible(
+                                child: Text(
+                                  'Continue with Google',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                    letterSpacing: 0.5,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

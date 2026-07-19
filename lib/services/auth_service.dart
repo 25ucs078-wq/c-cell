@@ -91,7 +91,7 @@ class AuthService {
       }
 
       // 7. Update user profile in Firestore
-      await _syncUserProfile(firebaseUser);
+      await syncUserProfile(firebaseUser);
 
       return firebaseUser;
     } on UnauthorizedDomainException {
@@ -110,7 +110,7 @@ class AuthService {
   }
 
   // Sync user profile with Firestore (create if new, update lastLogin if existing)
-  Future<void> _syncUserProfile(User user) async {
+  Future<void> syncUserProfile(User user) async {
     final DocumentReference userRef = _db.collection('users').doc(user.uid);
     
     try {
