@@ -30,43 +30,34 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
   }
 
   Future<Uint8List> _loadPdfBytes() async {
+    final List<String> candidatePaths = [
+      widget.pdfPath,
+      if (widget.pdfPath.startsWith('assets/')) widget.pdfPath.substring(7),
+      if (!widget.pdfPath.startsWith('assets/')) 'assets/${widget.pdfPath}',
+      if (!widget.pdfPath.startsWith('assets/assets/')) 'assets/${widget.pdfPath}',
+    ];
+
     // 1. Try loading via rootBundle (Flutter asset bundle)
-    try {
-      final ByteData data = await rootBundle.load(widget.pdfPath);
-      return data.buffer.asUint8List();
-    } catch (e) {
-      debugPrint("rootBundle.load failed for ${widget.pdfPath}: $e");
-    }
-
-    // 2. Try loading via rootBundle with alternative prefix
-    if (widget.pdfPath.startsWith('assets/')) {
+    for (final path in candidatePaths) {
       try {
-        final altPath = widget.pdfPath.substring(7); // strip leading 'assets/'
-        final ByteData data = await rootBundle.load(altPath);
-        return data.buffer.asUint8List();
+        final ByteData data = await rootBundle.load(path);
+        return data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
       } catch (e) {
-        debugPrint("rootBundle.load alt path failed: $e");
+        debugPrint("rootBundle.load failed for $path: $e");
       }
     }
 
-    // 3. Fallback for Desktop/Mobile native platforms: read directly from file system
+    // 2. Fallback for Desktop/Mobile native platforms: read directly from file system
     if (!kIsWeb) {
-      try {
-        final file = File(widget.pdfPath);
-        if (await file.exists()) {
-          return await file.readAsBytes();
+      for (final path in candidatePaths) {
+        try {
+          final file = File(path);
+          if (await file.exists()) {
+            return await file.readAsBytes();
+          }
+        } catch (e) {
+          debugPrint("File read failed for $path: $e");
         }
-      } catch (e) {
-        debugPrint("File read failed for ${widget.pdfPath}: $e");
-      }
-
-      try {
-        final file = File('assets/${widget.pdfPath}');
-        if (await file.exists()) {
-          return await file.readAsBytes();
-        }
-      } catch (e) {
-        debugPrint("File read failed for assets/${widget.pdfPath}: $e");
       }
     }
 

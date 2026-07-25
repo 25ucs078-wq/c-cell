@@ -16,16 +16,14 @@ class VivacityPage extends StatelessWidget {
   static const List<Map<String, String>> festHeads = [
     {
       "name": "Vedang Dixit",
-      "image": "assets/images/logo.jpeg",
+      "image": "assets/assets/images/viva/viva_logo.png",
       "role": "Fest Head",
-      "phone": "+919999999999",
       "email": "vivacity@lnmiit.ac.in"
     },
     {
       "name": "Vedant Wadhwa",
-      "image": "assets/images/logo.jpeg",
+      "image": "assets/assets/images/viva/viva_logo.png",
       "role": "Fest Head",
-      "phone": "+918888888888",
       "email": "vivacity@lnmiit.ac.in"
     },
   ];

@@ -23,16 +23,14 @@ class DesportivosPage extends StatelessWidget {
   static const List<Map<String, String>> festHeads = [
     {
       "name": "Abhas Chaudhary",
-      "image": "assets/images/logo.jpeg",
+      "image": "assets/assets/images/despo/despo_logo.jpeg",
       "role": "Fest Head",
-      "phone": "+919999999999",
       "email": "desportivos@lnmiit.ac.in"
     },
     {
       "name": "Arnav Rinawa",
-      "image": "assets/images/logo.jpeg",
+      "image": "assets/assets/images/despo/despo_logo.jpeg",
       "role": "Fest Head",
-      "phone": "+918888888888",
       "email": "desportivos@lnmiit.ac.in"
     },
   ];

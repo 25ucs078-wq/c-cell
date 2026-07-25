@@ -47,12 +47,14 @@ class EventsPage extends StatelessWidget {
         },
       ],
       'gallery': [
-        //galeery has old pics of last year so replace with new ones
-        'assets/assets/images/ted/ted1.jpg',
-        'assets/assets/images/ted/ted2.jpg',
-        'assets/assets/images/ted/ted3.jpg',
-        'assets/assets/images/ted/ted4.jpg',
+        'assets/assets/images/ted/ted1.jpeg',
+        'assets/assets/images/ted/ted2.jpeg',
+        'assets/assets/images/ted/ted3.jpeg',
+        'assets/assets/images/ted/ted4.jpeg',
         'assets/assets/images/ted/ted5.jpg',
+        'assets/assets/images/ted/ted6.jpg',
+        'assets/assets/images/ted/ted7.jpg',
+        'assets/assets/images/ted/ted8.jpg',
       ],
     },
     {

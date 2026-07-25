@@ -17,16 +17,14 @@ class PlinthPage extends StatelessWidget {
   static const List<Map<String, String>> festHeads = [
     {
       "name": "Akshansh Singh",
-      "image": "assets/images/logo.jpeg",
+      "image": "assets/assets/images/plinth/plinth_logo.jpg",
       "role": "Fest Head",
-      "phone": "+919999999999",
       "email": "plinth@lnmiit.ac.in"
     },
     {
       "name": "Jayant Singhal",
-      "image": "assets/images/logo.jpeg",
+      "image": "assets/assets/images/plinth/plinth_logo.jpg",
       "role": "Fest Head",
-      "phone": "+918888888888",
       "email": "plinth@lnmiit.ac.in"
     },
   ];
