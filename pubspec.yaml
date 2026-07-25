@@ -37,7 +37,6 @@ flutter:
     - assets/assets/images/cultural/aaveg/
     - assets/assets/images/cultural/capriccio/
     - assets/assets/images/cultural/eminence/
-    - assets/assets/images/cultural/finlogue/
     - assets/assets/images/cultural/fundoo/
     - assets/assets/images/cultural/imagination/
     - assets/assets/images/cultural/insignia/
@@ -56,6 +55,7 @@ flutter:
     - assets/assets/images/tech/cybros/
     - assets/assets/images/tech/debsoc/
     - assets/assets/images/tech/ecell/
+    - assets/assets/images/tech/finlogue/
     - assets/assets/images/tech/phoenix/
     - assets/assets/images/tech/quizzinga/
     - assets/assets/images/tech/qbit/

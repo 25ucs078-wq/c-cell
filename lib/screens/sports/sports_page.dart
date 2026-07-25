@@ -253,7 +253,7 @@ class SportsPage extends StatelessWidget {
           'name': 'Aashil Bhutra',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/table_tennis/tablet_logo.png', // Photo not updated
-          'phone': '+919999999999', // number not updated
+          'phone': '+919610411435',
           'email': '24ume048@lnmiit.ac.in',
         },
         {
@@ -286,35 +286,35 @@ class SportsPage extends StatelessWidget {
           'name': 'Apoorva Jain',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/volleyball/apoorva.jpeg',
-          'phone': '+918888888888', // number not updated
+          'phone': '+918239071912',
           'email': '24uec200@lnmiit.ac.in',
         },
         {
           'name': 'Ayush Raj Shahi',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/volleyball/ayush.jpeg',
-          'phone': '+919999999999', // number not updated
+          'phone': '+917209081611',
           'email': '24@lnmiit.ac.in', // email not updated
         },
         {
-          'name': 'Dinakar', // recheck this name
+          'name': 'Dinakar',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/volleyball/dinakar.jpeg',
-          'phone': '+918888888888', // number not updated
+          'phone': '+919963225216',
           'email': '24ucs037@lnmiit.ac.in',
         },
         {
           'name': 'Panth Moradiya',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/volleyball/panth.jpg',
-          'phone': '+918888888888', // number not updated
+          'phone': '+919979901008',
           'email': '24ucs120@lnmiit.ac.in',
         },
         {
           'name': 'Saniya Sharma',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/volleyball/saniya.jpeg',
-          'phone': '+918888888888', // number not updated
+          'phone': '+919166310223', 
           'email': '24ucs081@lnmiit.ac.in',
         },
       ];
@@ -325,7 +325,7 @@ class SportsPage extends StatelessWidget {
         {
           'name': 'Diwas Pandey',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/diwas.jpg',
+          'image': 'assets/assets/images/sports/zenith/diwas.jpg',
           'phone': '+918279822447',
           'email': '24imai004@lnmiit.ac.in',
         },
@@ -333,7 +333,7 @@ class SportsPage extends StatelessWidget {
           'name': 'Lakshit Agarwal',
           'role': 'Coordinator',
           'image': 'assets/assets/images/zenith_logo.jpg', // Photo not updated yet
-          'phone': '+918888888888', // Number not updated yet
+          'phone': '+918000265440', 
           'email': '24ucc089@lnmiit.ac.in',
         },
       ];
@@ -568,9 +568,9 @@ class SportsPage extends StatelessWidget {
     },
     {
       'name': 'Zenith',
-      'icon': 'assets/assets/images/zenith_logo.jpg',
+      'icon': 'assets/assets/images/sports/zenith/zenith_logo.jpg',
       'subtitle': 'The Fitness Club of LNMIIT',
-      'image': 'assets/assets/images/zenith_logo.jpg',
+      'image': 'assets/assets/images/sports/zenith/zenith_logo.jpg',
       'coordinators': _getCoordinators('Zenith'),
       'gallery': _getGallery('Zenith'),
       'description': "Zenith is the Fitness Club of LNMIIT. We aim to inspire and guide students toward a healthier, more active lifestyle through guided fitness routines, workout sessions, and wellness events.",

@@ -235,6 +235,32 @@ class ScienceTechPage extends StatelessWidget {
       ];
     }
 
+    if (clubName == 'Finlogue') {
+      return [
+        {
+          'name': 'Aditya Tiwari',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/tech/finlogue/aditya.jpeg',
+          'phone': '+916268131180',
+          'email': '24ucs155@lnmiit.ac.in',
+        },
+        {
+          'name': 'Akshat Thadhani',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/tech/finlogue/akshat.jpeg',
+          'phone': '+919468655389',
+          'email': '24ucc116@lnmiit.ac.in',
+        },
+        {
+          'name': 'Aryan Mittal',
+          'role': 'Coordinator',
+          'image': 'assets/assets/images/tech/finlogue/aryan.jpeg',
+          'phone': '+919389618050',
+          'email': '24ucs152@lnmiit.ac.in',
+        },
+      ];
+    }
+
     return [
       {
         'name': '$clubName Coordinator 1',
@@ -337,6 +363,21 @@ class ScienceTechPage extends StatelessWidget {
         'assets/assets/images/tech/debsoc/deb11.jpg',
       ];
     }
+    if (clubName == 'Finlogue') {
+      return [
+        'assets/assets/images/tech/finlogue/finlogue1.jpeg',
+        'assets/assets/images/tech/finlogue/finlogue2.jpeg',
+        'assets/assets/images/tech/finlogue/finlogue3.jpeg',
+        'assets/assets/images/tech/finlogue/finlogue4.jpeg',
+        'assets/assets/images/tech/finlogue/finlogue5.jpeg',
+        'assets/assets/images/tech/finlogue/finlogue6.jpg',
+        'assets/assets/images/tech/finlogue/finlogue7.jpeg',
+        'assets/assets/images/tech/finlogue/finlogue8.jpeg',
+        'assets/assets/images/tech/finlogue/finlogue9.jpeg',
+        'assets/assets/images/tech/finlogue/finlogue10.jpeg',
+        'assets/assets/images/tech/finlogue/finlogue11.jpeg',
+      ];
+    }
     return [];
   }
 
@@ -395,6 +436,17 @@ class ScienceTechPage extends StatelessWidget {
       'description': "Dive into entrepreneurship, crypto, stocks, Web3, and beyond with The Entrepreneurship Club—your hub for mastering the skills that shape tomorrow. From event planning and marketing to management, sponsorships, content creation, and design, we sharpen the tools you need to thrive. We collaborate with top tech colleges across India, bringing you real-world exposure through funding events, startup founder interactions, and deep dives into the startup ecosystem. Here, ideas meet execution—and learners become leaders.",
       'instagram': 'https://www.instagram.com/ecell.lnmiit/',
       'email': 'ecell@lnmiit.ac.in',
+    },
+    {
+      'name': 'Finlogue',
+      'icon': 'assets/assets/images/tech/finlogue/finlogue_logo.jpeg',
+      'subtitle': 'Fintech club of LNMIIT',
+      'image': 'assets/assets/images/tech/finlogue/finlogue_logo.jpeg',
+      'coordinators': _getCoordinators('Finlogue'),
+      'gallery': _getGallery('Finlogue'),
+      'description': 'The Fintech Club of LNMIIT, Finlogue, bridges the gap between finance and technology, hosting discussions, workshops, and case study competitions on investments, markets, and blockchain.',
+      'instagram': 'https://www.instagram.com/finlogue.lnmiit/',
+      'email': 'finlogue@lnmiit.ac.in',
     },
     {
       'name': 'Phoenix',

@@ -91,31 +91,6 @@ class CulturalPage extends StatelessWidget {
       ];
     }
 
-    if (clubName == 'Finlogue') {
-      return [
-        {
-          'name': 'Aditya Tiwari',
-          'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/finlogue/aditya.jpeg',
-          'phone': '+916268131180',
-          'email': '24ucs155@lnmiit.ac.in',
-        },
-        {
-          'name': 'Akshat Thadhani',
-          'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/finlogue/akshat.jpeg',
-          'phone': '+919468655389',
-          'email': '24ucc116@lnmiit.ac.in',
-        },
-        {
-          'name': 'Aryan Mittal',
-          'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/finlogue/aryan.jpeg',
-          'phone': '+919389618050',
-          'email': '24ucs152@lnmiit.ac.in',
-        },
-      ];
-    }
 
     if (clubName == 'Fundoo') {
       return [
@@ -444,21 +419,6 @@ class CulturalPage extends StatelessWidget {
         'assets/assets/images/cultural/eminence/eminence11.jpeg',
       ];
     }
-    if (clubName == 'Finlogue') {
-      return [
-        'assets/assets/images/cultural/finlogue/finlogue1.jpeg',
-        'assets/assets/images/cultural/finlogue/finlogue2.jpeg',
-        'assets/assets/images/cultural/finlogue/finlogue3.jpeg',
-        'assets/assets/images/cultural/finlogue/finlogue4.jpeg',
-        'assets/assets/images/cultural/finlogue/finlogue5.jpeg',
-        'assets/assets/images/cultural/finlogue/finlogue6.jpg',
-        'assets/assets/images/cultural/finlogue/finlogue7.jpeg',
-        'assets/assets/images/cultural/finlogue/finlogue8.jpeg',
-        'assets/assets/images/cultural/finlogue/finlogue9.jpeg',
-        'assets/assets/images/cultural/finlogue/finlogue10.jpeg',
-        'assets/assets/images/cultural/finlogue/finlogue11.jpeg',
-      ];
-    }
     if (clubName == 'Fundoo') {
       return [
         'assets/assets/images/cultural/fundoo/fundoo1.jpeg',
@@ -589,16 +549,6 @@ class CulturalPage extends StatelessWidget {
       'description': 'Eminence is a fashion-forward club where style meets passion. From choreographed ramp walks to fashion-themed events, we explore all aspects of fashion. Our club is a space for aspiring models, stylists, and fashion enthusiasts to grow and shine. We believe fashion is not just about clothes — it’s about attitude and identity.',
       'instagram': 'https://www.instagram.com/eminence.lnmiit/',
       'email': 'eminence@lnmiit.ac.in',
-    },
-    {
-      'name': 'Finlogue',
-      'icon': 'assets/assets/images/cultural/finlogue/finlogue_logo.jpeg',
-      'subtitle': 'Fintech club of LNMIIT',
-      'image': 'assets/assets/images/cultural/finlogue/finlogue_logo.jpeg',
-      'coordinators': _getCoordinators('Finlogue'),
-      'gallery': _getGallery('Finlogue'),
-      'description': 'The Fintech Club of LNMIIT, Finlogue, bridges the gap between finance and technology, hosting discussions, workshops, and case study competitions on investments, markets, and blockchain.',
-      'instagram': 'https://www.instagram.com/finlogue.lnmiit/',
     },
     {
       'name': 'Fundoo',
