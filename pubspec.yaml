@@ -50,6 +50,7 @@ flutter:
     - assets/assets/images/viva/
     - assets/assets/images/plinth/
     - assets/assets/images/despo/
+    - assets/assets/images/presidential/
     - assets/assets/images/tech/astronomy/
     - assets/assets/images/tech/cipherclub/
     - assets/assets/images/tech/cybros/
@@ -69,6 +70,7 @@ flutter:
     - assets/assets/images/sports/squash/
     - assets/assets/images/sports/table_tennis/
     - assets/assets/images/sports/volleyball/
+    - assets/assets/images/sports/zenith/
     - assets/assets/images/ted/
     - assets/assets/images/esummit/
 
