@@ -15,7 +15,7 @@ dependencies:
   google_fonts: ^6.3.0
   url_launcher: ^6.1.10
   syncfusion_flutter_pdfviewer: ^33.2.15
-  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -26,14 +26,20 @@ flutter:
   uses-material-design: true
 
   assets:
+    # Base asset directories
     - assets/images/
     - assets/assets/
+    - assets/assets/images/
     - assets/assets/pages/
     - assets/assets/pages/faces/
+
+    # PDF documents
     - assets/assets/pdfs/
-    - assets/assets/pdfs/curriculum/
-    - assets/assets/pdfs/calendar/
     - assets/assets/pdfs/acadsmap/
+    - assets/assets/pdfs/calendar/
+    - assets/assets/pdfs/curriculum/
+
+    # Cultural Clubs
     - assets/assets/images/cultural/aaveg/
     - assets/assets/images/cultural/capriccio/
     - assets/assets/images/cultural/eminence/
@@ -45,11 +51,8 @@ flutter:
     - assets/assets/images/cultural/rendition/
     - assets/assets/images/cultural/sankalp/
     - assets/assets/images/cultural/vignette/
-    - assets/assets/images/
-    - assets/assets/images/viva/
-    - assets/assets/images/plinth/
-    - assets/assets/images/despo/
-    - assets/assets/images/presidential/
+
+    # Science & Tech Clubs
     - assets/assets/images/tech/astronomy/
     - assets/assets/images/tech/cipherclub/
     - assets/assets/images/tech/cybros/
@@ -57,8 +60,10 @@ flutter:
     - assets/assets/images/tech/ecell/
     - assets/assets/images/tech/finlogue/
     - assets/assets/images/tech/phoenix/
-    - assets/assets/images/tech/quizzinga/
     - assets/assets/images/tech/qbit/
+    - assets/assets/images/tech/quizzinga/
+
+    # Sports Clubs
     - assets/assets/images/sports/badminton/
     - assets/assets/images/sports/basketball/
     - assets/assets/images/sports/carrom/
@@ -71,8 +76,11 @@ flutter:
     - assets/assets/images/sports/table_tennis/
     - assets/assets/images/sports/volleyball/
     - assets/assets/images/sports/zenith/
-    - assets/assets/images/ted/
+
+    # Fests, Events & Councils
+    - assets/assets/images/despo/
     - assets/assets/images/esummit/
-
-
-   
+    - assets/assets/images/plinth/
+    - assets/assets/images/presidential/
+    - assets/assets/images/ted/
+    - assets/assets/images/viva/

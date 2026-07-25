@@ -9,14 +9,14 @@ class OfficeBearersPage extends StatelessWidget {
   static const List<Map<String, String>> officeBearers = [
     {
       "name": "Hemendra Yadav",
-      "image": "assets/images/logo.jpeg",
+      "image": "assets/assets/images/presidential/president.jpeg",
       "role": "President",
       "phone": "+919999999999",
       "email": "gym.president@lnmiit.ac.in",
     },
     {
       "name": "Priyanshu Kumar",
-      "image": "assets/images/logo.jpeg",
+      "image": "assets/assets/images/presidential/vp.jpg",
       "role": "Vice President",
       "phone": "+918888888888",
       "email": "gym.vicepresident@lnmiit.ac.in",

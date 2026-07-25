@@ -11,14 +11,54 @@ class CouncilsPage extends StatelessWidget {
       'icon': 'assets/assets/images/gymkhana.jpg',
       'subtitle': 'Campus leadership and policy',
       'items': [
-        {'name': 'Hemendra Yadav', 'role': 'President', 'image': 'assets/images/logo.jpeg', 'phone': '+919999999999', 'email': 'gym.president@lnmiit.ac.in'}, // phone number not added
-        {'name': 'Priyanshu Kumar', 'role': 'Vice President', 'image': 'assets/images/logo.jpeg', 'phone': '+918888888888', 'email': 'gym.vicepresident@lnmiit.ac.in'}, // phone number not added
-        {'name': 'Adarsh Mishra', 'role': 'Finance Convenor', 'image': 'assets/images/logo.jpeg', 'phone': '+917777777777', 'email': 'gym.financeconvenor@lnmiit.ac.in'}, // phone number not added
-        {'name': 'Shashwat Anand', 'role': 'Senate Convenor', 'image': 'assets/images/logo.jpeg', 'phone': '+916666666666', 'email': 'gym.senateconvenor@lnmiit.ac.in'}, // phone number not added
-        {'name': 'Rishi Raj', 'role': 'COSHA Head', 'image': 'assets/images/logo.jpeg', 'phone': '+915555555555', 'email': 'cosha@lnmiit.ac.in'}, // phone number not added
-        {'name': 'Dr. Nabyendu Das', 'role': 'Dean of Student Affairs', 'image': 'assets/images/logo.jpeg', 'phone': '+914444444444', 'email': 'dean.students@lnmiit.ac.in'}, // phone number not added
-        {'name': 'Dr. Akash Gupta', 'role': 'Faculty Mentor', 'image': 'assets/images/logo.jpeg', 'phone': '+913333333333', 'email': 'akash.gupta@lnmiit.ac.in'}, // phone number not added
-        {'name': 'Samar Singh', 'role': 'Assistant Registrar-Student Affairs', 'image': 'assets/images/logo.jpeg', 'phone': '+912222222222', 'email': 'arss@lnmiit.ac.in'},  // phone number not added
+        {
+          'name': 'Hemendra Yadav',
+          'role': 'President',
+          'image': 'assets/assets/images/presidential/president.jpeg',
+          'email': 'gym.president@lnmiit.ac.in',
+        },
+        {
+          'name': 'Priyanshu Kumar',
+          'role': 'Vice President',
+          'image': 'assets/assets/images/presidential/vp.jpg',
+          'email': 'gym.vicepresident@lnmiit.ac.in',
+        },
+        {
+          'name': 'Adarsh Mishra',
+          'role': 'Finance Convenor',
+          'image': 'assets/assets/images/presidential/fc.jpg',
+          'email': 'gym.financeconvenor@lnmiit.ac.in',
+        },
+        {
+          'name': 'Shashwat Anand',
+          'role': 'Senate Convenor',
+          'image': 'assets/assets/images/presidential/shashwat_anand.jpg',
+          'email': 'gym.senateconvenor@lnmiit.ac.in',
+        },
+        {
+          'name': 'Rishi Raj',
+          'role': 'COSHA Head',
+          'image': 'assets/assets/images/presidential/rishi.jpg',
+          'email': 'cosha@lnmiit.ac.in',
+        },
+        {
+          'name': 'Dr. Nabyendu Das',
+          'role': 'Dean of Student Affairs',
+          'image': 'assets/assets/images/presidential/dosa.png',
+          'email': 'dean.students@lnmiit.ac.in',
+        },
+        {
+          'name': 'Dr. Akash Gupta',
+          'role': 'Faculty Mentor',
+          'image': 'assets/assets/images/presidential/mentor.jpg',
+          'email': 'akash.gupta@lnmiit.ac.in',
+        },
+        {
+          'name': 'Samar Singh',
+          'role': 'Assistant Registrar-Student Affairs',
+          'image': 'assets/assets/pages/faces/samar_singh.jpg',
+          'email': 'arss@lnmiit.ac.in',
+        },
       ],
     },
     {
@@ -26,10 +66,30 @@ class CouncilsPage extends StatelessWidget {
       'icon': 'assets/assets/images/cult_logo.jpeg',
       'subtitle': 'Arts, music, and performance',
       'items': [
-        {'name': 'Kanishq Singhal', 'role': 'General Secretary', 'image': 'assets/images/logo.jpeg', 'phone': '+919999999999', 'email': 'gsec.cultural@lnmiit.ac.in'}, // phone number not added
-        {'name': 'Ishita Khandelwal', 'role': 'Associate Secretary', 'image': 'assets/images/logo.jpeg', 'phone': '+918888888888', 'email': 'assoc.cultural@lnmiit.ac.in'}, // phone number and email not added
-        {'name': 'Tanmay Jain', 'role': 'Finance Convenor', 'image': 'assets/images/logo.jpeg', 'phone': '+917777777777', 'email': 'finance.cultural@lnmiit.ac.in'}, // phone number and email not added
-        {'name': 'Dr. Joyeeta Singha', 'role': 'Faculty Mentor', 'image': 'assets/images/logo.jpeg', 'phone': '+916666666666', 'email': 'joyeeta.singha@lnmiit.ac.in'}, // phone number and email not added
+        {
+          'name': 'Kanishq Singhal',
+          'role': 'General Secretary',
+          'image': 'assets/assets/images/cult_logo.jpeg',
+          'email': 'gsec.cultural@lnmiit.ac.in',
+        },
+        {
+          'name': 'Ishita Khandelwal',
+          'role': 'Associate Secretary',
+          'image': 'assets/assets/images/cult_logo.jpeg',
+          'email': 'assoc.cultural@lnmiit.ac.in',
+        },
+        {
+          'name': 'Tanmay Jain',
+          'role': 'Finance Convenor',
+          'image': 'assets/assets/images/cult_logo.jpeg',
+          'email': 'finance.cultural@lnmiit.ac.in',
+        },
+        {
+          'name': 'Dr. Joyeeta Singha',
+          'role': 'Faculty Mentor',
+          'image': 'assets/assets/images/cult_logo.jpeg',
+          'email': 'joyeeta.singha@lnmiit.ac.in',
+        },
       ],
     },
     {
@@ -37,10 +97,30 @@ class CouncilsPage extends StatelessWidget {
       'icon': 'assets/assets/images/tech_logo.jpg',
       'subtitle': 'Innovation and technical events',
       'items': [
-        {'name': 'Tushar Agrawal', 'role': 'General Secretary', 'image': 'assets/images/logo.jpeg', 'phone': '+919999999999', 'email': 'gsec.science@lnmiit.ac.in'}, // phone number not added
-        {'name': 'Anmol Adwani', 'role': 'Associate Secretary', 'image': 'assets/images/logo.jpeg', 'phone': '+918888888888', 'email': 'assoc.science@lnmiit.ac.in'}, // phone number and email not added
-        {'name': 'Devashish Tripathi', 'role': 'Finance Convenor', 'image': 'assets/images/logo.jpeg', 'phone': '+917777777777', 'email': 'finance.science@lnmiit.ac.in'}, // phone number and email not added
-        {'name': 'Dr. Ashish Kumar Dwivedi', 'role': 'Faculty Mentor', 'image': 'assets/images/logo.jpeg', 'phone': '+916666666666', 'email': 'ashish@lnmiit.ac.in'}, // phone number and email not added
+        {
+          'name': 'Tushar Agrawal',
+          'role': 'General Secretary',
+          'image': 'assets/assets/images/tech_logo.jpg',
+          'email': 'gsec.science@lnmiit.ac.in',
+        },
+        {
+          'name': 'Anmol Adwani',
+          'role': 'Associate Secretary',
+          'image': 'assets/assets/images/tech_logo.jpg',
+          'email': 'assoc.science@lnmiit.ac.in',
+        },
+        {
+          'name': 'Devashish Tripathi',
+          'role': 'Finance Convenor',
+          'image': 'assets/assets/images/tech_logo.jpg',
+          'email': 'finance.science@lnmiit.ac.in',
+        },
+        {
+          'name': 'Dr. Ashish Kumar Dwivedi',
+          'role': 'Faculty Mentor',
+          'image': 'assets/assets/images/tech_logo.jpg',
+          'email': 'ashish@lnmiit.ac.in',
+        },
       ],
     },
     {
@@ -48,9 +128,24 @@ class CouncilsPage extends StatelessWidget {
       'icon': 'assets/assets/images/sports_logo.jpg',
       'subtitle': 'Competitions and athletics',
       'items': [
-        {'name': 'Arihant Bhura', 'role': 'General Secretary', 'image': 'assets/images/logo.jpeg', 'phone': '+919999999999', 'email': 'gsec.sports@lnmiit.ac.in'}, // phone number not added
-        {'name': 'Priyal Maheshwari', 'role': 'Associate Secretary', 'image': 'assets/images/logo.jpeg', 'phone': '+918888888888', 'email': 'assoc.sports@lnmiit.ac.in'}, // phone number and email not added
-        {'name': 'Raghav Khandelwal', 'role': 'Finance Convenor', 'image': 'assets/images/logo.jpeg', 'phone': '+917777777777', 'email': 'finance.sports@lnmiit.ac.in'}, // phone number and email not added
+        {
+          'name': 'Arihant Bhura',
+          'role': 'General Secretary',
+          'image': 'assets/assets/images/sports_logo.jpg',
+          'email': 'gsec.sports@lnmiit.ac.in',
+        },
+        {
+          'name': 'Priyal Maheshwari',
+          'role': 'Associate Secretary',
+          'image': 'assets/assets/images/sports_logo.jpg',
+          'email': 'assoc.sports@lnmiit.ac.in',
+        },
+        {
+          'name': 'Raghav Khandelwal',
+          'role': 'Finance Convenor',
+          'image': 'assets/assets/images/sports_logo.jpg',
+          'email': 'finance.sports@lnmiit.ac.in',
+        },
       ],
     },
   ];
