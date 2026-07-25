@@ -8,10 +8,16 @@ class DesportivosPage extends StatelessWidget {
   const DesportivosPage({super.key});
 
   static const List<String> galleryImages = [
-    // gallery not updated
-    "assets/images/hero_new.jpeg",
-    "assets/images/poster.jpeg",
-    "assets/images/team_poster.jpeg",
+    "assets/assets/images/despo/despo1.jpeg",
+    "assets/assets/images/despo/despo2.jpeg",
+    "assets/assets/images/despo/despo3.jpeg",
+    "assets/assets/images/despo/despo4.jpeg",
+    "assets/assets/images/despo/despo5.jpeg",
+    "assets/assets/images/despo/despo6.jpeg",
+    "assets/assets/images/despo/despo7.jpeg",
+    "assets/assets/images/despo/despo8.jpeg",
+    "assets/assets/images/despo/despo9.jpeg",
+    "assets/assets/images/despo/despo10.jpeg",
   ];
 
   static const List<Map<String, String>> festHeads = [

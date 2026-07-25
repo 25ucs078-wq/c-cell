@@ -233,14 +233,14 @@ class SportsPage extends StatelessWidget {
         {
           'name': 'Aditya Jindal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/squash/squash_logo.jpeg', // Photo not updated
+          'image': 'assets/assets/images/sports/squash/aditya.jpeg',
           'phone': '+919016420001',
           'email': '24uec091@lnmiit.ac.in', 
         },
         {
           'name': 'Vansh Sharma',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/squash/squash_logo.jpeg', // Photo not updated
+          'image': 'assets/assets/images/sports/squash/vansh.jpeg',
           'phone': '+917982332659',
           'email': '24uec120@lnmiit.ac.in',
         },
@@ -325,14 +325,14 @@ class SportsPage extends StatelessWidget {
         {
           'name': 'Diwas Pandey',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports_logo.jpg', // Photo not updated yet
+          'image': 'assets/assets/images/diwas.jpg',
           'phone': '+918279822447',
           'email': '24imai004@lnmiit.ac.in',
         },
         {
           'name': 'Lakshit Agarwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports_logo.jpg', // Photo not updated yet
+          'image': 'assets/assets/images/zenith_logo.jpg', // Photo not updated yet
           'phone': '+918888888888', // Number not updated yet
           'email': '24ucc089@lnmiit.ac.in',
         },
@@ -362,11 +362,24 @@ class SportsPage extends StatelessWidget {
     }
     if (clubName == 'Basketball') {
       return [
-        'assets/assets/images/sports/basketball/basket1.jpeg'
+        'assets/assets/images/sports/basketball/basketball1.jpeg',
+        'assets/assets/images/sports/basketball/basketball2.jpeg',
+        'assets/assets/images/sports/basketball/basketball3.jpeg',
+        'assets/assets/images/sports/basketball/basketball4.jpeg',
+        'assets/assets/images/sports/basketball/basketball5.jpeg',
+        'assets/assets/images/sports/basketball/basketball6.jpeg',
+        'assets/assets/images/sports/basketball/basketball7.jpeg',
+        
       ];
     }
     if (clubName == 'Carrom') {
-      return [];
+      return [
+        'assets/assets/images/sports/carrom/carrom1.jpg',
+        'assets/assets/images/sports/carrom/carrom2.jpg',
+        'assets/assets/images/sports/carrom/carrom3.jpg',
+        'assets/assets/images/sports/carrom/carrom4.jpg',
+        'assets/assets/images/sports/carrom/carrom5.jpg',
+      ];
     }
     if (clubName == 'Chess') {
       return [
@@ -411,7 +424,9 @@ class SportsPage extends StatelessWidget {
     }
     if (clubName == 'Squash') {
       return [
-        'assets/assets/images/sports/squash/squash1.jpeg'
+        'assets/assets/images/sports/squash/sq1.jpeg',
+        'assets/assets/images/sports/squash/sq2.jpeg',
+        'assets/assets/images/sports/squash/sq3.jpeg',
       ];
     }
     if (clubName == 'Table Tennis') {
@@ -430,7 +445,15 @@ class SportsPage extends StatelessWidget {
     }
     if (clubName == 'Zenith') {
       return [
-        'assets/assets/images/sports/zenith/zenith1.jpg'
+        'assets/assets/images/sports/zenith/zen1.jpg',
+        'assets/assets/images/sports/zenith/zen2.jpg',
+        'assets/assets/images/sports/zenith/zen3.jpg',
+        'assets/assets/images/sports/zenith/zen4.jpg',
+        'assets/assets/images/sports/zenith/zen5.jpg',
+        'assets/assets/images/sports/zenith/zen6.jpg',
+        'assets/assets/images/sports/zenith/zen7.jpg',
+        'assets/assets/images/sports/zenith/zen8.jpg',
+        
       ];
     }
     return [];
@@ -545,9 +568,9 @@ class SportsPage extends StatelessWidget {
     },
     {
       'name': 'Zenith',
-      'icon': 'assets/assets/images/sports_logo.jpg',
+      'icon': 'assets/assets/images/zenith_logo.jpg',
       'subtitle': 'The Fitness Club of LNMIIT',
-      'image': 'assets/assets/images/sports_logo.jpg',
+      'image': 'assets/assets/images/zenith_logo.jpg',
       'coordinators': _getCoordinators('Zenith'),
       'gallery': _getGallery('Zenith'),
       'description': "Zenith is the Fitness Club of LNMIIT. We aim to inspire and guide students toward a healthier, more active lifestyle through guided fitness routines, workout sessions, and wellness events.",

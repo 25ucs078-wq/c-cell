@@ -51,7 +51,7 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Aviral Goyal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/phoenix/aviral.jpg',
+          'image': 'assets/assets/images/tech/phoenix/aviral.jpeg',
           'phone': '+917830353557',
           'email': '24uec242@lnmiit.ac.in',
         },
