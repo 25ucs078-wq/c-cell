@@ -179,9 +179,31 @@ class _HomePageState extends State<HomePage> {
                 _buildHeaderNavLink(5, "Clubs", clubsKey),
                 _buildHeaderNavLink(6, "About", aboutKey),
                 const SizedBox(width: 20),
-                ElevatedButton(
+                ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.redAccent,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  icon: const Icon(Icons.campaign, size: 18),
+                  label: Text(
+                    "Campus Buzz",
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 13,
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/campus_buzz');
+                  },
+                ),
+                const SizedBox(width: 10),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white.withValues(alpha: 0.1),
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
                     shape: RoundedRectangleBorder(
@@ -764,7 +786,52 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            const SizedBox(height: 50),
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+              margin: const EdgeInsets.only(bottom: 12),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(14),
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.redAccent.withValues(alpha: 0.35),
+                    Colors.redAccent.withValues(alpha: 0.12),
+                  ],
+                ),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    width: 5,
+                    height: 72,
+                    decoration: BoxDecoration(
+                      color: Colors.redAccent,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  Expanded(
+                    child: ListTile(
+                      leading: const Icon(
+                        Icons.campaign,
+                        color: Colors.redAccent,
+                      ),
+                      title: Text(
+                        "Campus Buzz",
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.pushNamed(context, '/campus_buzz');
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 30),
             AnimatedContainer(
               duration: const Duration(
                 milliseconds: 300,

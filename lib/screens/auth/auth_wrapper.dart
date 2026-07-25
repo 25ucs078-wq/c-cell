@@ -4,6 +4,8 @@ import '../../services/auth_service.dart';
 import '../home_page.dart';
 import 'google_login_page.dart';
 
+import '../../services/fcm_service.dart';
+
 class AuthWrapper extends StatelessWidget {
   const AuthWrapper({super.key});
 
@@ -28,6 +30,7 @@ class AuthWrapper extends StatelessWidget {
 
         // If user is already authenticated and has a valid session
         if (snapshot.hasData && snapshot.data != null) {
+          FcmService().subscribeToCampusBuzzTopic();
           return const HomePage();
         }
 

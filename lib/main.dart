@@ -32,6 +32,9 @@ import 'screens/hods_page.dart';
 import 'screens/important_contacts_page.dart';
 import 'screens/hostel_contacts_page.dart';
 import 'screens/important_links_page.dart';
+import 'screens/campus_buzz_page.dart';
+import 'screens/admin/send_notification_page.dart';
+import 'services/fcm_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +46,12 @@ void main() async {
     await GoogleSignIn.instance.initialize();
   } catch (e) {
     debugPrint('GoogleSignIn initialization failed: $e');
+  }
+
+  try {
+    await FcmService().initialize();
+  } catch (e) {
+    debugPrint('FCM initialization failed: $e');
   }
 
   if (kDebugMode) {
@@ -80,6 +89,12 @@ class MyApp extends StatelessWidget {
             break;
           case '/admin':
             builder = (context) => const AdminDashboardPage();
+            break;
+          case '/admin/send_notification':
+            builder = (context) => const SendNotificationPage();
+            break;
+          case '/campus_buzz':
+            builder = (context) => const CampusBuzzPage();
             break;
           case '/login':
             builder = (context) => const GoogleLoginPage();

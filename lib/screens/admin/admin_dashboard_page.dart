@@ -319,6 +319,15 @@ class _AdminDashboardPageState extends State<AdminDashboardPage> with SingleTick
           'C-CELL Operations Portal',
           style: GoogleFonts.outfit(fontWeight: FontWeight.bold, color: Colors.white),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.campaign, color: Colors.redAccent),
+            tooltip: 'Send Campus Announcement',
+            onPressed: () {
+              Navigator.pushNamed(context, '/admin/send_notification');
+            },
+          ),
+        ],
         bottom: TabBar(
           controller: _tabController,
           isScrollable: true,
