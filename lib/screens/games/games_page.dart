@@ -209,55 +209,99 @@ class _GamesPageState extends State<GamesPage> {
       onEnter: (_) => setState(() => hoveredCard = index),
       onExit: (_) => setState(() => hoveredCard = -1),
       child: AnimatedScale(
-        scale: isHovered ? 1.02 : 1.0,
+        scale: isHovered ? 1.03 : 1.0,
         duration: const Duration(milliseconds: 200),
+        curve: Curves.easeOutCubic,
         child: GlassCard(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(24),
+          blur: 20,
+          color: isHovered
+              ? color.withValues(alpha: 0.16)
+              : Colors.white.withValues(alpha: 0.05),
+          border: Border.all(
+            color: isHovered
+                ? color.withValues(alpha: 0.6)
+                : Colors.white.withValues(alpha: 0.12),
+            width: 1.5,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: isHovered
+                  ? color.withValues(alpha: 0.35)
+                  : Colors.black.withValues(alpha: 0.4),
+              blurRadius: isHovered ? 28 : 16,
+              spreadRadius: isHovered ? 2 : 0,
+              offset: const Offset(0, 8),
+            ),
+          ],
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Cover Image Header
+              // Cover Image Header with Glass Gradient Overlay
               Stack(
                 children: [
                   ClipRRect(
                     borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
+                      topLeft: Radius.circular(24),
+                      topRight: Radius.circular(24),
                     ),
-                    child: Container(
-                      height: 140,
+                    child: SizedBox(
+                      height: 150,
                       width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: color.withValues(alpha: 0.15),
-                      ),
-                      child: Image.asset(
-                        cover,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
-                          return Center(
-                            child: Icon(icon, color: color, size: 50),
-                          );
-                        },
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          Image.asset(
+                            cover,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Container(
+                                color: color.withValues(alpha: 0.2),
+                                child: Center(
+                                  child: Icon(icon, color: color, size: 54),
+                                ),
+                              );
+                            },
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Colors.transparent,
+                                  const Color(0xFF050816).withValues(alpha: 0.8),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
                   Positioned(
-                    top: 12,
-                    right: 12,
+                    top: 14,
+                    right: 14,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
                       decoration: BoxDecoration(
-                        color: Colors.black.withValues(alpha: 0.7),
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: color.withValues(alpha: 0.5)),
+                        color: Colors.black.withValues(alpha: 0.65),
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(color: color.withValues(alpha: 0.6), width: 1.2),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.3),
+                            blurRadius: 8,
+                          ),
+                        ],
                       ),
                       child: Text(
                         category,
                         style: GoogleFonts.poppins(
                           color: color,
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: FontWeight.bold,
-                          letterSpacing: 1,
+                          letterSpacing: 1.2,
                         ),
                       ),
                     ),
@@ -265,14 +309,22 @@ class _GamesPageState extends State<GamesPage> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(18),
+                padding: const EdgeInsets.all(20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
-                        Icon(icon, color: color, size: 22),
-                        const SizedBox(width: 8),
+                        Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: color.withValues(alpha: 0.2),
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(color: color.withValues(alpha: 0.4)),
+                          ),
+                          child: Icon(icon, color: color, size: 20),
+                        ),
+                        const SizedBox(width: 12),
                         Expanded(
                           child: Text(
                             title,
@@ -285,48 +337,57 @@ class _GamesPageState extends State<GamesPage> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 12),
                     Text(
                       description,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.poppins(
                         color: Colors.white70,
-                        fontSize: 12,
-                        height: 1.4,
+                        fontSize: 13,
+                        height: 1.5,
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          children: [
-                            const Icon(
-                              Icons.emoji_events_rounded,
-                              color: Colors.amber,
-                              size: 16,
-                            ),
-                            const SizedBox(width: 4),
-                            Text(
-                              "BEST: $highScore",
-                              style: GoogleFonts.poppins(
-                                color: Colors.amber,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          decoration: BoxDecoration(
+                            color: Colors.amber.withValues(alpha: 0.15),
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(color: Colors.amberAccent.withValues(alpha: 0.4)),
+                          ),
+                          child: Row(
+                            children: [
+                              const Icon(
+                                Icons.emoji_events_rounded,
+                                color: Colors.amberAccent,
+                                size: 16,
                               ),
-                            ),
-                          ],
+                              const SizedBox(width: 6),
+                              Text(
+                                "BEST: $highScore",
+                                style: GoogleFonts.poppins(
+                                  color: Colors.amberAccent,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         ElevatedButton.icon(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: color,
                             foregroundColor: Colors.black,
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: BorderRadius.circular(14),
                             ),
-                            elevation: 4,
+                            elevation: 5,
+                            shadowColor: color.withValues(alpha: 0.5),
                           ),
                           onPressed: () {
                             Navigator.push(
@@ -336,12 +397,13 @@ class _GamesPageState extends State<GamesPage> {
                               ),
                             ).then((_) => setState(() {}));
                           },
-                          icon: const Icon(Icons.play_arrow_rounded, size: 18),
+                          icon: const Icon(Icons.play_arrow_rounded, size: 20),
                           label: Text(
                             "PLAY NOW",
                             style: GoogleFonts.poppins(
                               fontSize: 12,
                               fontWeight: FontWeight.bold,
+                              letterSpacing: 0.5,
                             ),
                           ),
                         ),
