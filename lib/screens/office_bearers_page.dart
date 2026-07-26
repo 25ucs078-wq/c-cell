@@ -175,7 +175,6 @@ class OfficeBearersPage extends StatelessWidget {
     final String name = bearer['name']!;
     final String image = bearer['image']!;
     final String role = bearer['role']!;
-    final String phone = bearer['phone'] ?? '';
     final String email = bearer['email'] ?? '';
 
     if (isMobile) {
@@ -241,14 +240,6 @@ class OfficeBearersPage extends StatelessWidget {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                _buildContactButton(
-                  context: context,
-                  icon: Icons.phone,
-                  isEnabled: phone.isNotEmpty,
-                  tooltip: 'Call',
-                  onTap: () => _launchPhone(context, phone),
-                ),
-                const SizedBox(width: 4),
                 _buildContactButton(
                   context: context,
                   icon: Icons.email,
@@ -328,14 +319,6 @@ class OfficeBearersPage extends StatelessWidget {
                   children: [
                     _buildContactButton(
                       context: context,
-                      icon: Icons.phone,
-                      isEnabled: phone.isNotEmpty,
-                      tooltip: 'Call',
-                      onTap: () => _launchPhone(context, phone),
-                    ),
-                    const SizedBox(width: 8),
-                    _buildContactButton(
-                      context: context,
                       icon: Icons.email,
                       isEnabled: email.isNotEmpty,
                       tooltip: 'Email',
@@ -401,10 +384,6 @@ class OfficeBearersPage extends StatelessWidget {
     }
   }
 
-  Future<void> _launchPhone(BuildContext context, String phone) async {
-    final uri = Uri(scheme: 'tel', path: phone);
-    await _launchUrl(context, uri);
-  }
 
   Future<void> _launchEmail(BuildContext context, String email) async {
     final uri = Uri(scheme: 'mailto', path: email);

@@ -84,6 +84,7 @@ class MyApp extends StatelessWidget {
             builder = (context) => PdfViewerPage(
               title: args['title']!,
               pdfPath: args['pdfPath']!,
+              imagePath: args['imagePath'],
             );
             break;
           case '/more':

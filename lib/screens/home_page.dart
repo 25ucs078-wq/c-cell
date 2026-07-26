@@ -955,6 +955,7 @@ class _HomePageState extends State<HomePage> {
                                     arguments: {
                                       'title': 'Campus Map',
                                       'pdfPath': 'assets/assets/pdfs/acadsmap/AcadsAreamap.pdf',
+                                      'imagePath': 'assets/assets/images/campus map.jpg',
                                     },
                                   );
                                 },
