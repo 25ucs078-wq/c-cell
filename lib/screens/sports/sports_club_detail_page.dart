@@ -185,6 +185,7 @@ class SportsClubDetailPage extends StatelessWidget {
     final String name = person['name'] ?? 'TBD';
     final String role = person['role'] ?? 'Coordinator';
     final String image = person['image'] ?? 'assets/assets/images/tech_logo.jpg';
+    final String phone = person['phone'] ?? '';
     final String email = person['email'] ?? '';
 
     if (isMobile) {
@@ -251,6 +252,14 @@ class SportsClubDetailPage extends StatelessWidget {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
+                _buildContactButton(
+                  context: context,
+                  icon: Icons.phone,
+                  isEnabled: phone.isNotEmpty,
+                  tooltip: 'Call',
+                  onTap: () => _launchPhone(context, phone),
+                ),
+                const SizedBox(width: 4),
                 _buildContactButton(
                   context: context,
                   icon: Icons.email,
@@ -329,6 +338,13 @@ class SportsClubDetailPage extends StatelessWidget {
                   children: [
                     _buildContactButton(
                       context: context,
+                      icon: Icons.phone,
+                      isEnabled: phone.isNotEmpty,
+                      tooltip: 'Call',
+                      onTap: () => _launchPhone(context, phone),
+                    ),
+                    _buildContactButton(
+                      context: context,
                       icon: Icons.email,
                       isEnabled: email.isNotEmpty,
                       tooltip: 'Email',
@@ -394,6 +410,10 @@ class SportsClubDetailPage extends StatelessWidget {
     }
   }
 
+  Future<void> _launchPhone(BuildContext context, String phone) async {
+    final uri = Uri(scheme: 'tel', path: phone);
+    await _launchUrl(context, uri);
+  }
 
   Future<void> _launchEmail(BuildContext context, String email) async {
     final uri = Uri(scheme: 'mailto', path: email);

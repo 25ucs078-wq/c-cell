@@ -270,17 +270,12 @@ class DesportivosPage extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                _buildContactButton(
-                  context: context,
-                  icon: Icons.email,
-                  isEnabled: email.isNotEmpty,
-                  tooltip: 'Email',
-                  onTap: () => _launchEmail(context, email),
-                ),
-              ],
+            _buildContactButton(
+              context: context,
+              icon: Icons.email,
+              isEnabled: email.isNotEmpty,
+              tooltip: 'Email',
+              onTap: () => _launchEmail(context, email),
             ),
           ],
         ),
@@ -346,17 +341,12 @@ class DesportivosPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _buildContactButton(
-                      context: context,
-                      icon: Icons.email,
-                      isEnabled: email.isNotEmpty,
-                      tooltip: 'Email',
-                      onTap: () => _launchEmail(context, email),
-                    ),
-                  ],
+                _buildContactButton(
+                  context: context,
+                  icon: Icons.email,
+                  isEnabled: email.isNotEmpty,
+                  tooltip: 'Email',
+                  onTap: () => _launchEmail(context, email),
                 ),
               ],
             ),
@@ -415,7 +405,6 @@ class DesportivosPage extends StatelessWidget {
       }
     }
   }
-
 
   Future<void> _launchEmail(BuildContext context, String email) async {
     final uri = Uri(scheme: 'mailto', path: email);
