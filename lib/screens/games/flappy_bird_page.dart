@@ -272,16 +272,6 @@ class _FlappyBirdPageState extends State<FlappyBirdPage> with SingleTickerProvid
                       ),
                     ),
                     Positioned(
-                      left: 16,
-                      top: 14,
-                      child: ArcadeIconButton(
-                        icon: Icons.arrow_back_rounded,
-                        color: const Color(0xFFFFD75E),
-                        tooltip: 'Back',
-                        onTap: _exitGame,
-                      ),
-                    ),
-                    Positioned(
                       top: 20,
                       left: 0,
                       right: 0,
@@ -292,6 +282,16 @@ class _FlappyBirdPageState extends State<FlappyBirdPage> with SingleTickerProvid
                     ),
                     if (!_started && !_gameOver) _buildStartOverlay(),
                     if (_gameOver) _buildGameOverOverlay(),
+                    Positioned(
+                      left: 16,
+                      top: 14,
+                      child: ArcadeIconButton(
+                        icon: Icons.arrow_back_rounded,
+                        color: const Color(0xFFFFD75E),
+                        tooltip: 'Back',
+                        onTap: _exitGame,
+                      ),
+                    ),
                   ],
                 );
               },
@@ -372,11 +372,26 @@ class _FlappyBirdPageState extends State<FlappyBirdPage> with SingleTickerProvid
                     const SizedBox(height: 10),
                     _ScoreRow(label: 'BEST', value: '$_highScore'),
                     const SizedBox(height: 18),
-                    ArcadeActionButton(
-                      label: 'Restart',
-                      icon: Icons.restart_alt_rounded,
-                      color: const Color(0xFFE8612C),
-                      onTap: () => _resetGame(),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: ArcadeActionButton(
+                            label: 'Restart',
+                            icon: Icons.restart_alt_rounded,
+                            color: const Color(0xFFE8612C),
+                            onTap: () => _resetGame(),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: ArcadeActionButton(
+                            label: 'Exit',
+                            icon: Icons.home_rounded,
+                            color: const Color(0xFF533826),
+                            onTap: () => _exitGame(),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
