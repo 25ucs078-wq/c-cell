@@ -28,6 +28,7 @@ flutter:
   assets:
     # Base asset directories
     - assets/images/
+    - assets/games/
     - assets/assets/
     - assets/assets/images/
     - assets/assets/pages/

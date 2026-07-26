@@ -24,6 +24,12 @@ import 'screens/important_contacts_page.dart';
 import 'screens/hostel_contacts_page.dart';
 import 'screens/important_links_page.dart';
 import 'screens/spi_calculator_page.dart';
+import 'screens/games/games_page.dart';
+import 'screens/games/block_blast_page.dart';
+import 'screens/games/flappy_bird_page.dart';
+import 'screens/games/fruit_ninja_page.dart';
+import 'screens/games/game_2048_page.dart';
+import 'screens/games/memory_match_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -177,6 +183,24 @@ class MyApp extends StatelessWidget {
               youtube: args['youtube'] ?? '',
               website: args['website'] ?? '',
             );
+            break;
+          case '/games':
+            builder = (context) => const GamesPage();
+            break;
+          case '/block_blast':
+            builder = (context) => const BlockBlastPage();
+            break;
+          case '/flappy_bird':
+            builder = (context) => const FlappyBirdPage();
+            break;
+          case '/fruit_ninja':
+            builder = (context) => const FruitNinjaPage();
+            break;
+          case '/game_2048':
+            builder = (context) => const Game2048Page();
+            break;
+          case '/memory_match':
+            builder = (context) => const MemoryMatchPage();
             break;
           default:
             builder = (context) => const HomePage();
