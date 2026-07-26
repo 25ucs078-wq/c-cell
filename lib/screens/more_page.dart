@@ -398,7 +398,7 @@ class MorePage extends StatelessWidget {
     final String instagram = person['instagram'] ?? '';
     final String linkedin = person['linkedin'] ?? '';
 
-    final bool enableProfile = role == 'FACULTY CONVENOR';
+    final bool enableProfile = role != 'TEAM MENTOR';
 
     if (isMobile) {
       return GestureDetector(
