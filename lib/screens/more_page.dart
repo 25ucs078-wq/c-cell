@@ -122,15 +122,22 @@ class MorePage extends StatelessWidget {
   static const List<Map<String, String>> developers = [
 
     {
+      "name": "Ayush Sharma",
+      "image": "assets/images/ayush.jpeg",
+      "role": "DEVELOPER",
+      "phone": "+918851543730",
+      "email": "25ucc140@lnmiit.ac.in",
+      "instagram": "https://instagram.com/_ayu_sh95/",
+      "linkedin": "https://linkedin.com/in/ayush-sharma-799bba41b/",
+    },
+    {
       "name": "Dhwani Patel",
       "image": "assets/images/Dhwani.jpeg",
       "role": "DEVELOPER",
       "phone": "+917016339927",
       "email": "25ucs059@lnmiit.ac.in",
       "instagram": "https://instagram.com/dhwani21_/",
-      "linkedin": "https://linkedin.com/in/dhwani-patel-57309537b/",
     },
-
     {
       "name": "Harsh Kumar",
       "image": "assets/images/harsh.jpeg",
@@ -141,13 +148,20 @@ class MorePage extends StatelessWidget {
       "linkedin": "https://linkedin.com/in/harsh-kumar-5819b4374/",
     },
     {
+      "name": "Khushi Bajaj",
+      "image": "assets/images/khushi.jpeg",
+      "role": "DEVELOPER",
+      "phone": "+918619313133",
+      "email": "25ucc178@lnmiit.ac.in",
+      "instagram": "https://instagram.com/khushibajaj62/",
+    },
+    {
       "name": "Kunal Agarwal",
       "image": "assets/images/Kunal.jpeg",
       "role": "DEVELOPER",
       "phone": "+919079359051",
       "email": "kunal@lnmiit.ac.in",
       "instagram": "https://instagram.com/kunal_a_23/",
-      "linkedin": "https://linkedin.com/",
     },
     {
       "name": "Lavanya Gupta",
@@ -157,6 +171,40 @@ class MorePage extends StatelessWidget {
       "email": "25ucc069@lnmiit.ac.in",
       "instagram": "https://instagram.com/_lavanyagupta_2008/",
       "linkedin": "https://linkedin.com/in/lavanya-gupta-41251a38b/",
+    },
+    {
+      "name": "Raghav Khandelwal",
+      "image": "assets/images/raghav.jpeg",
+      "role": "DEVELOPER",
+      "phone": "+919950924277",
+      "email": "25ucs226@lnmiit.ac.in",
+      "instagram": "https://instagram.com/_.raghav_khandelwal._/",
+    },
+    {
+      "name": "Sakshi Jain",
+      "image": "assets/images/sakshi.jpeg",
+      "role": "DEVELOPER",
+      "phone": "+917357558385",
+      "email": "25uec231@lnmiit.ac.in",
+      "instagram": "https://instagram.com/sakshi_j2908/",
+    },
+    {
+      "name": "Saumya Gaur",
+      "image": "assets/images/saumya.jpeg",
+      "role": "DEVELOPER",
+      "phone": "+919194609093",
+      "email": "25uec184@lnmiit.ac.in",
+      "instagram": "https://instagram.com/saumya._gaur/",
+      "linkedin": "https://linkedin.com/in/saumya-gaur-b60811418/",
+    },
+    {
+      "name": "Vaniya Chopra",
+      "image": "assets/images/vaniya.jpeg",
+      "role": "DEVELOPER",
+      "phone": "+916367492977",
+      "email": "25uec079@lnmiit.ac.in",
+      "instagram": "https://instagram.com/vaniyachopraa/",
+      "linkedin": "https://linkedin.com/in/vaniya-chopra-7b17b53a4/",
     },
   ];
 
@@ -254,7 +302,7 @@ class MorePage extends StatelessWidget {
                       ),
                       SizedBox(height: isMobile ? 16 : 25),
                       Text(
-                        "Nobody walks LNMIIT alone.\n\nGuiding minds.\nBuilding friendships.\nCreating families.",
+                        "Nobody walks LNMIIT alone.\n\nGuiding minds.\nBuilding friendships.\nCreating bonds.",
                         style: GoogleFonts.poppins(
                           color: Colors.white70,
                           fontSize: isMobile ? 14 : 18,
@@ -350,7 +398,7 @@ class MorePage extends StatelessWidget {
     final String instagram = person['instagram'] ?? '';
     final String linkedin = person['linkedin'] ?? '';
 
-    final bool enableProfile = role != 'TEAM MENTOR';
+    final bool enableProfile = role == 'FACULTY CONVENOR';
 
     if (isMobile) {
       return GestureDetector(
