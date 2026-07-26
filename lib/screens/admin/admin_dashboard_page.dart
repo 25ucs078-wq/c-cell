@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../services/admin_service.dart';
@@ -19,6 +20,8 @@ class _AdminDashboardPageState extends State<AdminDashboardPage> with SingleTick
   
   late TabController _tabController;
   
+  bool _isAuthorizedAdmin = false;
+  bool _isVerifyingRole = true;
   bool _isLoading = false;
   String? _cycleId;
 
@@ -53,7 +56,46 @@ class _AdminDashboardPageState extends State<AdminDashboardPage> with SingleTick
   void initState() {
     super.initState();
     _tabController = TabController(length: 6, vsync: this);
-    _loadConfig();
+    _verifyAdminAuthorization();
+  }
+
+  Future<void> _verifyAdminAuthorization() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      _denyAccess('Authentication required to access Admin Operations.');
+      return;
+    }
+
+    try {
+      final doc = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+      if (doc.exists && doc.data() != null) {
+        final role = doc.data()!['role'];
+        if (role == 'admin') {
+          if (mounted) {
+            setState(() {
+              _isAuthorizedAdmin = true;
+              _isVerifyingRole = false;
+            });
+            _loadConfig();
+          }
+          return;
+        }
+      }
+      _denyAccess('Access Denied: You must be an authorized admin (role == admin) to access this portal.');
+    } catch (e) {
+      _denyAccess('Error verifying authorization: $e');
+    }
+  }
+
+  void _denyAccess(String message) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.redAccent,
+        content: Text(message),
+      ),
+    );
+    Navigator.pushReplacementNamed(context, '/home');
   }
 
   @override
@@ -310,6 +352,45 @@ class _AdminDashboardPageState extends State<AdminDashboardPage> with SingleTick
 
   @override
   Widget build(BuildContext context) {
+    if (_isVerifyingRole) {
+      return const Scaffold(
+        backgroundColor: Color(0xFF050816),
+        body: Center(
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.redAccent),
+          ),
+        ),
+      );
+    }
+
+    if (!_isAuthorizedAdmin) {
+      return Scaffold(
+        backgroundColor: const Color(0xFF050816),
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.lock_outline, color: Colors.redAccent, size: 64),
+                const SizedBox(height: 16),
+                Text(
+                  'Access Denied',
+                  style: GoogleFonts.outfit(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'You must be an authorized C-Cell admin to access this portal.',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.poppins(color: Colors.white70, fontSize: 14),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: const Color(0xFF050816),
       appBar: AppBar(

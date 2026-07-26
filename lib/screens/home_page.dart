@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'notes_pyqs_page.dart';
 import 'profile_page.dart';
+import '../services/auth_service.dart';
+import '../models/user_model.dart';
 
 const String messMenuDriveUrl = "https://drive.google.com/drive/folders/1vCqyE7QiiFn6ExJsw3PdktB4wD_Q_5vo";
 
@@ -830,6 +833,66 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
+            ),
+            StreamBuilder<UserModel?>(
+              stream: AuthService().streamUserProfile(FirebaseAuth.instance.currentUser?.uid ?? ''),
+              builder: (context, snapshot) {
+                if (snapshot.hasData && snapshot.data?.role == 'admin') {
+                  return AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                    margin: const EdgeInsets.only(bottom: 12),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14),
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.amber.withValues(alpha: 0.35),
+                          Colors.amber.withValues(alpha: 0.12),
+                        ],
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 5,
+                          height: 72,
+                          decoration: BoxDecoration(
+                            color: Colors.amberAccent,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        Expanded(
+                          child: ListTile(
+                            leading: const Icon(
+                              Icons.admin_panel_settings,
+                              color: Colors.amberAccent,
+                            ),
+                            title: Text(
+                              "Admin Portal",
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            subtitle: Text(
+                              "Operations & Announcements",
+                              style: GoogleFonts.poppins(
+                                color: Colors.amberAccent,
+                                fontSize: 11,
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.pop(context);
+                              Navigator.pushNamed(context, '/admin');
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+                return const SizedBox.shrink();
+              },
             ),
             const SizedBox(height: 30),
             AnimatedContainer(

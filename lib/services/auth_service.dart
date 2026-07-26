@@ -148,6 +148,35 @@ class AuthService {
     }
   }
 
+  // Stream current user profile from Firestore
+  Stream<UserModel?> streamUserProfile(String uid) {
+    if (uid.isEmpty) return Stream.value(null);
+    return _db.collection('users').doc(uid).snapshots().map((snapshot) {
+      if (!snapshot.exists || snapshot.data() == null) return null;
+      return UserModel.fromMap(snapshot.data()!, snapshot.id);
+    });
+  }
+
+  // Get user profile once
+  Future<UserModel?> getUserProfile(String uid) async {
+    try {
+      final doc = await _db.collection('users').doc(uid).get();
+      if (!doc.exists || doc.data() == null) return null;
+      return UserModel.fromMap(doc.data()!, doc.id);
+    } catch (e) {
+      debugPrint('Error getting user profile: $e');
+      return null;
+    }
+  }
+
+  // Check if current user has admin role in Firestore
+  Future<bool> isCurrentUserAdmin() async {
+    final user = _auth.currentUser;
+    if (user == null) return false;
+    final profile = await getUserProfile(user.uid);
+    return profile?.role == 'admin';
+  }
+
   // Sign out from both Firebase and Google Sign-In
   Future<void> signOut() async {
     try {
