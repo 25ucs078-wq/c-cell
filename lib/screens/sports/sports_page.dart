@@ -431,7 +431,11 @@ class SportsPage extends StatelessWidget {
     }
     if (clubName == 'Table Tennis') {
       return [
-        'assets/assets/images/sports/table_tennis/tablt1.jpg'
+        'assets/assets/images/sports/table_tennis/tt1.jpeg',
+        'assets/assets/images/sports/table_tennis/tt2.jpeg',
+        'assets/assets/images/sports/table_tennis/tt3.jpeg',
+        'assets/assets/images/sports/table_tennis/tt4.jpeg',
+        'assets/assets/images/sports/table_tennis/tt5.jpeg',
       ];
     }
     if (clubName == 'Volleyball') {
