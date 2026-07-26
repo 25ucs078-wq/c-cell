@@ -567,92 +567,97 @@ class _Game2048PageState extends State<Game2048Page> {
                                   ),
                                 ],
                               ),
-                              padding: EdgeInsets.all(gridSpacing),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFF11182A),
-                                  borderRadius: BorderRadius.circular(24),
-                                ),
-                                child: GestureDetector(
-                                  onPanStart: (details) {
-                                    _panStartPos = details.localPosition;
-                                  },
-                                  onPanUpdate: (details) {
-                                    if (_panStartPos == null) return;
-                                    final dx =
-                                        details.localPosition.dx -
-                                        _panStartPos!.dx;
-                                    final dy =
-                                        details.localPosition.dy -
-                                        _panStartPos!.dy;
-                                    const double threshold = 40.0;
-                                    if (dx.abs() > threshold ||
-                                        dy.abs() > threshold) {
-                                      if (dx.abs() > dy.abs()) {
-                                        _handleSwipe(dx > 0 ? 1 : -1, 0);
-                                      } else {
-                                        _handleSwipe(0, dy > 0 ? 1 : -1);
+                              child: SizedBox(
+                                width: exactBoardSize,
+                                height: exactBoardSize,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF11182A),
+                                    borderRadius: BorderRadius.circular(24),
+                                  ),
+                                  child: GestureDetector(
+                                    behavior: HitTestBehavior.opaque,
+                                    onPanStart: (details) {
+                                      _panStartPos = details.globalPosition;
+                                    },
+                                    onPanUpdate: (details) {
+                                      if (_panStartPos == null) return;
+                                      final dx =
+                                          details.globalPosition.dx -
+                                          _panStartPos!.dx;
+                                      final dy =
+                                          details.globalPosition.dy -
+                                          _panStartPos!.dy;
+                                      const double threshold = 30.0;
+                                      if (dx.abs() > threshold ||
+                                          dy.abs() > threshold) {
+                                        if (dx.abs() > dy.abs()) {
+                                          _handleSwipe(dx > 0 ? 1 : -1, 0);
+                                        } else {
+                                          _handleSwipe(0, dy > 0 ? 1 : -1);
+                                        }
+                                        _panStartPos = null;
                                       }
+                                    },
+                                    onPanEnd: (details) {
                                       _panStartPos = null;
-                                    }
-                                  },
-                                  onPanEnd: (details) {
-                                    _panStartPos = null;
-                                  },
-                                  child: GridView.builder(
-                                    physics: const NeverScrollableScrollPhysics(),
-                                    itemCount: boardSize * boardSize,
-                                    gridDelegate:
-                                        SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: boardSize,
-                                          crossAxisSpacing: gridSpacing,
-                                          mainAxisSpacing: gridSpacing,
-                                        ),
-                                    itemBuilder: (context, index) {
-                                      int row = index ~/ boardSize;
-                                      int col = index % boardSize;
-                                      int value = _grid[row][col];
+                                    },
+                                    child: GridView.builder(
+                                      shrinkWrap: true,
+                                      physics: const NeverScrollableScrollPhysics(),
+                                      itemCount: boardSize * boardSize,
+                                      gridDelegate:
+                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: boardSize,
+                                            crossAxisSpacing: gridSpacing,
+                                            mainAxisSpacing: gridSpacing,
+                                          ),
+                                      itemBuilder: (context, index) {
+                                        int row = index ~/ boardSize;
+                                        int col = index % boardSize;
+                                        int value = _grid[row][col];
 
-                                      return AnimatedContainer(
-                                        duration: const Duration(
-                                          milliseconds: 180,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: value == 0
-                                              ? Colors.white.withValues(alpha: 0.06)
-                                              : _getTileColor(value),
-                                          borderRadius: BorderRadius.circular(16),
-                                          border: Border.all(
+                                        return AnimatedContainer(
+                                          duration: const Duration(
+                                            milliseconds: 180,
+                                          ),
+                                          decoration: BoxDecoration(
                                             color: value == 0
                                                 ? Colors.white.withValues(alpha: 0.06)
-                                                : Colors.white.withValues(alpha: 0.18),
+                                                : _getTileColor(value),
+                                            borderRadius: BorderRadius.circular(16),
+                                            border: Border.all(
+                                              color: value == 0
+                                                  ? Colors.white.withValues(alpha: 0.06)
+                                                  : Colors.white.withValues(alpha: 0.18),
+                                            ),
+                                            boxShadow: value > 0
+                                                ? [
+                                                    BoxShadow(
+                                                      color: Colors.black.withValues(alpha: 0.15),
+                                                      blurRadius: 6,
+                                                      offset: const Offset(0, 4),
+                                                    ),
+                                                  ]
+                                                : [],
                                           ),
-                                          boxShadow: value > 0
-                                              ? [
-                                                  BoxShadow(
-                                                    color: Colors.black.withValues(alpha: 0.15),
-                                                    blurRadius: 6,
-                                                    offset: const Offset(0, 4),
-                                                  ),
-                                                ]
-                                              : [],
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            value == 0 ? '' : '$value',
-                                            style: GoogleFonts.bebasNeue(
-                                              color: _getTileTextColor(value),
-                                              fontSize: value >= 1024
-                                                  ? tileSize * 0.28
-                                                  : value >= 128
-                                                  ? tileSize * 0.34
-                                                  : tileSize * 0.44,
-                                              fontWeight: FontWeight.w800,
+                                          child: Center(
+                                            child: Text(
+                                              value == 0 ? '' : '$value',
+                                              style: GoogleFonts.bebasNeue(
+                                                color: _getTileTextColor(value),
+                                                fontSize: value >= 1024
+                                                    ? tileSize * 0.28
+                                                    : value >= 128
+                                                    ? tileSize * 0.34
+                                                    : tileSize * 0.44,
+                                                fontWeight: FontWeight.w800,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      );
-                                    },
+                                        );
+                                      },
+                                    ),
                                   ),
                                 ),
                               ),
