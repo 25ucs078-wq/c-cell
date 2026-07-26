@@ -6,8 +6,10 @@ import 'notes_pyqs_page.dart';
 import 'profile_page.dart';
 
 const String messMenuDriveUrl = "https://drive.google.com/drive/folders/1vCqyE7QiiFn6ExJsw3PdktB4wD_Q_5vo";
+const String campusMapDriveUrl = "https://drive.google.com/drive/folders/18zdpGIb9xHHeh_wqrYYRfFeSHWsv4yIF"; 
 
 const String busScheduleUrl = "https://lnmiit.ac.in/transportation/";
+const String hostelContactsUrl = "https://lnmiit.ac.in/office-and-administration/"; 
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -22,6 +24,17 @@ class _HomePageState extends State<HomePage> {
   int hoveredHeaderLink = -1;
 
   Future<void> _launchURL(String urlString) async {
+    if (urlString.trim().isEmpty) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Drive link will be available soon!"),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+      return;
+    }
     final Uri url = Uri.parse(urlString);
     try {
       if (await canLaunchUrl(url)) {
@@ -173,7 +186,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.pushNamed(context, '/more');
                   },
                   child: Text(
-                    "Meet the Team",
+                    "Campus Buzz",
                     style: GoogleFonts.poppins(
                       fontWeight: FontWeight.bold,
                       fontSize: 13,
@@ -949,15 +962,7 @@ class _HomePageState extends State<HomePage> {
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
                                 onTap: () {
-                                  Navigator.pushNamed(
-                                    context,
-                                    '/pdf_viewer',
-                                    arguments: {
-                                      'title': 'Campus Map',
-                                      'pdfPath': 'assets/assets/pdfs/acadsmap/AcadsAreamap.pdf',
-                                      'imagePath': 'assets/assets/images/campus map.jpg',
-                                    },
-                                  );
+                                  _launchURL(campusMapDriveUrl);
                                 },
                               ),
                               buildEventCard(
@@ -1119,7 +1124,7 @@ class _HomePageState extends State<HomePage> {
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
                                 onTap: () {
-                                  Navigator.pushNamed(context, '/hostel_contacts');
+                                  _launchURL(hostelContactsUrl);
                                 },
                               ),
                             ],

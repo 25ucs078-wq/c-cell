@@ -65,7 +65,7 @@ class ScienceTechPage extends StatelessWidget {
         {
           'name': 'Shreekant Kumawat',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/tech/phoenix/phoenix_logo.png', // not updated
+          'image': 'assets/assets/images/tech/phoenix/shreekant.png', // not updated
           'phone': '+919587826474',
           'email': '24uec183@lnmiit.ac.in',
         },
