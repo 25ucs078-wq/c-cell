@@ -8,9 +8,18 @@ class VivacityPage extends StatelessWidget {
   const VivacityPage({super.key});
 
   static const List<String> galleryImages = [
-    "assets/images/hero_new.jpeg",
-    "assets/images/team_poster.jpeg",
-    "assets/images/poster.jpeg",
+    "assets/assets/images/viva/viva1.jpeg",
+    "assets/assets/images/viva/viva2.jpeg",
+    "assets/assets/images/viva/viva3.jpeg",
+    "assets/assets/images/viva/viva4.jpeg",
+    "assets/assets/images/viva/viva5.jpeg",
+    "assets/assets/images/viva/viva6.jpeg",
+    "assets/assets/images/viva/viva7.jpg",
+    "assets/assets/images/viva/viva8.jpg",
+    "assets/assets/images/viva/viva9.jpg",
+    "assets/assets/images/viva/viva10.jpg",
+    "assets/assets/images/viva/viva11.jpg",
+    "assets/assets/images/viva/viva12.jpg",
   ];
 
   static const List<Map<String, String>> festHeads = [
