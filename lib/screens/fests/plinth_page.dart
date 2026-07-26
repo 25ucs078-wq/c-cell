@@ -8,10 +8,16 @@ class PlinthPage extends StatelessWidget {
   const PlinthPage({super.key});
 
   static const List<String> galleryImages = [
-    // same as desportivos gallery not updated
-    "assets/images/poster.jpeg",
-    "assets/images/hero_new.jpeg",
-    "assets/images/team_poster.jpeg",
+    "assets/assets/images/plinth/plinth1.jpg",
+    "assets/assets/images/plinth/plinth2.jpg",
+    "assets/assets/images/plinth/plinth3.jpg",
+    "assets/assets/images/plinth/plinth4.jpg",
+    "assets/assets/images/plinth/plinth5.jpg",
+    "assets/assets/images/plinth/plinth6.jpg",
+    "assets/assets/images/plinth/plinth7.jpg",
+    "assets/assets/images/plinth/plinth8.jpg",
+    "assets/assets/images/plinth/plinth9.jpg",
+    "assets/assets/images/plinth/plinth10.jpg",
   ];
 
   static const List<Map<String, String>> festHeads = [
