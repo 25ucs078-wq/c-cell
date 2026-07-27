@@ -109,11 +109,11 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
       return;
     }
 
-    // Application Number Validation: matching LNMIIT format (LNMXXNXX)
-    final regExp = RegExp(r'^LNM[A-Z]{2}\d[A-Z]{2}$');
+    // Application Number Validation: matching LNMIIT format (LNM + 5 alphanumeric characters)
+    final regExp = RegExp(r'^LNM[A-Z0-9]{5}$');
     if (!regExp.hasMatch(appNo)) {
       setState(() {
-        _errorMessage = 'Invalid format. Must follow LNMIIT pattern (e.g., LNMSV5KB).';
+        _errorMessage = 'Invalid format. Must start with LNM followed by 5 alphanumeric characters (e.g., LNMPPNUS, LNM53467).';
       });
       return;
     }
@@ -368,7 +368,7 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
                 TextField(
                   controller: _appNoController,
                   style: const TextStyle(color: Colors.white),
-                  decoration: _inputDecoration('Application Number', 'e.g. LNMSV5KB', Icons.app_registration),
+                  decoration: _inputDecoration('Application Number', 'e.g. LNMPPNUS', Icons.app_registration),
                 ),
                 const SizedBox(height: 28),
                 _isLoading
