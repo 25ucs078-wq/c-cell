@@ -1138,14 +1138,6 @@ class _HomePageState extends State<HomePage> {
                                 },
                               ),
                               buildEventCard(
-                                404,
-                                Colors.pink,
-                                Icons.campaign,
-                                "Campus Buzz",
-                                isSmallScreen: isSmallScreen,
-                                listCardHeight: listCardHeight,
-                              ),
-                              buildEventCard(
                                 405,
                                 Colors.blue,
                                 Icons.menu_book,
