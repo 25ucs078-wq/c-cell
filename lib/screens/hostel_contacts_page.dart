@@ -11,18 +11,36 @@ class HostelContactsPage extends StatelessWidget {
       "sectionTitle": "Administration",
       "contacts": [
         {
-          "name": "CAO",
-          "designation": "Chief Administrative Officer",
+          "name": "Dr. Servesh Kumar Agnihotri",
+          "designation": "Chief Warden",
           "image": "assets/images/logo.jpeg",
-          "email": "cao@lnmiit.ac.in",
-          "phone1": "+91 141 3526006",
+          "email1": "chief-warden@lnmiit.ac.in",
         },
         {
-          "name": "Mr. Manoj Singh",
-          "designation": "Chief Warden Office - Office Staff",
+          "name": " Dr. Vikas Sharma",
+          "designation": "Associate Chief Warden & Mess Warden",
           "image": "assets/images/logo.jpeg",
-          "email": "cwoffice@lnmiit.ac.in",
-          "phone1": "+919351773779",
+          "email1": "cwoffice@lnmiit.ac.in",
+        },
+        {
+          "name": "Dr. Poonam Gera",
+          "designation": "Warden - Girls Hostel",
+          "image": "assets/images/logo.jpeg",
+          "email1": "warden-gh@lnmiit.ac.in",
+        },
+        {
+          "name": "Mr. Parvez Ahmed",
+          "designation": "Assistant Warden – Boy’s Hostel",
+          "image": "assets/images/logo.jpeg",
+          "email1": "asst.warden.bh1@lnmiit.ac.in",
+          "email2": "asst.warden.bh2@lnmiit.ac.in",
+          
+        },
+        {
+          "name": "Dr. Poonam Gera",
+          "designation": "Warden - Girls Hostel",
+          "image": "assets/images/logo.jpeg",
+          "email": "warden-gh@lnmiit.ac.in",
         },
       ],
     },
@@ -400,12 +418,24 @@ class HostelContactsPage extends StatelessWidget {
     final String name = contact['name'] ?? '';
     final String? designation = contact['designation'];
     final String image = contact['image'] ?? 'assets/images/logo.jpeg';
-    final String? email = contact['email'];
+    
+    String? email1 = contact['email1'] ?? contact['email'];
+    String? email2 = contact['email2'];
+
+    if (email1 != null && email2 == null && (email1.contains(',') || email1.contains(';'))) {
+      final parts = email1.split(RegExp(r'[,;]'));
+      if (parts.length >= 2) {
+        email1 = parts[0].trim();
+        email2 = parts[1].trim();
+      }
+    }
+
     final String? phone1 = contact['phone1'];
     final String? phone2 = contact['phone2'];
 
     final bool hasDesignation = designation != null && designation.trim().isNotEmpty;
-    final bool hasEmail = email != null && email.trim().isNotEmpty;
+    final bool hasEmail1 = email1 != null && email1.trim().isNotEmpty;
+    final bool hasEmail2 = email2 != null && email2.trim().isNotEmpty;
     final bool hasPhone1 = phone1 != null && phone1.trim().isNotEmpty;
     final bool hasPhone2 = phone2 != null && phone2.trim().isNotEmpty;
 
@@ -485,7 +515,58 @@ class HostelContactsPage extends StatelessWidget {
               ),
             ),
           ],
-          if (hasEmail) ...[
+          if (hasEmail1 && hasEmail2) ...[
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orange.shade800,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      elevation: 3,
+                    ),
+                    onPressed: () => _launchEmail(context, email1!),
+                    icon: const Icon(Icons.email_outlined, size: 14),
+                    label: Text(
+                      "Email 1",
+                      style: GoogleFonts.poppins(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.deepOrange.shade800,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      elevation: 3,
+                    ),
+                    onPressed: () => _launchEmail(context, email2!),
+                    icon: const Icon(Icons.email_outlined, size: 14),
+                    label: Text(
+                      "Email 2",
+                      style: GoogleFonts.poppins(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ] else if (hasEmail1 || hasEmail2) ...[
             const SizedBox(height: 16),
             SizedBox(
               width: double.infinity,
@@ -499,7 +580,7 @@ class HostelContactsPage extends StatelessWidget {
                   ),
                   elevation: 3,
                 ),
-                onPressed: () => _launchEmail(context, email),
+                onPressed: () => _launchEmail(context, (hasEmail1 ? email1 : email2)!),
                 icon: const Icon(Icons.email_outlined, size: 16),
                 label: Text(
                   "Send Email",
@@ -511,7 +592,8 @@ class HostelContactsPage extends StatelessWidget {
               ),
             ),
           ],
-          if (hasPhone1 || hasPhone2) const SizedBox(height: 10),
+          if ((hasEmail1 || hasEmail2) && (hasPhone1 || hasPhone2)) const SizedBox(height: 10),
+          if (!(hasEmail1 || hasEmail2) && (hasPhone1 || hasPhone2)) const SizedBox(height: 16),
           if (hasPhone1 && hasPhone2)
             Row(
               children: [

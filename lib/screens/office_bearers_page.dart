@@ -9,14 +9,14 @@ class OfficeBearersPage extends StatelessWidget {
   static const List<Map<String, String>> officeBearers = [
     {
       "name": "Hemendra Yadav",
-      "image": "assets/images/logo.jpeg",
+      "image": "assets/assets/images/presidential/president.jpeg",
       "role": "President",
       "phone": "+919999999999",
       "email": "gym.president@lnmiit.ac.in",
     },
     {
       "name": "Priyanshu Kumar",
-      "image": "assets/images/logo.jpeg",
+      "image": "assets/assets/images/presidential/vp.jpg",
       "role": "Vice President",
       "phone": "+918888888888",
       "email": "gym.vicepresident@lnmiit.ac.in",
@@ -55,82 +55,66 @@ class OfficeBearersPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: isMobile ? 180 : 260,
-                  child: Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      Image.asset(
-                        "assets/images/team_poster.jpeg",
-                        fit: BoxFit.cover,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Colors.black.withValues(alpha: 0.15),
-                              Colors.black.withValues(alpha: 0.35),
-                              const Color(0xFF050816),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Transform.translate(
-                  offset: Offset(isMobile ? 16 : 25, isMobile ? -45 : -70),
+                const SizedBox(height: 20),
+                Center(
                   child: Container(
+                    width: isMobile ? 120 : 180,
+                    height: isMobile ? 120 : 180,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.redAccent,
-                        width: isMobile ? 3 : 5,
-                      ),
+                      border: Border.all(color: Colors.redAccent, width: 3),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.redAccent.withValues(alpha: 0.5),
-                          blurRadius: isMobile ? 15 : 25,
+                          color: Colors.redAccent.withValues(alpha: 0.3),
+                          blurRadius: 16,
+                          spreadRadius: 2,
                         ),
                       ],
                     ),
-                    child: CircleAvatar(
-                      radius: isMobile ? 40 : 60,
-                      backgroundImage: const AssetImage(
-                        "assets/images/logo.jpeg",
+                    child: ClipOval(
+                      child: Image.asset(
+                        'assets/assets/images/gymkhana.jpg',
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            color: Colors.grey[800],
+                            child: Icon(
+                              Icons.image_not_supported,
+                              color: Colors.white54,
+                              size: isMobile ? 48 : 64,
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: isMobile ? 16 : 20),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: isMobile ? 16 : 20,
+                    vertical: isMobile ? 16 : 20,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "MEET THE TEAM BEHIND THE STUDENT GYMKHANA",
+                        "EXPLORE OFFICE BEARERS",
                         style: GoogleFonts.playfairDisplay(
                           color: Colors.white,
-                          fontSize: isMobile ? 24 : 36,
+                          fontSize: isMobile ? 24 : 32,
                           letterSpacing: 2,
-                          height: 1.1,
                         ),
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 12),
                       Text(
-                        "These student leaders shape campus life and keep the community moving.",
+                        "A closer look at the people and activities that define Office Bearers.",
                         style: GoogleFonts.poppins(
                           color: Colors.white70,
-                          fontSize: isMobile ? 14 : 18,
-                          height: 1.7,
+                          fontSize: isMobile ? 14 : 16,
+                          height: 1.6,
                         ),
                       ),
                       const SizedBox(height: 30),
-                      buildSectionTitle("OFFICE BEARERS"),
-                      const SizedBox(height: 20),
                       LayoutBuilder(
                         builder: (context, constraints) {
                           double parentWidth = constraints.maxWidth;
@@ -191,7 +175,6 @@ class OfficeBearersPage extends StatelessWidget {
     final String name = bearer['name']!;
     final String image = bearer['image']!;
     final String role = bearer['role']!;
-    final String phone = bearer['phone'] ?? '';
     final String email = bearer['email'] ?? '';
 
     if (isMobile) {
@@ -254,25 +237,12 @@ class OfficeBearersPage extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                _buildContactButton(
-                  context: context,
-                  icon: Icons.phone,
-                  isEnabled: phone.isNotEmpty,
-                  tooltip: 'Call',
-                  onTap: () => _launchPhone(context, phone),
-                ),
-                const SizedBox(width: 4),
-                _buildContactButton(
-                  context: context,
-                  icon: Icons.email,
-                  isEnabled: email.isNotEmpty,
-                  tooltip: 'Email',
-                  onTap: () => _launchEmail(context, email),
-                ),
-              ],
+            _buildContactButton(
+              context: context,
+              icon: Icons.email,
+              isEnabled: email.isNotEmpty,
+              tooltip: 'Email',
+              onTap: () => _launchEmail(context, email),
             ),
           ],
         ),
@@ -339,25 +309,12 @@ class OfficeBearersPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _buildContactButton(
-                      context: context,
-                      icon: Icons.phone,
-                      isEnabled: phone.isNotEmpty,
-                      tooltip: 'Call',
-                      onTap: () => _launchPhone(context, phone),
-                    ),
-                    const SizedBox(width: 8),
-                    _buildContactButton(
-                      context: context,
-                      icon: Icons.email,
-                      isEnabled: email.isNotEmpty,
-                      tooltip: 'Email',
-                      onTap: () => _launchEmail(context, email),
-                    ),
-                  ],
+                _buildContactButton(
+                  context: context,
+                  icon: Icons.email,
+                  isEnabled: email.isNotEmpty,
+                  tooltip: 'Email',
+                  onTap: () => _launchEmail(context, email),
                 ),
               ],
             ),
@@ -415,11 +372,6 @@ class OfficeBearersPage extends StatelessWidget {
         );
       }
     }
-  }
-
-  Future<void> _launchPhone(BuildContext context, String phone) async {
-    final uri = Uri(scheme: 'tel', path: phone);
-    await _launchUrl(context, uri);
   }
 
   Future<void> _launchEmail(BuildContext context, String email) async {

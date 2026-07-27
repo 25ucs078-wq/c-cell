@@ -47,12 +47,14 @@ class EventsPage extends StatelessWidget {
         },
       ],
       'gallery': [
-        //galeery has old pics of last year so replace with new ones
-        'assets/assets/images/ted/ted1.jpg',
-        'assets/assets/images/ted/ted2.jpg',
-        'assets/assets/images/ted/ted3.jpg',
-        'assets/assets/images/ted/ted4.jpg',
+        'assets/assets/images/ted/ted1.jpeg',
+        'assets/assets/images/ted/ted2.jpeg',
+        'assets/assets/images/ted/ted3.jpeg',
+        'assets/assets/images/ted/ted4.jpeg',
         'assets/assets/images/ted/ted5.jpg',
+        'assets/assets/images/ted/ted6.jpg',
+        'assets/assets/images/ted/ted7.jpg',
+        'assets/assets/images/ted/ted8.jpg',
       ],
     },
     {
@@ -100,11 +102,14 @@ class EventsPage extends StatelessWidget {
         },
       ],
       'gallery': [
-        //same as ted replace with new ones
         'assets/assets/images/esummit/esummit1.jpg',
         'assets/assets/images/esummit/esummit2.jpg',
         'assets/assets/images/esummit/esummit3.jpg',
         'assets/assets/images/esummit/esummit4.jpg',
+        'assets/assets/images/esummit/esummit5.jpg',
+        'assets/assets/images/esummit/esummit6.jpg',
+        'assets/assets/images/esummit/esummit7.jpg',
+        'assets/assets/images/esummit/esummit8.jpg',
       ],
     },
   ];

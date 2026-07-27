@@ -8,25 +8,29 @@ class PlinthPage extends StatelessWidget {
   const PlinthPage({super.key});
 
   static const List<String> galleryImages = [
-    // same as desportivos gallery not updated
-    "assets/images/poster.jpeg",
-    "assets/images/hero_new.jpeg",
-    "assets/images/team_poster.jpeg",
+    "assets/assets/images/plinth/plinth1.jpg",
+    "assets/assets/images/plinth/plinth2.jpg",
+    "assets/assets/images/plinth/plinth3.jpg",
+    "assets/assets/images/plinth/plinth4.jpg",
+    "assets/assets/images/plinth/plinth5.jpg",
+    "assets/assets/images/plinth/plinth6.jpg",
+    "assets/assets/images/plinth/plinth7.jpg",
+    "assets/assets/images/plinth/plinth8.jpg",
+    "assets/assets/images/plinth/plinth9.jpg",
+    "assets/assets/images/plinth/plinth10.jpg",
   ];
 
   static const List<Map<String, String>> festHeads = [
     {
       "name": "Akshansh Singh",
-      "image": "assets/images/logo.jpeg",
+      "image": "assets/assets/images/plinth/plinth_logo.jpg",
       "role": "Fest Head",
-      "phone": "+919999999999",
       "email": "plinth@lnmiit.ac.in"
     },
     {
       "name": "Jayant Singhal",
-      "image": "assets/images/logo.jpeg",
+      "image": "assets/assets/images/plinth/plinth_logo.jpg",
       "role": "Fest Head",
-      "phone": "+918888888888",
       "email": "plinth@lnmiit.ac.in"
     },
   ];
@@ -204,7 +208,6 @@ class PlinthPage extends StatelessWidget {
     final String name = person['name'] ?? 'TBD';
     final String role = person['role'] ?? 'Fest Head';
     final String image = person['image'] ?? 'assets/images/logo.jpeg';
-    final String phone = person['phone'] ?? '';
     final String email = person['email'] ?? '';
 
     if (isMobile) {
@@ -267,25 +270,12 @@ class PlinthPage extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                _buildContactButton(
-                  context: context,
-                  icon: Icons.phone,
-                  isEnabled: phone.isNotEmpty,
-                  tooltip: 'Call',
-                  onTap: () => _launchPhone(context, phone),
-                ),
-                const SizedBox(width: 4),
-                _buildContactButton(
-                  context: context,
-                  icon: Icons.email,
-                  isEnabled: email.isNotEmpty,
-                  tooltip: 'Email',
-                  onTap: () => _launchEmail(context, email),
-                ),
-              ],
+            _buildContactButton(
+              context: context,
+              icon: Icons.email,
+              isEnabled: email.isNotEmpty,
+              tooltip: 'Email',
+              onTap: () => _launchEmail(context, email),
             ),
           ],
         ),
@@ -351,24 +341,12 @@ class PlinthPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _buildContactButton(
-                      context: context,
-                      icon: Icons.phone,
-                      isEnabled: phone.isNotEmpty,
-                      tooltip: 'Call',
-                      onTap: () => _launchPhone(context, phone),
-                    ),
-                    _buildContactButton(
-                      context: context,
-                      icon: Icons.email,
-                      isEnabled: email.isNotEmpty,
-                      tooltip: 'Email',
-                      onTap: () => _launchEmail(context, email),
-                    ),
-                  ],
+                _buildContactButton(
+                  context: context,
+                  icon: Icons.email,
+                  isEnabled: email.isNotEmpty,
+                  tooltip: 'Email',
+                  onTap: () => _launchEmail(context, email),
                 ),
               ],
             ),
@@ -426,11 +404,6 @@ class PlinthPage extends StatelessWidget {
         );
       }
     }
-  }
-
-  Future<void> _launchPhone(BuildContext context, String phone) async {
-    final uri = Uri(scheme: 'tel', path: phone);
-    await _launchUrl(context, uri);
   }
 
   Future<void> _launchEmail(BuildContext context, String email) async {

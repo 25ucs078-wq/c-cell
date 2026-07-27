@@ -121,99 +121,64 @@ class ProfilePage extends StatelessWidget {
                       letterSpacing: 2,
                     ),
                   ),
-                  SizedBox(height: isMobile ? 24 : 32),
-                  Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.all(isMobile ? 16 : 24),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF1A1A1A),
-                      borderRadius: BorderRadius.circular(24),
-                      border: Border.all(
-                        color: Colors.white.withValues(alpha: 0.08),
+                  if (role.toUpperCase().contains('DIRECTOR') || role.toUpperCase().contains('CONVENOR')) ...[
+                    Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.all(isMobile ? 16 : 24),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF1A1A1A),
+                        borderRadius: BorderRadius.circular(24),
+                        border: Border.all(
+                          color: Colors.white.withValues(alpha: 0.08),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (role.toUpperCase().contains('DIRECTOR')) ...[
+                            Text(
+                              messageTitle ?? "DIRECTOR'S MESSAGE",
+                              style: GoogleFonts.playfairDisplay(
+                                color: Colors.redAccent,
+                                fontSize: isMobile ? 20 : 24,
+                                letterSpacing: 1.5,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              customMessage ??
+                                  "Welcome to The LNM Institute of Information Technology (LNMIIT), Jaipur! The LNMIIT is an institution of higher learning focused in select areas of Computing, Communication, ICT, Electronics and carefully chosen traditional engineering and sciences with an innovative blend of interdisciplinary flavor and contemporary relevance.\n\nThe Institute, in spite of being young (founded in 2002, jointly by the Government of Rajasthan and the Lakshmi & Usha Mittal Foundation in the public-private partnership mode) is considered as one of the best institutions in its chosen areas of higher learning, both in the state and the country. In addition to having been accredited by the National Assessment & Accreditation Council (NAAC) as an \"A\" grade institution, the LNMIIT has been ranked fairly high by many different agencies in the recent past as may be noticed elsewhere on the official web-portal.\n\nThe Institute takes pride in its eco-system that aims to groom incoming students into academically strong yet well-rounded personality based professionals who could adapt themselves to the challenges posed by the ever-changing world and working environments.\n\nIf you are an aspiring student, we welcome you to take a good look at our website and preferably consider visiting the campus for getting to know it even better by getting the first hand feel of its ambience and interacting with faculty and students so that you could take a well-informed decision. If you have already applied to the LNMIIT, have been offered an admission and accepted the offer, Congratulations and Welcome to this new home of yours for next few years!",
+                              style: GoogleFonts.poppins(
+                                color: Colors.white70,
+                                fontSize: isMobile ? 14 : 16,
+                                height: 1.7,
+                              ),
+                            ),
+                          ] else if (role.toUpperCase().contains('CONVENOR')) ...[
+                            Text(
+                              messageTitle ?? "CONVENOR'S MESSAGE",
+                              style: GoogleFonts.playfairDisplay(
+                                color: Colors.redAccent,
+                                fontSize: isMobile ? 20 : 24,
+                                letterSpacing: 1.5,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              customMessage ??
+                                  "The LNMIIT Counselling and Guidance Cell is the bridge between students and the institute, helping them to settle into their new environment both emotionally and practically.\n\nFrom the moment students step onto campus, the cell supports students through reporting and admission process, assists with document verification, and answers common doubts or concern faced by incoming batches.\n\nBeyond the administrative help, the cell organises the orientation programme to familiarize students with campus life, conducts interactive sessions and facilitates the Student-Faculty Mentorship Programme-creating a strong support system throughout the academic year.",
+                              style: GoogleFonts.poppins(
+                                color: Colors.white70,
+                                fontSize: isMobile ? 14 : 16,
+                                height: 1.7,
+                              ),
+                            ),
+                          ],
+                        ],
                       ),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (role.toUpperCase().contains('DIRECTOR')) ...[
-                          Text(
-                            messageTitle ?? "DIRECTOR'S MESSAGE",
-                            style: GoogleFonts.playfairDisplay(
-                              color: Colors.redAccent,
-                              fontSize: isMobile ? 20 : 24,
-                              letterSpacing: 1.5,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            customMessage ??
-                                "Welcome to The LNM Institute of Information Technology (LNMIIT), Jaipur! The LNMIIT is an institution of higher learning focused in select areas of Computing, Communication, ICT, Electronics and carefully chosen traditional engineering and sciences with an innovative blend of interdisciplinary flavor and contemporary relevance.\n\nThe Institute, in spite of being young (founded in 2002, jointly by the Government of Rajasthan and the Lakshmi & Usha Mittal Foundation in the public-private partnership mode) is considered as one of the best institutions in its chosen areas of higher learning, both in the state and the country. In addition to having been accredited by the National Assessment & Accreditation Council (NAAC) as an \"A\" grade institution, the LNMIIT has been ranked fairly high by many different agencies in the recent past as may be noticed elsewhere on the official web-portal.\n\nThe Institute takes pride in its eco-system that aims to groom incoming students into academically strong yet well-rounded personality based professionals who could adapt themselves to the challenges posed by the ever-changing world and working environments.\n\nIf you are an aspiring student, we welcome you to take a good look at our website and preferably consider visiting the campus for getting to know it even better by getting the first hand feel of its ambience and interacting with faculty and students so that you could take a well-informed decision. If you have already applied to the LNMIIT, have been offered an admission and accepted the offer, Congratulations and Welcome to this new home of yours for next few years!",
-                            style: GoogleFonts.poppins(
-                              color: Colors.white70,
-                              fontSize: isMobile ? 14 : 16,
-                              height: 1.7,
-                            ),
-                          ),
-                        ] else if (role.toUpperCase().contains('CONVENOR')) ...[
-                          Text(
-                            messageTitle ?? "CONVENOR'S MESSAGE",
-                            style: GoogleFonts.playfairDisplay(
-                              color: Colors.redAccent,
-                              fontSize: isMobile ? 20 : 24,
-                              letterSpacing: 1.5,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            customMessage ??
-                                "The LNMIIT Counselling and Guidance Cell is the bridge between students and the institute, helping them to settle into their new environment both emotionally and practically.\n\nFrom the moment students step onto campus, the cell supports students through reporting and admission process, assists with document verification, and answers common doubts or concern faced by incoming batches.\n\nBeyond the administrative help, the cell organises the orientation programme to familiarize students with campus life, conducts interactive sessions and facilitates the Student-Faculty Mentorship Programme-creating a strong support system throughout the academic year.",
-                            style: GoogleFonts.poppins(
-                              color: Colors.white70,
-                              fontSize: isMobile ? 14 : 16,
-                              height: 1.7,
-                            ),
-                          ),
-                        ] else ...[
-                          Text(
-                            "❝",
-                            style: GoogleFonts.playfairDisplay(
-                              color: Colors.redAccent,
-                              fontSize: isMobile ? 48 : 60,
-                              height: 0.8,
-                            ),
-                          ),
-                          Text(
-                            "Making chaos look\nsurprisingly manageable.",
-                            style: GoogleFonts.poppins(
-                              color: Colors.white,
-                              fontSize: isMobile ? 16 : 18,
-                              fontWeight: FontWeight.w500,
-                              height: 1.5,
-                            ),
-                          ),
-                          SizedBox(height: isMobile ? 20 : 24),
-                          Text(
-                            "ABOUT",
-                            style: GoogleFonts.playfairDisplay(
-                              color: Colors.redAccent,
-                              fontSize: isMobile ? 20 : 24,
-                              letterSpacing: 1.5,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            "Helping freshers settle into campus life and ensuring that nobody feels alone during their journey at LNMIIT.",
-                            style: GoogleFonts.poppins(
-                              color: Colors.white70,
-                              fontSize: isMobile ? 14 : 16,
-                              height: 1.7,
-                            ),
-                          ),
-                        ],
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: isMobile ? 24 : 32),
+                    SizedBox(height: isMobile ? 24 : 32),
+                  ],
                   if (phone.isNotEmpty || email.isNotEmpty) ...[
                     Row(
                       children: [

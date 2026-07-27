@@ -37,28 +37,28 @@ class SportsPage extends StatelessWidget {
         {
           'name': 'Jatin Kukreja',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/basketball/basketball_logo.png', // Photo not updated
+          'image': 'assets/assets/images/sports/basketball/jatin.jpeg',
           'phone': '+918114417723',
           'email': '24dec027@lnmiit.ac.in',
         },
         {
           'name': 'Raghav Agarwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/basketball/basketball_logo.png', // Photo not updated
+          'image': 'assets/assets/images/sports/basketball/raghav.jpeg', 
           'phone': '+918700335877', 
           'email': '24ucs045@lnmiit.ac.in',
         },
         {
           'name': 'Tanmay Poswalia',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/basketball/basketball_logo.png', // Photo not updated
+          'image': 'assets/assets/images/sports/basketball/tanmay.jpeg', 
           'phone': '+918619709786', 
           'email': '24uec267@lnmiit.ac.in',
         },
         {
           'name': 'Vedansh Vashisth',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/basketball/basketball_logo.png', // Photo not updated
+          'image': 'assets/assets/images/sports/basketball/vedansh.jpeg', 
           'phone': '+919358893766', 
           'email': '24uec024@lnmiit.ac.in',
         }
@@ -233,14 +233,14 @@ class SportsPage extends StatelessWidget {
         {
           'name': 'Aditya Jindal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/squash/squash_logo.jpeg', // Photo not updated
+          'image': 'assets/assets/images/sports/squash/aditya.jpeg',
           'phone': '+919016420001',
           'email': '24uec091@lnmiit.ac.in', 
         },
         {
           'name': 'Vansh Sharma',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/squash/squash_logo.jpeg', // Photo not updated
+          'image': 'assets/assets/images/sports/squash/vansh.jpeg',
           'phone': '+917982332659',
           'email': '24uec120@lnmiit.ac.in',
         },
@@ -253,28 +253,28 @@ class SportsPage extends StatelessWidget {
           'name': 'Aashil Bhutra',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/table_tennis/tablet_logo.png', // Photo not updated
-          'phone': '+919999999999', // number not updated
+          'phone': '+919610411435',
           'email': '24ume048@lnmiit.ac.in',
         },
         {
           'name': 'Arjun Mukherjee',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/table_tennis/arjun.jpeg',
-          'phone': '+918888888888', // number not updated
+          'phone': '+919987714364',
           'email': '24uec053@lnmiit.ac.in',
         },
         {
           'name': 'Shivansh Gupta',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/table_tennis/shivansh.jpeg',
-          'phone': '+918888888888', // number not updated
+          'phone': '+919068351999',
           'email': '24uec228@lnmiit.ac.in',
         },
         {
           'name': 'Urvi Salecha',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/table_tennis/tablet_logo.png', // Photo not updated
-          'phone': '+918888888888', // number not updated
+          'image': 'assets/assets/images/sports/table_tennis/urvi.jpeg',
+          'phone': '+919024792247',
           'email': '24imai001@lnmiit.ac.in',
         },
       ];
@@ -286,35 +286,35 @@ class SportsPage extends StatelessWidget {
           'name': 'Apoorva Jain',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/volleyball/apoorva.jpeg',
-          'phone': '+918888888888', // number not updated
+          'phone': '+918239071912',
           'email': '24uec200@lnmiit.ac.in',
         },
         {
-          'name': 'Ayush Raj Shahi',
+          'name': 'Ayush Raj',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/volleyball/ayush.jpeg',
-          'phone': '+919999999999', // number not updated
-          'email': '24@lnmiit.ac.in', // email not updated
+          'phone': '+917209081611',
+          'email': '24ucs212@lnmiit.ac.in',
         },
         {
-          'name': 'Dinakar', // recheck this name
+          'name': 'Dinakar',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/volleyball/dinakar.jpeg',
-          'phone': '+918888888888', // number not updated
+          'phone': '+919963225216',
           'email': '24ucs037@lnmiit.ac.in',
         },
         {
           'name': 'Panth Moradiya',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/volleyball/panth.jpg',
-          'phone': '+918888888888', // number not updated
+          'phone': '+919979901008',
           'email': '24ucs120@lnmiit.ac.in',
         },
         {
           'name': 'Saniya Sharma',
           'role': 'Coordinator',
           'image': 'assets/assets/images/sports/volleyball/saniya.jpeg',
-          'phone': '+918888888888', // number not updated
+          'phone': '+919166310223', 
           'email': '24ucs081@lnmiit.ac.in',
         },
       ];
@@ -325,15 +325,15 @@ class SportsPage extends StatelessWidget {
         {
           'name': 'Diwas Pandey',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports_logo.jpg', // Photo not updated yet
+          'image': 'assets/assets/images/sports/zenith/diwas.jpg',
           'phone': '+918279822447',
           'email': '24imai004@lnmiit.ac.in',
         },
         {
           'name': 'Lakshit Agarwal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports_logo.jpg', // Photo not updated yet
-          'phone': '+918888888888', // Number not updated yet
+          'image': 'assets/assets/images/sports/zenith/lakshit.jpg', 
+          'phone': '+918000265440', 
           'email': '24ucc089@lnmiit.ac.in',
         },
       ];
@@ -362,11 +362,24 @@ class SportsPage extends StatelessWidget {
     }
     if (clubName == 'Basketball') {
       return [
-        'assets/assets/images/sports/basketball/basket1.jpeg'
+        'assets/assets/images/sports/basketball/basketball1.jpeg',
+        'assets/assets/images/sports/basketball/basketball2.jpeg',
+        'assets/assets/images/sports/basketball/basketball3.jpeg',
+        'assets/assets/images/sports/basketball/basketball4.jpeg',
+        'assets/assets/images/sports/basketball/basketball5.jpeg',
+        'assets/assets/images/sports/basketball/basketball6.jpeg',
+        'assets/assets/images/sports/basketball/basketball7.jpeg',
+        
       ];
     }
     if (clubName == 'Carrom') {
-      return [];
+      return [
+        'assets/assets/images/sports/carrom/carrom1.jpg',
+        'assets/assets/images/sports/carrom/carrom2.jpg',
+        'assets/assets/images/sports/carrom/carrom3.jpg',
+        'assets/assets/images/sports/carrom/carrom4.jpg',
+        'assets/assets/images/sports/carrom/carrom5.jpg',
+      ];
     }
     if (clubName == 'Chess') {
       return [
@@ -403,27 +416,48 @@ class SportsPage extends StatelessWidget {
     }
     if (clubName == 'Lawn Tennis') {
       return [
-        'assets/assets/images/sports/lawn_tennis/lawn1.jpeg'
+        'assets/assets/images/sports/lawn_tennis/lawnt1.jpeg',
+        'assets/assets/images/sports/lawn_tennis/lawnt2.JPG',
+        'assets/assets/images/sports/lawn_tennis/lawnt3.jpg',
+        'assets/assets/images/sports/lawn_tennis/lawnt4.jpg',
       ];
     }
     if (clubName == 'Squash') {
       return [
-        'assets/assets/images/sports/squash/squash1.jpeg'
+        'assets/assets/images/sports/squash/sq1.jpeg',
+        'assets/assets/images/sports/squash/sq2.jpeg',
+        'assets/assets/images/sports/squash/sq3.jpeg',
       ];
     }
     if (clubName == 'Table Tennis') {
       return [
-        'assets/assets/images/sports/table_tennis/tablt1.jpg'
+        'assets/assets/images/sports/table_tennis/tt1.jpeg',
+        'assets/assets/images/sports/table_tennis/tt2.jpeg',
+        'assets/assets/images/sports/table_tennis/tt3.jpeg',
+        'assets/assets/images/sports/table_tennis/tt4.jpeg',
+        'assets/assets/images/sports/table_tennis/tt5.jpeg',
       ];
     }
     if (clubName == 'Volleyball') {
       return [
-        'assets/assets/images/sports/volleyball/volley1.jpg'
+        'assets/assets/images/sports/volleyball/volley1.jpeg',
+        'assets/assets/images/sports/volleyball/volley2.jpeg',
+        'assets/assets/images/sports/volleyball/volley3.jpeg',
+        'assets/assets/images/sports/volleyball/volley4.jpeg',
+        'assets/assets/images/sports/volleyball/volley5.jpeg',
       ];
     }
     if (clubName == 'Zenith') {
       return [
-        'assets/assets/images/sports/zenith/zenith1.jpg'
+        'assets/assets/images/sports/zenith/zen1.jpg',
+        'assets/assets/images/sports/zenith/zen2.jpg',
+        'assets/assets/images/sports/zenith/zen3.jpg',
+        'assets/assets/images/sports/zenith/zen4.jpg',
+        'assets/assets/images/sports/zenith/zen5.jpg',
+        'assets/assets/images/sports/zenith/zen6.jpg',
+        'assets/assets/images/sports/zenith/zen7.jpg',
+        'assets/assets/images/sports/zenith/zen8.jpg',
+        
       ];
     }
     return [];
@@ -538,9 +572,9 @@ class SportsPage extends StatelessWidget {
     },
     {
       'name': 'Zenith',
-      'icon': 'assets/assets/images/sports_logo.jpg',
+      'icon': 'assets/assets/images/sports/zenith/zenith_logo.jpg',
       'subtitle': 'The Fitness Club of LNMIIT',
-      'image': 'assets/assets/images/sports_logo.jpg',
+      'image': 'assets/assets/images/sports/zenith/zenith_logo.jpg',
       'coordinators': _getCoordinators('Zenith'),
       'gallery': _getGallery('Zenith'),
       'description': "Zenith is the Fitness Club of LNMIIT. We aim to inspire and guide students toward a healthier, more active lifestyle through guided fitness routines, workout sessions, and wellness events.",

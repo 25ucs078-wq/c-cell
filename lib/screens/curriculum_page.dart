@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'pdf_viewer_page.dart';
+
+const String aiDsCurriculumUrl = ""; // Web link to be provided later
 
 class CurriculumPage extends StatefulWidget {
   const CurriculumPage({super.key});
@@ -18,6 +21,12 @@ class _CurriculumPageState extends State<CurriculumPage> {
       'shortName': 'B.Tech CSE',
       'degree': '4-Year UG Program',
       'pdf': 'assets/assets/pdfs/curriculum/btech_cse.pdf',
+    },
+    {
+      'title': 'B.Tech. Artificial Intelligence & Data Science (AI & AI-DS)',
+      'shortName': 'B.Tech AI & AI-DS',
+      'degree': '4-Year UG Program',
+      'url': 'https://lnmiit.ac.in/department/ai-ds/programs/',
     },
     {
       'title': 'B.Tech. Communication & Computer Engineering',
@@ -84,6 +93,33 @@ class _CurriculumPageState extends State<CurriculumPage> {
         ),
       ),
     );
+  }
+
+  Future<void> _launchWebUrl(String urlString) async {
+    if (urlString.trim().isEmpty) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Link will be available soon!"),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+      return;
+    }
+    final Uri url = Uri.parse(urlString);
+    try {
+      if (await canLaunchUrl(url)) {
+        await launchUrl(
+          url,
+          mode: LaunchMode.externalApplication,
+        );
+      } else {
+        debugPrint("Could not launch $urlString");
+      }
+    } catch (e) {
+      debugPrint("Error launching URL: $e");
+    }
   }
 
   @override
@@ -154,6 +190,7 @@ class _CurriculumPageState extends State<CurriculumPage> {
                     final course = courses[index];
                     final Color accentColor = _accentColors[index % _accentColors.length];
                     final bool isHovered = hoveredCard == index;
+                    final bool isUrl = course.containsKey('url');
 
                     return Container(
                       margin: const EdgeInsets.only(bottom: 14),
@@ -162,7 +199,13 @@ class _CurriculumPageState extends State<CurriculumPage> {
                         onEnter: (_) => setState(() => hoveredCard = index),
                         onExit: (_) => setState(() => hoveredCard = -1),
                         child: GestureDetector(
-                          onTap: () => _openPdf(course['title']!, course['pdf']!),
+                          onTap: () {
+                            if (isUrl) {
+                              _launchWebUrl(course['url']!);
+                            } else {
+                              _openPdf(course['title']!, course['pdf']!);
+                            }
+                          },
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 200),
                             curve: Curves.easeOutCubic,
@@ -208,7 +251,7 @@ class _CurriculumPageState extends State<CurriculumPage> {
                                     ),
                                   ),
                                   child: Icon(
-                                    Icons.picture_as_pdf_rounded,
+                                    isUrl ? Icons.language_rounded : Icons.picture_as_pdf_rounded,
                                     color: accentColor,
                                     size: isMobile ? 24 : 28,
                                   ),
@@ -249,7 +292,7 @@ class _CurriculumPageState extends State<CurriculumPage> {
                                           ),
                                           const SizedBox(width: 8),
                                           Text(
-                                            "•  Tap to view PDF",
+                                            isUrl ? "•  Tap to open website" : "•  Tap to view PDF",
                                             style: GoogleFonts.poppins(
                                               color: Colors.white38,
                                               fontSize: 11,
@@ -264,7 +307,7 @@ class _CurriculumPageState extends State<CurriculumPage> {
                                   padding: EdgeInsets.only(left: isHovered ? 6.0 : 0.0),
                                   duration: const Duration(milliseconds: 200),
                                   child: Icon(
-                                    Icons.arrow_forward_ios_rounded,
+                                    isUrl ? Icons.open_in_new_rounded : Icons.arrow_forward_ios_rounded,
                                     color: isHovered ? accentColor : Colors.white38,
                                     size: 18,
                                   ),

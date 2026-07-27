@@ -286,25 +286,12 @@ class CouncilDetailPage extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                _buildContactButton(
-                  context: context,
-                  icon: Icons.phone,
-                  isEnabled: phone.isNotEmpty,
-                  tooltip: 'Call',
-                  onTap: () => _launchPhone(context, phone),
-                ),
-                const SizedBox(width: 4),
-                _buildContactButton(
-                  context: context,
-                  icon: Icons.email,
-                  isEnabled: email.isNotEmpty,
-                  tooltip: 'Email',
-                  onTap: () => _launchEmail(context, email),
-                ),
-              ],
+            _buildContactButton(
+              context: context,
+              icon: Icons.email,
+              isEnabled: email.isNotEmpty,
+              tooltip: 'Email',
+              onTap: () => _launchEmail(context, email),
             ),
           ],
         ),
@@ -371,25 +358,12 @@ class CouncilDetailPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _buildContactButton(
-                      context: context,
-                      icon: Icons.phone,
-                      isEnabled: phone.isNotEmpty,
-                      tooltip: 'Call',
-                      onTap: () => _launchPhone(context, phone),
-                    ),
-                    const SizedBox(width: 8),
-                    _buildContactButton(
-                      context: context,
-                      icon: Icons.email,
-                      isEnabled: email.isNotEmpty,
-                      tooltip: 'Email',
-                      onTap: () => _launchEmail(context, email),
-                    ),
-                  ],
+                _buildContactButton(
+                  context: context,
+                  icon: Icons.email,
+                  isEnabled: email.isNotEmpty,
+                  tooltip: 'Email',
+                  onTap: () => _launchEmail(context, email),
                 ),
               ],
             ),
@@ -447,11 +421,6 @@ class CouncilDetailPage extends StatelessWidget {
         );
       }
     }
-  }
-
-  Future<void> _launchPhone(BuildContext context, String phone) async {
-    final uri = Uri(scheme: 'tel', path: phone);
-    await _launchUrl(context, uri);
   }
 
   Future<void> _launchEmail(BuildContext context, String email) async {

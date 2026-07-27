@@ -8,24 +8,31 @@ class VivacityPage extends StatelessWidget {
   const VivacityPage({super.key});
 
   static const List<String> galleryImages = [
-    "assets/images/hero_new.jpeg",
-    "assets/images/team_poster.jpeg",
-    "assets/images/poster.jpeg",
+    "assets/assets/images/viva/viva1.jpeg",
+    "assets/assets/images/viva/viva2.jpeg",
+    "assets/assets/images/viva/viva3.jpeg",
+    "assets/assets/images/viva/viva4.jpeg",
+    "assets/assets/images/viva/viva5.jpeg",
+    "assets/assets/images/viva/viva6.jpeg",
+    "assets/assets/images/viva/viva7.jpg",
+    "assets/assets/images/viva/viva8.jpg",
+    "assets/assets/images/viva/viva9.jpg",
+    "assets/assets/images/viva/viva10.jpg",
+    "assets/assets/images/viva/viva11.jpg",
+    "assets/assets/images/viva/viva12.jpg",
   ];
 
   static const List<Map<String, String>> festHeads = [
     {
       "name": "Vedang Dixit",
-      "image": "assets/images/logo.jpeg",
+      "image": "assets/assets/images/viva/viva_logo.png",
       "role": "Fest Head",
-      "phone": "+919999999999",
       "email": "vivacity@lnmiit.ac.in"
     },
     {
       "name": "Vedant Wadhwa",
-      "image": "assets/images/logo.jpeg",
+      "image": "assets/assets/images/viva/viva_logo.png",
       "role": "Fest Head",
-      "phone": "+918888888888",
       "email": "vivacity@lnmiit.ac.in"
     },
   ];
@@ -203,7 +210,6 @@ class VivacityPage extends StatelessWidget {
     final String name = person['name'] ?? 'TBD';
     final String role = person['role'] ?? 'Fest Head';
     final String image = person['image'] ?? 'assets/images/logo.jpeg';
-    final String phone = person['phone'] ?? '';
     final String email = person['email'] ?? '';
 
     if (isMobile) {
@@ -266,25 +272,12 @@ class VivacityPage extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                _buildContactButton(
-                  context: context,
-                  icon: Icons.phone,
-                  isEnabled: phone.isNotEmpty,
-                  tooltip: 'Call',
-                  onTap: () => _launchPhone(context, phone),
-                ),
-                const SizedBox(width: 4),
-                _buildContactButton(
-                  context: context,
-                  icon: Icons.email,
-                  isEnabled: email.isNotEmpty,
-                  tooltip: 'Email',
-                  onTap: () => _launchEmail(context, email),
-                ),
-              ],
+            _buildContactButton(
+              context: context,
+              icon: Icons.email,
+              isEnabled: email.isNotEmpty,
+              tooltip: 'Email',
+              onTap: () => _launchEmail(context, email),
             ),
           ],
         ),
@@ -350,24 +343,12 @@ class VivacityPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _buildContactButton(
-                      context: context,
-                      icon: Icons.phone,
-                      isEnabled: phone.isNotEmpty,
-                      tooltip: 'Call',
-                      onTap: () => _launchPhone(context, phone),
-                    ),
-                    _buildContactButton(
-                      context: context,
-                      icon: Icons.email,
-                      isEnabled: email.isNotEmpty,
-                      tooltip: 'Email',
-                      onTap: () => _launchEmail(context, email),
-                    ),
-                  ],
+                _buildContactButton(
+                  context: context,
+                  icon: Icons.email,
+                  isEnabled: email.isNotEmpty,
+                  tooltip: 'Email',
+                  onTap: () => _launchEmail(context, email),
                 ),
               ],
             ),
@@ -425,11 +406,6 @@ class VivacityPage extends StatelessWidget {
         );
       }
     }
-  }
-
-  Future<void> _launchPhone(BuildContext context, String phone) async {
-    final uri = Uri(scheme: 'tel', path: phone);
-    await _launchUrl(context, uri);
   }
 
   Future<void> _launchEmail(BuildContext context, String email) async {

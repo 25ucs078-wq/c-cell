@@ -35,6 +35,13 @@ import 'screens/important_links_page.dart';
 import 'screens/campus_buzz_page.dart';
 import 'screens/admin/send_notification_page.dart';
 import 'services/fcm_service.dart';
+import 'screens/spi_calculator_page.dart';
+import 'screens/games/games_page.dart';
+import 'screens/games/block_blast_page.dart';
+import 'screens/games/flappy_bird_page.dart';
+import 'screens/games/fruit_ninja_page.dart';
+import 'screens/games/game_2048_page.dart';
+import 'screens/games/memory_match_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,6 +67,7 @@ void main() async {
     // FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
     // FirebaseFunctions.instance.useFunctionsEmulator('localhost', 5001);
   }
+
 
   runApp(const MyApp());
 }
@@ -105,6 +113,9 @@ class MyApp extends StatelessWidget {
           case '/home':
             builder = (context) => const HomePage();
             break;
+          case '/spi_calculator':
+            builder = (context) => const SpiCalculatorPage();
+            break;
           case '/science_tech':
             builder = (context) => const ScienceTechPage();
             break;
@@ -137,6 +148,7 @@ class MyApp extends StatelessWidget {
             builder = (context) => PdfViewerPage(
               title: args['title']!,
               pdfPath: args['pdfPath']!,
+              imagePath: args['imagePath'],
             );
             break;
           case '/more':
@@ -229,6 +241,24 @@ class MyApp extends StatelessWidget {
               youtube: args['youtube'] ?? '',
               website: args['website'] ?? '',
             );
+            break;
+          case '/games':
+            builder = (context) => const GamesPage();
+            break;
+          case '/block_blast':
+            builder = (context) => const BlockBlastPage();
+            break;
+          case '/flappy_bird':
+            builder = (context) => const FlappyBirdPage();
+            break;
+          case '/fruit_ninja':
+            builder = (context) => const FruitNinjaPage();
+            break;
+          case '/game_2048':
+            builder = (context) => const Game2048Page();
+            break;
+          case '/memory_match':
+            builder = (context) => const MemoryMatchPage();
             break;
           default:
             builder = (context) => const HomePage();

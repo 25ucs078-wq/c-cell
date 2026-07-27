@@ -91,31 +91,6 @@ class CulturalPage extends StatelessWidget {
       ];
     }
 
-    if (clubName == 'Finlogue') {
-      return [
-        {
-          'name': 'Aditya Tiwari',
-          'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/finlogue/aditya.jpeg',
-          'phone': '+916268131180',
-          'email': '24ucs155@lnmiit.ac.in',
-        },
-        {
-          'name': 'Akshat Thadhani',
-          'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/finlogue/akshat.jpeg',
-          'phone': '+919468655389',
-          'email': '24ucc116@lnmiit.ac.in',
-        },
-        {
-          'name': 'Aryan Mittal',
-          'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/finlogue/aryan.jpeg',
-          'phone': '+919389618050',
-          'email': '24ucs152@lnmiit.ac.in',
-        },
-      ];
-    }
 
     if (clubName == 'Fundoo') {
       return [
@@ -278,7 +253,7 @@ class CulturalPage extends StatelessWidget {
         {
           'name': 'Madhav Agrawal',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/cultural/rendition/rendition_logo.png', // Replace with their actual photo path
+          'image': 'assets/assets/images/cultural/rendition/madhav.jpeg',
           'phone': '+919530097783',
           'email': '24ucs213@lnmiit.ac.in',
         },
@@ -421,20 +396,27 @@ class CulturalPage extends StatelessWidget {
     }
     if (clubName == 'Capriccio') {
       return [
-        'assets/assets/images/cultural/capriccio/cap1.jpg'
+        'assets/assets/images/cultural/capriccio/capriccio1.jpeg',
+        'assets/assets/images/cultural/capriccio/capriccio2.jpeg',
+        'assets/assets/images/cultural/capriccio/capriccio3.jpeg',
+        'assets/assets/images/cultural/capriccio/capriccio4.jpeg',
+        'assets/assets/images/cultural/capriccio/capriccio5.jpeg',
+        'assets/assets/images/cultural/capriccio/capriccio6.jpeg',
       ];
     }
     if (clubName == 'Eminence') {
       return [
-        'assets/assets/images/cultural/eminence/emin1.jpg'
-      ];
-    }
-    if (clubName == 'Finlogue') {
-      return [
-        'assets/assets/images/cultural/finlogue/finlogue_logo.jpeg',
-        'assets/assets/images/cultural/finlogue/aditya.jpeg',
-        'assets/assets/images/cultural/finlogue/aryan.jpeg',
-        'assets/assets/images/cultural/finlogue/akshat.jpeg',
+        'assets/assets/images/cultural/eminence/eminence1.jpeg',
+        'assets/assets/images/cultural/eminence/eminence2.jpeg',
+        'assets/assets/images/cultural/eminence/eminence3.jpeg',
+        'assets/assets/images/cultural/eminence/eminence4.jpeg',
+        'assets/assets/images/cultural/eminence/eminence5.jpeg',
+        'assets/assets/images/cultural/eminence/eminence6.jpeg',
+        'assets/assets/images/cultural/eminence/eminence7.jpeg',
+        'assets/assets/images/cultural/eminence/eminence8.jpeg',
+        'assets/assets/images/cultural/eminence/eminence9.jpeg',
+        'assets/assets/images/cultural/eminence/eminence10.jpeg',
+        'assets/assets/images/cultural/eminence/eminence11.jpeg',
       ];
     }
     if (clubName == 'Fundoo') {
@@ -452,7 +434,17 @@ class CulturalPage extends StatelessWidget {
     }
     if (clubName == 'Imagination') {
       return [
-        'assets/assets/images/cultural/imagination/imagi1.png',
+        'assets/assets/images/cultural/imagination/imagi1.jpg',
+        'assets/assets/images/cultural/imagination/imagi2.png',
+        'assets/assets/images/cultural/imagination/imagi3.JPG',
+        'assets/assets/images/cultural/imagination/imagi4.JPG',
+        'assets/assets/images/cultural/imagination/imagi5.JPG',
+        'assets/assets/images/cultural/imagination/imagi6.JPG',
+        'assets/assets/images/cultural/imagination/imagi7.jpg',
+        'assets/assets/images/cultural/imagination/imagi8.jpg',
+        'assets/assets/images/cultural/imagination/imagi9.jpg',
+        'assets/assets/images/cultural/imagination/imagi10.JPG',
+        'assets/assets/images/cultural/imagination/imagi11.jpg',  
       ];
     }
     if (clubName == 'Insignia') {
@@ -480,7 +472,13 @@ class CulturalPage extends StatelessWidget {
     }
     if (clubName == 'Media Cell') {
       return [
-        'assets/assets/images/cultural/mediacell/media1.jpg'
+        'assets/assets/images/cultural/mediacell/media1.jpeg',
+        'assets/assets/images/cultural/mediacell/media2.jpeg',
+        'assets/assets/images/cultural/mediacell/media3.jpeg',
+        'assets/assets/images/cultural/mediacell/media4.jpeg',
+        'assets/assets/images/cultural/mediacell/media5.jpeg',
+        'assets/assets/images/cultural/mediacell/media6.jpeg',
+        'assets/assets/images/cultural/mediacell/media7.jpeg',
       ];
     }
     if (clubName == 'Rendition') {
@@ -553,16 +551,6 @@ class CulturalPage extends StatelessWidget {
       'email': 'eminence@lnmiit.ac.in',
     },
     {
-      'name': 'Finlogue',
-      'icon': 'assets/assets/images/cultural/finlogue/finlogue_logo.jpeg',
-      'subtitle': 'Fintech club of LNMIIT',
-      'image': 'assets/assets/images/cultural/finlogue/finlogue_logo.jpeg',
-      'coordinators': _getCoordinators('Finlogue'),
-      'gallery': _getGallery('Finlogue'),
-      'description': 'The Fintech Club of LNMIIT, Finlogue, bridges the gap between finance and technology, hosting discussions, workshops, and case study competitions on investments, markets, and blockchain.',
-      'instagram': 'https://www.instagram.com/finlogue.lnmiit/',
-    },
-    {
       'name': 'Fundoo',
       'icon': 'assets/assets/images/cultural/fundoo/fundoo_logo.jpg',
       'subtitle': 'The Festival club of LNMIIT',
@@ -576,7 +564,7 @@ class CulturalPage extends StatelessWidget {
       'name': 'Imagination',
       'icon': 'assets/assets/images/cultural/imagination/imagi_logo.jpg',
       'subtitle': 'Creative photography and cinematography Club',
-      'image': 'assets/assets/images/cultural/imagination/imagination_logo.jpeg',
+      'image': 'assets/assets/images/cultural/imagination/imagi_logo.jpg',
       'coordinators': _getCoordinators('Imagination'),
       'gallery': _getGallery('Imagination'),
       'description': 'IMAGINATION is the creative photography and cinematography club of The LNM Institute of Information Technology. It is a vibrant community of passionate individuals who explore the world through lenses, pixels, and ideas — turning vision into impactful visuals.',
