@@ -273,7 +273,7 @@ class SportsPage extends StatelessWidget {
         {
           'name': 'Urvi Salecha',
           'role': 'Coordinator',
-          'image': 'assets/assets/images/sports/table_tennis/tablet_logo.png', // Photo not updated
+          'image': 'assets/assets/images/sports/table_tennis/urvi.jpeg',
           'phone': '+919024792247',
           'email': '24imai001@lnmiit.ac.in',
         },
