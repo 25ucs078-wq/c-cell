@@ -487,27 +487,30 @@ class MorePage extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               if (phone.isNotEmpty || email.isNotEmpty) ...[
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _buildContactButton(
-                      context: context,
-                      icon: Icons.phone,
-                      isEnabled: phone.isNotEmpty,
-                      tooltip: 'Call',
-                      onTap: () => _launchPhone(context, phone),
-                    ),
-                    const SizedBox(width: 4),
-                    _buildContactButton(
-                      context: context,
-                      icon: Icons.email,
-                      isEnabled: email.isNotEmpty,
-                      tooltip: 'Email',
-                      onTap: () => _launchEmail(context, email),
-                    ),
-                  ],
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _buildContactButton(
+                        context: context,
+                        icon: Icons.phone,
+                        isEnabled: phone.isNotEmpty,
+                        tooltip: 'Call',
+                        onTap: () => _launchPhone(context, phone),
+                      ),
+                      const SizedBox(width: 4),
+                      _buildContactButton(
+                        context: context,
+                        icon: Icons.email,
+                        isEnabled: email.isNotEmpty,
+                        tooltip: 'Email',
+                        onTap: () => _launchEmail(context, email),
+                      ),
+                    ],
+                  ),
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 6),
               ],
               if (enableProfile)
                 const Icon(

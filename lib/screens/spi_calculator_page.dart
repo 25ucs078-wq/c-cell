@@ -790,7 +790,7 @@ class _SpiCalculatorPageState extends State<SpiCalculatorPage> {
                     crossAxisCount: isSmallScreen ? 2 : 4,
                     crossAxisSpacing: 12,
                     mainAxisSpacing: 12,
-                    childAspectRatio: 1.3,
+                    childAspectRatio: screenWidth < 400 ? 1.15 : (isSmallScreen ? 1.25 : 1.35),
                   ),
                   itemCount: _branches.length,
                   itemBuilder: (context, idx) {
@@ -839,31 +839,38 @@ class _SpiCalculatorPageState extends State<SpiCalculatorPage> {
                               color: isDisabled ? Colors.white24 : Colors.white.withValues(alpha: 0.9),
                               size: 24,
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  branch['code'].toString().replaceAll('_CS', '').replaceAll('_V', ''),
-                                  style: GoogleFonts.poppins(
-                                    color: isDisabled ? Colors.white30 : Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      branch['code'].toString().replaceAll('_CS', '').replaceAll('_V', ''),
+                                      style: GoogleFonts.poppins(
+                                        color: isDisabled ? Colors.white30 : Colors.white,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(height: 2),
-                                Text(
-                                  isDisabled ? "[ COMING SOON ]" : branch['label'],
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.poppins(
-                                    color: isDisabled
-                                        ? Colors.white24
-                                        : Colors.white.withValues(alpha: 0.7),
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w500,
+                                  const SizedBox(height: 2),
+                                  Text(
+                                    isDisabled ? "[ COMING SOON ]" : branch['label'],
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: GoogleFonts.poppins(
+                                      color: isDisabled
+                                          ? Colors.white24
+                                          : Colors.white.withValues(alpha: 0.7),
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -1047,138 +1054,153 @@ class _SpiCalculatorPageState extends State<SpiCalculatorPage> {
                           ),
                         ),
 
-                        // Breakdown Table Header
-                        Container(
-                          color: Colors.black12,
-                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                flex: 3,
-                                child: Text(
-                                  "COURSE",
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.white30, fontSize: 10, fontWeight: FontWeight.bold),
+                        // Breakdown Table
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(minWidth: 550),
+                            child: Column(
+                              children: [
+                                // Breakdown Table Header
+                                Container(
+                                  width: 550,
+                                  color: Colors.black12,
+                                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 3,
+                                        child: Text(
+                                          "COURSE",
+                                          style: GoogleFonts.poppins(
+                                              color: Colors.white30, fontSize: 10, fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          "CREDITS",
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              color: Colors.white30, fontSize: 10, fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          "GRADE",
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              color: Colors.white30, fontSize: 10, fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          "GRADE PTS",
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              color: Colors.white30, fontSize: 10, fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          "WTD SCORE",
+                                          textAlign: TextAlign.right,
+                                          style: GoogleFonts.poppins(
+                                              color: Colors.white30, fontSize: 10, fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "CREDITS",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.white30, fontSize: 10, fontWeight: FontWeight.bold),
+
+                                // Breakdown Rows
+                                SizedBox(
+                                  width: 550,
+                                  child: ListView.builder(
+                                    shrinkWrap: true,
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    itemCount: _breakdownRows.length,
+                                    itemBuilder: (context, idx) {
+                                      final row = _breakdownRows[idx];
+                                      final isSF = row['isSF'];
+
+                                      return Container(
+                                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                                        decoration: const BoxDecoration(
+                                          border: Border(
+                                            bottom: BorderSide(
+                                              color: Colors.white10,
+                                              width: 0.5,
+                                            ),
+                                          ),
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Expanded(
+                                              flex: 3,
+                                              child: Text(
+                                                row['name'],
+                                                style: GoogleFonts.poppins(
+                                                  color: Colors.white.withValues(alpha: 0.9),
+                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                row['credits'].toString(),
+                                                textAlign: TextAlign.center,
+                                                style: GoogleFonts.poppins(
+                                                  color: isSF ? Colors.white24 : Colors.white70,
+                                                  fontSize: 13,
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                row['grade'],
+                                                textAlign: TextAlign.center,
+                                                style: GoogleFonts.poppins(
+                                                  color: isSF ? Colors.white24 : Colors.white70,
+                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                isSF ? '—' : row['gradePoints'].toString(),
+                                                textAlign: TextAlign.center,
+                                                style: GoogleFonts.poppins(
+                                                  color: isSF ? Colors.white24 : Colors.white70,
+                                                  fontSize: 13,
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                isSF ? 'NOT COUNTED' : (row['weightedScore'] as double).toStringAsFixed(2),
+                                                textAlign: TextAlign.right,
+                                                style: GoogleFonts.poppins(
+                                                  color: isSF
+                                                      ? Colors.white24
+                                                      : (row['aboveAverage'] ?? false)
+                                                          ? const Color(0xff81c784)
+                                                          : Colors.white38,
+                                                  fontSize: 13,
+                                                  fontWeight: isSF ? FontWeight.normal : FontWeight.w600,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "GRADE",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.white30, fontSize: 10, fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "GRADE PTS",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.white30, fontSize: 10, fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "WTD SCORE",
-                                  textAlign: TextAlign.right,
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.white30, fontSize: 10, fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-
-                        // Breakdown Rows
-                        ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: _breakdownRows.length,
-                          itemBuilder: (context, idx) {
-                            final row = _breakdownRows[idx];
-                            final isSF = row['isSF'];
-
-                            return Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                              decoration: const BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: Colors.white10,
-                                    width: 0.5,
-                                  ),
-                                ),
-                              ),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    flex: 3,
-                                    child: Text(
-                                      row['name'],
-                                      style: GoogleFonts.poppins(
-                                        color: Colors.white.withValues(alpha: 0.9),
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      row['credits'].toString(),
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(
-                                        color: isSF ? Colors.white24 : Colors.white70,
-                                        fontSize: 13,
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      row['grade'],
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(
-                                        color: isSF ? Colors.white24 : Colors.white70,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      isSF ? '—' : row['gradePoints'].toString(),
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(
-                                        color: isSF ? Colors.white24 : Colors.white70,
-                                        fontSize: 13,
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      isSF ? 'NOT COUNTED' : (row['weightedScore'] as double).toStringAsFixed(2),
-                                      textAlign: TextAlign.right,
-                                      style: GoogleFonts.poppins(
-                                        color: isSF
-                                            ? Colors.white24
-                                            : (row['aboveAverage'] ?? false)
-                                                ? const Color(0xff81c784)
-                                                : Colors.white38,
-                                        fontSize: 13,
-                                        fontWeight: isSF ? FontWeight.normal : FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
                         ),
 
                         // Summary info

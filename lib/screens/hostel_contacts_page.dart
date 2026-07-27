@@ -532,11 +532,14 @@ class HostelContactsPage extends StatelessWidget {
                     ),
                     onPressed: () => _launchEmail(context, email1!),
                     icon: const Icon(Icons.email_outlined, size: 14),
-                    label: Text(
-                      "Email 1",
-                      style: GoogleFonts.poppins(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
+                    label: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        "Email 1",
+                        style: GoogleFonts.poppins(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),
@@ -555,11 +558,14 @@ class HostelContactsPage extends StatelessWidget {
                     ),
                     onPressed: () => _launchEmail(context, email2!),
                     icon: const Icon(Icons.email_outlined, size: 14),
-                    label: Text(
-                      "Email 2",
-                      style: GoogleFonts.poppins(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
+                    label: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        "Email 2",
+                        style: GoogleFonts.poppins(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),
@@ -609,11 +615,14 @@ class HostelContactsPage extends StatelessWidget {
                     ),
                     onPressed: () => _launchPhone(context, phone1),
                     icon: const Icon(Icons.call, size: 14),
-                    label: Text(
-                      "Call 1",
-                      style: GoogleFonts.poppins(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
+                    label: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        "Call 1",
+                        style: GoogleFonts.poppins(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),
@@ -631,11 +640,14 @@ class HostelContactsPage extends StatelessWidget {
                     ),
                     onPressed: () => _launchPhone(context, phone2),
                     icon: const Icon(Icons.phone_in_talk, size: 14),
-                    label: Text(
-                      "Call 2",
-                      style: GoogleFonts.poppins(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
+                    label: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        "Call 2",
+                        style: GoogleFonts.poppins(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),

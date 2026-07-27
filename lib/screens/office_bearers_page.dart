@@ -237,12 +237,15 @@ class OfficeBearersPage extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            _buildContactButton(
-              context: context,
-              icon: Icons.email,
-              isEnabled: email.isNotEmpty,
-              tooltip: 'Email',
-              onTap: () => _launchEmail(context, email),
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: _buildContactButton(
+                context: context,
+                icon: Icons.email,
+                isEnabled: email.isNotEmpty,
+                tooltip: 'Email',
+                onTap: () => _launchEmail(context, email),
+              ),
             ),
           ],
         ),

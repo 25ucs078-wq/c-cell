@@ -291,16 +291,16 @@ class _HomePageState extends State<HomePage> {
     final size = MediaQuery.of(context).size;
     final screenWidth = size.width;
     final screenHeight = size.height;
-    final isSmallScreen = screenWidth < 800;
-    final heroHeight = (screenHeight * (isSmallScreen ? 0.55 : 0.60)).clamp(420.0, 650.0);
-    final sectionSpacing = isSmallScreen ? 40.0 : 60.0;
-    final titleFontSize = isSmallScreen ? 48.0 : 82.0;
-    final sectionTitleFontSize = isSmallScreen ? 28.0 : 34.0;
-    final bodyFontSize = isSmallScreen ? 15.0 : 18.0;
-    final buttonSpacing = isSmallScreen ? 12.0 : 15.0;
-    final heroTopPadding = isSmallScreen ? 140.0 : 180.0;
-    final listCardHeight = isSmallScreen ? 180.0 : 220.0;
-    final aboutCardHeight = isSmallScreen ? 160.0 : 180.0;
+    final isSmallScreen = screenWidth < 950;
+    final heroHeight = (screenHeight * (isSmallScreen ? 0.65 : 0.65)).clamp(500.0, 720.0);
+    final sectionSpacing = isSmallScreen ? 35.0 : 60.0;
+    final titleFontSize = isSmallScreen ? (screenWidth < 400 ? 36.0 : 48.0) : 82.0;
+    final sectionTitleFontSize = isSmallScreen ? (screenWidth < 400 ? 22.0 : 26.0) : 34.0;
+    final bodyFontSize = isSmallScreen ? 14.0 : 18.0;
+    final buttonSpacing = isSmallScreen ? 10.0 : 15.0;
+    final heroTopPadding = isSmallScreen ? 90.0 : 140.0;
+    final listCardHeight = isSmallScreen ? 190.0 : 220.0;
+    final aboutCardHeight = isSmallScreen ? 180.0 : 200.0;
 
     return Scaffold(
       drawer: Drawer(
@@ -912,7 +912,7 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: isSmallScreen ? 70 : 100),
+                          SizedBox(height: isSmallScreen ? 20 : 40),
                           Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 14,
@@ -931,17 +931,21 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 40),
-                          Text(
-                            "THE C-CELL APP",
-                            style: GoogleFonts.playfairDisplay(
-                              color: Colors.white,
-                              fontSize: titleFontSize,
-                              letterSpacing: 3,
-                              height: 1,
+                          SizedBox(height: isSmallScreen ? 20 : 35),
+                          FittedBox(
+                            fit: BoxFit.scaleDown,
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              "THE C-CELL APP",
+                              style: GoogleFonts.playfairDisplay(
+                                color: Colors.white,
+                                fontSize: titleFontSize,
+                                letterSpacing: isSmallScreen ? 2 : 3,
+                                height: 1,
+                              ),
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 16),
                           Text(
                             "LNMIIT's Ultimate Campus Experience\nEvents, Clubs and Everything Campus.",
                             style: GoogleFonts.poppins(
@@ -1529,21 +1533,23 @@ class _HomePageState extends State<HomePage> {
                     : [],
               ),
               child: Padding(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Icon(
                       icon,
                       color: Colors.white,
-                      size: 45,
+                      size: isSmallScreen ? 36 : 42,
                     ),
                     const Spacer(),
                     Text(
                       title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.poppins(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: isSmallScreen ? 16 : 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -1618,15 +1624,17 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(14),
                 child: Align(
                   alignment: Alignment.bottomLeft,
                   child: Text(
                     title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.playfairDisplay(
                       color: Colors.white,
-                      fontSize: 28,
-                      letterSpacing: 1.5,
+                      fontSize: isSmallScreen ? 20 : 24,
+                      letterSpacing: 1.2,
                     ),
                   ),
                 ),

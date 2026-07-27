@@ -219,23 +219,30 @@ class CampusBuzzPage extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const Spacer(),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.access_time,
-                                size: 12,
-                                color: Colors.white38,
-                              ),
-                              const SizedBox(width: 4),
-                              Text(
-                                _formatTimestamp(notification.timestamp),
-                                style: GoogleFonts.poppins(
-                                  fontSize: 11,
+                          const SizedBox(width: 8),
+                          Flexible(
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Icon(
+                                  Icons.access_time,
+                                  size: 12,
                                   color: Colors.white38,
                                 ),
-                              ),
-                            ],
+                                const SizedBox(width: 4),
+                                Flexible(
+                                  child: Text(
+                                    _formatTimestamp(notification.timestamp),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 11,
+                                      color: Colors.white38,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),

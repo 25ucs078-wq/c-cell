@@ -255,11 +255,14 @@ class ImportantContactsPage extends StatelessWidget {
             ),
             onPressed: () => _launchEmail(context, email),
             icon: const Icon(Icons.email_outlined, size: 18),
-            label: Text(
-              "Send Email",
-              style: GoogleFonts.poppins(
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
+            label: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                "Send Email",
+                style: GoogleFonts.poppins(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ),
