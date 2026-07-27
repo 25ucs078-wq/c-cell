@@ -365,48 +365,60 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(height: 25),
-            Container(
-              padding: const EdgeInsets.all(18),
-              decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: 0.05),
-                borderRadius: BorderRadius.circular(18),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.redAccent.withValues(alpha: 0.15),
-                    blurRadius: 25,
+            StreamBuilder<User?>(
+              stream: FirebaseAuth.instance.authStateChanges(),
+              builder: (context, snapshot) {
+                final user = snapshot.data ?? FirebaseAuth.instance.currentUser;
+                final rawName = user?.displayName?.trim();
+                final hasName = rawName != null && rawName.isNotEmpty;
+                final displayName = hasName ? rawName.toUpperCase() : null;
+
+                return Container(
+                  padding: const EdgeInsets.all(18),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.05),
+                    borderRadius: BorderRadius.circular(18),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.redAccent.withValues(alpha: 0.15),
+                        blurRadius: 25,
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "WELCOME BACK",
-                    style: GoogleFonts.playfairDisplay(
-                      color: Colors.redAccent,
-                      fontSize: 18,
-                      letterSpacing: 2,
-                    ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        hasName ? "WELCOME BACK" : "WELCOME!",
+                        style: GoogleFonts.playfairDisplay(
+                          color: Colors.redAccent,
+                          fontSize: 18,
+                          letterSpacing: 2,
+                        ),
+                      ),
+                      if (hasName) ...[
+                        const SizedBox(height: 5),
+                        Text(
+                          displayName!,
+                          style: GoogleFonts.playfairDisplay(
+                            color: Colors.white,
+                            fontSize: 26,
+                            letterSpacing: 1.5,
+                          ),
+                        ),
+                      ],
+                      const SizedBox(height: 5),
+                      Text(
+                        "Explore your campus universe",
+                        style: GoogleFonts.poppins(
+                          color: Colors.white54,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 5),
-                  Text(
-                    "KUNAL AGARWAL",
-                    style: GoogleFonts.playfairDisplay(
-                      color: Colors.white,
-                      fontSize: 32,
-                      letterSpacing: 1.5,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    "Explore your campus universe",
-                    style: GoogleFonts.poppins(
-                      color: Colors.white54,
-                      fontSize: 13,
-                    ),
-                  ),
-                ],
-              ),
+                );
+              },
             ),
             const SizedBox(height: 35),
             AnimatedContainer(
