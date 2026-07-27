@@ -155,15 +155,17 @@ class _HomePageState extends State<HomePage> {
                   backgroundImage: AssetImage("assets/images/logo.jpeg"),
                 ),
               ),
-              const SizedBox(width: 12),
-              Text(
-                "C-CELL",
-                style: GoogleFonts.playfairDisplay(
-                  color: Colors.redAccent,
-                  fontSize: 28,
-                  letterSpacing: 2,
+              if (screenWidth >= 600) ...[
+                const SizedBox(width: 12),
+                Text(
+                  "C-CELL",
+                  style: GoogleFonts.playfairDisplay(
+                    color: Colors.redAccent,
+                    fontSize: 28,
+                    letterSpacing: 2,
+                  ),
                 ),
-              ),
+              ],
             ],
           ),
           if (!isSmallScreen)
