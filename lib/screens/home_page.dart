@@ -167,40 +167,72 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           if (!isSmallScreen)
-            Row(
-              children: [
-                _buildHeaderNavLink(0, "Events", eventsKey),
-                _buildHeaderNavLink(1, "Quick Access", quickKey),
-                _buildHeaderNavLink(2, "Faculties", facultiesKey),
-                _buildHeaderNavLink(3, "Gymkhana", gymkhanaKey),
-                _buildHeaderNavLink(4, "Clubs", clubsKey),
-                _buildHeaderNavLink(5, "About", aboutKey),
-                const SizedBox(width: 20),
-                ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.redAccent,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+            Flexible(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _buildHeaderNavLink(0, "Events", eventsKey),
+                    _buildHeaderNavLink(1, "Quick Access", quickKey),
+                    _buildHeaderNavLink(2, "Faculties", facultiesKey),
+                    _buildHeaderNavLink(3, "Gymkhana", gymkhanaKey),
+                    _buildHeaderNavLink(4, "Clubs", clubsKey),
+                    _buildHeaderNavLink(5, "About", aboutKey),
+                    const SizedBox(width: 16),
+                    ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.redAccent,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      icon: const Icon(Icons.campaign, size: 18),
+                      label: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          "Campus Buzz",
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 13,
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/campus_buzz');
+                      },
                     ),
-                  ),
-                  icon: const Icon(Icons.campaign, size: 18),
-                  label: Text(
-                    "Campus Buzz",
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 13,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/campus_buzz');
-                  },
+                  ],
                 ),
-              ],
+              ),
             )
           else
-            const SizedBox.shrink(),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.redAccent,
+                foregroundColor: Colors.white,
+                padding: EdgeInsets.symmetric(
+                  horizontal: screenWidth < 360 ? 8 : 12,
+                  vertical: 8,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              icon: const Icon(Icons.campaign, size: 16),
+              label: Text(
+                screenWidth < 360 ? "Buzz" : "Campus Buzz",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                ),
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/campus_buzz');
+              },
+            ),
         ],
       ),
     );
