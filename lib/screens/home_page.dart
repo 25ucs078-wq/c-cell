@@ -1063,7 +1063,7 @@ class _HomePageState extends State<HomePage> {
                             isSmallScreen: isSmallScreen,
                             children: [
                               buildPosterCard(0, "assets/images/treasure_hunt.jpeg", "Treasure Hunt", isSmallScreen: isSmallScreen, listCardHeight: listCardHeight),
-                              buildPosterCard(1, "assets/images/y25_talent.jpeg", "Y25 Got Talent", isSmallScreen: isSmallScreen, listCardHeight: listCardHeight),
+                              buildPosterCard(1, "assets/images/GotTalent.png", "Y26 Got Talent", isSmallScreen: isSmallScreen, listCardHeight: listCardHeight),
                               buildPosterCard(2, "assets/images/duologue.jpeg", "Duologue", isSmallScreen: isSmallScreen, listCardHeight: listCardHeight),
                               buildPosterCard(3, "assets/images/dalgona.jpeg", "Dalgona Trials", isSmallScreen: isSmallScreen, listCardHeight: listCardHeight),
                               buildPosterCard(4, "assets/images/astro_lens.jpeg", "Astro Lens", isSmallScreen: isSmallScreen, listCardHeight: listCardHeight),
