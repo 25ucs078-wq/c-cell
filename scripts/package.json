@@ -1,0 +1,9 @@
+{
+  "name": "c-cell-scripts",
+  "version": "1.0.0",
+  "description": "Administrative scripts for C-CELL admissions tracker",
+  "main": "seed_firestore.js",
+  "dependencies": {
+    "firebase-admin": "^11.8.0"
+  }
+}

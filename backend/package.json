@@ -1,0 +1,15 @@
+{
+  "name": "c-cell-backend",
+  "version": "1.0.0",
+  "description": "LNMIIT C-Cell Campus Buzz Backend for Vercel Serverless Functions",
+  "main": "api/health.js",
+  "scripts": {
+    "start": "node api/health.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
