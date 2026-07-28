@@ -164,23 +164,6 @@ class MorePage extends StatelessWidget {
       "instagram": "https://instagram.com/kunal_a_23/",
     },
     {
-      "name": "Lavanya Gupta",
-      "image": "assets/images/lavanya.jpeg",
-      "role": "DEVELOPER",
-      "phone": "+918233924320",
-      "email": "25ucc069@lnmiit.ac.in",
-      "instagram": "https://instagram.com/_lavanyagupta_2008/",
-      "linkedin": "https://linkedin.com/in/lavanya-gupta-41251a38b/",
-    },
-    {
-      "name": "Raghav Khandelwal",
-      "image": "assets/images/raghav.jpeg",
-      "role": "DEVELOPER",
-      "phone": "+919950924277",
-      "email": "25ucs226@lnmiit.ac.in",
-      "instagram": "https://instagram.com/_.raghav_khandelwal._/",
-    },
-    {
       "name": "Sakshi Jain",
       "image": "assets/images/sakshi.jpeg",
       "role": "DEVELOPER",
