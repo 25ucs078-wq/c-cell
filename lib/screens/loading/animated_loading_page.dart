@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../utils/asset_utils.dart';
 
 class AnimatedLoadingPage extends StatefulWidget {
   const AnimatedLoadingPage({super.key});
@@ -101,10 +102,10 @@ class _AnimatedLoadingPageState extends State<AnimatedLoadingPage> with SingleTi
                           ),
                         ],
                       ),
-                      child: const CircleAvatar(
+                      child: CircleAvatar(
                         radius: 65,
                         backgroundColor: Colors.transparent,
-                        backgroundImage: AssetImage('assets/images/ccell_logo_c.png'),
+                        backgroundImage: getCachedNetworkImageProvider('assets/images/ccell_logo_c.png'),
                       ),
                     ),
                   ),

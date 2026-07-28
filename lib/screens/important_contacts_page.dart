@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/glass_card.dart';
+import '../utils/asset_utils.dart';
 
 class ImportantContactsPage extends StatelessWidget {
   const ImportantContactsPage({super.key});
@@ -189,11 +190,13 @@ class ImportantContactsPage extends StatelessWidget {
               ],
             ),
             child: ClipOval(
-              child: Image.asset(
+              child: buildCachedImage(
                 image,
+                width: 100,
+                height: 100,
                 fit: BoxFit.cover,
                 alignment: Alignment.topCenter,
-                errorBuilder: (context, error, stackTrace) {
+                errorWidget: (context, url, error) {
                   return Container(
                     color: Colors.grey[850],
                     child: const Icon(

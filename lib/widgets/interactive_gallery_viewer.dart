@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../utils/asset_utils.dart';
 
 class InteractiveGalleryViewer extends StatefulWidget {
   final List<String> galleryImages;
@@ -123,29 +124,32 @@ class _InteractiveGalleryViewerState extends State<InteractiveGalleryViewer> {
                   child: Center(
                     child: Hero(
                       tag: 'gallery_image_${imagePath}_$index',
-                      child: Image.asset(
+                      child: buildCachedImage(
                         imagePath,
                         fit: BoxFit.contain,
-                        errorBuilder: (context, error, stackTrace) {
-                          return Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(
-                                Icons.image_not_supported,
-                                color: Colors.white54,
-                                size: 64,
+                        placeholder: (context, url) => const SizedBox(
+                          child: Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        ),
+                        errorWidget: (context, url, error) => Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.image_not_supported,
+                              color: Colors.white54,
+                              size: 64,
+                            ),
+                            const SizedBox(height: 12),
+                            Text(
+                              'Failed to load image',
+                              style: GoogleFonts.poppins(
+                                color: Colors.white70,
+                                fontSize: 16,
                               ),
-                              const SizedBox(height: 12),
-                              Text(
-                                'Failed to load image',
-                                style: GoogleFonts.poppins(
-                                  color: Colors.white70,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
-                          );
-                        },
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../services/auth_service.dart';
+import '../../utils/asset_utils.dart';
 
 class GoogleLoginPage extends StatefulWidget {
   final AuthService? authService;
@@ -201,10 +202,10 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> with SingleTickerProv
                               ),
                             ],
                           ),
-                          child: const CircleAvatar(
+                          child: CircleAvatar(
                             radius: 54,
                             backgroundColor: Colors.transparent,
-                            backgroundImage: AssetImage('assets/images/ccell_logo_c.png'),
+                            backgroundImage: getCachedNetworkImageProvider('assets/images/ccell_logo_c.png'),
                           ),
                         ),
                         const SizedBox(height: 28),

@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../widgets/glass_card.dart';
 import '../../widgets/interactive_gallery_viewer.dart';
+import '../../utils/asset_utils.dart';
 
 class CulturalClubDetailPage extends StatelessWidget {
   final String clubName;
@@ -76,10 +77,10 @@ class CulturalClubDetailPage extends StatelessWidget {
                         ],
                       ),
                       child: ClipOval(
-                        child: Image.asset(
+                        child: buildCachedImage(
                           clubImage,
                           fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) {
+                          errorWidget: (context, url, error) {
                             return Container(
                               color: Colors.grey[800],
                               child: Icon(
@@ -216,16 +217,18 @@ class CulturalClubDetailPage extends StatelessWidget {
               child: Hero(
                 tag: name,
                 child: ClipOval(
-                  child: Image.asset(
+                  child: buildCachedImage(
                     image,
+                    width: 60,
+                    height: 60,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
+                    errorWidget: (context, url, error) {
                       return Container(
                         color: Colors.grey[800],
                         child: const Icon(
                           Icons.person,
                           color: Colors.white54,
-                          size: 24,
+                          size: 30,
                         ),
                       );
                     },
@@ -299,10 +302,10 @@ class CulturalClubDetailPage extends StatelessWidget {
                   topLeft: Radius.circular(19),
                   topRight: Radius.circular(19),
                 ),
-                child: Image.asset(
+                child: buildCachedImage(
                   image,
                   fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
+                  errorWidget: (context, url, error) {
                     return Container(
                       color: Colors.grey[800],
                       child: const Icon(
@@ -439,11 +442,11 @@ class CulturalClubDetailPage extends StatelessWidget {
         tag: 'gallery_image_${image}_$index',
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: Image.asset(
+          child: buildCachedImage(
             image,
             height: 140,
             fit: BoxFit.fitHeight,
-            errorBuilder: (context, error, stackTrace) {
+            errorWidget: (context, url, error) {
               return Container(
                 width: 220,
                 height: 140,
@@ -491,19 +494,19 @@ class CulturalClubDetailPage extends StatelessWidget {
           ),
           onPressed: onTap,
           icon: label.toLowerCase() == 'instagram'
-              ? Image.asset(
+              ? buildCachedImage(
                   'assets/assets/images/instagram.png',
                   width: 20,
                   height: 20,
                 )
               : label.toLowerCase() == 'email'
-                  ? Image.asset(
+                  ? buildCachedImage(
                       'assets/assets/images/gmail.png',
                       width: 20,
                       height: 20,
                     )
                   : label.toLowerCase() == 'youtube'
-                      ? Image.asset(
+                      ? buildCachedImage(
                           'assets/assets/images/youtube.png',
                           width: 20,
                           height: 20,

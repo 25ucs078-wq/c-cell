@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../widgets/glass_card.dart';
+import '../../utils/asset_utils.dart';
 
 class CouncilsPage extends StatelessWidget {
   const CouncilsPage({super.key});
@@ -272,10 +273,12 @@ class CouncilsPage extends StatelessWidget {
                   ],
                 ),
                 child: ClipOval(
-                  child: Image.asset(
+                  child: buildCachedImage(
                     icon,
+                    width: 44,
+                    height: 44,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
+                    errorWidget: (context, url, error) {
                       return const Center(
                         child: Icon(
                           Icons.group,
@@ -362,10 +365,12 @@ class CouncilsPage extends StatelessWidget {
                       ],
                     ),
                     child: ClipOval(
-                      child: Image.asset(
+                      child: buildCachedImage(
                         icon,
+                        width: 140,
+                        height: 140,
                         fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
+                        errorWidget: (context, url, error) {
                           return const Center(
                             child: Icon(
                               Icons.group,

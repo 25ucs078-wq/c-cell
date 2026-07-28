@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/glass_card.dart';
+import '../utils/asset_utils.dart';
 
 class MorePage extends StatelessWidget {
   const MorePage({super.key});
@@ -225,7 +226,7 @@ class MorePage extends StatelessWidget {
                   child: Stack(
                     fit: StackFit.expand,
                     children: [
-                      Image.asset(
+                      buildCachedImage(
                         "assets/images/poster.jpeg",
                         fit: BoxFit.cover,
                       ),
@@ -263,7 +264,7 @@ class MorePage extends StatelessWidget {
                     ),
                     child: CircleAvatar(
                       radius: isMobile ? 40 : 60,
-                      backgroundImage: const AssetImage(
+                      backgroundImage: getCachedNetworkImageProvider(
                         "assets/images/logo.jpeg",
                       ),
                     ),
@@ -425,10 +426,10 @@ class MorePage extends StatelessWidget {
                   tag: name,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
+                    child: buildCachedImage(
                       image,
                       fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
+                      errorWidget: (context, url, error) {
                         return Container(
                           color: Colors.grey[800],
                           child: const Icon(
@@ -539,10 +540,10 @@ class MorePage extends StatelessWidget {
                     topLeft: Radius.circular(19),
                     topRight: Radius.circular(19),
                   ),
-                  child: Image.asset(
+                  child: buildCachedImage(
                     image,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
+                    errorWidget: (context, url, error) {
                       return Container(
                         color: Colors.grey[800],
                         child: const Icon(

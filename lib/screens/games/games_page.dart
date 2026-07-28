@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:c_cell_app/services/app_state.dart';
 import '../../widgets/glass_card.dart';
+import '../../utils/asset_utils.dart';
 import 'block_blast_page.dart';
 import 'flappy_bird_page.dart';
 import 'fruit_ninja_page.dart';
@@ -251,10 +252,12 @@ class _GamesPageState extends State<GamesPage> {
                       child: Stack(
                         fit: StackFit.expand,
                         children: [
-                          Image.asset(
+                          buildCachedImage(
                             cover,
                             fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) {
+                            height: 150,
+                            width: double.infinity,
+                            errorWidget: (context, url, error) {
                               return Container(
                                 color: color.withValues(alpha: 0.2),
                                 child: Center(

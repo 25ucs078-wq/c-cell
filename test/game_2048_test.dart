@@ -10,6 +10,6 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    expect(find.text('Join the numbers and get to the 2048 tile!'), findsOneWidget);
+    expect(find.text('Join the tiles to get to 2048!'), findsOneWidget);
   });
 }

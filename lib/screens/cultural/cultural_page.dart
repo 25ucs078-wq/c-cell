@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../widgets/glass_card.dart';
+import '../../utils/asset_utils.dart';
 
 class CulturalPage extends StatelessWidget {
   const CulturalPage({super.key});
@@ -778,10 +779,12 @@ class CulturalPage extends StatelessWidget {
                   ],
                 ),
                 child: ClipOval(
-                  child: Image.asset(
+                  child: buildCachedImage(
                     clubIcon,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
+                    width: 44,
+                    height: 44,
+                    errorWidget: (context, url, error) {
                       return Container(
                         color: Colors.grey[800],
                         child: const Icon(
@@ -868,10 +871,12 @@ class CulturalPage extends StatelessWidget {
                       ],
                     ),
                     child: ClipOval(
-                      child: Image.asset(
+                      child: buildCachedImage(
                         clubIcon,
                         fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
+                        width: 140,
+                        height: 140,
+                        errorWidget: (context, url, error) {
                           return Container(
                             color: Colors.grey[800],
                             child: const Icon(

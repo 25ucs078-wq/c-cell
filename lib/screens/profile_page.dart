@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../utils/asset_utils.dart';
 
 class ProfilePage extends StatelessWidget {
   final String name;
@@ -81,10 +82,10 @@ class ProfilePage extends StatelessWidget {
                       child: Hero(
                         tag: name,
                         child: ClipOval(
-                          child: Image.asset(
+                          child: buildCachedImage(
                             image,
                             fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) {
+                            errorWidget: (context, url, error) {
                               return Container(
                                 color: Colors.grey[800],
                                 child: Icon(
@@ -327,7 +328,7 @@ class ProfilePage extends StatelessWidget {
           ),
           onPressed: onTap,
           icon: label.toLowerCase() == 'instagram'
-              ? Image.asset(
+              ? buildCachedImage(
                   'assets/assets/images/instagram.png',
                   width: 20,
                   height: 20,

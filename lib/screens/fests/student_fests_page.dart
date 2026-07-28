@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../widgets/glass_card.dart';
+import '../../utils/asset_utils.dart';
 
 class StudentFestsPage extends StatelessWidget {
   const StudentFestsPage({super.key});
@@ -160,10 +161,12 @@ class StudentFestsPage extends StatelessWidget {
                   ],
                 ),
                 child: ClipOval(
-                  child: Image.asset(
+                  child: buildCachedImage(
                     image,
+                    width: 44,
+                    height: 44,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
+                    errorWidget: (context, url, error) {
                       return Container(
                         color: Colors.grey[800],
                         child: const Icon(
@@ -247,10 +250,12 @@ class StudentFestsPage extends StatelessWidget {
                       ],
                     ),
                     child: ClipOval(
-                      child: Image.asset(
+                      child: buildCachedImage(
                         image,
+                        width: 140,
+                        height: 140,
                         fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
+                        errorWidget: (context, url, error) {
                           return Container(
                             color: Colors.grey[800],
                             child: const Icon(

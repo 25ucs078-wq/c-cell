@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../widgets/glass_card.dart';
+import '../../utils/asset_utils.dart';
 
 class CouncilDetailPage extends StatelessWidget {
   final String councilName;
@@ -63,10 +64,10 @@ class CouncilDetailPage extends StatelessWidget {
                       ],
                     ),
                     child: ClipOval(
-                      child: Image.asset(
+                      child: buildCachedImage(
                         councilImage,
                         fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
+                        errorWidget: (context, url, error) {
                           return Container(
                             color: Colors.grey[800],
                             child: Icon(
@@ -242,10 +243,12 @@ class CouncilDetailPage extends StatelessWidget {
               child: Hero(
                 tag: name,
                 child: ClipOval(
-                  child: Image.asset(
+                  child: buildCachedImage(
                     image,
+                    width: 44,
+                    height: 44,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
+                    errorWidget: (context, url, error) {
                       return Container(
                         color: Colors.grey[800],
                         child: const Icon(
@@ -312,10 +315,10 @@ class CouncilDetailPage extends StatelessWidget {
                   topLeft: Radius.circular(19),
                   topRight: Radius.circular(19),
                 ),
-                child: Image.asset(
+                child: buildCachedImage(
                   image,
                   fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
+                  errorWidget: (context, url, error) {
                     return Container(
                       color: Colors.grey[800],
                       child: const Icon(

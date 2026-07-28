@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../utils/asset_utils.dart';
 import 'notes_pyqs_page.dart';
 import 'profile_page.dart';
 import '../services/auth_service.dart';
@@ -150,9 +151,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                child: const CircleAvatar(
+                child: CircleAvatar(
                   radius: 20,
-                  backgroundImage: AssetImage("assets/images/logo.jpeg"),
+                  backgroundImage: getCachedNetworkImageProvider("assets/images/logo.jpeg"),
                 ),
               ),
               if (screenWidth >= 600) ...[
@@ -354,9 +355,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                child: const CircleAvatar(
+                child: CircleAvatar(
                   radius: 38,
-                  backgroundImage: AssetImage(
+                  backgroundImage: getCachedNetworkImageProvider(
                     "assets/images/logo.jpeg",
                   ),
                 ),
@@ -912,9 +913,11 @@ class _HomePageState extends State<HomePage> {
                   child: SizedBox(
                     width: double.infinity,
                     height: heroHeight,
-                    child: Image.asset(
+                    child: buildCachedImage(
                       "assets/images/hero_new.jpeg",
                       fit: BoxFit.cover,
+                      width: double.infinity,
+                      height: heroHeight,
                     ),
                   ),
                 ),
@@ -1412,8 +1415,8 @@ class _HomePageState extends State<HomePage> {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                image: const DecorationImage(
-                                  image: AssetImage(
+                                image: DecorationImage(
+                                  image: getCachedNetworkImageProvider(
                                     "assets/images/finalpost.png",
                                   ),
                                   fit: BoxFit.cover,
@@ -1625,7 +1628,7 @@ class _HomePageState extends State<HomePage> {
                     ]
                   : [],
               image: DecorationImage(
-                image: AssetImage(image),
+                image: getCachedNetworkImageProvider(image),
                 fit: BoxFit.cover,
               ),
             ),
