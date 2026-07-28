@@ -1067,6 +1067,7 @@ class _HomePageState extends State<HomePage> {
                               buildPosterCard(2, "assets/images/Ignitio.png", "Ignitio", isSmallScreen: isSmallScreen, listCardHeight: listCardHeight),
                               buildPosterCard(3, "assets/images/TreasureHunt.png", "Treasure Hunt", isSmallScreen: isSmallScreen, listCardHeight: listCardHeight),
                               buildPosterCard(4, "assets/images/BatchPhotogrphy.png", "Batch Photography", isSmallScreen: isSmallScreen, listCardHeight: listCardHeight),
+                              buildPosterCard(5, "assets/images/bytechase.jpeg", "Byte Chase", isSmallScreen: isSmallScreen, listCardHeight: listCardHeight),
                             ],
                           ),
                           SizedBox(height: sectionSpacing),
