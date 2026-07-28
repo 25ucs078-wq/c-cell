@@ -85,12 +85,6 @@ class CouncilsPage extends StatelessWidget {
           'image': '',
           'email': 'finance.cultural@lnmiit.ac.in',
         },
-        {
-          'name': 'Dr. Joyeeta Singha',
-          'role': 'Faculty Mentor',
-          'image': '',
-          'email': 'joyeeta.singha@lnmiit.ac.in',
-        },
       ],
     },
     {
@@ -115,12 +109,6 @@ class CouncilsPage extends StatelessWidget {
           'role': 'Finance Convenor',
           'image': '',
           'email': 'finance.science@lnmiit.ac.in',
-        },
-        {
-          'name': 'Dr. Ashish Kumar Dwivedi',
-          'role': 'Faculty Mentor',
-          'image': '',
-          'email': 'ashish@lnmiit.ac.in',
         },
       ],
     },
