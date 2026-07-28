@@ -50,10 +50,13 @@ void main() async {
   );
   
   try {
-    await GoogleSignIn.instance.initialize();
-  } catch (e) {
-    debugPrint('GoogleSignIn initialization failed: $e');
-  }
+  await GoogleSignIn.instance.initialize(
+    serverClientId:
+        '1091655361396-j7mcq2clu709mo5e3pq6dc9f0vg49edl.apps.googleusercontent.com',
+  );
+} catch (e) {
+  debugPrint('GoogleSignIn initialization failed: $e');
+}
 
   try {
     await FcmService().initialize();
