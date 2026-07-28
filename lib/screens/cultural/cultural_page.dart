@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../widgets/glass_card.dart';
 import '../../utils/asset_utils.dart';
+import '../../services/links_service.dart';
 
 class CulturalPage extends StatelessWidget {
   const CulturalPage({super.key});
@@ -526,7 +527,7 @@ class CulturalPage extends StatelessWidget {
       'coordinators': _getCoordinators('Aaveg'),
       'gallery': _getGallery('Aaveg'),
       'description': "Aaveg is the Nukkad Natak (street play) club of our college, dedicated to creating social awareness through powerful performances. With a team of 20–25 members, we bring important societal issues to life through impactful street plays.We perform not only at various inter-college events but also in public with flashmobs at crowded places",
-      'instagram': 'https://www.instagram.com/aaveg_lnmiit/',
+      'instagramKey': 'aaveg_instagram',
       'email': 'aaveg@lnmiit.ac.in',
     },
     {
@@ -537,7 +538,7 @@ class CulturalPage extends StatelessWidget {
       'coordinators': _getCoordinators('Capriccio'),
       'gallery': _getGallery('Capriccio'),
       'description': "Step into a world where melodies speak, rhythms connect, and music becomes a way of life. At Capriccio, we’re a tight-knit crew of singers, instrumentalists, and producers who vibe, jam, and grow together. With every session, we create memories, share knowledge, and build bonds that last far beyond college. It’s more than music—it’s family!",
-      'instagram': 'https://www.instagram.com/capriccio.lnmiit/',
+      'instagramKey': 'capriccio_instagram',
       'email': 'capriccio@lnmiit.ac.in',
     },
     {
@@ -548,7 +549,7 @@ class CulturalPage extends StatelessWidget {
       'coordinators': _getCoordinators('Eminence'),
       'gallery': _getGallery('Eminence'),
       'description': 'Eminence is a fashion-forward club where style meets passion. From choreographed ramp walks to fashion-themed events, we explore all aspects of fashion. Our club is a space for aspiring models, stylists, and fashion enthusiasts to grow and shine. We believe fashion is not just about clothes — it’s about attitude and identity.',
-      'instagram': 'https://www.instagram.com/eminence.lnmiit/',
+      'instagramKey': 'eminence_instagram',
       'email': 'eminence@lnmiit.ac.in',
     },
     {
@@ -559,7 +560,7 @@ class CulturalPage extends StatelessWidget {
       'coordinators': _getCoordinators('Fundoo'),
       'gallery': _getGallery('Fundoo'),
       'description': 'The Festival Club of LNMIIT, where every festival feels like home',
-      'instagram': 'https://www.instagram.com/fundoo.lnmiit/',
+      'instagramKey': 'fundoo_instagram',
     },
     {
       'name': 'Imagination',
@@ -569,7 +570,7 @@ class CulturalPage extends StatelessWidget {
       'coordinators': _getCoordinators('Imagination'),
       'gallery': _getGallery('Imagination'),
       'description': 'IMAGINATION is the creative photography and cinematography club of The LNM Institute of Information Technology. It is a vibrant community of passionate individuals who explore the world through lenses, pixels, and ideas — turning vision into impactful visuals.',
-      'instagram': 'https://www.instagram.com/imagination.lnmiit/',
+      'instagramKey': 'imagination_instagram',
       'email': 'imagination@lnmiit.ac.in',
     },
     {
@@ -580,7 +581,7 @@ class CulturalPage extends StatelessWidget {
       'coordinators': _getCoordinators('Insignia'),
       'gallery': _getGallery('Insignia'),
       'description': "INSIGNIA, the official dance club of LNMIIT, is a powerhouse of passion, rhythm, and relentless dedication. We pour our heart and soul into every move, crafting performances that leave a mark. Winning doesn't matter—shining is.",
-      'instagram': 'https://www.instagram.com/insignia_lnm/',
+      'instagramKey': 'insignia_instagram',
       'email': 'insignia@lnmiit.ac.in',
     },
     {
@@ -591,7 +592,7 @@ class CulturalPage extends StatelessWidget {
       'coordinators': _getCoordinators('Literary Committee'),
       'gallery': _getGallery('Literary Committee'),
       'description': 'Putting the CULT in culture, the Literary Committee is a mosh pit fueled by caffeine-riddled fanatics who walk on walls and drink up aquariums. An isle of those who romanticize Sisyphean suffering while thinking of nostalgia as the closest thing to a home. The Literary Committee does it all—with flair and a touch of melancholy.',
-      'instagram': 'https://www.instagram.com/literary_lnmiit/',
+      'instagramKey': 'literary_instagram',
       'email': 'literary@lnmiit.ac.in',
     },
     {
@@ -602,7 +603,7 @@ class CulturalPage extends StatelessWidget {
       'coordinators': _getCoordinators('Media Cell'),
       'gallery': _getGallery('Media Cell'),
       'description': 'Media Cell isn’t just a club—it’s a platform for expression. Rooted in the idea of “media” as a medium, it offers students a space to build confidence, stage presence, and spontaneous speaking skills through interactive events. From anchoring major college fests to hosting formats like Doulogue and Knockout Ads, it ensures every voice is heard. At its core, Media Cell turns communication into connection—and gives every voice its medium',
-      'instagram': 'https://www.instagram.com/mediacell_lnmiit/',
+      'instagramKey': 'mediacell_instagram',
       'email': 'mediacell@lnmiit.ac.in',
     },
     {
@@ -613,7 +614,7 @@ class CulturalPage extends StatelessWidget {
       'coordinators': _getCoordinators('Rendition'),
       'gallery': _getGallery('Rendition'),
       'description': 'Rendition is the theatre club of LNMIIT, where stories come alive on stage. From expressive mime performances and powerful monoacts to engaging stage plays, the club celebrates the art of acting in all its forms. We believe in the magic of live performance and the ability of theatre to connect, inspire, and transform. Whether through silent gestures or commanding dialogues, Rendition gives voice to creativity and passion.',
-      'instagram': 'https://www.instagram.com/rendition_lnmiit/',
+      'instagramKey': 'rendition_instagram',
       'email': 'rendition@lnmiit.ac.in',
     },
     {
@@ -624,7 +625,7 @@ class CulturalPage extends StatelessWidget {
       'coordinators': _getCoordinators('Sankalp'),
       'gallery': _getGallery('Sankalp'),
       'description': 'Sankalp is the social club of our college, driven by the spirit of service and compassion. We work to educate underprivileged children in nearby villages, uplift mess workers through literacy programs, and lead initiatives like cloth distribution. At Sankalp, we believe in turning intentions into actions and building a better tomorrow—one life at a time.',
-      'instagram': 'https://www.instagram.com/sankalp.lnmiit/',
+      'instagramKey': 'sankalp_instagram',
       'email': 'sankalp@lnmiit.ac.in',
     },
     {
@@ -635,7 +636,7 @@ class CulturalPage extends StatelessWidget {
       'coordinators': _getCoordinators('Vignette'),
       'gallery': _getGallery('Vignette'),
       'description': 'Vignette - the Art and Craft Club of LNMIIT, is the creative heart of the campus. Its vibrant artworks bring the campus to life, adding color, energy, and character to every corner. From sketching on sheets to painting walls and even faces, it’s a space where imagination feels at home. With a canvas, a piece of fabric, or just an idea, you are free to create, in your own way.',
-      'instagram': 'https://www.instagram.com/vignette_lnmiit/',
+      'instagramKey': 'vignette_instagram',
       'email': 'vignette@lnmiit.ac.in',
     },
   ];
@@ -736,7 +737,9 @@ class CulturalPage extends StatelessWidget {
       ),
     );
     final List<String> galleryImages = List<String>.from(club['gallery'] as List);
-    final String clubInstagram = club['instagram'] as String? ?? 'https://instagram.com/${clubName.toLowerCase().replaceAll(' ', '').replaceAll('-', '')}_lnmiit';
+    final String clubInstagram = club.containsKey('instagramKey')
+        ? LinksService().getLinkSync(club['instagramKey'] as String)
+        : (club['instagram'] as String? ?? 'https://instagram.com/${clubName.toLowerCase().replaceAll(' ', '').replaceAll('-', '')}_lnmiit');
     final String clubEmail = club['email'] as String? ?? '${clubName.toLowerCase().replaceAll(' ', '').replaceAll('-', '')}@lnmiit.ac.in';
 
     void onCardTap() {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../widgets/glass_card.dart';
 import '../../utils/asset_utils.dart';
+import '../../services/links_service.dart';
 
 class ScienceTechPage extends StatelessWidget {
   const ScienceTechPage({super.key});
@@ -391,7 +392,7 @@ class ScienceTechPage extends StatelessWidget {
       'coordinators': _getCoordinators('Astronomy'),
       'gallery': _getGallery('Astronomy'),
       'description': "The Astronomy Club fuels student passion for the wonders of astronomy and space exploration, sparking curiosity about the universe’s endless mysteries. As one of LNMIIT’s most active clubs, we bring together creative and enthusiastic minds to host thrilling, high-energy events that captivate everyone. From stargazing nights to cosmic quizzes, our year-round activities keep the excitement alive—because college life isn’t just about academics, it’s about unforgettable experiences too!",
-      'instagram': 'https://www.instagram.com/astronomylnmiit/',
+      'instagramKey': 'astronomylnmiit_instagram',
       'email': 'astronomyclub@lnmiit.ac.in',
     },
     {
@@ -402,7 +403,7 @@ class ScienceTechPage extends StatelessWidget {
       'coordinators': _getCoordinators('Cipher'),
       'gallery': _getGallery('Cipher'),
       'description': "With the mission to empower and educate, CIPHER is the Cybersecurity and Blockchain club focused on fostering awareness, innovation, and a strong technical culture. It provides a space for students to explore digital security and decentralized technologies, grow through collaboration, and engage with two of the most impactful domains shaping the future.",
-      'instagram': 'https://www.instagram.com/cipher.lnmiit/',
+      'instagramKey': 'cipher_instagram',
       'email': 'cipher@lnmiit.ac.in',
     },
     {
@@ -413,7 +414,7 @@ class ScienceTechPage extends StatelessWidget {
       'coordinators': _getCoordinators('Cybros'),
       'gallery': _getGallery('Cybros'),
       'description': "Cybros is a competitive programming club dedicated to fostering a strong coding culture within the college. We promote algorithmic thinking, conduct regular contests, and help students build problem-solving skills through consistent practice and collaboration.",
-      'instagram': 'https://www.instagram.com/cybros_lnmiit/',
+      'instagramKey': 'cybros_instagram',
       'email': 'cybrosclub@lnmiit.ac.in',
     },
     {
@@ -424,7 +425,7 @@ class ScienceTechPage extends StatelessWidget {
       'coordinators': _getCoordinators('DebSoc'),
       'gallery': _getGallery('DebSoc'),
       'description': "Lord Byron once said, “Those who will not reason are bigots, those who cannot are fools, and those who dare not are slaves.” At LNMIIT, we believe true growth comes from questioning, debating, and refining your voice. Enter The Debate Society (DebSoc)—where ideas clash, minds sharpen, and words become power. From fiery MUNs and parliamentary debates to gripping extempores, we cultivate rational thinkers and fearless speakers. Whether you're a seasoned orator or a curious beginner, DebSoc shapes you into a master of persuasion—one argument at a time. Because in a world of noise, the strongest voice wins.",
-      'instagram': 'https://www.instagram.com/thedebatesocietylnmiit/',
+      'instagramKey': 'debsoc_instagram',
       'email': 'debsoc@lnmiit.ac.in',
     },
     {
@@ -435,7 +436,7 @@ class ScienceTechPage extends StatelessWidget {
       'coordinators': _getCoordinators('E-Cell'),
       'gallery': _getGallery('E-Cell'),
       'description': "Dive into entrepreneurship, crypto, stocks, Web3, and beyond with The Entrepreneurship Club—your hub for mastering the skills that shape tomorrow. From event planning and marketing to management, sponsorships, content creation, and design, we sharpen the tools you need to thrive. We collaborate with top tech colleges across India, bringing you real-world exposure through funding events, startup founder interactions, and deep dives into the startup ecosystem. Here, ideas meet execution—and learners become leaders.",
-      'instagram': 'https://www.instagram.com/ecell.lnmiit/',
+      'instagramKey': 'ecell_instagram',
       'email': 'ecell@lnmiit.ac.in',
     },
     {
@@ -446,7 +447,7 @@ class ScienceTechPage extends StatelessWidget {
       'coordinators': _getCoordinators('Finlogue'),
       'gallery': _getGallery('Finlogue'),
       'description': 'The Fintech Club of LNMIIT, Finlogue, bridges the gap between finance and technology, hosting discussions, workshops, and case study competitions on investments, markets, and blockchain.',
-      'instagram': 'https://www.instagram.com/finlogue.lnmiit/',
+      'instagramKey': 'finlogue_instagram',
       'email': 'finlogue@lnmiit.ac.in',
     },
     {
@@ -457,7 +458,7 @@ class ScienceTechPage extends StatelessWidget {
       'coordinators': _getCoordinators('Phoenix'),
       'gallery': _getGallery('Phoenix'),
       "description": "Phoenix , The Robotics club of LNMIIT Jaipur is a vibrant community of tech enthusiasts committed to hands-on innovation, collaborative problem-solving, and excellence in robotics. We actively design, build, and program intelligent systems while proudly representing our institution in prestigious nationwide competitions, fostering both technical expertise and a spirit of innovation.",
-      'instagram': 'https://www.instagram.com/phoenix.lnmiit/',
+      'instagramKey': 'phoenix_instagram',
       'email': 'phoenixclub@lnmiit.ac.in',
     },
     {
@@ -468,7 +469,7 @@ class ScienceTechPage extends StatelessWidget {
       'coordinators': _getCoordinators('Qbit'),
       'gallery': _getGallery('Qbit'),
       'description': 'The Quantum Computing Club of LNMIIT, Qbit, explores the cutting-edge frontier of quantum algorithms, quantum mechanics, and future computing technologies.',
-      'instagram': 'https://www.instagram.com/qbit_lnmiit/',
+      'instagramKey': 'qbit_instagram',
       'email': 'qbit@lnmiit.ac.in',
     },
     {
@@ -479,7 +480,7 @@ class ScienceTechPage extends StatelessWidget {
       'coordinators': _getCoordinators('Quizzinga'),
       'gallery': _getGallery('Quizzinga'),
       "description": "We are Quizzinga, The official quizzing club of LNMIIT. Some consider us a cult of nerds (may or may not be true), while others call us a buzzing hivemind of trivia enthusiasts. If you like trivia nights, auctions or winning big prizes, Quizzinga might just be your turf. \nVENI VIDI VICI!!!",
-      'instagram': 'https://www.instagram.com/quizzingalnm/',
+      'instagramKey': 'quizzinga_instagram',
       'email': 'quizzinga@lnmiit.ac.in',
     },
   ];
@@ -580,7 +581,9 @@ class ScienceTechPage extends StatelessWidget {
       ),
     );
     final List<String> galleryImages = List<String>.from(club['gallery'] as List);
-    final String clubInstagram = club['instagram'] as String? ?? 'https://instagram.com/${clubName.toLowerCase().replaceAll(' ', '').replaceAll('-', '')}_lnmiit';
+    final String clubInstagram = club.containsKey('instagramKey')
+        ? LinksService().getLinkSync(club['instagramKey'] as String)
+        : (club['instagram'] as String? ?? 'https://instagram.com/${clubName.toLowerCase().replaceAll(' ', '').replaceAll('-', '')}_lnmiit');
     final String clubEmail = club['email'] as String? ?? '${clubName.toLowerCase().replaceAll(' ', '').replaceAll('-', '')}@lnmiit.ac.in';
 
     void onCardTap() {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../widgets/glass_card.dart';
 import '../../utils/asset_utils.dart';
+import '../../services/links_service.dart';
 
 class SportsPage extends StatelessWidget {
   const SportsPage({super.key});
@@ -473,7 +474,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Badminton'),
       'gallery': _getGallery('Badminton'),
       'description': "The Badminton Club is where ambition meets discipline — a court for those who play to win and train to dominate. Every match is a test, every session a step toward becoming unbeatable. It’s not just about playing; it’s about proving you’re better than yesterday.",
-      'instagram': 'https://www.instagram.com/badminton_lnmiit/',
+      'instagramKey': 'badminton_instagram',
     },
     {
       'name': 'Basketball',
@@ -483,7 +484,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Basketball'),
       'gallery': _getGallery('Basketball'),
       'description': "Our Basketball Club is a place for students who love the game. We practice regularly, play matches, and grow as a team. Whether you’re a beginner or experienced, everyone’s welcome to join.",
-      'instagram': 'https://www.instagram.com/lnmiit_basketball/',
+      'instagramKey': 'basketball_instagram',
     },
     {
       'name': 'Carrom',
@@ -502,7 +503,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Chess'),
       'gallery': _getGallery('Chess'),
       'description': "The Chess Club brings together students who share an interest in chess. It’s a space for strategic thinking, friendly competition, and continuous learning. Open to all skill levels, the club promotes a love for the game and a sense of community.",
-      'instagram': 'https://www.instagram.com/lnmiit.chess/',
+      'instagramKey': 'chess_instagram',
     },
     {
       'name': 'Cricket',
@@ -512,7 +513,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Cricket'),
       'gallery': _getGallery('Cricket'),
       'description': "At LNMIIT, cricket is more than just a game-its a shared passion that brings students across batches. The cricket culture here fosters not only teamwork and competitiveness but also creates a homely bond with seniors and its a place where memories are made beyond scorecard.",
-      'instagram': 'https://www.instagram.com/_cricket_lnmiit/',
+      'instagramKey': 'cricket_instagram',
     },
     {
       'name': 'Football',
@@ -522,7 +523,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Football'),
       'gallery': _getGallery('Football'),
       'description': "Just a bunch of football fanatics who live for the game – whether it's sweating it out on the field or supporting their favourite clubs. LNMFC is all about teamwork, passion, and having a blast while playing the sport we love. Everyone’s welcome, from casual kickers to future pros!",
-      'instagram': 'https://www.instagram.com/football.lnmiit/',
+      'instagramKey': 'football_instagram',
     },
     {
       'name': 'Kabaddi',
@@ -532,7 +533,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Kabaddi'),
       'gallery': _getGallery('Kabaddi'),
       'description': "Ready to bring the heat on the mat? LNMIIT Kabaddi is where passion meets power. With consistent podium finishes at Despo and Udghosh, we’re building legends — one tackle at a time. Join us and #LePanga! ",
-      'instagram': 'https://www.instagram.com/lnmiit_kabaddi/',
+      'instagramKey': 'kabaddi_instagram',
     },
     {
       'name': 'Lawn Tennis',
@@ -569,7 +570,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Volleyball'),
       'gallery': _getGallery('Volleyball'),
       'description': "The Volleyball Club at LNMIIT is a vibrant and competitive community for sports enthusiasts who are passionate about the game. As one of the institute's official sports clubs, we aim to promote physical fitness, teamwork, and sportsmanship through regular practice sessions, friendly matches, and participation in inter-college tournaments. Whether you're a beginner or an experienced player, the club welcomes everyone with a love for volleyball. Join us to bump, set, and spike your way into a spirited sports culture!",
-      'instagram': 'https://www.instagram.com/lnmiit.volleyball/',
+      'instagramKey': 'volleyball_instagram',
     },
     {
       'name': 'Zenith',
@@ -579,7 +580,7 @@ class SportsPage extends StatelessWidget {
       'coordinators': _getCoordinators('Zenith'),
       'gallery': _getGallery('Zenith'),
       'description': "Zenith is the Fitness Club of LNMIIT. We aim to inspire and guide students toward a healthier, more active lifestyle through guided fitness routines, workout sessions, and wellness events.",
-      'instagram': 'https://www.instagram.com/zenith_lnmiit/',
+      'instagramKey': 'zenith_instagram',
     },
   ];
 
@@ -679,7 +680,9 @@ class SportsPage extends StatelessWidget {
       ),
     );
     final List<String> galleryImages = List<String>.from(club['gallery'] as List);
-    final String clubInstagram = club['instagram'] as String? ?? 'https://instagram.com/${clubName.toLowerCase().replaceAll(' ', '').replaceAll('-', '')}_lnmiit';
+    final String clubInstagram = club.containsKey('instagramKey')
+        ? LinksService().getLinkSync(club['instagramKey'] as String)
+        : (club['instagram'] as String? ?? 'https://instagram.com/${clubName.toLowerCase().replaceAll(' ', '').replaceAll('-', '')}_lnmiit');
     final String clubEmail = club['email'] as String? ?? '';
 
     void onCardTap() {

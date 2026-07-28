@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'pdf_viewer_page.dart';
+import '../services/links_service.dart';
 
 const String aiDsCurriculumUrl = ""; // Web link to be provided later
 
@@ -26,7 +26,7 @@ class _CurriculumPageState extends State<CurriculumPage> {
       'title': 'B.Tech. Artificial Intelligence & Data Science (AI & AI-DS)',
       'shortName': 'B.Tech AI & AI-DS',
       'degree': '4-Year UG Program',
-      'url': 'https://lnmiit.ac.in/department/ai-ds/programs/',
+      'linkKey': 'curriculum_aids_url',
     },
     {
       'title': 'B.Tech. Communication & Computer Engineering',
@@ -93,33 +93,6 @@ class _CurriculumPageState extends State<CurriculumPage> {
         ),
       ),
     );
-  }
-
-  Future<void> _launchWebUrl(String urlString) async {
-    if (urlString.trim().isEmpty) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("Link will be available soon!"),
-            duration: Duration(seconds: 2),
-          ),
-        );
-      }
-      return;
-    }
-    final Uri url = Uri.parse(urlString);
-    try {
-      if (await canLaunchUrl(url)) {
-        await launchUrl(
-          url,
-          mode: LaunchMode.externalApplication,
-        );
-      } else {
-        debugPrint("Could not launch $urlString");
-      }
-    } catch (e) {
-      debugPrint("Error launching URL: $e");
-    }
   }
 
   @override
@@ -190,7 +163,7 @@ class _CurriculumPageState extends State<CurriculumPage> {
                     final course = courses[index];
                     final Color accentColor = _accentColors[index % _accentColors.length];
                     final bool isHovered = hoveredCard == index;
-                    final bool isUrl = course.containsKey('url');
+                    final bool isUrl = course.containsKey('url') || course.containsKey('linkKey');
 
                     return Container(
                       margin: const EdgeInsets.only(bottom: 14),
@@ -200,8 +173,10 @@ class _CurriculumPageState extends State<CurriculumPage> {
                         onExit: (_) => setState(() => hoveredCard = -1),
                         child: GestureDetector(
                           onTap: () {
-                            if (isUrl) {
-                              _launchWebUrl(course['url']!);
+                            if (course.containsKey('linkKey')) {
+                              LinksService().launchLink(course['linkKey']!);
+                            } else if (course.containsKey('url')) {
+                              LinksService().launchLink(course['url']!);
                             } else {
                               _openPdf(course['title']!, course['pdf']!);
                             }

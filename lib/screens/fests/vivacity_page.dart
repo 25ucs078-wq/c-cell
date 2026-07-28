@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../widgets/glass_card.dart';
 import '../../widgets/interactive_gallery_viewer.dart';
 import '../../utils/asset_utils.dart';
+import '../../services/links_service.dart';
 
 class VivacityPage extends StatelessWidget {
   const VivacityPage({super.key});
@@ -174,7 +175,7 @@ class VivacityPage extends StatelessWidget {
                         icon: Icons.camera_alt,
                         label: "Instagram",
                         color: const Color(0xFFE1306C),
-                        onTap: () => _launchWebUrl(context, "https://www.instagram.com/vivacity_lnmiit/"),
+                        onTap: () => LinksService().launchLink('vivacity_instagram'),
                       ),
                       const SizedBox(width: 16),
                       _buildFestSocialButton(
@@ -182,7 +183,7 @@ class VivacityPage extends StatelessWidget {
                         icon: Icons.play_circle_filled,
                         label: "YouTube",
                         color: const Color(0xFFFF0000),
-                        onTap: () => _launchWebUrl(context, "https://www.youtube.com/@VivacityLNMIIT"),
+                        onTap: () => LinksService().launchLink('vivacity_youtube'),
                       ),
                       const SizedBox(width: 16),
                       _buildFestSocialButton(
@@ -190,7 +191,7 @@ class VivacityPage extends StatelessWidget {
                         icon: Icons.language,
                         label: "Website",
                         color: Colors.blueAccent,
-                        onTap: () => _launchWebUrl(context, "https://vivacity.lnmiit.ac.in/"),
+                        onTap: () => LinksService().launchLink('vivacity_website'),
                       ),
                     ],
                   ),
@@ -509,23 +510,5 @@ class VivacityPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<void> _launchWebUrl(BuildContext context, String urlString) async {
-    final uri = Uri.parse(urlString);
-    try {
-      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-        throw 'Could not launch $uri';
-      }
-    } catch (_) {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Unable to open link'),
-            duration: Duration(seconds: 2),
-          ),
-        );
-      }
-    }
   }
 }

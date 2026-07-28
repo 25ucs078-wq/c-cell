@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/glass_card.dart';
 import '../utils/asset_utils.dart';
+import '../services/links_service.dart';
 
 class MorePage extends StatelessWidget {
   const MorePage({super.key});
@@ -40,8 +41,8 @@ class MorePage extends StatelessWidget {
       "role": "COORDINATOR",
       "phone": "+918552956224",
       "email": "24dec032@lnmiit.ac.in",
-      "instagram": "https://instagram.com/the.whitehairedguy/",
-      "linkedin": "https://linkedin.com/in/krishna-khairnar-229291318/",
+      "instagramKey": "krishna_instagram",
+      "linkedinKey": "krishna_linkedin",
     },
     {
       "name": "Harshita Jain",
@@ -49,8 +50,8 @@ class MorePage extends StatelessWidget {
       "role": "COORDINATOR",
       "phone": "+919893708722",
       "email": "24ucc111@lnmiit.ac.in",
-      "instagram": "https://instagram.com/harshitajain_1812/",
-      "linkedin": "https://linkedin.com/in/harshitajain-1812-alegria/",
+      "instagramKey": "harshita_instagram",
+      "linkedinKey": "harshita_linkedin",
     },
     {
       "name": "Rahul Sanjay Mukhi",
@@ -58,8 +59,8 @@ class MorePage extends StatelessWidget {
       "role": "COORDINATOR",
       "phone": "+918233531319",
       "email": "24dcs036@lnmiit.ac.in",
-      "instagram": "https://instagram.com/_rahul.mukhi_/",
-      "linkedin": "https://linkedin.com/in/rahul-sanjay-mukhi-2410b3323/",
+      "instagramKey": "rahul_instagram",
+      "linkedinKey": "rahul_linkedin",
     },
   ];
 
@@ -70,8 +71,8 @@ class MorePage extends StatelessWidget {
       "role": "ASSOCIATE COORDINATOR",
       "phone": "+916300188181",
       "email": "24uec220@lnmiit.ac.in",
-      "instagram": "https://instagram.com/nishra_kothari/",
-      "linkedin": "https://linkedin.com/in/nishra-kothari-b6735a3a7/",
+      "instagramKey": "nishra_instagram",
+      "linkedinKey": "nishra_linkedin",
     },
     {
       "name": "Shashwat Kanoongo",
@@ -79,8 +80,8 @@ class MorePage extends StatelessWidget {
       "role": "ASSOCIATE COORDINATOR",
       "phone": "+918118829684",
       "email": "24ume092@lnmiit.ac.in",
-      "instagram": "https://instagram.com/_shashwat_kanoongo/",
-      "linkedin": "https://linkedin.com/in/shashwat-kanoongo-465370370/",
+      "instagramKey": "shashwat_instagram",
+      "linkedinKey": "shashwat_linkedin",
     },
     {
       "name": "Parth Arora",
@@ -88,8 +89,8 @@ class MorePage extends StatelessWidget {
       "role": "ASSOCIATE COORDINATOR",
       "phone": "+918949092441",
       "email": "24imai005@lnmiit.ac.in",
-      "instagram": "https://instagram.com/parth_arora._/",
-      "linkedin": "https://linkedin.com/in/parth-arora19/",
+      "instagramKey": "parth_instagram",
+      "linkedinKey": "parth_linkedin",
     },
     {
       "name": "Krishangee Tayal",
@@ -97,8 +98,8 @@ class MorePage extends StatelessWidget {
       "role": "ASSOCIATE COORDINATOR",
       "phone": "+919652156622",
       "email": "24ucc084@lnmiit.ac.in",
-      "instagram": "https://instagram.com/krishangeetayal/",
-      "linkedin": "https://linkedin.com/in/krishangee-tayal-96a861242/",
+      "instagramKey": "krishangee_instagram",
+      "linkedinKey": "krishangee_linkedin",
     },
     {
       "name": "Yug Nahar",
@@ -106,8 +107,8 @@ class MorePage extends StatelessWidget {
       "role": "ASSOCIATE COORDINATOR",
       "phone": "+918079061367",
       "email": "24ucs004@lnmiit.ac.in",
-      "instagram": "https://instagram.com/yugnahar/",
-      "linkedin": "https://linkedin.com/in/yug-nahar-32538a317/",
+      "instagramKey": "yug_instagram",
+      "linkedinKey": "yug_linkedin",
     },
     {
       "name": "Plaksha Gulati",
@@ -115,8 +116,8 @@ class MorePage extends StatelessWidget {
       "role": "ASSOCIATE COORDINATOR",
       "phone": "+917887232545",
       "email": "24ucs242@lnmiit.ac.in",
-      "instagram": "https://instagram.com/_.plaksha._/",
-      "linkedin": "https://linkedin.com/in/plaksha-gulati-7b8685313/",
+      "instagramKey": "plaksha_instagram",
+      "linkedinKey": "plaksha_linkedin",
     },
   ];
 
@@ -128,8 +129,8 @@ class MorePage extends StatelessWidget {
       "role": "DEVELOPER",
       "phone": "+918851543730",
       "email": "25ucc140@lnmiit.ac.in",
-      "instagram": "https://instagram.com/_ayu_sh95/",
-      "linkedin": "https://linkedin.com/in/ayush-sharma-799bba41b/",
+      "instagramKey": "ayush_instagram",
+      "linkedinKey": "ayush_linkedin",
     },
     {
       "name": "Dhwani Patel",
@@ -137,7 +138,7 @@ class MorePage extends StatelessWidget {
       "role": "DEVELOPER",
       "phone": "+917016339927",
       "email": "25ucs059@lnmiit.ac.in",
-      "instagram": "https://instagram.com/dhwani21_/",
+      "instagramKey": "dhwani_instagram",
     },
     {
       "name": "Harsh Kumar",
@@ -145,8 +146,8 @@ class MorePage extends StatelessWidget {
       "role": "DEVELOPER",
       "phone": "+919431255973",
       "email": "25ucc152@lnmiit.ac.in",
-      "instagram": "https://instagram.com/itz_harsh_9000/",
-      "linkedin": "https://linkedin.com/in/harsh-kumar-5819b4374/",
+      "instagramKey": "harsh_instagram",
+      "linkedinKey": "harsh_linkedin",
     },
     {
       "name": "Khushi Bajaj",
@@ -154,7 +155,7 @@ class MorePage extends StatelessWidget {
       "role": "DEVELOPER",
       "phone": "+918619313133",
       "email": "25ucc178@lnmiit.ac.in",
-      "instagram": "https://instagram.com/khushibajaj62/",
+      "instagramKey": "khushi_instagram",
     },
     {
       "name": "Kunal Agarwal",
@@ -162,7 +163,7 @@ class MorePage extends StatelessWidget {
       "role": "DEVELOPER",
       "phone": "+919079359051",
       "email": "kunal@lnmiit.ac.in",
-      "instagram": "https://instagram.com/kunal_a_23/",
+      "instagramKey": "kunal_instagram",
     },
     {
       "name": "Sakshi Jain",
@@ -170,7 +171,7 @@ class MorePage extends StatelessWidget {
       "role": "DEVELOPER",
       "phone": "+917357558385",
       "email": "25uec231@lnmiit.ac.in",
-      "instagram": "https://instagram.com/sakshi_j2908/",
+      "instagramKey": "sakshi_instagram",
     },
     {
       "name": "Saumya Gaur",
@@ -178,8 +179,8 @@ class MorePage extends StatelessWidget {
       "role": "DEVELOPER",
       "phone": "+919194609093",
       "email": "25uec184@lnmiit.ac.in",
-      "instagram": "https://instagram.com/saumya._gaur/",
-      "linkedin": "https://linkedin.com/in/saumya-gaur-b60811418/",
+      "instagramKey": "saumya_instagram",
+      "linkedinKey": "saumya_linkedin",
     },
     {
       "name": "Vaniya Chopra",
@@ -187,8 +188,8 @@ class MorePage extends StatelessWidget {
       "role": "DEVELOPER",
       "phone": "+916367492977",
       "email": "25uec079@lnmiit.ac.in",
-      "instagram": "https://instagram.com/vaniyachopraa/",
-      "linkedin": "https://linkedin.com/in/vaniya-chopra-7b17b53a4/",
+      "instagramKey": "vaniya_instagram",
+      "linkedinKey": "vaniya_linkedin",
     },
   ];
 
@@ -379,8 +380,12 @@ class MorePage extends StatelessWidget {
     final String role = person['role']!;
     final String phone = person['phone'] ?? '';
     final String email = person['email'] ?? '';
-    final String instagram = person['instagram'] ?? '';
-    final String linkedin = person['linkedin'] ?? '';
+    final String instagram = person.containsKey('instagramKey')
+        ? LinksService().getLinkSync(person['instagramKey']!)
+        : (person['instagram'] ?? '');
+    final String linkedin = person.containsKey('linkedinKey')
+        ? LinksService().getLinkSync(person['linkedinKey']!)
+        : (person['linkedin'] ?? '');
 
     final bool enableProfile = role != 'TEAM MENTOR';
 

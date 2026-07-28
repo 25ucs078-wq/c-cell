@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../widgets/glass_card.dart';
 import '../../utils/asset_utils.dart';
+import '../../services/links_service.dart';
 
 class EventsPage extends StatelessWidget {
   const EventsPage({super.key});
@@ -13,10 +14,10 @@ class EventsPage extends StatelessWidget {
       'image': 'assets/assets/images/ted/ted_logo.jpg',
       'subtitle': 'Forging The Future',
       'description': 'TEDxLNMIIT is an independently organized event that brings together thinkers, innovators, and doers to share inspiring ideas and spark meaningful conversations under the global TED banner.',
-      'instagram': 'https://www.instagram.com/tedxlnmiit/',
+      'instagramKey': 'tedx_instagram',
       'email': 'tedxlnmiit@lnmiit.ac.in',
-      'youtube': 'https://www.youtube.com/@TEDxLNMIIT',
-      'website': 'https://tedxlnmiit.in/',
+      'youtubeKey': 'tedx_youtube',
+      'websiteKey': 'tedx_website',
       'coordinators': [
         {
           'name': 'Pranav Vashisth',
@@ -64,7 +65,7 @@ class EventsPage extends StatelessWidget {
       'image': 'assets/assets/images/esummit/esummit_logo.jpg',
       'subtitle': 'Promoting Innovation and Startup Culture',
       'description': 'E-Summit is the annual flagship entrepreneurship summit of LNMIIT. It serves as a platform to inspire and empower the next generation of startup founders, showcasing innovations, business pitch fests, and expert panel talks.',
-      'instagram': 'https://www.instagram.com/esummitlnmiit/',
+      'instagramKey': 'esummit_instagram',
       'coordinators': [
         {
           'name': 'Ayush Agarwal',
@@ -220,10 +221,16 @@ class EventsPage extends StatelessWidget {
       ),
     );
     final List<String> galleryImages = List<String>.from(event['gallery'] as List);
-    final String instagram = event['instagram'] as String? ?? '';
+    final String instagram = event.containsKey('instagramKey')
+        ? LinksService().getLinkSync(event['instagramKey'] as String)
+        : (event['instagram'] as String? ?? '');
     final String email = event['email'] as String? ?? '';
-    final String youtube = event['youtube'] as String? ?? '';
-    final String website = event['website'] as String? ?? '';
+    final String youtube = event.containsKey('youtubeKey')
+        ? LinksService().getLinkSync(event['youtubeKey'] as String)
+        : (event['youtube'] as String? ?? '');
+    final String website = event.containsKey('websiteKey')
+        ? LinksService().getLinkSync(event['websiteKey'] as String)
+        : (event['website'] as String? ?? '');
 
     void onCardTap() {
       Navigator.pushNamed(

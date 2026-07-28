@@ -1,19 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../utils/asset_utils.dart';
 import 'notes_pyqs_page.dart';
 import 'profile_page.dart';
 import '../services/auth_service.dart';
 import '../models/user_model.dart';
-
-const String messMenuDriveUrl = "https://drive.google.com/drive/folders/1vCqyE7QiiFn6ExJsw3PdktB4wD_Q_5vo";
-const String campusMapDriveUrl = "https://drive.google.com/drive/folders/18zdpGIb9xHHeh_wqrYYRfFeSHWsv4yIF"; 
-
-const String busScheduleUrl = "https://lnmiit.ac.in/transportation/";
-const String hostelContactsUrl = "https://lnmiit.ac.in/office-and-administration/"; 
+import '../services/links_service.dart'; 
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -26,33 +20,6 @@ class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
   int hoveredCard = -1;
   int hoveredHeaderLink = -1;
-
-  Future<void> _launchURL(String urlString) async {
-    if (urlString.trim().isEmpty) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("Drive link will be available soon!"),
-            duration: Duration(seconds: 2),
-          ),
-        );
-      }
-      return;
-    }
-    final Uri url = Uri.parse(urlString);
-    try {
-      if (await canLaunchUrl(url)) {
-        await launchUrl(
-          url,
-          mode: LaunchMode.externalApplication,
-        );
-      } else {
-        debugPrint("Could not launch $urlString");
-      }
-    } catch (e) {
-      debugPrint("Error launching URL: $e");
-    }
-  }
 
   final GlobalKey eventsKey = GlobalKey();
   final GlobalKey facultiesKey = GlobalKey();
@@ -1116,7 +1083,7 @@ class _HomePageState extends State<HomePage> {
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
                                 onTap: () {
-                                  _launchURL(campusMapDriveUrl);
+                                  LinksService().launchLink('campus_map_drive_url');
                                 },
                               ),
                               buildEventCard(
@@ -1127,7 +1094,7 @@ class _HomePageState extends State<HomePage> {
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
                                 onTap: () {
-                                  _launchURL(messMenuDriveUrl);
+                                  LinksService().launchLink('mess_menu_drive_url');
                                 },
                               ),
                               buildEventCard(
@@ -1138,7 +1105,7 @@ class _HomePageState extends State<HomePage> {
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
                                 onTap: () {
-                                  _launchURL(busScheduleUrl);
+                                  LinksService().launchLink('bus_schedule_url');
                                 },
                               ),
                               buildEventCard(
@@ -1270,7 +1237,7 @@ class _HomePageState extends State<HomePage> {
                                 isSmallScreen: isSmallScreen,
                                 listCardHeight: listCardHeight,
                                 onTap: () {
-                                  _launchURL(hostelContactsUrl);
+                                  LinksService().launchLink('hostel_contacts_url');
                                 },
                               ),
                             ],

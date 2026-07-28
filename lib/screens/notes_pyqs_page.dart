@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart'; 
+import '../services/links_service.dart';
 
 class NotesPyqsPage extends StatefulWidget {
   const NotesPyqsPage({super.key});
@@ -11,23 +11,6 @@ class NotesPyqsPage extends StatefulWidget {
 
 class _NotesPyqsPageState extends State<NotesPyqsPage> {
   int hoveredCard = -1;
-
-  // 2. Function to safely launch Google Drive URLs
-  Future<void> _launchDriveURL(String urlString) async {
-    final Uri url = Uri.parse(urlString);
-    try {
-      if (await canLaunchUrl(url)) {
-        await launchUrl(
-          url,
-          mode: LaunchMode.externalApplication, 
-        );
-      } else {
-        debugPrint("Could not launch $urlString");
-      }
-    } catch (e) {
-      debugPrint("Error launching URL: $e");
-    }
-  }
 
   Widget semesterCard(
     int index,
@@ -149,7 +132,7 @@ class _NotesPyqsPageState extends State<NotesPyqsPage> {
               Icons.menu_book_rounded,
               "Semester 1",
               () {
-                _launchDriveURL("https://drive.google.com/drive/folders/1R8MWh7VAa1TAMuv2pTFzVQh_u1ALcx9y?usp=drive_link");
+                LinksService().launchLink('sem1_notes_drive_url');
               },
             ),
             semesterCard(
@@ -158,7 +141,7 @@ class _NotesPyqsPageState extends State<NotesPyqsPage> {
               Icons.auto_stories_rounded,
               "Semester 2",
               () {
-                _launchDriveURL("https://drive.google.com/drive/folders/1CYAcO9cEk8r8bQwXmsHF8dvxXme80D8z?usp=drive_link");
+                LinksService().launchLink('sem2_notes_drive_url');
               },
             ),
           ],

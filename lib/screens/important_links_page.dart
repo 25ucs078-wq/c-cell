@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../widgets/glass_card.dart';
+import '../services/links_service.dart';
 
 class ImportantLinksPage extends StatelessWidget {
   const ImportantLinksPage({super.key});
@@ -9,47 +9,29 @@ class ImportantLinksPage extends StatelessWidget {
   static const List<Map<String, String>> linksList = [
     {
       "title": "LNMIIT Official Website",
-      "url": "https://www.lnmiit.ac.in",
+      "key": "lnmiit_official_website",
     },
     {
       "title": "ERP Portal",
-      "url": "https://erp.lnmiit.ac.in",
+      "key": "erp_portal",
     },
     {
       "title": "Moodle",
-      "url": "https://moodle.lnmiit.ac.in",
+      "key": "moodle_portal",
     },
     {
       "title": "Scholarship Policy",
-      "url": "https://lnmiit.ac.in/scholarships-assistantships/",
+      "key": "scholarship_policy",
     },
     {
       "title": "Training & Placement Cell",
-      "url": "https://placements.lnmiit.ac.in",
+      "key": "placement_cell",
     },
     {
       "title": "Fee Structure - UG Admissions",
-      "url": "https://lnmiit.ac.in/admissions/fee_structure_ug/",
+      "key": "fee_structure_ug",
     },
   ];
-
-  Future<void> _launchURL(BuildContext context, String urlString) async {
-    final Uri uri = Uri.parse(urlString);
-    try {
-      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-        throw 'Could not launch $urlString';
-      }
-    } catch (_) {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Could not open link: $urlString'),
-            duration: const Duration(seconds: 2),
-          ),
-        );
-      }
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +128,8 @@ class ImportantLinksPage extends StatelessWidget {
 
   Widget _buildLinkCard(BuildContext context, Map<String, String> item, bool isMobile) {
     final String title = item['title'] ?? '';
-    final String url = item['url'] ?? '';
+    final String key = item['key'] ?? '';
+    final String url = LinksService().getLinkSync(key);
 
     return GlassCard(
       borderRadius: BorderRadius.circular(20),
@@ -230,7 +213,7 @@ class ImportantLinksPage extends StatelessWidget {
                 ),
                 elevation: 3,
               ),
-              onPressed: () => _launchURL(context, url),
+              onPressed: () => LinksService().launchLink(key),
               icon: const Icon(Icons.open_in_new, size: 16),
               label: Text(
                 "Visit Website",
