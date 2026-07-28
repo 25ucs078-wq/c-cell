@@ -130,14 +130,14 @@ class LinksService {
     }
   }
 
-  /// Get URL string for a given key, falling back to local defaults if remote isn't loaded
-  Future<String> getLink(String key) async {
+  /// Get URL string for a given key, falling back to local defaults if remote isn't loaded. Returns null if not found.
+  Future<String?> getLink(String key) async {
     if (_cachedLinks == null) {
       await fetchRemoteLinks();
     }
     final url = _cachedLinks?[key] ?? _fallbackLinks[key];
     if (url == null || url.isEmpty) {
-      throw Exception('Link for key "$key" not found');
+      return null;
     }
     return url;
   }
@@ -151,6 +151,7 @@ class LinksService {
   Future<bool> launchLink(String key) async {
     try {
       final urlString = await getLink(key);
+      if (urlString == null || urlString.isEmpty) return false;
       final uri = Uri.parse(urlString);
       return await launchUrl(uri, mode: LaunchMode.externalApplication);
     } catch (e) {
