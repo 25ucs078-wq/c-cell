@@ -25,13 +25,13 @@ class DesportivosPage extends StatelessWidget {
   static const List<Map<String, String>> festHeads = [
     {
       "name": "Abhas Chaudhary",
-      "image": "assets/assets/images/despo/despo_logo.jpeg",
+      "image": "",
       "role": "Fest Head",
       "email": "desportivos@lnmiit.ac.in"
     },
     {
       "name": "Arnav Rinawa",
-      "image": "assets/assets/images/despo/despo_logo.jpeg",
+      "image": "",
       "role": "Fest Head",
       "email": "desportivos@lnmiit.ac.in"
     },
@@ -218,36 +218,38 @@ class DesportivosPage extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         child: Row(
           children: [
-            Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(color: Colors.redAccent, width: 2),
-              ),
-              child: Hero(
-                tag: name,
-                child: ClipOval(
-                  child: buildCachedImage(
-                    image,
-                    width: 60,
-                    height: 60,
-                    fit: BoxFit.cover,
-                    errorWidget: (context, url, error) {
-                      return Container(
-                        color: Colors.grey[800],
-                        child: const Icon(
-                          Icons.person,
-                          color: Colors.white54,
-                          size: 30,
-                        ),
-                      );
-                    },
+            if (image.isNotEmpty) ...[
+              Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.redAccent, width: 2),
+                ),
+                child: Hero(
+                  tag: name,
+                  child: ClipOval(
+                    child: buildCachedImage(
+                      image,
+                      width: 60,
+                      height: 60,
+                      fit: BoxFit.cover,
+                      errorWidget: (context, url, error) {
+                        return Container(
+                          color: Colors.grey[800],
+                          child: const Icon(
+                            Icons.person,
+                            color: Colors.white54,
+                            size: 30,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(width: 14),
+              const SizedBox(width: 14),
+            ],
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -291,32 +293,33 @@ class DesportivosPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          AspectRatio(
-            aspectRatio: 1.0,
-            child: Hero(
-              tag: name,
-              child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(19),
-                  topRight: Radius.circular(19),
-                ),
-                child: buildCachedImage(
-                  image,
-                  fit: BoxFit.cover,
-                  errorWidget: (context, url, error) {
-                    return Container(
-                      color: Colors.grey[800],
-                      child: const Icon(
-                        Icons.person,
-                        color: Colors.white54,
-                        size: 50,
-                      ),
-                    );
-                  },
+          if (image.isNotEmpty)
+            AspectRatio(
+              aspectRatio: 1.0,
+              child: Hero(
+                tag: name,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(19),
+                    topRight: Radius.circular(19),
+                  ),
+                  child: buildCachedImage(
+                    image,
+                    fit: BoxFit.cover,
+                    errorWidget: (context, url, error) {
+                      return Container(
+                        color: Colors.grey[800],
+                        child: const Icon(
+                          Icons.person,
+                          color: Colors.white54,
+                          size: 50,
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
             ),
-          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
             child: Column(

@@ -113,7 +113,7 @@ class _CurriculumPageState extends State<CurriculumPage> {
           "CURRICULUM",
           style: GoogleFonts.playfairDisplay(
             color: Colors.redAccent,
-            fontSize: isMobile ? 22 : 28,
+            fontSize: isMobile ? 20 : 28,
             fontWeight: FontWeight.bold,
             letterSpacing: 2,
           ),
@@ -128,8 +128,8 @@ class _CurriculumPageState extends State<CurriculumPage> {
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.symmetric(
-          horizontal: isMobile ? 16 : 32,
-          vertical: isMobile ? 20 : 32,
+          horizontal: isMobile ? 12 : 32,
+          vertical: isMobile ? 16 : 32,
         ),
         child: Center(
           child: ConstrainedBox(
@@ -141,7 +141,7 @@ class _CurriculumPageState extends State<CurriculumPage> {
                   "ACADEMIC CURRICULA",
                   style: GoogleFonts.playfairDisplay(
                     color: Colors.white,
-                    fontSize: isMobile ? 24 : 32,
+                    fontSize: isMobile ? 22 : 32,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1.5,
                   ),
@@ -151,10 +151,10 @@ class _CurriculumPageState extends State<CurriculumPage> {
                   "Official course schemes & syllabus for programs offered by LNMIIT",
                   style: GoogleFonts.poppins(
                     color: Colors.white70,
-                    fontSize: isMobile ? 13 : 15,
+                    fontSize: isMobile ? 12 : 15,
                   ),
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 20),
                 ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -166,7 +166,7 @@ class _CurriculumPageState extends State<CurriculumPage> {
                     final bool isUrl = course.containsKey('url') || course.containsKey('linkKey');
 
                     return Container(
-                      margin: const EdgeInsets.only(bottom: 14),
+                      margin: const EdgeInsets.only(bottom: 12),
                       child: MouseRegion(
                         cursor: SystemMouseCursors.click,
                         onEnter: (_) => setState(() => hoveredCard = index),
@@ -184,7 +184,7 @@ class _CurriculumPageState extends State<CurriculumPage> {
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 200),
                             curve: Curves.easeOutCubic,
-                            padding: EdgeInsets.all(isMobile ? 14 : 18),
+                            padding: EdgeInsets.all(isMobile ? 12 : 18),
                             decoration: BoxDecoration(
                               color: isHovered
                                   ? const Color(0xFF161A33)
@@ -216,7 +216,7 @@ class _CurriculumPageState extends State<CurriculumPage> {
                             child: Row(
                               children: [
                                 Container(
-                                  padding: const EdgeInsets.all(12),
+                                  padding: EdgeInsets.all(isMobile ? 10 : 12),
                                   decoration: BoxDecoration(
                                     color: accentColor.withValues(alpha: 0.15),
                                     borderRadius: BorderRadius.circular(14),
@@ -228,10 +228,10 @@ class _CurriculumPageState extends State<CurriculumPage> {
                                   child: Icon(
                                     isUrl ? Icons.language_rounded : Icons.picture_as_pdf_rounded,
                                     color: accentColor,
-                                    size: isMobile ? 24 : 28,
+                                    size: isMobile ? 22 : 28,
                                   ),
                                 ),
-                                SizedBox(width: isMobile ? 12 : 18),
+                                SizedBox(width: isMobile ? 10 : 18),
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -240,12 +240,16 @@ class _CurriculumPageState extends State<CurriculumPage> {
                                         course['title']!,
                                         style: GoogleFonts.poppins(
                                           color: Colors.white,
-                                          fontSize: isMobile ? 15 : 17,
+                                          fontSize: isMobile ? 14 : 17,
                                           fontWeight: FontWeight.w600,
+                                          height: 1.3,
                                         ),
                                       ),
-                                      const SizedBox(height: 4),
-                                      Row(
+                                      const SizedBox(height: 6),
+                                      Wrap(
+                                        spacing: 8,
+                                        runSpacing: 4,
+                                        crossAxisAlignment: WrapCrossAlignment.center,
                                         children: [
                                           Container(
                                             padding: const EdgeInsets.symmetric(
@@ -265,9 +269,8 @@ class _CurriculumPageState extends State<CurriculumPage> {
                                               ),
                                             ),
                                           ),
-                                          const SizedBox(width: 8),
                                           Text(
-                                            isUrl ? "•  Tap to open website" : "•  Tap to view PDF",
+                                            isUrl ? "• Tap to open website" : "• Tap to view PDF",
                                             style: GoogleFonts.poppins(
                                               color: Colors.white38,
                                               fontSize: 11,
@@ -278,13 +281,14 @@ class _CurriculumPageState extends State<CurriculumPage> {
                                     ],
                                   ),
                                 ),
+                                const SizedBox(width: 8),
                                 AnimatedPadding(
                                   padding: EdgeInsets.only(left: isHovered ? 6.0 : 0.0),
                                   duration: const Duration(milliseconds: 200),
                                   child: Icon(
                                     isUrl ? Icons.open_in_new_rounded : Icons.arrow_forward_ios_rounded,
                                     color: isHovered ? accentColor : Colors.white38,
-                                    size: 18,
+                                    size: isMobile ? 16 : 18,
                                   ),
                                 ),
                               ],
