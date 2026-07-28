@@ -103,10 +103,26 @@ class AuthService {
       rethrow;
     } catch (e) {
       if (kDebugMode) {
-        debugPrint('Unexpected error during Google Sign-In.');
+        debugPrint('Unexpected error during Google Sign-In: $e');
       }
       rethrow;
     }
+  }
+
+  // Obtain Google AuthCredential for account linking (e.g., Admissions timeline)
+  Future<AuthCredential> getGoogleCredentialForLinking() async {
+    final googleUser = await _googleSignIn.authenticate();
+    final String email = googleUser.email.trim().toLowerCase();
+    if (!email.endsWith('@lnmiit.ac.in')) {
+      await _googleSignIn.signOut();
+      throw UnauthorizedDomainException(
+        'Access Denied: Only @lnmiit.ac.in email accounts are authorized.',
+      );
+    }
+    final googleAuth = googleUser.authentication;
+    return GoogleAuthProvider.credential(
+      idToken: googleAuth.idToken,
+    );
   }
 
   // Sync user profile with Firestore (create if new, update lastLogin if existing)

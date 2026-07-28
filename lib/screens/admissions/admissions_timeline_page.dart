@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import '../../services/admissions_service.dart';
 import '../../models/admission_candidate_model.dart';
 import '../../models/admission_stage_model.dart';
@@ -174,20 +173,8 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
         }
         await user.linkWithPopup(provider);
       } else {
-        // Initialize Google Sign-In instance (Android / iOS)
-        final GoogleSignIn googleSignIn = GoogleSignIn.instance;
-        final googleUser = await googleSignIn.authenticate();
-
-        final String email = googleUser.email.trim().toLowerCase();
-        if (!email.endsWith('@lnmiit.ac.in')) {
-          await googleSignIn.signOut();
-          throw Exception('Access Denied: Only @lnmiit.ac.in email accounts are authorized.');
-        }
-
-        final googleAuth = googleUser.authentication;
-        final AuthCredential credential = GoogleAuthProvider.credential(
-          idToken: googleAuth.idToken,
-        );
+        // Authenticate with Google via AuthService (Android / iOS)
+        final credential = await AuthService().getGoogleCredentialForLinking();
 
         // Link credentials to the existing anonymous user account (preserves UID!)
         await _admissionsService.linkOfficialAccount(credential);
