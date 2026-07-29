@@ -76,8 +76,8 @@ service cloud.firestore {
           (request.resource.data.completedStageIds.size() == resource.data.completedStageIds.size() + 1 &&
            // 1. Ensure log is created in the same transaction
            existsAfter(/databases/$(database)/documents/admission_cycles/$(cycleId)/candidates/$(tempId)/stage_logs/$(request.resource.data.completedStageIds[request.resource.data.completedStageIds.size() - 1])) &&
-           // 2. Ensure added stage's order is exactly equal to current completed size + 1 (strict sequential order)
-           get(/databases/$(database)/documents/admission_cycles/$(cycleId)/stages/$(request.resource.data.completedStageIds[request.resource.data.completedStageIds.size() - 1])).data.stageOrder == resource.data.completedStageIds.size() + 1))
+           // 2. Ensure added stage exists in stages configuration
+           exists(/databases/$(database)/documents/admission_cycles/$(cycleId)/stages/$(request.resource.data.completedStageIds[request.resource.data.completedStageIds.size() - 1])))
         )
       );
 

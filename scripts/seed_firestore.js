@@ -33,8 +33,8 @@ async function seed() {
   const stages = [
     {
       id: 'hostel_allotment',
-      title: 'Hostel Allotment',
-      location: 'CP-2',
+      title: 'Hostel Allotment (BH4/GH)',
+      location: 'BH4/GH',
       stageOrder: 1,
       assignedRole: 'desk_hostel',
       isEnabled: true,
@@ -42,8 +42,8 @@ async function seed() {
     },
     {
       id: 'jee_verification',
-      title: 'JEE Verification',
-      location: 'LH 1 / LH 2',
+      title: 'JEE Verification (LT 1/LT 2)',
+      location: 'LT 1 / LT 2',
       stageOrder: 2,
       assignedRole: 'desk_jee',
       isEnabled: true,
@@ -51,8 +51,8 @@ async function seed() {
     },
     {
       id: 'documents_verification',
-      title: 'Document Verification',
-      location: 'LH 1 / LH 2',
+      title: 'Document Verification (LT 1/LT 2)',
+      location: 'LT 1 / LT 2',
       stageOrder: 3,
       assignedRole: 'desk_verification',
       isEnabled: true,
@@ -60,43 +60,43 @@ async function seed() {
     },
     {
       id: 'credentials_allocation',
-      title: 'Email & Network Credentials',
-      location: 'LH 3',
+      title: 'Email Generation & Network Access Registration (LT 3)',
+      location: 'LT 3',
       stageOrder: 4,
       assignedRole: 'desk_credentials',
       isEnabled: true,
       bypassCodeHash: '34af953ef5913ef6d17a9dfd145aeb063762b08ef2aa1a96cf4405ff55437192' // Code: 6275
     },
     {
-      id: 'id_card_verification',
-      title: 'ID Card and Data Verification',
-      location: 'CP-2',
-      stageOrder: 5,
-      assignedRole: 'desk_student_affairs',
-      isEnabled: true,
-      bypassCodeHash: '9532f197bbc85d99b5be01eb362f1314104016f8bf1283174864836d9433c084' // Code: 3051
-    },
-    {
       id: 'biometric_registration',
-      title: 'Biometric Registration',
-      location: 'LH 9',
-      stageOrder: 6,
+      title: 'Biometric Registration (LT 9)',
+      location: 'LT 9',
+      stageOrder: 5,
       assignedRole: 'desk_security',
       isEnabled: true,
       bypassCodeHash: '395e21aaf42e2d2e9a09addc7495693c993991c9541e3dc45a117c4349437690' // Code: 9846
     },
     {
-      id: 'antiragging_registration',
-      title: 'Anti-Ragging Registration',
+      id: 'antiragging_verification',
+      title: 'Anti-Ragging Registration & ID Card Verification (CP Lab-2)',
       location: 'CP Lab 2',
-      stageOrder: 7,
+      stageOrder: 6,
       assignedRole: 'desk_antiragging',
       isEnabled: true,
       bypassCodeHash: 'a580f210e5e622d2df90102c9ec7e074c81a323f28c2ce0256aab2edbde69b54' // Code: 5193
     },
     {
+      id: 'apaar_verification',
+      title: 'ABC/APAAR ID Verification (CP Lab 1)',
+      location: 'CP Lab 1',
+      stageOrder: 7,
+      assignedRole: 'desk_student_affairs',
+      isEnabled: true,
+      bypassCodeHash: '9532f197bbc85d99b5be01eb362f1314104016f8bf1283174864836d9433c084' // Code: 3051
+    },
+    {
       id: 'id_card_printing',
-      title: 'ID Card Printing and Handover',
+      title: 'ID Card Issue and Activation (CP Lab 1)',
       location: 'CP Lab 1',
       stageOrder: 8,
       assignedRole: 'desk_printing',
@@ -105,7 +105,7 @@ async function seed() {
     }
   ];
 
-  console.log('2. Seeding stages...');
+  console.log('2. Seeding official LNMIIT admission stages...');
   for (const s of stages) {
     await db.collection('admission_cycles').doc('2026').collection('stages').doc(s.id).set(s);
   }
