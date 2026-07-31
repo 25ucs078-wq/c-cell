@@ -55,7 +55,7 @@ class _AdminDashboardPageState extends State<AdminDashboardPage> with SingleTick
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 6, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
     _verifyAdminAuthorization();
   }
 
@@ -417,10 +417,6 @@ class _AdminDashboardPageState extends State<AdminDashboardPage> with SingleTick
           indicatorColor: Colors.redAccent,
           tabs: const [
             Tab(icon: Icon(Icons.analytics_outlined), text: 'Dashboard'),
-            Tab(icon: Icon(Icons.settings_outlined), text: 'Configs'),
-            Tab(icon: Icon(Icons.people_outline), text: 'Candidates'),
-            Tab(icon: Icon(Icons.playlist_add_outlined), text: 'Stages'),
-            Tab(icon: Icon(Icons.security_outlined), text: 'RBAC Staff'),
             Tab(icon: Icon(Icons.history_outlined), text: 'Audit Logs'),
           ],
         ),
@@ -429,12 +425,8 @@ class _AdminDashboardPageState extends State<AdminDashboardPage> with SingleTick
           ? const Center(child: CircularProgressIndicator())
           : TabBarView(
               controller: _tabController,
-              children: [
+          children: [
                 _buildMetricsDashboard(),
-                _buildConfigsManager(),
-                _buildCandidatesList(),
-                _buildStagesManager(),
-                _buildRbacManager(),
                 _buildAuditLogsView(),
               ],
             ),
@@ -443,120 +435,21 @@ class _AdminDashboardPageState extends State<AdminDashboardPage> with SingleTick
 
   // 1. Dashboard Tab: Real-Time Operational Metrics
   Widget _buildMetricsDashboard() {
-    if (_cycleId == null) {
-      return const Center(child: Text('Active cycle not loaded.', style: TextStyle(color: Colors.white)));
-    }
-
-    return StreamBuilder<List<AdmissionCandidate>>(
-      stream: _adminService.streamAllCandidates(_cycleId!),
-      builder: (context, candidateSnap) {
-        if (candidateSnap.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        }
-
-        final candidates = candidateSnap.data ?? [];
-        final total = candidates.length;
-        final completed = candidates.where((c) => c.approved).length;
-        final pending = total - completed;
-
-        return StreamBuilder<List<AdmissionStage>>(
-          stream: _admissionsService.streamStages(_cycleId!),
-          builder: (context, stagesSnap) {
-            final stages = stagesSnap.data ?? [];
-
-            return SingleChildScrollView(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    'Operational Metrics overview',
-                    style: GoogleFonts.outfit(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
-                  ),
-                  const SizedBox(height: 16),
-
-                  // Metrics Cards grid
-                  GridView.count(
-                    crossAxisCount: MediaQuery.of(context).size.width > 800 ? 4 : 2,
-                    crossAxisSpacing: 16,
-                    mainAxisSpacing: 16,
-                    shrinkWrap: true,
-                    childAspectRatio: 1.5,
-                    physics: const NeverScrollableScrollPhysics(),
-                    children: [
-                      _metricsCard('Active Cycle', _cycleId ?? 'Offline', Icons.calendar_today, Colors.blueAccent),
-                      _metricsCard('Total Candidates', total.toString(), Icons.people, Colors.purpleAccent),
-                      _metricsCard('Completed Admissions', completed.toString(), Icons.check_circle_outline, Colors.green),
-                      _metricsCard('Pending Admissions', pending.toString(), Icons.pending_outlined, Colors.orangeAccent),
-                    ],
-                  ),
-                  const SizedBox(height: 32),
-
-                  Text(
-                    'Stage-wise Completion Statistics',
-                    style: GoogleFonts.outfit(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
-                  ),
-                  const SizedBox(height: 16),
-
-                  stages.isEmpty
-                      ? const Center(child: Text('No stages configured for stats calculation.', style: TextStyle(color: Colors.white54)))
-                      : ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: stages.length,
-                          itemBuilder: (context, index) {
-                            final stage = stages[index];
-                            // Count how many candidates have completed this stage
-                            final stageCompletedCount = candidates
-                                .where((c) => c.completedStageIds.contains(stage.id))
-                                .length;
-                            final percent = total > 0 ? (stageCompletedCount / total) : 0.0;
-
-                            return Container(
-                              margin: const EdgeInsets.only(bottom: 16),
-                              padding: const EdgeInsets.all(16),
-                              decoration: BoxDecoration(
-                                color: Colors.white.withValues(alpha: 0.01),
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(color: Colors.white.withValues(alpha: 0.05)),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        stage.title,
-                                        style: GoogleFonts.poppins(fontWeight: FontWeight.w600, color: Colors.white),
-                                      ),
-                                      const Spacer(),
-                                      Text(
-                                        '$stageCompletedCount / $total completed',
-                                        style: GoogleFonts.poppins(color: Colors.white54, fontSize: 13),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 10),
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(4),
-                                    child: LinearProgressIndicator(
-                                      value: percent,
-                                      backgroundColor: Colors.white10,
-                                      valueColor: const AlwaysStoppedAnimation<Color>(Colors.redAccent),
-                                      minHeight: 8,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                ],
-              ),
-            );
-          },
-        );
-      },
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.dashboard_outlined, color: Colors.white24, size: 48),
+            const SizedBox(height: 16),
+            Text(
+              'Metrics dashboard unavailable',
+              style: GoogleFonts.outfit(fontSize: 18, color: Colors.white54),
+            ),
+          ],
+        ),
+      ),
     );
   }
 

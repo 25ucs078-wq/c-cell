@@ -6,7 +6,6 @@ import 'firebase_options.dart';
 import 'screens/auth/auth_wrapper.dart';
 import 'screens/auth/google_login_page.dart';
 import 'screens/loading/animated_loading_page.dart';
-import 'screens/admissions/admissions_timeline_page.dart';
 import 'screens/admin/admin_dashboard_page.dart';
 import 'screens/home_page.dart';
 import 'screens/science_tech/science_tech_page.dart';
@@ -95,9 +94,6 @@ class MyApp extends StatelessWidget {
         switch (settings.name) {
           case '/':
             builder = (context) => const AuthWrapper();
-            break;
-          case '/admissions':
-            builder = (context) => const AdmissionsTimelinePage();
             break;
           case '/admin':
             builder = (context) => const AdminDashboardPage();

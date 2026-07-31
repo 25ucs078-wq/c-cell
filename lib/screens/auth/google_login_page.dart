@@ -325,22 +325,6 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> with SingleTickerProv
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        const Divider(color: Colors.white10, height: 40),
-                        
-                        // Fresher Admission Tracker link
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/admissions');
-                          },
-                          child: Text(
-                            'Freshers Admission Tracker',
-                            style: GoogleFonts.poppins(
-                              color: Colors.redAccent,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                   ),
