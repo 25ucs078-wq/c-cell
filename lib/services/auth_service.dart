@@ -17,6 +17,25 @@ class AuthService {
   final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
+  /// List of authorized email domains for authentication
+  static const List<String> allowedDomains = [
+    '@lnmiit.ac.in',
+    '@cse.lnmiit.ac.in',
+    '@cce.lnmiit.ac.in',
+    '@ece.lnmiit.ac.in',
+    '@mme.lnmiit.ac.in',
+    '@ai-ds.lnmiit.ac.in',
+  ];
+
+  /// Helper method to validate if an email address belongs to one of the authorized LNMIIT domains.
+  /// Performs case-insensitive matching and trims leading/trailing whitespace.
+  static bool isAllowedDomain(String? email) {
+    if (email == null) return false;
+    final String trimmedEmail = email.trim().toLowerCase();
+    if (trimmedEmail.isEmpty) return false;
+    return allowedDomains.any((domain) => trimmedEmail.endsWith(domain));
+  }
+
   // Stream of auth state changes to listen to current session
   Stream<User?> get authStateChanges => _auth.authStateChanges();
 
@@ -38,12 +57,12 @@ class AuthService {
           );
         }
 
-        // Enforce @lnmiit.ac.in domain restriction
-        final String email = user.email?.trim().toLowerCase() ?? '';
-        if (!email.endsWith('@lnmiit.ac.in')) {
+        // Enforce domain restriction across authorized LNMIIT domains
+        final String email = user.email ?? '';
+        if (!isAllowedDomain(email)) {
           await _auth.signOut();
           throw UnauthorizedDomainException(
-            'Access Denied: Only @lnmiit.ac.in email accounts are authorized.',
+            'Access Denied: Only authorized LNMIIT email accounts are permitted.',
           );
         }
         return user;
@@ -52,13 +71,13 @@ class AuthService {
       // 1. Trigger the Google Sign-In flow (Android / iOS)
       final googleUser = await _googleSignIn.authenticate();
 
-      // 2. Enforce @lnmiit.ac.in domain restriction
-      final String email = googleUser.email.trim().toLowerCase();
-      if (!email.endsWith('@lnmiit.ac.in')) {
+      // 2. Enforce domain restriction across authorized LNMIIT domains
+      final String email = googleUser.email;
+      if (!isAllowedDomain(email)) {
         // Disconnect account immediately to clean up cached credentials
         await _googleSignIn.signOut();
         throw UnauthorizedDomainException(
-          'Access Denied: Only @lnmiit.ac.in email accounts are authorized.',
+          'Access Denied: Only authorized LNMIIT email accounts are permitted.',
         );
       }
 
@@ -112,11 +131,11 @@ class AuthService {
   // Obtain Google AuthCredential for account linking (e.g., Admissions timeline)
   Future<AuthCredential> getGoogleCredentialForLinking() async {
     final googleUser = await _googleSignIn.authenticate();
-    final String email = googleUser.email.trim().toLowerCase();
-    if (!email.endsWith('@lnmiit.ac.in')) {
+    final String email = googleUser.email;
+    if (!isAllowedDomain(email)) {
       await _googleSignIn.signOut();
       throw UnauthorizedDomainException(
-        'Access Denied: Only @lnmiit.ac.in email accounts are authorized.',
+        'Access Denied: Only authorized LNMIIT email accounts are permitted.',
       );
     }
     final googleAuth = googleUser.authentication;

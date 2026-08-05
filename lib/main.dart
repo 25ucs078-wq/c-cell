@@ -52,7 +52,6 @@ void main() async {
     await GoogleSignIn.instance.initialize(
       serverClientId:
           '1091655361396-j7mcq2clu709mo5e3pq6dc9f0vg49edl.apps.googleusercontent.com',
-      hostedDomain: 'lnmiit.ac.in',
     );
   } catch (e) {
     debugPrint('GoogleSignIn initialization failed: $e');

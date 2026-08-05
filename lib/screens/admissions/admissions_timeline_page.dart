@@ -165,7 +165,6 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
         final GoogleAuthProvider provider = GoogleAuthProvider();
         provider.setCustomParameters({
           'prompt': 'select_account',
-          'hd': 'lnmiit.ac.in',
         });
         final user = FirebaseAuth.instance.currentUser;
         if (user == null) {
@@ -185,9 +184,8 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
         throw Exception('No authenticated user found after linking.');
       }
 
-      // Enforce @lnmiit.ac.in domain restriction
-      final String email = updatedUser.email?.trim().toLowerCase() ?? '';
-      if (!email.endsWith('@lnmiit.ac.in')) {
+      // Enforce domain restriction across authorized LNMIIT domains
+      if (!AuthService.isAllowedDomain(updatedUser.email)) {
         // Unlink the provider to clean up
         for (final info in updatedUser.providerData) {
           if (info.providerId == 'google.com') {
@@ -195,7 +193,7 @@ class _AdmissionsTimelinePageState extends State<AdmissionsTimelinePage> {
             break;
           }
         }
-        throw Exception('Access Denied: Only @lnmiit.ac.in email accounts are authorized.');
+        throw Exception('Access Denied: Only authorized LNMIIT email accounts are permitted.');
       }
 
       // 4. Create/update users/{uid} document in Firestore
